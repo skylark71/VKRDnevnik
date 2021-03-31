@@ -25,7 +25,7 @@ import ru.shkolaandstudents.R;
 public class TeacherActivityJournal extends AppCompatActivity {
     public int numberOfLines = 1;
     String class_name;
-    String save_edit;
+    String sub_name;
 
     DatabaseReference ref;
     @Override
@@ -34,17 +34,20 @@ public class TeacherActivityJournal extends AppCompatActivity {
         setContentView(R.layout.teacher_activity_journal);
 
         Bundle arguments = getIntent().getExtras();
-        class_name = arguments.get("finalIt").toString() + "-1";
-        save_edit = arguments.get("finalIt").toString();
-        TextView txt = findViewById(R.id.txt_set);
-        txt.setText(save_edit);
+        class_name = arguments.get("Class").toString();
+        sub_name = arguments.get("Subject").toString();
+        TextView txt_class = findViewById(R.id.txt_class);
+        TextView txt_sub = findViewById(R.id.txt_sub);
+
+        txt_class.setText(class_name);
+        txt_sub.setText(sub_name);
 
         /*SharedPreferences mSharedPreferences = getSharedPreferences(class_name, Activity.MODE_PRIVATE);
         numberOfLines = mSharedPreferences.getInt(class_name, 1);*/
 
         /****/
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(save_edit);
+        ref = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(class_name);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -79,7 +82,7 @@ public class TeacherActivityJournal extends AppCompatActivity {
         /***/
 
         /*String[] strings1 = new String[numberOfLines+1];
-        SharedPreferences mBtnSharedPreferences = getSharedPreferences(save_edit, Activity.MODE_PRIVATE);
+        SharedPreferences mBtnSharedPreferences = getSharedPreferences(sub_name, Activity.MODE_PRIVATE);
 
         TextView[]  ar_school_man = new TextView[numberOfLines];
 

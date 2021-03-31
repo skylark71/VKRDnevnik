@@ -6,7 +6,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -40,10 +39,9 @@ import ru.shkolaandstudents.AddPersonFragment;
 import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
 import ru.shkolaandstudents.RecyclerViewTeacher.TeacherActivityCreateClassAndSubList;
-import ru.shkolaandstudents.RecyclerViewTeacher.TeacherFragmentClassList;
+import ru.shkolaandstudents.RecyclerViewTeacher.TeacherFragmentJournalList;
 import ru.shkolaandstudents.Utilities;
 import ru.shkolaandstudents.ui.main.HomeFragment;
-import ru.shkolaandstudents.ui.main.StudyFragment;
 
 public class TeacherMainActivity extends AppCompatActivity {
 
@@ -295,7 +293,7 @@ public class TeacherMainActivity extends AppCompatActivity {
                 break;
             case R.id.teacher_journal:
                 moveAction = 1;
-                fragmentClass = TeacherFragmentClassList.class;
+                fragmentClass = TeacherFragmentJournalList.class;
                 break;
             case R.id.homepage:
                 moveAction = 1;

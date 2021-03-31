@@ -109,9 +109,9 @@ public class TeacherActivityCreateClassAndSubList extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new ExampleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Intent intent = new Intent(getApplicationContext(), TeacherSetClassList.class);
+                /*Intent intent = new Intent(getApplicationContext(), TeacherSetClassList.class);
                 intent.putExtra("finalIt", mExampleList.get(position).getLine2());
-                startActivity(intent);
+                startActivity(intent);*/
             }
 
             @Override
