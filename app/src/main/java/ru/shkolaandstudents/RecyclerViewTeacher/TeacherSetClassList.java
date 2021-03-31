@@ -51,8 +51,8 @@ public class TeacherSetClassList extends AppCompatActivity {
         SharedPreferences mSharedPreferences = getSharedPreferences(class_name, Activity.MODE_PRIVATE);
         numberOfLines = mSharedPreferences.getInt(class_name, 1);
 
-        //final String[] strings1 = new String[numberOfLines+1];
-        SharedPreferences mBtnSharedPreferences = getSharedPreferences(save_edit, Activity.MODE_PRIVATE);
+        /*final String[] strings1 = new String[numberOfLines+1];
+        SharedPreferences mBtnSharedPreferences = getSharedPreferences(save_edit, Activity.MODE_PRIVATE);*/
 
         /****/
         FirebaseDatabase database = FirebaseDatabase.getInstance();

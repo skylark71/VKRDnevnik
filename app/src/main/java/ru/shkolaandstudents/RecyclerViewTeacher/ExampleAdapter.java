@@ -25,8 +25,8 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
         public ExampleViewHolder(View itemView, final OnItemClickListener listener) {
             super(itemView);
-            mTextViewLine1 = itemView.findViewById(R.id.textview_line2);
-            mTextViewLine2 = itemView.findViewById(R.id.textview_line_1);
+            mTextViewLine1 = itemView.findViewById(R.id.textview_line_1);
+            mTextViewLine2 = itemView.findViewById(R.id.textview_line2);
             mDeleteImage = itemView.findViewById(R.id.image_delete);
 
             itemView.setOnClickListener(new View.OnClickListener() {

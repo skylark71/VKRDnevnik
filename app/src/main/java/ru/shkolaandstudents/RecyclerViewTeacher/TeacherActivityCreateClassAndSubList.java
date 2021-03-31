@@ -45,7 +45,7 @@ public class TeacherActivityCreateClassAndSubList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teacher_activity_create_class_and_sub_list);
 
-        loadData();
+        //loadData();
         buildRecyclerView();
         setInsertButton();
     }
@@ -75,9 +75,9 @@ public class TeacherActivityCreateClassAndSubList extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recyclerview);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
-
         mRecyclerView.setLayoutManager(mLayoutManager);
         /***/
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
@@ -105,6 +105,7 @@ public class TeacherActivityCreateClassAndSubList extends AppCompatActivity {
         });
         mRecyclerView.setAdapter(mAdapter);
         /***/
+
         mAdapter.setOnItemClickListener(new ExampleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {

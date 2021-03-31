@@ -68,7 +68,7 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ClassViewHol
     @Override
     public void onBindViewHolder(@NonNull ClassViewHolder holder, int position) {
         ExampleItem currentItem = mExampleList.get(position);
-        holder.mTextViewLine1.setText(currentItem.getLine2());
+        holder.mTextViewLine1.setText(currentItem.getLine1());
     }
 
 

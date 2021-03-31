@@ -200,7 +200,6 @@ public class TeacherMainActivity extends AppCompatActivity {
             }
         }, 150);*/
 
-
         FragmentManager fm = getSupportFragmentManager();
         OnBackPressedListener backPressedListener = null;
         for (Fragment fragment: fm.getFragments()) {
