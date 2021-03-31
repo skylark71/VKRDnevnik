@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/colorFon"
+    tools:context=".ui.main.SaturdayFragment">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TextView
+            android:id="@+id/tvRas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:text="@string/raspisanie"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvMond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:text="@string/Sat"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvSat1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="1." />
+
+            <TextView
+                android:id="@+id/tvTimeSat11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeSat14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeSat15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvSat11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etSat1DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <!--<CheckBox
+                android:id="@+id/Scb1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox" />-->
+
+            <TextView
+                android:id="@+id/tvOcenkaSat1"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvSat2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="2." />
+
+            <TextView
+                android:id="@+id/tvTimeSat21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeSat24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeSat25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvSat22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etSat2DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <!--<CheckBox
+                android:id="@+id/Scb2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox" />-->
+
+            <TextView
+                android:id="@+id/tvOcenkaSat2"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvSat3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="3." />
+
+            <TextView
+                android:id="@+id/tvTimeSat31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeSat34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeSat35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvSat33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/colorSet" />
+
+            <EditText
+                android:id="@+id/etSat3DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <!--<CheckBox
+                android:id="@+id/Scb3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/MyCheckBox"
+                android:layout_weight="0" />-->
+
+            <TextView
+                android:id="@+id/tvOcenkaSat3"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvSat4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="4."/>
+
+            <TextView
+                android:id="@+id/tvTimeSat41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeSat44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeSat45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat46"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat47"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvSat44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/colorSet" />
+
+            <EditText
+                android:id="@+id/etSat4DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <!--<CheckBox
+                android:id="@+id/Scb4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox" />-->
+
+            <TextView
+                android:id="@+id/tvOcenkaSat4"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvSat5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="5." />
+
+            <TextView
+                android:id="@+id/tvTimeSat51"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat52"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat53"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeSat54"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeSat55"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat56"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat57"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvSat55"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/colorSet" />
+
+            <EditText
+                android:id="@+id/etSat5DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <!--<CheckBox
+                android:id="@+id/Scb5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox" />-->
+
+            <TextView
+                android:id="@+id/tvOcenkaSat5"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvSat6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="6." />
+
+            <TextView
+                android:id="@+id/tvTimeSat61"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat62"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat63"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeSat64"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeSat65"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat66"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat67"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvSat66"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/colorSet" />
+
+            <EditText
+                android:id="@+id/etSat6DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <!--<CheckBox
+                android:id="@+id/Scb6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox" />-->
+
+            <TextView
+                android:id="@+id/tvOcenkaSat6"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvSat7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="7." />
+
+            <TextView
+                android:id="@+id/tvTimeSat71"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat72"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat73"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeSat74"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeSat75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat76"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat77"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvSat77"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etSat7DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <!--<CheckBox
+                android:id="@+id/Scb7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox" />-->
+
+            <TextView
+                android:id="@+id/tvOcenkaSat7"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvSat8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="8." />
+
+            <TextView
+                android:id="@+id/tvTimeSat81"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat82"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat83"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeSat84"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeSat85"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeSat86"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeSat87"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvSat88"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etSat8DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <!--<CheckBox
+                android:id="@+id/Scb8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox"  />-->
+
+            <TextView
+                android:id="@+id/tvOcenkaSat8"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnSunHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="300dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_help"
+            android:text="@string/Help"
+            android:textSize="10sp" />
+    </TableLayout>
+</ScrollView>

@@ -1,0 +1,104 @@
+package ru.shkolaandstudents.RecyclerViewTeacher;
+
+import android.content.SharedPreferences;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import ru.shkolaandstudents.R;
+
+import static android.content.Context.MODE_PRIVATE;
+
+public class TeacherFragmentClassCreate extends Fragment {
+
+    ArrayList<ExampleItem> mExampleList;
+    private RecyclerView mRecyclerView;
+    private ExampleAdapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    Button buttonInsert;
+    EditText line1, line2;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        final View v = inflater.inflate(R.layout.teacher_fragment_class_create, container, false);
+        mRecyclerView = v.findViewById(R.id.recyclerview);
+        buttonInsert = v.findViewById(R.id.button_insert);
+        line1 = v.findViewById(R.id.edittext_line_1);
+        line2 = v.findViewById(R.id.edittext_line_2);
+        loadData();
+        buildRecyclerView();
+        setInsertButton();
+
+        Button buttonSave = v.findViewById(R.id.button_save);
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveData();
+            }
+        });
+
+        return v;
+    }
+
+    private void saveData() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(mExampleList);
+        editor.putString("task list", json);
+        editor.apply();
+    }
+
+    private void loadData() {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("task list", null);
+        Type type = new TypeToken<ArrayList<ExampleItem>>() {
+        }.getType();
+        mExampleList = gson.fromJson(json, type);
+        if (mExampleList == null) {
+            mExampleList = new ArrayList<>();
+        }
+    }
+
+    private void buildRecyclerView() {
+
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(getActivity());
+        //mAdapter = new ExampleAdapter(mExampleList, getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    private void setInsertButton() {
+        buttonInsert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertItem(line1.getText().toString(), line2.getText().toString());
+            }
+        });
+    }
+
+    private void insertItem(String line1, String line2) {
+        mExampleList.add(new ExampleItem(line1, line2));
+
+    }
+}

@@ -1,0 +1,754 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorFon"
+    tools:context=".Widgets.BasicAppWidget"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvBWTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="3dp"
+        android:textColor="@color/colorWhite"
+        android:text="@string/widget_rasp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/btn_widget_title"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/tvBWDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/colorSet"
+        android:text="@string/Monday"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/btn_round"
+        android:textSize="14sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:id="@+id/tvBWLL1">
+
+        <TextView
+            android:id="@+id/tvBW1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="10sp"
+            android:text="1." />
+
+        <TextView
+            android:id="@+id/tvTimeBW1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textColor="@color/colorTime"
+            android:textSize="12sp"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textColor="@color/colorTime"
+            android:textSize="12sp"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textColor="@color/colorTime"
+            android:textSize="12sp"
+            android:text="00" />
+
+        <TextView
+            android:id="@+id/tvTimeBW22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textColor="@color/colorTime"
+            android:textSize="12sp"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvTimeBW3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textColor="@color/colorTime"
+            android:textSize="12sp"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textColor="@color/colorTime"
+            android:textSize="12sp"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textColor="@color/colorTime"
+            android:textSize="12sp"
+            android:text="45" />
+
+        <TextView
+            android:id="@+id/tvBW11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:textColor="@color/colorSet"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:id="@+id/tvBWLL2">
+
+        <TextView
+            android:id="@+id/tvBW2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="10sp"
+            android:text="2." />
+
+        <TextView
+            android:id="@+id/tvTimeBW5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW51"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="00" />
+
+        <TextView
+            android:id="@+id/tvTimeBW61"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvTimeBW7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW71"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="45" />
+
+        <TextView
+            android:id="@+id/tvBW22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:textColor="@color/colorSet"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:id="@+id/tvBWLL3">
+
+        <TextView
+            android:id="@+id/tvBW3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="10sp"
+            android:text="3." />
+
+        <TextView
+            android:id="@+id/tvTimeBW9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW91"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="00" />
+
+        <TextView
+            android:id="@+id/tvTimeBW101"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvTimeBW111"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW112"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="45" />
+
+        <TextView
+            android:id="@+id/tvBW33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:textColor="@color/colorSet" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:id="@+id/tvBWLL4">
+
+        <TextView
+            android:id="@+id/tvBW4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="10sp"
+            android:text="4." />
+
+        <TextView
+            android:id="@+id/tvTimeBW13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW131"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="00" />
+
+        <TextView
+            android:id="@+id/tvTimeBW141"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvTimeBW15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW151"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="45" />
+
+        <TextView
+            android:id="@+id/tvBW44"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:textColor="@color/colorSet" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:id="@+id/tvBWLL5">
+
+        <TextView
+            android:id="@+id/tvBW5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="10sp"
+            android:text="5." />
+
+        <TextView
+            android:id="@+id/tvTimeBW17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW171"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="00" />
+
+        <TextView
+            android:id="@+id/tvTimeBW181"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvTimeBW19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW191"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="45" />
+
+        <TextView
+            android:id="@+id/tvBW55"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:textColor="@color/colorSet" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:id="@+id/tvBWLL6">
+
+        <TextView
+            android:id="@+id/tvBW6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="10sp"
+            android:text="6." />
+
+        <TextView
+            android:id="@+id/tvTimeBW21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW211"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW222"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="00" />
+
+        <TextView
+            android:id="@+id/tvTimeBW221"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvTimeBW23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW231"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="45" />
+
+        <TextView
+            android:id="@+id/tvBW66"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:textColor="@color/colorSet" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:id="@+id/tvBWLL7">
+
+        <TextView
+            android:id="@+id/tvBW7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="10sp"
+            android:text="7." />
+
+        <TextView
+            android:id="@+id/tvTimeBW25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW251"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="00" />
+
+        <TextView
+            android:id="@+id/tvTimeBW261"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvTimeBW27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW271"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textColor="@color/colorTime"
+            android:textSize="12sp"
+            android:text="45" />
+
+        <TextView
+            android:id="@+id/tvBW77"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:textColor="@color/colorSet"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:id="@+id/tvBWLL8">
+
+        <TextView
+            android:id="@+id/tvBW8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="10sp"
+            android:text="8." />
+
+        <TextView
+            android:id="@+id/tvTimeBW29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW291"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="00" />
+
+        <TextView
+            android:id="@+id/tvTimeBW301"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/tvTimeBW31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/tvTimeBW311"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text=":" />
+
+        <TextView
+            android:id="@+id/tvTimeBW32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textSize="12sp"
+            android:textColor="@color/colorTime"
+            android:text="45" />
+
+        <TextView
+            android:id="@+id/tvBW88"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:textColor="@color/colorSet"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvBW"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:layout_marginTop="0dp"
+        android:textColor="@color/colorSet"
+        android:text="@string/widget_caption"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="9dp"
+        android:textSize="8sp"/>
+
+</LinearLayout>

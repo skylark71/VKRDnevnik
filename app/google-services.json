@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "645215317028",
+    "firebase_url": "https://basedatednevnik-default-rtdb.firebaseio.com",
+    "project_id": "basedatednevnik",
+    "storage_bucket": "basedatednevnik.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645215317028:android:954e2939be5e39ef063cb1",
+        "android_client_info": {
+          "package_name": "ru.shkolaandstudents"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645215317028-31t6disq9d63a5prmq6gt5eikv14c6b6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZXEgEH_P3JRzwdg97o-KqZZrFmqz855w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645215317028-31t6disq9d63a5prmq6gt5eikv14c6b6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

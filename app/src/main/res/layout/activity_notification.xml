@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/colorFon"
+    tools:context=".Notifications.ActivityNotification">
+
+
+    <Button
+        android:id="@+id/btnNotifSet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="70dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="20dp"
+        android:background="@color/colorSet"
+        android:textColor="@color/colorText"
+        android:text="@string/NotifSet" />
+
+    <TextView
+        android:id="@+id/NotifSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="0dp"
+        android:textColor="@color/colorSet"
+        android:textSize="25sp"/>
+
+    <Button
+        android:id="@+id/btnDelNotif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="70dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="15dp"
+        android:background="@color/colorSet"
+        android:textColor="@color/colorText"
+        android:text="@string/NotifDel" />
+
+    <Button
+        android:id="@+id/btnNotifHelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="300dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn_help"
+        android:text="@string/Help"
+        android:textSize="10sp" />
+
+</LinearLayout>

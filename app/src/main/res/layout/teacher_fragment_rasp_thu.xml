@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Teacher.TeacherFragmentRaspThu">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TextView
+            android:id="@+id/tvRas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:text="@string/raspisanie"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvThu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:text="@string/Thr"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTh1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="1." />
+
+            <TextView
+                android:id="@+id/tvTimeTh11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeTh14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeTh15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvThSub11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvThClass11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTh2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="2." />
+
+            <TextView
+                android:id="@+id/tvTimeTh21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeTh24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeTh25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvThSub22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvThClass22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTh3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="3." />
+
+            <TextView
+                android:id="@+id/tvTimeTh31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeTh34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeTh35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvThSub33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvThClass33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTh4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="4." />
+
+            <TextView
+                android:id="@+id/tvTimeTh41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeTh44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeTh45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh46"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh47"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvThSub44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvThClass44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTh5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="5." />
+
+            <TextView
+                android:id="@+id/tvTimeTh51"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh52"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh53"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeTh54"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-"  />
+
+            <TextView
+                android:id="@+id/tvTimeTh55"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh56"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh57"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvThSub55"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvThClass55"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTh6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="6." />
+
+            <TextView
+                android:id="@+id/tvTimeTh61"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh62"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh63"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeTh64"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeTh65"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh66"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh67"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvThSub66"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvThClass66"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTh7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="7."  />
+
+            <TextView
+                android:id="@+id/tvTimeTh71"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh72"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh73"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeTh74"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeTh75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh76"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh77"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvThSub77"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvThClass77"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTh8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="8." />
+
+            <TextView
+                android:id="@+id/tvTimeTh81"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh82"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh83"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeTh84"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeTh85"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeTh86"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeTh87"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvThSub88"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tvThClass88"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnThuHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="300dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_help"
+            android:text="@string/Help"
+            android:textSize="10sp" />
+    </TableLayout>
+</FrameLayout>

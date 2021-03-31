@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#303f9f</color>
+    <color name="colorPrimaryDark">#3F51B5</color>
+    <color name="colorAccent">#4141FC</color>
+
+    <integer-array name="gplus_colors">
+        <item>@color/gplus_color_1</item>
+        <item>@color/gplus_color_2</item>
+        <item>@color/gplus_color_3</item>
+        <item>@color/gplus_color_4</item>
+    </integer-array>
+
+    <color name="gplus_color_1">#3e802f</color>
+    <color name="gplus_color_2">#f4b400</color>
+    <color name="gplus_color_3">#427fed</color>
+    <color name="gplus_color_4">#b23424</color>
+
+
+    <color name="colorLightPrimary">#B3E5FC</color>
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorMonday">#FFA500</color>
+    <color name="colorTuesday">#fd055b</color>
+    <color name="colorWend">#00cd00</color>
+    <color name="colorTh">#ff5a00</color>
+    <color name="colorFr">#0060ff</color>
+    <color name="colorSat">#6400d5</color>
+    <color name="colorMenu">#8BC34A</color>
+    <color name="colorSet">#000000</color>
+    <color name="colorSetMenu">#EEEEd1</color>
+    <color name="colorFon">#FFFFF0</color>
+    <color name="colorTime">#2F4F4F</color>
+    <color name="colorNotif">#9C27B0</color>
+    <color name="colorError">#CC0000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorNeutral">#434343</color>
+
+</resources>

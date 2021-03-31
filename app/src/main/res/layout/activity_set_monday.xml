@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorFon"
+    android:id="@+id/setmon"
+    android:orientation="vertical"
+    tools:context=".ActivitySetMonday">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TextView
+            android:id="@+id/tvMRasp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="@string/Monday_Rasp"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/etM1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/input_1"
+            android:ems="10"
+            android:inputType="textPersonName|textCapWords"
+            android:maxLength="20" />
+
+        <EditText
+            android:id="@+id/etM2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/input_2"
+            android:ems="10"
+            android:inputType="textPersonName|textCapWords"
+            android:maxLength="20" />
+
+        <EditText
+            android:id="@+id/etM3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/input_3"
+            android:ems="10"
+            android:inputType="textPersonName|textCapWords"
+            android:maxLength="20" />
+
+        <EditText
+            android:id="@+id/etM4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/input_4"
+            android:ems="10"
+            android:inputType="textPersonName|textCapWords"
+            android:maxLength="20" />
+
+        <EditText
+            android:id="@+id/etM5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/input_5"
+            android:ems="10"
+            android:inputType="textPersonName|textCapWords"
+            android:maxLength="20" />
+
+        <EditText
+            android:id="@+id/etM6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/input_6"
+            android:ems="10"
+            android:inputType="textPersonName|textCapWords"
+            android:maxLength="20" />
+
+        <EditText
+            android:id="@+id/etM7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/input_7"
+            android:ems="10"
+            android:inputType="textPersonName|textCapWords"
+            android:maxLength="20" />
+
+        <EditText
+            android:id="@+id/etM8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:hint="@string/input_8"
+            android:ems="10"
+            android:inputType="textPersonName|textCapWords"
+            android:maxLength="20" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnMAccess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/btn_round"
+                android:paddingLeft="80sp"
+                android:paddingRight="80sp"
+
+                android:text="@string/Prinyat" />
+
+            <Button
+                android:id="@+id/btnMHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/btn_help"
+                android:text="@string/Help"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+
+    </TableLayout>
+</FrameLayout>

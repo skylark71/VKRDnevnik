@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="ru.shkolaandstudents">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:icon="@drawable/app"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".LoginAndRegist.SignUpActivity"/>
+        <activity android:name=".LoginAndRegist.SignInActivity"/>
+        <activity android:name=".LoginAndRegist.DashboardActivity"/>
+        <activity android:name=".RecyclerViewTeacher.TeacherActivityClassList" />
+        <activity android:name=".RecyclerViewTeacher.TeacherActivitySetClassList" />
+        <activity android:name=".RecyclerViewTeacher.TeacherSetClassList" />
+        <activity android:name=".RecyclerViewTeacher.TeacherCreateClassList" />
+        <activity android:name=".RecyclerViewTeacher.TeacherActivityJournal" />
+        <activity android:name=".RecyclerViewTeacher.TeacherActivityCreateClassAndSubList" />
+        <activity android:name=".Teacher.TeacherMainActivity" />
+        <activity android:name=".Test.TestActivity" />
+        <activity
+            android:name=".Notifications.ActivityNotification"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity android:name=".ActivitySchoolManMenu" />
+        <activity android:name=".ActivitySetTime" />
+        <activity android:name=".ActivitySetSaturday" />
+        <activity android:name=".ActivitySetFriday" />
+        <activity android:name=".ActivitySetThursday" />
+        <activity android:name=".ActivitySetWenesday" />
+        <activity android:name=".ActivitySetTuesday" />
+        <activity android:name=".ActivitySetMonday" />
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <receiver
+            android:name=".Widgets.NewAppWidget"
+            android:label="@string/notif_dz_ss">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/new_app_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".Widgets.BasicAppWidget"
+            android:label="@string/widget_rasp">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/basic_app_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".Notifications.AlertReceiver"
+            android:enabled="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.REBOOT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

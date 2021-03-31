@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddPersonFragment">
+
+    <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginStart="10dp"
+       android:layout_marginEnd="10dp"
+       android:orientation="vertical">
+
+        <EditText
+           android:layout_marginTop="10dp"
+           android:id="@+id/edit_name"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:ems="10"
+           android:inputType="textPersonName"
+           android:hint="Имя" />
+
+       <EditText
+           android:id="@+id/edit_last_name"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:ems="10"
+           android:inputType="textPersonName"
+           android:hint="Фамилия" />
+
+       <EditText
+           android:id="@+id/edit_school"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:ems="10"
+           android:inputType="textPersonName"
+           android:hint="Школа" />
+
+       <EditText
+           android:id="@+id/edit_class"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:ems="10"
+           android:inputType="textPersonName"
+           android:hint="Класс" />
+
+       <EditText
+           android:id="@+id/add_email"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:ems="10"
+           android:inputType="textEmailAddress"
+           android:hint="email"/>
+
+       <EditText
+           android:id="@+id/add_password"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:ems="10"
+           android:inputType="textPassword"
+           android:hint="Пароль"/>
+
+
+       <Button
+           android:id="@+id/btn_save_data"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Сохранить"/>
+
+   </LinearLayout>
+
+</FrameLayout>

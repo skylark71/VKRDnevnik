@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Teacher.TeacherFragmentRasp">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TextView
+            android:id="@+id/tvPaspisanie_t"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:text="@string/raspisanie"
+            android:textAllCaps="true"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btnTeacherMonday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_button_1"
+            android:textColor="#FFFFFF"
+            android:text="@string/Monday"/>
+
+        <Button
+            android:id="@+id/btnTeacherTuesday"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_button_1"
+            android:textColor="#FFFFFF"
+            android:text="@string/Tuesday" />
+
+        <Button
+            android:id="@+id/btnTeacherWendsday"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_button_1"
+            android:textColor="#FFFFFF"
+            android:text="@string/Wend" />
+
+        <Button
+            android:id="@+id/btnTeacherThursday"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_button_1"
+            android:textColor="#FFFFFF"
+            android:text="@string/Thr" />
+
+        <Button
+            android:id="@+id/btnTeacherFriday"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_button_1"
+            android:textColor="#FFFFFF"
+            android:text="@string/Fri" />
+
+        <Button
+            android:id="@+id/btnTeacherSat"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/round_button_1"
+            android:textColor="#FFFFFF"
+            android:text="@string/Sat" />
+
+        <!--<Button
+            android:id="@+id/btnTeacher"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSet"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorText"
+            android:text="Переход" />-->
+
+
+    </TableLayout>
+
+</FrameLayout>

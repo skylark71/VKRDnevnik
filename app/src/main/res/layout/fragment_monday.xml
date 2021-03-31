@@ -1,0 +1,976 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/colorFon"
+    android:id="@+id/monday_study"
+    tools:context=".ui.main.MondayFragment">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TextView
+            android:id="@+id/tvRas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:text="@string/raspisanie"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvMond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:text="@string/Monday"
+            android:textSize="18sp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvM1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="1." />
+
+            <TextView
+                android:id="@+id/tvTimeM1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeM22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeM3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvM11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etM1DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <!--<CheckBox
+                android:id="@+id/Mcb1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox"/>-->
+
+            <TextView
+                android:id="@+id/tvOcenkaM1"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvM2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="2." />
+
+            <TextView
+                android:id="@+id/tvTimeM5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM51"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeM61"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeM7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM71"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvM22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etM2DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp"/>
+
+            <!--<CheckBox
+                android:id="@+id/Mcb2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox"/>-->
+
+            <TextView
+                android:id="@+id/tvOcenkaM2"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvM3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="3." />
+
+            <TextView
+                android:id="@+id/tvTimeM9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM91"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeM101"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeM111"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM112"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvM33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/colorSet" />
+
+            <EditText
+                android:id="@+id/etM3DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp"/>
+
+            <!--<CheckBox
+                android:id="@+id/Mcb3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox"/>-->
+
+            <TextView
+                android:id="@+id/tvOcenkaM3"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvM4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="4." />
+
+            <TextView
+                android:id="@+id/tvTimeM13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM131"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeM141"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeM15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM151"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvM44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/colorSet" />
+
+            <EditText
+                android:id="@+id/etM4DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp"/>
+
+            <!--<CheckBox
+                android:id="@+id/Mcb4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox"/>-->
+
+            <TextView
+                android:id="@+id/tvOcenkaM4"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvM5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="5." />
+
+            <TextView
+                android:id="@+id/tvTimeM17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM171"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeM181"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeM19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM191"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvM55"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/colorSet" />
+
+            <EditText
+                android:id="@+id/etM5DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+           <!-- <CheckBox
+                android:id="@+id/Mcb5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox"/>-->
+
+            <TextView
+                android:id="@+id/tvOcenkaM5"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvM6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="6." />
+
+            <TextView
+                android:id="@+id/tvTimeM21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM211"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM222"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeM221"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeM23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM231"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvM66"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:textColor="@color/colorSet" />
+
+            <EditText
+                android:id="@+id/etM6DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <!--<CheckBox
+                android:id="@+id/Mcb6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox"/>-->
+
+            <TextView
+                android:id="@+id/tvOcenkaM6"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvM7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="7." />
+
+            <TextView
+                android:id="@+id/tvTimeM25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM251"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeM261"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeM27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM271"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorTime"
+                android:textSize="14sp"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvM77"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etM7DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp" />
+
+            <!--<CheckBox
+                android:id="@+id/Mcb7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox" />-->
+
+            <TextView
+                android:id="@+id/tvOcenkaM7"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvM8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="12sp"
+                android:text="8." />
+
+            <TextView
+                android:id="@+id/tvTimeM29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM291"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="00" />
+
+            <TextView
+                android:id="@+id/tvTimeM301"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="-" />
+
+            <TextView
+                android:id="@+id/tvTimeM31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="10" />
+
+            <TextView
+                android:id="@+id/tvTimeM311"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text=":" />
+
+            <TextView
+                android:id="@+id/tvTimeM32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textSize="14sp"
+                android:textColor="@color/colorTime"
+                android:text="45" />
+
+            <TextView
+                android:id="@+id/tvM88"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etM8DZ"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ems="10"
+                android:hint="@string/Enter_DZ"
+                android:inputType="textPersonName"
+                android:textSize="16sp"/>
+
+            <!--<CheckBox
+                android:id="@+id/Mcb8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:theme="@style/MyCheckBox"/>-->
+
+            <TextView
+                android:id="@+id/tvOcenkaM8"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:layout_weight="1"
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnMonHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="300dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_help"
+            android:text="@string/Help"
+            android:textSize="10sp" />
+    </TableLayout>
+</ScrollView>

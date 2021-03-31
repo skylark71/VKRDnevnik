@@ -1,0 +1,48 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/drawer_header_basic">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/study_menu"
+                    android:title="@string/widget_rasp"/>
+                <item
+                    android:id="@+id/teacher_class"
+                    android:title="Классы"/>
+                <item
+                    android:id="@+id/teacher_journal"
+                    android:title="Журнал"/>
+                <item
+                    android:id="@+id/homepage"
+                    android:title="@string/ocr" />
+                <item
+                    android:id="@+id/settingspage"
+                    android:title="@string/drawer_item_settings" />
+                <item
+                    android:id="@+id/exitpage"
+                    android:title="@string/drawer_item_exit" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/drawer_item_other">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/aboutpage"
+                    android:title="@string/drawer_item_about" />
+                <item
+                    android:id="@+id/connectpage"
+                    android:title="@string/drawer_item_connect" />
+                <item
+                    android:id="@+id/add_person"
+                    android:title="@string/add_person"
+                    android:icon="@drawable/ic_person_add" />
+                <item
+                    android:id="@+id/open_person"
+                    android:title="Открыть данные"
+                    android:icon="@drawable/ic_person_add" />
+            </group>
+        </menu>
+    </item>
+</menu>
