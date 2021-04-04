@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
@@ -18,6 +19,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -36,11 +41,8 @@ public class TeacherFragmentSetTuesday extends Fragment implements OnBackPressed
     Utilities utils = new Utilities(getActivity());
 
     Button btnWend,btnHelp;
-    SharedPreferences SP;
-    SharedPreferences.Editor SPEditor;
-    TextView title;
-
-    ArrayList<ExampleItem> mExampleList;
+    DatabaseReference ref;
+    DatabaseReference ref_save;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,7 +52,6 @@ public class TeacherFragmentSetTuesday extends Fragment implements OnBackPressed
         btnHelp = v.findViewById(R.id.btnTHelp);
         btnWend = v.findViewById(R.id.btnTAccess);
 
-        /***/
         final TextView tvSetT1Sub = v.findViewById(R.id.tvSetT1Sub);
         final TextView tvSetT2Sub = v.findViewById(R.id.tvSetT2Sub);
         final TextView tvSetT3Sub = v.findViewById(R.id.tvSetT3Sub);
@@ -69,183 +70,12 @@ public class TeacherFragmentSetTuesday extends Fragment implements OnBackPressed
         final TextView tvSetT7Class = v.findViewById(R.id.tvSetT7Class);
         final TextView tvSetT8Class = v.findViewById(R.id.tvSetT8Class);
 
-        /***/
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String T1Sub = sp.getString("T1Sub", null);
-        String T2Sub = sp.getString("T2Sub", null);
-        String T3Sub = sp.getString("T3Sub", null);
-        String T4Sub = sp.getString("T4Sub", null);
-        String T5Sub = sp.getString("T5Sub", null);
-        String T6Sub = sp.getString("T6Sub", null);
-        String T7Sub = sp.getString("T7Sub", null);
-        String T8Sub = sp.getString("T8Sub", null);
-
-        String T1Class = sp.getString("T1Class", null);
-        String T2Class = sp.getString("T2Class", null);
-        String T3Class = sp.getString("T3Class", null);
-        String T4Class = sp.getString("T4Class", null);
-        String T5Class = sp.getString("T5Class", null);
-        String T6Class = sp.getString("T6Class", null);
-        String T7Class = sp.getString("T7Class", null);
-        String T8Class = sp.getString("T8Class", null);
-
-        if(T1Sub == null)
-        {
-            tvSetT1Sub.setText(R.string.SetSub1);
-        }
-        else
-        {
-            tvSetT1Sub.setText(T1Sub);
-        }
-
-        if(T2Sub == null)
-        {
-            tvSetT2Sub.setText(R.string.SetSub2);
-        }
-        else
-        {
-            tvSetT2Sub.setText(T2Sub);
-        }
-
-        if(T3Sub == null)
-        {
-            tvSetT3Sub.setText(R.string.SetSub3);
-        }
-        else
-        {
-            tvSetT3Sub.setText(T3Sub);
-        }
-
-        if(T4Sub == null)
-        {
-            tvSetT4Sub.setText(R.string.SetSub4);
-        }
-        else
-        {
-            tvSetT4Sub.setText(T4Sub);
-        }
-
-        if(T5Sub == null)
-        {
-            tvSetT5Sub.setText(R.string.SetSub5);
-        }
-        else
-        {
-            tvSetT5Sub.setText(T5Sub);
-        }
-
-        if(T6Sub == null)
-        {
-            tvSetT6Sub.setText(R.string.SetSub6);
-        }
-        else
-        {
-            tvSetT6Sub.setText(T6Sub);
-        }
-
-        if(T7Sub == null)
-        {
-            tvSetT7Sub.setText(R.string.SetSub7);
-        }
-        else
-        {
-            tvSetT7Sub.setText(T7Sub);
-        }
-
-        if(T8Sub == null)
-        {
-            tvSetT8Sub.setText(R.string.SetSub8);
-        }
-        else
-        {
-            tvSetT8Sub.setText(T8Sub);
-        }
-
-        /**
-         * Проверка классов на пустоту 
-         * */
-
-        if(T1Class == null)
-        {
-            tvSetT1Class.setText(R.string.SetClass1);
-        }
-        else
-        {
-            tvSetT1Class.setText(T1Class);
-        }
-
-        if(T2Class == null)
-        {
-            tvSetT2Class.setText(R.string.SetClass2);
-        }
-        else
-        {
-            tvSetT2Class.setText(T2Class);
-        }
-
-        if(T3Class == null)
-        {
-            tvSetT3Class.setText(R.string.SetClass3);
-        }
-        else
-        {
-            tvSetT3Class.setText(T3Class);
-        }
-
-        if(T4Class == null)
-        {
-            tvSetT4Class.setText(R.string.SetClass4);
-        }
-        else
-        {
-            tvSetT4Class.setText(T4Class);
-        }
-
-        if(T5Class == null)
-        {
-            tvSetT5Class.setText(R.string.SetClass5);
-        }
-        else
-        {
-            tvSetT5Class.setText(T5Class);
-        }
-
-        if(T6Class == null)
-        {
-            tvSetT6Class.setText(R.string.SetClass6);
-        }
-        else
-        {
-            tvSetT6Class.setText(T6Class);
-        }
-
-        if(T7Class == null)
-        {
-            tvSetT7Class.setText(R.string.SetClass7);
-        }
-        else
-        {
-            tvSetT7Class.setText(T7Class);
-        }
-
-        if(T8Class == null)
-        {
-            tvSetT8Class.setText(R.string.SetClass8);
-        }
-        else
-        {
-            tvSetT8Class.setText(T8Class);
-        }
-        /***/
         ImageView delSetT1Sub = v.findViewById(R.id.delSetT1Sub);
         delSetT1Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove("T1Sub");
-                editor.remove("T1Class");
-                editor.apply();
+                ref_save.child("Schedule").child("T1Sub").removeValue();
+                ref_save.child("Schedule").child("T1Class").removeValue();
                 tvSetT1Sub.setText(R.string.SetSub1);
                 tvSetT1Class.setText(R.string.SetClass1);
             }
@@ -255,11 +85,8 @@ public class TeacherFragmentSetTuesday extends Fragment implements OnBackPressed
         delSetT2Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove("T2Sub");
-                editor.remove("T2Class");
-                editor.apply();
+                ref_save.child("Schedule").child("T2Sub").removeValue();
+                ref_save.child("Schedule").child("T2Class").removeValue();
                 tvSetT2Sub.setText(R.string.SetSub2);
                 tvSetT2Class.setText(R.string.SetClass2);
             }
@@ -269,11 +96,8 @@ public class TeacherFragmentSetTuesday extends Fragment implements OnBackPressed
         delSetT3Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove("T3Sub");
-                editor.remove("T3Class");
-                editor.apply();
+                ref_save.child("Schedule").child("T3Sub").removeValue();
+                ref_save.child("Schedule").child("T3Class").removeValue();
                 tvSetT3Sub.setText(R.string.SetSub3);
                 tvSetT3Class.setText(R.string.SetClass3);
             }
@@ -283,11 +107,8 @@ public class TeacherFragmentSetTuesday extends Fragment implements OnBackPressed
         delSetT4Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove("T4Sub");
-                editor.remove("T4Class");
-                editor.apply();
+                ref_save.child("Schedule").child("T4Sub").removeValue();
+                ref_save.child("Schedule").child("T4Class").removeValue();
                 tvSetT4Sub.setText(R.string.SetSub4);
                 tvSetT4Class.setText(R.string.SetClass4);
             }
@@ -297,11 +118,8 @@ public class TeacherFragmentSetTuesday extends Fragment implements OnBackPressed
         delSetT5Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove("T5Sub");
-                editor.remove("T5Class");
-                editor.apply();
+                ref_save.child("Schedule").child("T5Sub").removeValue();
+                ref_save.child("Schedule").child("T5Class").removeValue();
                 tvSetT5Sub.setText(R.string.SetSub5);
                 tvSetT5Class.setText(R.string.SetClass5);
             }
@@ -311,11 +129,8 @@ public class TeacherFragmentSetTuesday extends Fragment implements OnBackPressed
         delSetT6Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove("T6Sub");
-                editor.remove("T6Class");
-                editor.apply();
+                ref_save.child("Schedule").child("T6Sub").removeValue();
+                ref_save.child("Schedule").child("T6Class").removeValue();
                 tvSetT6Sub.setText(R.string.SetSub6);
                 tvSetT6Class.setText(R.string.SetClass6);
             }
@@ -325,11 +140,8 @@ public class TeacherFragmentSetTuesday extends Fragment implements OnBackPressed
         delSetT7Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove("T7Sub");
-                editor.remove("T7Class");
-                editor.apply();
+                ref_save.child("Schedule").child("T7Sub").removeValue();
+                ref_save.child("Schedule").child("T7Class").removeValue();
                 tvSetT7Sub.setText(R.string.SetSub7);
                 tvSetT7Class.setText(R.string.SetClass7);
             }
@@ -339,608 +151,670 @@ public class TeacherFragmentSetTuesday extends Fragment implements OnBackPressed
         delSetT8Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove("T8Sub");
-                editor.remove("T8Class");
-                editor.apply();
+                ref_save.child("Schedule").child("T8Sub").removeValue();
+                ref_save.child("Schedule").child("T8Class").removeValue();
                 tvSetT8Sub.setText(R.string.SetSub8);
                 tvSetT8Class.setText(R.string.SetClass8);
             }
         });
-        /***/
 
-        title = v.findViewById(R.id.tvTRasp);
-        SP = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        SPEditor = SP.edit();
-
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("shared preferences", MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("task list", null);
-        Type type = new TypeToken<ArrayList<ExampleItem>>() {}.getType();
-        mExampleList = gson.fromJson(json, type);
-        if (mExampleList == null) {
-            mExampleList = new ArrayList<>();
-        }
-
-        String Fulltext = sharedPreferences.getString("task list", null);
-        String s1 = "mLine1";
-        String[] split = Fulltext.split(s1);
-        int count = split.length - 1;
-
-        ExampleItem currentItem, crt;
-        String it1, it2;
-        final String[] strSub = new String[count+1];
-        final String[] strClass = new String[count+1];
-
-        strSub[0]= "Предмет";
-        strClass[0]= "Класс";
-        for (int i = 0; i < count; i++)
-        {
-            currentItem = mExampleList.get(i);
-            it1 = currentItem.getLine1();
-            strSub[i+1] = it1;
-        }
-
-        for (int j = 0; j < count; j++)
-        {
-            crt = mExampleList.get(j);
-            it2 = crt.getLine2();
-            strClass[j+1] = it2;
-        }
-
-        final ArrayAdapter arrayAdapterSub = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,strSub);
-        final ArrayAdapter arrayAdapterClass = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,strClass);
-
-        /**
-         * Инициализация предметов
-         * */
-        tvSetT1Sub.setOnClickListener(new View.OnClickListener() {
+        ref_save.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
-                builder.setTitle("Выберите 1 предмет");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner1);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String T1Sub = String.valueOf(snapshot.child("Schedule").child("T1Sub").getValue());
+                String T2Sub = String.valueOf(snapshot.child("Schedule").child("T2Sub").getValue());
+                String T3Sub = String.valueOf(snapshot.child("Schedule").child("T3Sub").getValue());
+                String T4Sub = String.valueOf(snapshot.child("Schedule").child("T4Sub").getValue());
+                String T5Sub = String.valueOf(snapshot.child("Schedule").child("T5Sub").getValue());
+                String T6Sub = String.valueOf(snapshot.child("Schedule").child("T6Sub").getValue());
+                String T7Sub = String.valueOf(snapshot.child("Schedule").child("T7Sub").getValue());
+                String T8Sub = String.valueOf(snapshot.child("Schedule").child("T8Sub").getValue());
 
-                arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterSub);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT1Sub.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T1Sub", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
-                    }
-                });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                String T1Class = String.valueOf(snapshot.child("Schedule").child("T1Class").getValue());
+                String T2Class = String.valueOf(snapshot.child("Schedule").child("T2Class").getValue());
+                String T3Class = String.valueOf(snapshot.child("Schedule").child("T3Class").getValue());
+                String T4Class = String.valueOf(snapshot.child("Schedule").child("T4Class").getValue());
+                String T5Class = String.valueOf(snapshot.child("Schedule").child("T5Class").getValue());
+                String T6Class = String.valueOf(snapshot.child("Schedule").child("T6Class").getValue());
+                String T7Class = String.valueOf(snapshot.child("Schedule").child("T7Class").getValue());
+                String T8Class = String.valueOf(snapshot.child("Schedule").child("T8Class").getValue());
+
+                if(snapshot.child("T1Sub").exists())
+                {
+                    tvSetT1Sub.setText(R.string.SetSub1);
+                }
+                else
+                {
+                    tvSetT1Sub.setText(T1Sub);
+                }
+
+                if(snapshot.child("T2Sub").exists())
+                {
+                    tvSetT2Sub.setText(R.string.SetSub2);
+                }
+                else
+                {
+                    tvSetT2Sub.setText(T2Sub);
+                }
+
+                if(snapshot.child("T3Sub").exists())
+                {
+                    tvSetT3Sub.setText(R.string.SetSub3);
+                }
+                else
+                {
+                    tvSetT3Sub.setText(T3Sub);
+                }
+
+                if(snapshot.child("T4Sub").exists())
+                {
+                    tvSetT4Sub.setText(R.string.SetSub4);
+                }
+                else
+                {
+                    tvSetT4Sub.setText(T4Sub);
+                }
+
+                if(snapshot.child("T5Sub").exists())
+                {
+                    tvSetT5Sub.setText(R.string.SetSub5);
+                }
+                else
+                {
+                    tvSetT5Sub.setText(T5Sub);
+                }
+
+                if(snapshot.child("T6Sub").exists())
+                {
+                    tvSetT6Sub.setText(R.string.SetSub6);
+                }
+                else
+                {
+                    tvSetT6Sub.setText(T6Sub);
+                }
+
+                if(snapshot.child("T7Sub").exists())
+                {
+                    tvSetT7Sub.setText(R.string.SetSub7);
+                }
+                else
+                {
+                    tvSetT7Sub.setText(T7Sub);
+                }
+
+                if(snapshot.child("T8Sub").exists())
+                {
+                    tvSetT8Sub.setText(R.string.SetSub8);
+                }
+                else
+                {
+                    tvSetT8Sub.setText(T8Sub);
+                }
+
+                if(snapshot.child("T1Class").exists())
+                {
+                    tvSetT1Class.setText(R.string.SetClass1);
+                }
+                else
+                {
+                    tvSetT1Class.setText(T1Class);
+                }
+
+                if(snapshot.child("T2Class").exists())
+                {
+                    tvSetT2Class.setText(R.string.SetClass2);
+                }
+                else
+                {
+                    tvSetT2Class.setText(T2Class);
+                }
+
+                if(snapshot.child("T3Class").exists())
+                {
+                    tvSetT3Class.setText(R.string.SetClass3);
+                }
+                else
+                {
+                    tvSetT3Class.setText(T3Class);
+                }
+
+                if(snapshot.child("T4Class").exists())
+                {
+                    tvSetT4Class.setText(R.string.SetClass4);
+                }
+                else
+                {
+                    tvSetT4Class.setText(T4Class);
+                }
+
+                if(snapshot.child("T5Class").exists())
+                {
+                    tvSetT5Class.setText(R.string.SetClass5);
+                }
+                else
+                {
+                    tvSetT5Class.setText(T5Class);
+                }
+
+                if(snapshot.child("T6Class").exists())
+                {
+                    tvSetT6Class.setText(R.string.SetClass6);
+                }
+                else
+                {
+                    tvSetT6Class.setText(T6Class);
+                }
+
+                if(snapshot.child("T7Class").exists())
+                {
+                    tvSetT7Class.setText(R.string.SetClass7);
+                }
+                else
+                {
+                    tvSetT7Class.setText(T7Class);
+                }
+
+                if(snapshot.child("T8Class").exists())
+                {
+                    tvSetT8Class.setText(R.string.SetClass8);
+                }
+                else
+                {
+                    tvSetT8Class.setText(T8Class);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 
-        tvSetT2Sub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
-                builder.setTitle("Выберите 2 предмет");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner1);
 
-                arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterSub);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int i=0;
+                int j=1;
+
+                for (DataSnapshot ds : snapshot.getChildren()){
+                    String str_sub = ds.child("Sub").getValue(String.class);
+                    j++;
+                }
+
+                final String[] strSub = new String[j];
+                final String[] strClass = new String[j];
+
+
+                strSub[0]= "Предмет";
+                strClass[0]= "Класс";
+                for (DataSnapshot ds : snapshot.getChildren()){
+                    String str_sub = ds.child("Sub").getValue(String.class);
+                    strSub[i+1] = str_sub;
+
+                    String str_class = ds.child("Class").getValue(String.class);
+                    strClass[i+1] = str_class;
+                    i++;
+                }
+
+                final ArrayAdapter arrayAdapterSub = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,strSub);
+                final ArrayAdapter arrayAdapterClass = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,strClass);
+
+                /**
+                 * Инициализация предметов
+                 * */
+                tvSetT1Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT2Sub.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T2Sub", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        builder.setTitle("Выберите 1 предмет");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                        arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterSub);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT1Sub.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T1Sub").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
 
-        tvSetT3Sub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
-                builder.setTitle("Выберите 3 предмет");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner1);
-
-                arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterSub);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                tvSetT2Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT3Sub.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T3Sub", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        builder.setTitle("Выберите 2 предмет");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                        arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterSub);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT2Sub.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T2Sub").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
 
-        tvSetT4Sub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
-                builder.setTitle("Выберите 4 предмет");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner1);
-
-                arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterSub);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                tvSetT3Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT4Sub.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T4Sub", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        builder.setTitle("Выберите 3 предмет");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                        arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterSub);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT3Sub.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T3Sub").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
 
-        tvSetT5Sub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
-                builder.setTitle("Выберите 5 предмет");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner1);
-
-                arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterSub);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                tvSetT4Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT5Sub.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T5Sub", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        builder.setTitle("Выберите 4 предмет");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                        arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterSub);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT4Sub.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T4Sub").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
 
-        tvSetT6Sub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
-                builder.setTitle("Выберите 6 предмет");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner1);
-
-                arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterSub);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                tvSetT5Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT6Sub.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T6Sub", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        builder.setTitle("Выберите 5 предмет");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                        arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterSub);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT5Sub.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T5Sub").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
 
-        tvSetT7Sub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
-                builder.setTitle("Выберите 7 предмет");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner1);
-
-                arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterSub);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                tvSetT6Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT7Sub.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T7Sub", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        builder.setTitle("Выберите 6 предмет");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                        arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterSub);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT6Sub.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T6Sub").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
 
-        tvSetT8Sub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
-                builder.setTitle("Выберите 8 предмет");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner1);
-
-                arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterSub);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                tvSetT7Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT8Sub.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T8Sub", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        builder.setTitle("Выберите 7 предмет");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                        arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterSub);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT7Sub.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T7Sub").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
-        /**
-         *
-         * */
 
-        /**
-         * Инициализация классов
-         * */
-        tvSetT1Class.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                builder.setTitle("Выберите 1 класс");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner);
-
-                arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterClass);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                tvSetT8Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT1Class.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T1Class", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        builder.setTitle("Выберите 8 предмет");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                        arrayAdapterSub.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterSub);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT8Sub.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T8Sub").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
+                /**
+                 *
+                 * */
 
-        tvSetT2Class.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                builder.setTitle("Выберите 2 класс");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner);
-
-                arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterClass);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                /**
+                 * Инициализация классов
+                 * */
+                tvSetT1Class.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT2Class.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T2Class", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                        builder.setTitle("Выберите 1 класс");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner);
+
+                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterClass);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT1Class.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T1Class").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
 
-        tvSetT3Class.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                builder.setTitle("Выберите 3 класс");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner);
-
-                arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterClass);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                tvSetT2Class.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT3Class.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T3Class", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                        builder.setTitle("Выберите 2 класс");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner);
+
+                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterClass);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT2Class.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T2Class").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
 
-        tvSetT4Class.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                builder.setTitle("Выберите 4 класс");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner);
-
-                arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterClass);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                tvSetT3Class.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT4Class.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T4Class", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                        builder.setTitle("Выберите 3 класс");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner);
+
+                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterClass);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT3Class.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T3Class").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
 
-        tvSetT5Class.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                builder.setTitle("Выберите 5 класс");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner);
-
-                arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterClass);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                tvSetT4Class.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT5Class.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T5Class", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                        builder.setTitle("Выберите 4 класс");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner);
+
+                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterClass);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT4Class.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T4Class").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
 
-        tvSetT6Class.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                builder.setTitle("Выберите 6 класс");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner);
-
-                arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterClass);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                tvSetT5Class.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT6Class.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T6Class", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                        builder.setTitle("Выберите 5 класс");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner);
+
+                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterClass);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT5Class.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T5Class").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
 
-        tvSetT7Class.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                builder.setTitle("Выберите 7 класс");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner);
-
-                arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterClass);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                tvSetT6Class.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT7Class.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T7Class", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                        builder.setTitle("Выберите 6 класс");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner);
+
+                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterClass);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT6Class.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T6Class").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });
 
-        tvSetT8Class.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View vw) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                builder.setTitle("Выберите 8 класс");
-                builder.setView(view);
-                final Spinner spinner = view.findViewById(R.id.spinner);
-
-                arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                spinner.setAdapter(arrayAdapterClass);
-                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                tvSetT7Class.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        tvSetT8Class.setText(spinner.getSelectedItem().toString());
-                        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        String str = spinner.getSelectedItem().toString();
-                        editor.putString("T8Class", str);
-                        editor.apply();
-                        dialogInterface.dismiss();
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                        builder.setTitle("Выберите 7 класс");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner);
+
+                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterClass);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT7Class.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T7Class").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     }
                 });
-                builder.setView(view);
-                AlertDialog dialog = builder.create();
-                dialog.show();
+
+                tvSetT8Class.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                        builder.setTitle("Выберите 8 класс");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner);
+
+                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapterClass);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tvSetT8Class.setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref_save.child("Schedule").child("T8Class").setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    }
+                });
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
-        /**
-         * */
 
         btnWend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                /*String T1Sub = etT1Sub.getText().toString();
-                String T1Class = etT1Class.getText().toString();
-                SPEditor.putString("T1Sub",T1Sub);
-                SPEditor.putString("T1Class",T1Class);
-                SPEditor.apply();
-
-                String T2Sub = etT2Sub.getText().toString();
-                String T2Class = etT2Class.getText().toString();
-                SPEditor.putString("T2Sub",T2Sub);
-                SPEditor.putString("T2Class",T2Class);
-                SPEditor.apply();
-
-                String T3Sub = etT3Sub.getText().toString();
-                String T3Class = etT3Class.getText().toString();
-                SPEditor.putString("T3Sub",T3Sub);
-                SPEditor.putString("T3Class",T3Class);
-                SPEditor.apply();
-
-                String T4Sub = etT4Sub.getText().toString();
-                String T4Class = etT4Class.getText().toString();
-                SPEditor.putString("T4Sub",T4Sub);
-                SPEditor.putString("T4Class",T4Class);
-                SPEditor.apply();
-
-                String T5Sub = etT5Sub.getText().toString();
-                String T5Class = etT5Class.getText().toString();
-                SPEditor.putString("T5Sub",T5Sub);
-                SPEditor.putString("T5Class",T5Class);
-                SPEditor.apply();
-
-                String T6Sub = etT6Sub.getText().toString();
-                String T6Class = etT6Class.getText().toString();
-                SPEditor.putString("T6Sub",T6Sub);
-                SPEditor.putString("T6Class",T6Class);
-                SPEditor.apply();
-
-                String T7Sub = etT7Sub.getText().toString();
-                String T7Class = etT7Class.getText().toString();
-                SPEditor.putString("T7Sub",T7Sub);
-                SPEditor.putString("T7Class",T7Class);
-                SPEditor.apply();
-
-                String T8Sub = etT8Sub.getText().toString();
-                String T8Class = etT8Class.getText().toString();
-                SPEditor.putString("T8Sub",T8Sub);
-                SPEditor.putString("T8Class",T8Class);
-                SPEditor.apply();
-
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, new TeacherFragmentSetWend());
-                transaction.commit();*/
+                
                 utils.switchFragment(getActivity(), new TeacherFragmentSettingStudy());
-
-
             }
         });
 
