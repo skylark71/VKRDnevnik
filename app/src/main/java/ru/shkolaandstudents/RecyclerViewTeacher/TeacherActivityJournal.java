@@ -83,7 +83,7 @@ public class TeacherActivityJournal extends AppCompatActivity {
                     l=k;
                 }
 
-                /*LinearLayout[] row = new LinearLayout[30];
+                LinearLayout[] row = new LinearLayout[30];
                 for (int j = k; j<30; j++)
                 {
                     String view_date = "row" + (j + 1);
@@ -98,7 +98,7 @@ public class TeacherActivityJournal extends AppCompatActivity {
                     int resIDdate1 = getResources().getIdentifier(view_date1, "id", getPackageName());
                     ar_school_man[ll] = ((TextView) findViewById(resIDdate1));
                     ar_school_man[ll].setVisibility(View.GONE);
-                }*/
+                }
             }
 
             @Override
