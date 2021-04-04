@@ -83,7 +83,7 @@ public class TeacherActivityJournal extends AppCompatActivity {
                     l=k;
                 }
 
-                LinearLayout[] row = new LinearLayout[30];
+                /*LinearLayout[] row = new LinearLayout[30];
                 for (int j = k; j<30; j++)
                 {
                     String view_date = "row" + (j + 1);
@@ -98,7 +98,7 @@ public class TeacherActivityJournal extends AppCompatActivity {
                     int resIDdate1 = getResources().getIdentifier(view_date1, "id", getPackageName());
                     ar_school_man[ll] = ((TextView) findViewById(resIDdate1));
                     ar_school_man[ll].setVisibility(View.GONE);
-                }
+                }*/
             }
 
             @Override
@@ -115,23 +115,25 @@ public class TeacherActivityJournal extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int j=0;
-                final TextView[]  ar_date = new TextView[31];
-                for (int i = 0; i < 31; i++) {
-                    String view_date = "date100" + (i + 1);
-                    int resIDdate = getResources().getIdentifier(view_date, "id", getPackageName());
 
-                    ar_date[i] = ((TextView) findViewById(resIDdate));
-                    //ar_date[i].setText("  "+i+" ");
+                final TextView[][] tv_value = new TextView[32][32];
+                for (int i=0; i<30; i++) {
+                    for (int j = 0; j < 31; j++) {
+                        String view_date = "date" + (i + 1) + "00" + (j + 1);
+                        int resIDdate = getResources().getIdentifier(view_date, "id", getPackageName());
+                        tv_value[i][j] = ((TextView) findViewById(resIDdate));
+                    }
                 }
+
                 for (DataSnapshot ds1 : snapshot.getChildren()){
-                    String test = "0"+j;
                     String name = ds1.getKey();
-                    int val = Integer.parseInt(name);
-
-                        ar_date[val].setText(ds1.getValue(String.class));
-
-                    j++;
+                    String delims = "[ ]+";
+                    String[] tokens = name.split(delims);
+                    for (int i = 0; i < tokens.length; i++) {
+                        int row = Integer.parseInt(tokens[0]);
+                        int col = Integer.parseInt(tokens[1]);
+                        tv_value[row][col].setText(ds1.getValue(String.class));
+                    }
                 }
 
             }
@@ -160,7 +162,50 @@ public class TeacherActivityJournal extends AppCompatActivity {
                 ,android.R.layout.simple_spinner_item
                 ,getResources().getStringArray(R.array.schoolList));
 
-        for (int i = 0; i < 31; i++) {
+
+        final TextView[][] tv_value = new TextView[32][32];
+        for (int i=0; i<30; i++)
+        {
+            final int ii = i;
+            for(int j=0; j<31; j++)
+            {
+                String view_date = "date"+(i+1)+"00"+ (j + 1);
+                int resIDdate = getResources().getIdentifier(view_date, "id", getPackageName());
+                tv_value[i][j] = ((TextView) findViewById(resIDdate));
+                //tv_value[i][j].setText(" "+(i+1)+(j+1)+" ");
+
+                final int jj=j;
+                tv_value[i][j].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View vw) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(TeacherActivityJournal.this,R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        builder.setTitle("Тест");
+                        builder.setView(view);
+                        final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                        arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                        spinner.setAdapter(arrayAdapter);
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int l) {
+                                Toast.makeText(TeacherActivityJournal.this, spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                tv_value[ii][jj].setText(spinner.getSelectedItem().toString());
+                                String str = spinner.getSelectedItem().toString();
+                                ref = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(class_name + sub_name);
+                                ref.child(ii+" "+jj).setValue(str);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setView(view);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    }
+                });
+
+            }
+        }
+        /*for (int i = 0; i < 31; i++) {
             final int j = i;
             String view_date = "date100" + (i + 1);
             int resIDdate = getResources().getIdentifier(view_date, "id", getPackageName());
@@ -195,7 +240,7 @@ public class TeacherActivityJournal extends AppCompatActivity {
                     dialog.show();
                 }
             });
-        }
+        }*/
 
     }
 }
