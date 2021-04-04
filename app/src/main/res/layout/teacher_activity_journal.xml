@@ -50,7 +50,7 @@
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:background="@drawable/back"
-                android:text="Чувак1" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man2"
@@ -58,7 +58,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак2" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man3"
@@ -66,7 +66,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак3" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man4"
@@ -74,7 +74,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак4" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man5"
@@ -82,7 +82,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак5" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man6"
@@ -90,42 +90,42 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак6" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man7"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак7" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man8"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак8" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man9"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак9" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man10"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак10" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man11"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:background="@drawable/back"
-                android:text="Чувак11" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man12"
@@ -133,7 +133,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак12" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man13"
@@ -141,7 +141,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак13" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man14"
@@ -149,7 +149,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак14" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man15"
@@ -157,7 +157,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак15" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man16"
@@ -165,42 +165,42 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак16" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man17"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак17" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man18"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак18" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man19"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак19" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man20"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак20" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man21"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:background="@drawable/back"
-                android:text="Чувак21" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man22"
@@ -208,7 +208,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак22" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man23"
@@ -216,7 +216,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак23" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man24"
@@ -224,7 +224,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак24" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man25"
@@ -232,7 +232,7 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак25" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/school_man26"
@@ -240,35 +240,35 @@
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак26" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man27"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак27" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man28"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак28" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man29"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак29" />
+                android:text="" />
             <TextView
                 android:id="@+id/school_man30"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/back"
                 android:gravity="center"
-                android:text="Чувак30" />
+                android:text="" />
         </LinearLayout>
 
         <HorizontalScrollView

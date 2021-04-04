@@ -1,15 +1,22 @@
 package ru.shkolaandstudents.RecyclerViewTeacher;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -45,7 +52,9 @@ public class TeacherActivityJournal extends AppCompatActivity {
         /*SharedPreferences mSharedPreferences = getSharedPreferences(class_name, Activity.MODE_PRIVATE);
         numberOfLines = mSharedPreferences.getInt(class_name, 1);*/
 
-        /****/
+        /***
+         * Получение данных школьников и их UI
+         * */
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(class_name);
         ref.addValueEventListener(new ValueEventListener() {
@@ -53,13 +62,14 @@ public class TeacherActivityJournal extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int i=0;
                 int k=0;
+                int l=0;
                 for (DataSnapshot ds1 : snapshot.getChildren()){
                     String line1 = ds1.getValue(String.class);
                     i++;
                 }
                 numberOfLines = i;
                 String[] strings1 = new String[i];
-                TextView[]  ar_school_man = new TextView[numberOfLines];
+                TextView[]  ar_school_man = new TextView[31];
                 //ll.removeAllViews();
                 for (DataSnapshot ds : snapshot.getChildren()){
                     String line1 = ds.getValue(String.class);
@@ -70,7 +80,24 @@ public class TeacherActivityJournal extends AppCompatActivity {
                     strings1[k] = line1;
                     ar_school_man[k].setText(strings1[k]);
                     k++;
+                    l=k;
+                }
 
+                LinearLayout[] row = new LinearLayout[30];
+                for (int j = k; j<30; j++)
+                {
+                    String view_date = "row" + (j + 1);
+                    int resIDdate = getResources().getIdentifier(view_date, "id", getPackageName());
+                    row[j] = ((LinearLayout) findViewById(resIDdate));
+                    row[j].setVisibility(View.GONE);
+                }
+
+                for (int ll = l; l<31; l++)
+                {
+                    String view_date1 = "school_man" + (ll + 1);
+                    int resIDdate1 = getResources().getIdentifier(view_date1, "id", getPackageName());
+                    ar_school_man[ll] = ((TextView) findViewById(resIDdate1));
+                    ar_school_man[ll].setVisibility(View.GONE);
                 }
             }
 
@@ -81,26 +108,45 @@ public class TeacherActivityJournal extends AppCompatActivity {
         });
         /***/
 
-        /*String[] strings1 = new String[numberOfLines+1];
-        SharedPreferences mBtnSharedPreferences = getSharedPreferences(sub_name, Activity.MODE_PRIVATE);
+        /**
+         * Получение данных журнала
+         * */
+        ref = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(class_name + sub_name);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int j=0;
+                final TextView[]  ar_date = new TextView[31];
+                for (int i = 0; i < 31; i++) {
+                    String view_date = "date100" + (i + 1);
+                    int resIDdate = getResources().getIdentifier(view_date, "id", getPackageName());
 
-        TextView[]  ar_school_man = new TextView[numberOfLines];
+                    ar_date[i] = ((TextView) findViewById(resIDdate));
+                    //ar_date[i].setText("  "+i+" ");
+                }
+                for (DataSnapshot ds1 : snapshot.getChildren()){
+                    String test = "0"+j;
+                    String name = ds1.getKey();
+                    int val = Integer.parseInt(name);
 
-        for(int i = 0; i < numberOfLines; i++)
-        {
-            String view_date = "school_man" + (i + 1);
-            int resIDdate = getResources().getIdentifier(view_date, "id", getPackageName());
+                        ar_date[val].setText(ds1.getValue(String.class));
 
-            ar_school_man[i] = ((TextView) findViewById(resIDdate));
+                    j++;
+                }
 
-            strings1[i] = mBtnSharedPreferences.getString("Class"+ i, null);
-            ar_school_man[i].setText(strings1[i]);
-        }*/
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         long date = System.currentTimeMillis();
         SimpleDateFormat month = new SimpleDateFormat("MM");
         String str_month = month.format(date);
-        TextView[]  ar_date = new TextView[31];
+        final TextView[]  ar_date = new TextView[31];
 
         for (int i = 0; i < 31; i++) {
             String view_date = "date" + (i + 1);
@@ -108,6 +154,47 @@ public class TeacherActivityJournal extends AppCompatActivity {
 
             ar_date[i] = ((TextView) findViewById(resIDdate));
             ar_date[i].setText((i + 1)+ "/" + str_month);
+        }
+
+        final ArrayAdapter arrayAdapter = new ArrayAdapter(TeacherActivityJournal.this
+                ,android.R.layout.simple_spinner_item
+                ,getResources().getStringArray(R.array.schoolList));
+
+        for (int i = 0; i < 31; i++) {
+            final int j = i;
+            String view_date = "date100" + (i + 1);
+            int resIDdate = getResources().getIdentifier(view_date, "id", getPackageName());
+
+            ar_date[i] = ((TextView) findViewById(resIDdate));
+            //ar_date[i].setText("  "+i+" ");
+
+            ar_date[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View vw) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TeacherActivityJournal.this,R.style.AlertDialogTheme);
+                    View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                    builder.setTitle("Тест");
+                    builder.setView(view);
+                    final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                    arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                    spinner.setAdapter(arrayAdapter);
+                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int l) {
+                            Toast.makeText(TeacherActivityJournal.this, spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                            ar_date[j].setText(spinner.getSelectedItem().toString());
+                            String str = spinner.getSelectedItem().toString();
+                            ref = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(class_name + sub_name);
+                            ref.child("0"+j).setValue(str);
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    builder.setView(view);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            });
         }
 
     }
