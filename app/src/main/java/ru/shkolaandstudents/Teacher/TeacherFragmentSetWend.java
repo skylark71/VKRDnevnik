@@ -19,9 +19,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -52,6 +54,10 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
         btnHelp = v.findViewById(R.id.btnWHelp);
         btnThurs = v.findViewById(R.id.btnWAccess);
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Value");
+        ref_save = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
+
         final TextView tvSetW1Sub = v.findViewById(R.id.tvSetW1Sub);
         final TextView tvSetW2Sub = v.findViewById(R.id.tvSetW2Sub);
         final TextView tvSetW3Sub = v.findViewById(R.id.tvSetW3Sub);
@@ -74,8 +80,8 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
         delSetW1Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("W1Sub").removeValue();
-                ref_save.child("Schedule").child("W1Class").removeValue();
+                ref_save.child("W1Sub").removeValue();
+                ref_save.child("W1Class").removeValue();
                 tvSetW1Sub.setText(R.string.SetSub1);
                 tvSetW1Class.setText(R.string.SetClass1);
             }
@@ -85,8 +91,8 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
         delSetW2Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("W2Sub").removeValue();
-                ref_save.child("Schedule").child("W2Class").removeValue();
+                ref_save.child("W2Sub").removeValue();
+                ref_save.child("W2Class").removeValue();
                 tvSetW2Sub.setText(R.string.SetSub2);
                 tvSetW2Class.setText(R.string.SetClass2);
             }
@@ -96,8 +102,8 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
         delSetW3Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("W3Sub").removeValue();
-                ref_save.child("Schedule").child("W3Class").removeValue();
+                ref_save.child("W3Sub").removeValue();
+                ref_save.child("W3Class").removeValue();
                 tvSetW3Sub.setText(R.string.SetSub3);
                 tvSetW3Class.setText(R.string.SetClass3);
             }
@@ -107,8 +113,8 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
         delSetW4Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("W4Sub").removeValue();
-                ref_save.child("Schedule").child("W4Class").removeValue();
+                ref_save.child("W4Sub").removeValue();
+                ref_save.child("W4Class").removeValue();
                 tvSetW4Sub.setText(R.string.SetSub4);
                 tvSetW4Class.setText(R.string.SetClass4);
             }
@@ -118,8 +124,8 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
         delSetW5Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("W5Sub").removeValue();
-                ref_save.child("Schedule").child("W5Class").removeValue();
+                ref_save.child("W5Sub").removeValue();
+                ref_save.child("W5Class").removeValue();
                 tvSetW5Sub.setText(R.string.SetSub5);
                 tvSetW5Class.setText(R.string.SetClass5);
             }
@@ -129,8 +135,8 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
         delSetW6Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("W6Sub").removeValue();
-                ref_save.child("Schedule").child("W6Class").removeValue();
+                ref_save.child("W6Sub").removeValue();
+                ref_save.child("W6Class").removeValue();
                 tvSetW6Sub.setText(R.string.SetSub6);
                 tvSetW6Class.setText(R.string.SetClass6);
             }
@@ -140,8 +146,8 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
         delSetW7Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("W7Sub").removeValue();
-                ref_save.child("Schedule").child("W7Class").removeValue();
+                ref_save.child("W7Sub").removeValue();
+                ref_save.child("W7Class").removeValue();
                 tvSetW7Sub.setText(R.string.SetSub7);
                 tvSetW7Class.setText(R.string.SetClass7);
             }
@@ -151,8 +157,8 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
         delSetW8Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("W8Sub").removeValue();
-                ref_save.child("Schedule").child("W8Class").removeValue();
+                ref_save.child("W8Sub").removeValue();
+                ref_save.child("W8Class").removeValue();
                 tvSetW8Sub.setText(R.string.SetSub8);
                 tvSetW8Class.setText(R.string.SetClass8);
             }
@@ -161,25 +167,25 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
         ref_save.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String W1Sub = String.valueOf(snapshot.child("Schedule").child("W1Sub").getValue());
-                String W2Sub = String.valueOf(snapshot.child("Schedule").child("W2Sub").getValue());
-                String W3Sub = String.valueOf(snapshot.child("Schedule").child("W3Sub").getValue());
-                String W4Sub = String.valueOf(snapshot.child("Schedule").child("W4Sub").getValue());
-                String W5Sub = String.valueOf(snapshot.child("Schedule").child("W5Sub").getValue());
-                String W6Sub = String.valueOf(snapshot.child("Schedule").child("W6Sub").getValue());
-                String W7Sub = String.valueOf(snapshot.child("Schedule").child("W7Sub").getValue());
-                String W8Sub = String.valueOf(snapshot.child("Schedule").child("W8Sub").getValue());
+                String W1Sub = String.valueOf(snapshot.child("W1Sub").getValue());
+                String W2Sub = String.valueOf(snapshot.child("W2Sub").getValue());
+                String W3Sub = String.valueOf(snapshot.child("W3Sub").getValue());
+                String W4Sub = String.valueOf(snapshot.child("W4Sub").getValue());
+                String W5Sub = String.valueOf(snapshot.child("W5Sub").getValue());
+                String W6Sub = String.valueOf(snapshot.child("W6Sub").getValue());
+                String W7Sub = String.valueOf(snapshot.child("W7Sub").getValue());
+                String W8Sub = String.valueOf(snapshot.child("W8Sub").getValue());
 
-                String W1Class = String.valueOf(snapshot.child("Schedule").child("W1Class").getValue());
-                String W2Class = String.valueOf(snapshot.child("Schedule").child("W2Class").getValue());
-                String W3Class = String.valueOf(snapshot.child("Schedule").child("W3Class").getValue());
-                String W4Class = String.valueOf(snapshot.child("Schedule").child("W4Class").getValue());
-                String W5Class = String.valueOf(snapshot.child("Schedule").child("W5Class").getValue());
-                String W6Class = String.valueOf(snapshot.child("Schedule").child("W6Class").getValue());
-                String W7Class = String.valueOf(snapshot.child("Schedule").child("W7Class").getValue());
-                String W8Class = String.valueOf(snapshot.child("Schedule").child("W8Class").getValue());
+                String W1Class = String.valueOf(snapshot.child("W1Class").getValue());
+                String W2Class = String.valueOf(snapshot.child("W2Class").getValue());
+                String W3Class = String.valueOf(snapshot.child("W3Class").getValue());
+                String W4Class = String.valueOf(snapshot.child("W4Class").getValue());
+                String W5Class = String.valueOf(snapshot.child("W5Class").getValue());
+                String W6Class = String.valueOf(snapshot.child("W6Class").getValue());
+                String W7Class = String.valueOf(snapshot.child("W7Class").getValue());
+                String W8Class = String.valueOf(snapshot.child("W8Class").getValue());
 
-                if(snapshot.child("W1Sub").exists())
+                if(!snapshot.child("W1Sub").exists())
                 {
                     tvSetW1Sub.setText(R.string.SetSub1);
                 }
@@ -188,7 +194,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW1Sub.setText(W1Sub);
                 }
 
-                if(snapshot.child("W2Sub").exists())
+                if(!snapshot.child("W2Sub").exists())
                 {
                     tvSetW2Sub.setText(R.string.SetSub2);
                 }
@@ -197,7 +203,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW2Sub.setText(W2Sub);
                 }
 
-                if(snapshot.child("W3Sub").exists())
+                if(!snapshot.child("W3Sub").exists())
                 {
                     tvSetW3Sub.setText(R.string.SetSub3);
                 }
@@ -206,7 +212,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW3Sub.setText(W3Sub);
                 }
 
-                if(snapshot.child("W4Sub").exists())
+                if(!snapshot.child("W4Sub").exists())
                 {
                     tvSetW4Sub.setText(R.string.SetSub4);
                 }
@@ -215,7 +221,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW4Sub.setText(W4Sub);
                 }
 
-                if(snapshot.child("W5Sub").exists())
+                if(!snapshot.child("W5Sub").exists())
                 {
                     tvSetW5Sub.setText(R.string.SetSub5);
                 }
@@ -224,7 +230,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW5Sub.setText(W5Sub);
                 }
 
-                if(snapshot.child("W6Sub").exists())
+                if(!snapshot.child("W6Sub").exists())
                 {
                     tvSetW6Sub.setText(R.string.SetSub6);
                 }
@@ -233,7 +239,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW6Sub.setText(W6Sub);
                 }
 
-                if(snapshot.child("W7Sub").exists())
+                if(!snapshot.child("W7Sub").exists())
                 {
                     tvSetW7Sub.setText(R.string.SetSub7);
                 }
@@ -242,7 +248,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW7Sub.setText(W7Sub);
                 }
 
-                if(snapshot.child("W8Sub").exists())
+                if(!snapshot.child("W8Sub").exists())
                 {
                     tvSetW8Sub.setText(R.string.SetSub8);
                 }
@@ -251,7 +257,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW8Sub.setText(W8Sub);
                 }
 
-                if(snapshot.child("W1Class").exists())
+                if(!snapshot.child("W1Class").exists())
                 {
                     tvSetW1Class.setText(R.string.SetClass1);
                 }
@@ -260,7 +266,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW1Class.setText(W1Class);
                 }
 
-                if(snapshot.child("W2Class").exists())
+                if(!snapshot.child("W2Class").exists())
                 {
                     tvSetW2Class.setText(R.string.SetClass2);
                 }
@@ -269,7 +275,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW2Class.setText(W2Class);
                 }
 
-                if(snapshot.child("W3Class").exists())
+                if(!snapshot.child("W3Class").exists())
                 {
                     tvSetW3Class.setText(R.string.SetClass3);
                 }
@@ -278,7 +284,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW3Class.setText(W3Class);
                 }
 
-                if(snapshot.child("W4Class").exists())
+                if(!snapshot.child("W4Class").exists())
                 {
                     tvSetW4Class.setText(R.string.SetClass4);
                 }
@@ -287,7 +293,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW4Class.setText(W4Class);
                 }
 
-                if(snapshot.child("W5Class").exists())
+                if(!snapshot.child("W5Class").exists())
                 {
                     tvSetW5Class.setText(R.string.SetClass5);
                 }
@@ -296,7 +302,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW5Class.setText(W5Class);
                 }
 
-                if(snapshot.child("W6Class").exists())
+                if(!snapshot.child("W6Class").exists())
                 {
                     tvSetW6Class.setText(R.string.SetClass6);
                 }
@@ -305,7 +311,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW6Class.setText(W6Class);
                 }
 
-                if(snapshot.child("W7Class").exists())
+                if(!snapshot.child("W7Class").exists())
                 {
                     tvSetW7Class.setText(R.string.SetClass7);
                 }
@@ -314,7 +320,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                     tvSetW7Class.setText(W7Class);
                 }
 
-                if(snapshot.child("W8Class").exists())
+                if(!snapshot.child("W8Class").exists())
                 {
                     tvSetW8Class.setText(R.string.SetClass8);
                 }
@@ -380,7 +386,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW1Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W1Sub").setValue(str);
+                                ref_save.child("W1Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -407,7 +413,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW2Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W2Sub").setValue(str);
+                                ref_save.child("W2Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -434,7 +440,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW3Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W3Sub").setValue(str);
+                                ref_save.child("W3Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -461,7 +467,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW4Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W4Sub").setValue(str);
+                                ref_save.child("W4Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -488,7 +494,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW5Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W5Sub").setValue(str);
+                                ref_save.child("W5Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -515,7 +521,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW6Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W6Sub").setValue(str);
+                                ref_save.child("W6Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -542,7 +548,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW7Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W7Sub").setValue(str);
+                                ref_save.child("W7Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -569,7 +575,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW8Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W8Sub").setValue(str);
+                                ref_save.child("W8Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -600,7 +606,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW1Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W1Class").setValue(str);
+                                ref_save.child("W1Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -627,7 +633,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW2Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W2Class").setValue(str);
+                                ref_save.child("W2Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -654,7 +660,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW3Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W3Class").setValue(str);
+                                ref_save.child("W3Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -681,7 +687,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW4Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W4Class").setValue(str);
+                                ref_save.child("W4Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -708,7 +714,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW5Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W5Class").setValue(str);
+                                ref_save.child("W5Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -735,7 +741,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW6Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W6Class").setValue(str);
+                                ref_save.child("W6Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -762,7 +768,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW7Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W7Class").setValue(str);
+                                ref_save.child("W7Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -789,7 +795,7 @@ public class TeacherFragmentSetWend extends Fragment implements OnBackPressedLis
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetW8Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("W8Class").setValue(str);
+                                ref_save.child("W8Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });

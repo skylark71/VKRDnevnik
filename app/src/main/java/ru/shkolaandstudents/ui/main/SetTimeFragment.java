@@ -36,7 +36,6 @@ public class SetTimeFragment extends Fragment implements OnBackPressedListener {
     SharedPreferences.Editor SPEditor;
     DatabaseReference reff;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

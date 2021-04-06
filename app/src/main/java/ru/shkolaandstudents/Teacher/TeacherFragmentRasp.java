@@ -36,7 +36,7 @@ public class TeacherFragmentRasp extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String M1Sub = SP.getString("M1Sub", "");
+                /*String M1Sub = SP.getString("M1Sub", "");
                 String M2Sub = SP.getString("M2Sub", "");
                 String M3Sub = SP.getString("M3Sub", "");
                 String M4Sub = SP.getString("M4Sub", "");
@@ -60,12 +60,12 @@ public class TeacherFragmentRasp extends Fragment {
                     toast.show();
                 }
                 else
-                {
+                {*/
                     utils.switchFragment(getActivity(), new TeacherFragmentRaspMond());
                     /*FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.container, new TeacherFragmentRaspMond());
                     transaction.commit();*/
-                }
+                //}
 
             }
         });
@@ -75,7 +75,10 @@ public class TeacherFragmentRasp extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String T1Sub = SP.getString("T1Sub", "");
+                utils.switchFragment(getActivity(), new TeacherFragmentRaspTue());
+
+
+                /*String T1Sub = SP.getString("T1Sub", "");
                 String T2Sub = SP.getString("T2Sub", "");
                 String T3Sub = SP.getString("T3Sub", "");
                 String T4Sub = SP.getString("T4Sub", "");
@@ -101,10 +104,10 @@ public class TeacherFragmentRasp extends Fragment {
                 else
                 {
                     utils.switchFragment(getActivity(), new TeacherFragmentRaspTue());
-                    /*FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    *//*FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.container, new TeacherFragmentRaspTue());
-                    transaction.commit();*/
-                }
+                    transaction.commit();*//*
+                }*/
             }
         });
 
@@ -113,7 +116,10 @@ public class TeacherFragmentRasp extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String W1Sub = SP.getString("W1Sub", "");
+                utils.switchFragment(getActivity(), new TeacherFragmentRaspWend());
+
+
+                /*String W1Sub = SP.getString("W1Sub", "");
                 String W2Sub = SP.getString("W2Sub", "");
                 String W3Sub = SP.getString("W3Sub", "");
                 String W4Sub = SP.getString("W4Sub", "");
@@ -139,10 +145,10 @@ public class TeacherFragmentRasp extends Fragment {
                 else
                 {
                     utils.switchFragment(getActivity(), new TeacherFragmentRaspWend());
-                    /*FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    *//*FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.container, new TeacherFragmentRaspWend());
-                    transaction.commit();*/
-                }
+                    transaction.commit();*//*
+                }*/
 
             }
         });
@@ -152,7 +158,10 @@ public class TeacherFragmentRasp extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String Th1Sub = SP.getString("Th1Sub", "");
+                utils.switchFragment(getActivity(), new TeacherFragmentRaspThu());
+
+
+                /*String Th1Sub = SP.getString("Th1Sub", "");
                 String Th2Sub = SP.getString("Th2Sub", "");
                 String Th3Sub = SP.getString("Th3Sub", "");
                 String Th4Sub = SP.getString("Th4Sub", "");
@@ -178,10 +187,10 @@ public class TeacherFragmentRasp extends Fragment {
                 else
                 {
                     utils.switchFragment(getActivity(), new TeacherFragmentRaspThu());
-                    /*FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    *//*FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.container, new TeacherFragmentRaspThu());
-                    transaction.commit();*/
-                }
+                    transaction.commit();*//*
+                }*/
 
             }
         });
@@ -191,7 +200,9 @@ public class TeacherFragmentRasp extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String Fr1Sub = SP.getString("Fr1Sub", "");
+                utils.switchFragment(getActivity(), new TeacherFragmentRaspFri());
+
+                /*String Fr1Sub = SP.getString("Fr1Sub", "");
                 String Fr2Sub = SP.getString("Fr2Sub", "");
                 String Fr3Sub = SP.getString("Fr3Sub", "");
                 String Fr4Sub = SP.getString("Fr4Sub", "");
@@ -217,10 +228,10 @@ public class TeacherFragmentRasp extends Fragment {
                 else
                 {
                     utils.switchFragment(getActivity(), new TeacherFragmentRaspFri());
-                    /*FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    *//*FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.container, new TeacherFragmentRaspFri());
-                    transaction.commit();*/
-                }
+                    transaction.commit();*//*
+                }*/
 
             }
         });
@@ -230,7 +241,9 @@ public class TeacherFragmentRasp extends Fragment {
             @Override
             public void onClick(View view) {
 
-                String Sat1Sub = SP.getString("Sat1Sub", "");
+                utils.switchFragment(getActivity(), new TeacherFragmentRaspSat());
+
+                /*String Sat1Sub = SP.getString("Sat1Sub", "");
                 String Sat2Sub = SP.getString("Sat2Sub", "");
                 String Sat3Sub = SP.getString("Sat3Sub", "");
                 String Sat4Sub = SP.getString("Sat4Sub", "");
@@ -255,10 +268,10 @@ public class TeacherFragmentRasp extends Fragment {
                 }
                 else {
                     utils.switchFragment(getActivity(), new TeacherFragmentRaspSat());
-                    /*FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    *//*FragmentTransaction transaction = getFragmentManager().beginTransaction();
                     transaction.replace(R.id.container, new TeacherFragmentRaspSat());
-                    transaction.commit();*/
-                }
+                    transaction.commit();*//*
+                }*/
 
             }
         });

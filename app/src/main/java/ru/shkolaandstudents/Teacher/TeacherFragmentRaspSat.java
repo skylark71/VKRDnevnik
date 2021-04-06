@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -16,10 +17,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
@@ -31,6 +39,59 @@ public class TeacherFragmentRaspSat extends Fragment implements OnBackPressedLis
     TextView tvSatClass11,tvSatClass22,tvSatClass33,tvSatClass44,tvSatClass55,tvSatClass66,tvSatClass77,tvSatClass88;
     TextView tvSatSub11,tvSatSub22,tvSatSub33,tvSatSub44,tvSatSub55,tvSatSub66,tvSatSub77,tvSatSub88;
     Button btnHelp;
+    DatabaseReference ref_save;
+    DatabaseReference ref_time;
+
+    String Sat1Sub;
+    String Sat2Sub;
+    String Sat3Sub;
+    String Sat4Sub;
+    String Sat5Sub;
+    String Sat6Sub;
+    String Sat7Sub;
+    String Sat8Sub;
+
+    String Sat1Class;
+    String Sat2Class;
+    String Sat3Class;
+    String Sat4Class;
+    String Sat5Class;
+    String Sat6Class;
+    String Sat7Class;
+    String Sat8Class;
+
+    String T11;
+    String T12;
+    String T13;
+    String T14;
+    String T21;
+    String T22;
+    String T23;
+    String T24;
+    String T31;
+    String T32;
+    String T33;
+    String T34;
+    String T41;
+    String T42;
+    String T43;
+    String T44;
+    String T51;
+    String T52;
+    String T53;
+    String T54;
+    String T61;
+    String T62;
+    String T63;
+    String T64;
+    String T71;
+    String T72;
+    String T73;
+    String T74;
+    String T81;
+    String T82;
+    String T83;
+    String T84;
 
     @Override
     public void onBackPressed() {
@@ -202,435 +263,404 @@ public class TeacherFragmentRaspSat extends Fragment implements OnBackPressedLis
         tvSatSub77 = v.findViewById(R.id.tvSatSub77);
         tvSatSub88 = v.findViewById(R.id.tvSatSub88);
 
-        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String Sat1Sub = SP.getString("Sat1Sub", "");
-        String Sat2Sub = SP.getString("Sat2Sub", "");
-        String Sat3Sub = SP.getString("Sat3Sub", "");
-        String Sat4Sub = SP.getString("Sat4Sub", "");
-        String Sat5Sub = SP.getString("Sat5Sub", "");
-        String Sat6Sub = SP.getString("Sat6Sub", "");
-        String Sat7Sub = SP.getString("Sat7Sub", "");
-        String Sat8Sub = SP.getString("Sat8Sub", "");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        String Sat1Class = SP.getString("Sat1Class", "");
-        String Sat2Class = SP.getString("Sat2Class", "");
-        String Sat3Class = SP.getString("Sat3Class", "");
-        String Sat4Class = SP.getString("Sat4Class", "");
-        String Sat5Class = SP.getString("Sat5Class", "");
-        String Sat6Class = SP.getString("Sat6Class", "");
-        String Sat7Class = SP.getString("Sat7Class", "");
-        String Sat8Class = SP.getString("Sat8Class", "");
+        ref_time = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Time");
+        ref_time.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                T11 = String.valueOf(snapshot.child("T11").getValue());
+                T12 = String.valueOf(snapshot.child("T12").getValue());
+                T13 = String.valueOf(snapshot.child("T13").getValue());
+                T14 = String.valueOf(snapshot.child("T14").getValue());
+                T21 = String.valueOf(snapshot.child("T21").getValue());
+                T22 = String.valueOf(snapshot.child("T22").getValue());
+                T23 = String.valueOf(snapshot.child("T23").getValue());
+                T24 = String.valueOf(snapshot.child("T24").getValue());
+                T31 = String.valueOf(snapshot.child("T31").getValue());
+                T32 = String.valueOf(snapshot.child("T32").getValue());
+                T33 = String.valueOf(snapshot.child("T33").getValue());
+                T34 = String.valueOf(snapshot.child("T34").getValue());
+                T41 = String.valueOf(snapshot.child("T41").getValue());
+                T42 = String.valueOf(snapshot.child("T42").getValue());
+                T43 = String.valueOf(snapshot.child("T43").getValue());
+                T44 = String.valueOf(snapshot.child("T44").getValue());
+                T51 = String.valueOf(snapshot.child("T51").getValue());
+                T52 = String.valueOf(snapshot.child("T52").getValue());
+                T53 = String.valueOf(snapshot.child("T53").getValue());
+                T54 = String.valueOf(snapshot.child("T54").getValue());
+                T61 = String.valueOf(snapshot.child("T61").getValue());
+                T62 = String.valueOf(snapshot.child("T62").getValue());
+                T63 = String.valueOf(snapshot.child("T63").getValue());
+                T64 = String.valueOf(snapshot.child("T64").getValue());
+                T71 = String.valueOf(snapshot.child("T71").getValue());
+                T72 = String.valueOf(snapshot.child("T72").getValue());
+                T73 = String.valueOf(snapshot.child("T73").getValue());
+                T74 = String.valueOf(snapshot.child("T74").getValue());
+                T81 = String.valueOf(snapshot.child("T81").getValue());
+                T82 = String.valueOf(snapshot.child("T82").getValue());
+                T83 = String.valueOf(snapshot.child("T83").getValue());
+                T84 = String.valueOf(snapshot.child("T84").getValue());
 
-        String T11 = SP.getString("T11", "");
-        String T12 = SP.getString("T12", "");
-        String T13 = SP.getString("T13", "");
-        String T14 = SP.getString("T14", "");
-        String T21 = SP.getString("T21", "");
-        String T22 = SP.getString("T22", "");
-        String T23 = SP.getString("T23", "");
-        String T24 = SP.getString("T24", "");
-        String T31 = SP.getString("T31", "");
-        String T32 = SP.getString("T32", "");
-        String T33 = SP.getString("T33", "");
-        String T34 = SP.getString("T34", "");
-        String T41 = SP.getString("T41", "");
-        String T42 = SP.getString("T42", "");
-        String T43 = SP.getString("T43", "");
-        String T44 = SP.getString("T44", "");
-        String T51 = SP.getString("T51", "");
-        String T52 = SP.getString("T52", "");
-        String T53 = SP.getString("T53", "");
-        String T54 = SP.getString("T54", "");
-        String T61 = SP.getString("T61", "");
-        String T62 = SP.getString("T62", "");
-        String T63 = SP.getString("T63", "");
-        String T64 = SP.getString("T64", "");
-        String T71 = SP.getString("T71", "");
-        String T72 = SP.getString("T72", "");
-        String T73 = SP.getString("T73", "");
-        String T74 = SP.getString("T74", "");
-        String T81 = SP.getString("T81", "");
-        String T82 = SP.getString("T82", "");
-        String T83 = SP.getString("T83", "");
-        String T84 = SP.getString("T84", "");
+                tvTimeSat11.setText(T11);
+                tvTimeSat13.setText(T12);
+                tvTimeSat15.setText(T13);
+                tvTimeSat17.setText(T14);
 
-        tvSatSub11.setText(Sat1Sub);
-        tvSatSub22.setText(Sat2Sub);
-        tvSatSub33.setText(Sat3Sub);
-        tvSatSub44.setText(Sat4Sub);
-        tvSatSub55.setText(Sat5Sub);
-        tvSatSub66.setText(Sat6Sub);
-        tvSatSub77.setText(Sat7Sub);
-        tvSatSub88.setText(Sat8Sub);
-        //////////////////
-        tvSatClass11.setText(Sat1Class);
-        tvSatClass22.setText(Sat2Class);
-        tvSatClass33.setText(Sat3Class);
-        tvSatClass44.setText(Sat4Class);
-        tvSatClass55.setText(Sat5Class);
-        tvSatClass66.setText(Sat6Class);
-        tvSatClass77.setText(Sat7Class);
-        tvSatClass88.setText(Sat8Class);
-        //////////////////
-        tvTimeSat11.setText(T11);
-        tvTimeSat13.setText(T12);
-        tvTimeSat15.setText(T13);
-        tvTimeSat17.setText(T14);
-        //////////////////
-        tvTimeSat21.setText(T21);
-        tvTimeSat23.setText(T22);
-        tvTimeSat25.setText(T23);
-        tvTimeSat27.setText(T24);
-        /////////////////////
-        tvTimeSat31.setText(T31);
-        tvTimeSat33.setText(T32);
-        tvTimeSat35.setText(T33);
-        tvTimeSat37.setText(T34);
-        ////////////////////////
-        tvTimeSat41.setText(T41);
-        tvTimeSat43.setText(T42);
-        tvTimeSat45.setText(T43);
-        tvTimeSat47.setText(T44);
-        //////////////////////
-        tvTimeSat51.setText(T51);
-        tvTimeSat53.setText(T52);
-        tvTimeSat55.setText(T53);
-        tvTimeSat57.setText(T54);
-        //////////////////////
-        tvTimeSat61.setText(T61);
-        tvTimeSat63.setText(T62);
-        tvTimeSat65.setText(T63);
-        tvTimeSat67.setText(T64);
-        //////////////////////
-        tvTimeSat71.setText(T71);
-        tvTimeSat73.setText(T72);
-        tvTimeSat75.setText(T73);
-        tvTimeSat77.setText(T74);
-        ///////////////////////
-        tvTimeSat81.setText(T81);
-        tvTimeSat83.setText(T82);
-        tvTimeSat85.setText(T83);
-        tvTimeSat87.setText(T84);
+                tvTimeSat21.setText(T21);
+                tvTimeSat23.setText(T22);
+                tvTimeSat25.setText(T23);
+                tvTimeSat27.setText(T24);
 
-        if (Sat1Sub.length()>11)
-        {
-            tvSatClass11.setPadding(0,0,0,8);
-        }
+                tvTimeSat31.setText(T31);
+                tvTimeSat33.setText(T32);
+                tvTimeSat35.setText(T33);
+                tvTimeSat37.setText(T34);
 
-        if (Sat2Sub.length()>11)
-        {
-            tvSatClass22.setPadding(0,0,0,8);
-        }
+                tvTimeSat41.setText(T41);
+                tvTimeSat43.setText(T42);
+                tvTimeSat45.setText(T43);
+                tvTimeSat47.setText(T44);
 
-        if (Sat3Sub.length()>11)
-        {
-            tvSatClass33.setPadding(0,0,0,8);
-        }
+                tvTimeSat51.setText(T51);
+                tvTimeSat53.setText(T52);
+                tvTimeSat55.setText(T53);
+                tvTimeSat57.setText(T54);
 
-        if (Sat4Sub.length()>11)
-        {
-            tvSatClass44.setPadding(0,0,0,8);
-        }
+                tvTimeSat61.setText(T61);
+                tvTimeSat63.setText(T62);
+                tvTimeSat65.setText(T63);
+                tvTimeSat67.setText(T64);
 
-        if (Sat5Sub.length()>11)
-        {
-            tvSatClass55.setPadding(0,0,0,8);
-        }
+                tvTimeSat71.setText(T71);
+                tvTimeSat73.setText(T72);
+                tvTimeSat75.setText(T73);
+                tvTimeSat77.setText(T74);
 
-        if (Sat6Sub.length()>11)
-        {
-            tvSatClass66.setPadding(0,0,0,8);
-        }
+                tvTimeSat81.setText(T81);
+                tvTimeSat83.setText(T82);
+                tvTimeSat85.setText(T83);
+                tvTimeSat87.setText(T84);
 
-        if (Sat7Sub.length()>11)
-        {
-            tvSatClass77.setPadding(0,0,0,8);
-        }
+                if(T11.equals("null"))
+                {
+                    tvTimeSat11.setVisibility(View.GONE);
+                    tvTimeSat12.setVisibility(View.GONE);
+                    tvTimeSat13.setVisibility(View.GONE);
+                    tvTimeSat14.setVisibility(View.GONE);
+                    tvTimeSat15.setVisibility(View.GONE);
+                    tvTimeSat16.setVisibility(View.GONE);
+                    tvTimeSat17.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeSat12.setVisibility(View.VISIBLE);
+                    tvTimeSat14.setVisibility(View.VISIBLE);
+                    tvTimeSat16.setVisibility(View.VISIBLE);
+                }
 
-        if (Sat8Sub.length()>11)
-        {
-            tvSatClass88.setPadding(0,0,0,8);
-        }
+                if(T21.equals("null"))
+                {
+                    tvTimeSat21.setVisibility(View.GONE);
+                    tvTimeSat22.setVisibility(View.GONE);
+                    tvTimeSat23.setVisibility(View.GONE);
+                    tvTimeSat24.setVisibility(View.GONE);
+                    tvTimeSat25.setVisibility(View.GONE);
+                    tvTimeSat26.setVisibility(View.GONE);
+                    tvTimeSat27.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeSat22.setVisibility(View.VISIBLE);
+                    tvTimeSat24.setVisibility(View.VISIBLE);
+                    tvTimeSat26.setVisibility(View.VISIBLE);
+                }
 
-        if(T11.length()==0)
-        {
-            tvTimeSat12.setVisibility(View.GONE);
-            tvTimeSat14.setVisibility(View.GONE);
-            tvTimeSat16.setVisibility(View.GONE);
-        }
-        else
-        {
-            tvTimeSat12.setVisibility(View.VISIBLE);
-            tvTimeSat14.setVisibility(View.VISIBLE);
-            tvTimeSat16.setVisibility(View.VISIBLE);
-        }
+                if(T31.equals("null"))
+                {
+                    tvTimeSat31.setVisibility(View.GONE);
+                    tvTimeSat32.setVisibility(View.GONE);
+                    tvTimeSat33.setVisibility(View.GONE);
+                    tvTimeSat34.setVisibility(View.GONE);
+                    tvTimeSat35.setVisibility(View.GONE);
+                    tvTimeSat36.setVisibility(View.GONE);
+                    tvTimeSat37.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeSat32.setVisibility(View.VISIBLE);
+                    tvTimeSat34.setVisibility(View.VISIBLE);
+                    tvTimeSat36.setVisibility(View.VISIBLE);
+                }
 
-        if(T21.length()==0)
-        {
-            tvTimeSat22.setVisibility(View.GONE);
-            tvTimeSat24.setVisibility(View.GONE);
-            tvTimeSat26.setVisibility(View.GONE);
-        }
-        else
-        {
-            tvTimeSat22.setVisibility(View.VISIBLE);
-            tvTimeSat24.setVisibility(View.VISIBLE);
-            tvTimeSat26.setVisibility(View.VISIBLE);
-        }
+                if(T41.equals("null"))
+                {
+                    tvTimeSat41.setVisibility(View.GONE);
+                    tvTimeSat42.setVisibility(View.GONE);
+                    tvTimeSat43.setVisibility(View.GONE);
+                    tvTimeSat44.setVisibility(View.GONE);
+                    tvTimeSat45.setVisibility(View.GONE);
+                    tvTimeSat46.setVisibility(View.GONE);
+                    tvTimeSat47.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeSat42.setVisibility(View.VISIBLE);
+                    tvTimeSat44.setVisibility(View.VISIBLE);
+                    tvTimeSat46.setVisibility(View.VISIBLE);
+                }
 
-        if(T31.length()==0)
-        {
-            tvTimeSat32.setVisibility(View.GONE);
-            tvTimeSat34.setVisibility(View.GONE);
-            tvTimeSat36.setVisibility(View.GONE);
-        }
-        else
-        {
-            tvTimeSat32.setVisibility(View.VISIBLE);
-            tvTimeSat34.setVisibility(View.VISIBLE);
-            tvTimeSat36.setVisibility(View.VISIBLE);
-        }
+                if(T51.equals("null"))
+                {
+                    tvTimeSat51.setVisibility(View.GONE);
+                    tvTimeSat52.setVisibility(View.GONE);
+                    tvTimeSat53.setVisibility(View.GONE);
+                    tvTimeSat54.setVisibility(View.GONE);
+                    tvTimeSat55.setVisibility(View.GONE);
+                    tvTimeSat56.setVisibility(View.GONE);
+                    tvTimeSat57.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeSat52.setVisibility(View.VISIBLE);
+                    tvTimeSat54.setVisibility(View.VISIBLE);
+                    tvTimeSat56.setVisibility(View.VISIBLE);
+                }
 
-        if(T41.length()==0)
-        {
-            tvTimeSat42.setVisibility(View.GONE);
-            tvTimeSat44.setVisibility(View.GONE);
-            tvTimeSat46.setVisibility(View.GONE);
-        }
-        else
-        {
-            tvTimeSat42.setVisibility(View.VISIBLE);
-            tvTimeSat44.setVisibility(View.VISIBLE);
-            tvTimeSat46.setVisibility(View.VISIBLE);
-        }
+                if(T61.equals("null"))
+                {
+                    tvTimeSat61.setVisibility(View.GONE);
+                    tvTimeSat62.setVisibility(View.GONE);
+                    tvTimeSat63.setVisibility(View.GONE);
+                    tvTimeSat64.setVisibility(View.GONE);
+                    tvTimeSat65.setVisibility(View.GONE);
+                    tvTimeSat66.setVisibility(View.GONE);
+                    tvTimeSat67.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeSat62.setVisibility(View.VISIBLE);
+                    tvTimeSat64.setVisibility(View.VISIBLE);
+                    tvTimeSat66.setVisibility(View.VISIBLE);
+                }
 
-        if(T51.length()==0)
-        {
-            tvTimeSat52.setVisibility(View.GONE);
-            tvTimeSat54.setVisibility(View.GONE);
-            tvTimeSat56.setVisibility(View.GONE);
-        }
-        else
-        {
-            tvTimeSat52.setVisibility(View.VISIBLE);
-            tvTimeSat54.setVisibility(View.VISIBLE);
-            tvTimeSat56.setVisibility(View.VISIBLE);
-        }
+                if(T71.equals("null"))
+                {
+                    tvTimeSat71.setVisibility(View.GONE);
+                    tvTimeSat72.setVisibility(View.GONE);
+                    tvTimeSat73.setVisibility(View.GONE);
+                    tvTimeSat74.setVisibility(View.GONE);
+                    tvTimeSat75.setVisibility(View.GONE);
+                    tvTimeSat76.setVisibility(View.GONE);
+                    tvTimeSat77.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeSat72.setVisibility(View.VISIBLE);
+                    tvTimeSat74.setVisibility(View.VISIBLE);
+                    tvTimeSat76.setVisibility(View.VISIBLE);
+                }
 
-        if(T61.length()==0)
-        {
-            tvTimeSat62.setVisibility(View.GONE);
-            tvTimeSat64.setVisibility(View.GONE);
-            tvTimeSat66.setVisibility(View.GONE);
-        }
-        else
-        {
-            tvTimeSat62.setVisibility(View.VISIBLE);
-            tvTimeSat64.setVisibility(View.VISIBLE);
-            tvTimeSat66.setVisibility(View.VISIBLE);
-        }
+                if(T81.equals("null"))
+                {
+                    tvTimeSat81.setVisibility(View.GONE);
+                    tvTimeSat82.setVisibility(View.GONE);
+                    tvTimeSat83.setVisibility(View.GONE);
+                    tvTimeSat84.setVisibility(View.GONE);
+                    tvTimeSat85.setVisibility(View.GONE);
+                    tvTimeSat86.setVisibility(View.GONE);
+                    tvTimeSat87.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeSat82.setVisibility(View.VISIBLE);
+                    tvTimeSat84.setVisibility(View.VISIBLE);
+                    tvTimeSat86.setVisibility(View.VISIBLE);
+                }
+            }
 
-        if(T71.length()==0)
-        {
-            tvTimeSat72.setVisibility(View.GONE);
-            tvTimeSat74.setVisibility(View.GONE);
-            tvTimeSat76.setVisibility(View.GONE);
-        }
-        else
-        {
-            tvTimeSat72.setVisibility(View.VISIBLE);
-            tvTimeSat74.setVisibility(View.VISIBLE);
-            tvTimeSat76.setVisibility(View.VISIBLE);
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        if(T81.length()==0)
-        {
-            tvTimeSat82.setVisibility(View.GONE);
-            tvTimeSat84.setVisibility(View.GONE);
-            tvTimeSat86.setVisibility(View.GONE);
-        }
-        else
-        {
-            tvTimeSat82.setVisibility(View.VISIBLE);
-            tvTimeSat84.setVisibility(View.VISIBLE);
-            tvTimeSat86.setVisibility(View.VISIBLE);
-        }
+            }
+        });
 
-        if (tvSatClass11.getText().toString().isEmpty()) {
-            tvSatClass11.setVisibility(View.GONE);
-            tvTimeSat11.setVisibility(View.GONE);
-            tvTimeSat12.setVisibility(View.GONE);
-            tvTimeSat13.setVisibility(View.GONE);
-            tvTimeSat14.setVisibility(View.GONE);
-            tvTimeSat15.setVisibility(View.GONE);
-            tvTimeSat16.setVisibility(View.GONE);
-            tvTimeSat17.setVisibility(View.GONE);
-            tvSat1.setVisibility(View.GONE);
-            tvSatSub11.setVisibility(View.GONE);
 
-        } else {
-            tvSatClass11.setVisibility(View.VISIBLE);
-            tvTimeSat11.setVisibility(View.VISIBLE);
-            tvTimeSat13.setVisibility(View.VISIBLE);
-            tvTimeSat15.setVisibility(View.VISIBLE);
-            tvTimeSat17.setVisibility(View.VISIBLE);
-            tvSat1.setVisibility(View.VISIBLE);
-            tvSatSub11.setVisibility(View.VISIBLE);
-        }
+        ref_save = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        ref_save.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Sat1Sub = String.valueOf(snapshot.child("Schedule").child("Sat1Sub").getValue());
+                Sat2Sub = String.valueOf(snapshot.child("Schedule").child("Sat2Sub").getValue());
+                Sat3Sub = String.valueOf(snapshot.child("Schedule").child("Sat3Sub").getValue());
+                Sat4Sub = String.valueOf(snapshot.child("Schedule").child("Sat4Sub").getValue());
+                Sat5Sub = String.valueOf(snapshot.child("Schedule").child("Sat5Sub").getValue());
+                Sat6Sub = String.valueOf(snapshot.child("Schedule").child("Sat6Sub").getValue());
+                Sat7Sub = String.valueOf(snapshot.child("Schedule").child("Sat7Sub").getValue());
+                Sat8Sub = String.valueOf(snapshot.child("Schedule").child("Sat8Sub").getValue());
 
-        //2 строка
-        if (tvSatClass22.getText().toString().isEmpty()) {
-            tvSatClass22.setVisibility(View.GONE);
-            tvTimeSat21.setVisibility(View.GONE);
-            tvTimeSat22.setVisibility(View.GONE);
-            tvTimeSat23.setVisibility(View.GONE);
-            tvTimeSat24.setVisibility(View.GONE);
-            tvTimeSat25.setVisibility(View.GONE);
-            tvTimeSat26.setVisibility(View.GONE);
-            tvTimeSat27.setVisibility(View.GONE);
-            tvSat2.setVisibility(View.GONE);
-            tvSatSub22.setVisibility(View.GONE);
-        } else {
-            tvSatClass22.setVisibility(View.VISIBLE);
-            tvTimeSat21.setVisibility(View.VISIBLE);
-            tvTimeSat23.setVisibility(View.VISIBLE);
-            tvTimeSat25.setVisibility(View.VISIBLE);
-            tvTimeSat27.setVisibility(View.VISIBLE);
-            tvSat2.setVisibility(View.VISIBLE);
-            tvSatSub22.setVisibility(View.VISIBLE);
-        }
+                Sat1Class = String.valueOf(snapshot.child("Schedule").child("Sat1Class").getValue());
+                Sat2Class = String.valueOf(snapshot.child("Schedule").child("Sat2Class").getValue());
+                Sat3Class = String.valueOf(snapshot.child("Schedule").child("Sat3Class").getValue());
+                Sat4Class = String.valueOf(snapshot.child("Schedule").child("Sat4Class").getValue());
+                Sat5Class = String.valueOf(snapshot.child("Schedule").child("Sat5Class").getValue());
+                Sat6Class = String.valueOf(snapshot.child("Schedule").child("Sat6Class").getValue());
+                Sat7Class = String.valueOf(snapshot.child("Schedule").child("Sat7Class").getValue());
+                Sat8Class = String.valueOf(snapshot.child("Schedule").child("Sat8Class").getValue());
 
-        //3 строка
-        if (tvSatClass33.getText().toString().isEmpty()) {
-            tvSatClass33.setVisibility(View.GONE);
-            tvTimeSat31.setVisibility(View.GONE);
-            tvTimeSat32.setVisibility(View.GONE);
-            tvTimeSat33.setVisibility(View.GONE);
-            tvTimeSat34.setVisibility(View.GONE);
-            tvTimeSat35.setVisibility(View.GONE);
-            tvTimeSat36.setVisibility(View.GONE);
-            tvTimeSat37.setVisibility(View.GONE);
-            tvSat3.setVisibility(View.GONE);
-            tvSatSub33.setVisibility(View.GONE);
-        } else {
-            tvSatClass33.setVisibility(View.VISIBLE);
-            tvTimeSat31.setVisibility(View.VISIBLE);
-            tvTimeSat33.setVisibility(View.VISIBLE);
-            tvTimeSat35.setVisibility(View.VISIBLE);
-            tvTimeSat37.setVisibility(View.VISIBLE);
-            tvSat3.setVisibility(View.VISIBLE);
-            tvSatSub33.setVisibility(View.VISIBLE);
-        }
+                tvSatSub11.setText(Sat1Sub);
+                tvSatSub22.setText(Sat2Sub);
+                tvSatSub33.setText(Sat3Sub);
+                tvSatSub44.setText(Sat4Sub);
+                tvSatSub55.setText(Sat5Sub);
+                tvSatSub66.setText(Sat6Sub);
+                tvSatSub77.setText(Sat7Sub);
+                tvSatSub88.setText(Sat8Sub);
 
-        //4 строка
-        if (tvSatClass44.getText().toString().isEmpty()) {
-            tvSatClass44.setVisibility(View.GONE);
-            tvTimeSat41.setVisibility(View.GONE);
-            tvTimeSat42.setVisibility(View.GONE);
-            tvTimeSat43.setVisibility(View.GONE);
-            tvTimeSat44.setVisibility(View.GONE);
-            tvTimeSat45.setVisibility(View.GONE);
-            tvTimeSat46.setVisibility(View.GONE);
-            tvTimeSat47.setVisibility(View.GONE);
-            tvSat4.setVisibility(View.GONE);
-            tvSatSub44.setVisibility(View.GONE);
-        } else {
-            tvSatClass44.setVisibility(View.VISIBLE);
-            tvTimeSat41.setVisibility(View.VISIBLE);
-            tvTimeSat43.setVisibility(View.VISIBLE);
-            tvTimeSat45.setVisibility(View.VISIBLE);
-            tvTimeSat47.setVisibility(View.VISIBLE);
-            tvSat4.setVisibility(View.VISIBLE);
-            tvSatSub44.setVisibility(View.VISIBLE);
-        }
+                tvSatClass11.setText(Sat1Class);
+                tvSatClass22.setText(Sat2Class);
+                tvSatClass33.setText(Sat3Class);
+                tvSatClass44.setText(Sat4Class);
+                tvSatClass55.setText(Sat5Class);
+                tvSatClass66.setText(Sat6Class);
+                tvSatClass77.setText(Sat7Class);
+                tvSatClass88.setText(Sat8Class);
 
-        //5 строка
-        if (tvSatClass55.getText().toString().isEmpty()) {
-            tvSatClass55.setVisibility(View.GONE);
-            tvTimeSat51.setVisibility(View.GONE);
-            tvTimeSat52.setVisibility(View.GONE);
-            tvTimeSat53.setVisibility(View.GONE);
-            tvTimeSat54.setVisibility(View.GONE);
-            tvTimeSat55.setVisibility(View.GONE);
-            tvTimeSat56.setVisibility(View.GONE);
-            tvTimeSat57.setVisibility(View.GONE);
-            tvSat5.setVisibility(View.GONE);
-            tvSatSub55.setVisibility(View.GONE);
-        } else {
-            tvSatClass55.setVisibility(View.VISIBLE);
-            tvTimeSat51.setVisibility(View.VISIBLE);
-            tvTimeSat53.setVisibility(View.VISIBLE);
-            tvTimeSat55.setVisibility(View.VISIBLE);
-            tvTimeSat57.setVisibility(View.VISIBLE);
-            tvSat5.setVisibility(View.VISIBLE);
-            tvSatSub55.setVisibility(View.VISIBLE);
-        }
+                if (Sat1Sub.length()>11)
+                {
+                    tvSatSub11.setPadding(0,0,0,8);
+                }
 
-        //6 строка
-        if (tvSatClass66.getText().toString().isEmpty()) {
-            tvSat6.setVisibility(View.GONE);
-            tvTimeSat61.setVisibility(View.GONE);
-            tvTimeSat62.setVisibility(View.GONE);
-            tvTimeSat63.setVisibility(View.GONE);
-            tvTimeSat64.setVisibility(View.GONE);
-            tvTimeSat65.setVisibility(View.GONE);
-            tvTimeSat66.setVisibility(View.GONE);
-            tvTimeSat67.setVisibility(View.GONE);
-            tvSat6.setVisibility(View.GONE);
-            tvSatSub66.setVisibility(View.GONE);
-        } else {
-            tvSatClass66.setVisibility(View.VISIBLE);
-            tvTimeSat61.setVisibility(View.VISIBLE);
-            tvTimeSat63.setVisibility(View.VISIBLE);
-            tvTimeSat65.setVisibility(View.VISIBLE);
-            tvTimeSat67.setVisibility(View.VISIBLE);
-            tvSat6.setVisibility(View.VISIBLE);
-            tvSatSub66.setVisibility(View.VISIBLE);
-        }
+                if (Sat2Sub.length()>11)
+                {
+                    tvSatSub22.setPadding(0,0,0,8);
+                }
 
-        //7 строка
-        if (tvSatClass77.getText().toString().isEmpty()) {
-            tvSatClass77.setVisibility(View.GONE);
-            tvTimeSat71.setVisibility(View.GONE);
-            tvTimeSat72.setVisibility(View.GONE);
-            tvTimeSat73.setVisibility(View.GONE);
-            tvTimeSat74.setVisibility(View.GONE);
-            tvTimeSat75.setVisibility(View.GONE);
-            tvTimeSat76.setVisibility(View.GONE);
-            tvTimeSat77.setVisibility(View.GONE);
-            tvSat7.setVisibility(View.GONE);
-            tvSatSub77.setVisibility(View.GONE);
-        } else {
-            tvSatClass77.setVisibility(View.VISIBLE);
-            tvTimeSat71.setVisibility(View.VISIBLE);
-            tvTimeSat73.setVisibility(View.VISIBLE);
-            tvTimeSat75.setVisibility(View.VISIBLE);
-            tvTimeSat77.setVisibility(View.VISIBLE);
-            tvSat7.setVisibility(View.VISIBLE);
-            tvSatSub77.setVisibility(View.VISIBLE);
-        }
+                if (Sat3Sub.length()>11)
+                {
+                    tvSatSub33.setPadding(0,0,0,8);
+                }
 
-        //8 строка
-        if (tvSatClass88.getText().toString().isEmpty()) {
-            tvSatClass88.setVisibility(View.GONE);
-            tvTimeSat81.setVisibility(View.GONE);
-            tvTimeSat82.setVisibility(View.GONE);
-            tvTimeSat83.setVisibility(View.GONE);
-            tvTimeSat84.setVisibility(View.GONE);
-            tvTimeSat85.setVisibility(View.GONE);
-            tvTimeSat86.setVisibility(View.GONE);
-            tvTimeSat87.setVisibility(View.GONE);
-            tvSat8.setVisibility(View.GONE);
-            tvSatSub88.setVisibility(View.GONE);
-        } else {
-            tvSatClass88.setVisibility(View.VISIBLE);
-            tvTimeSat81.setVisibility(View.VISIBLE);
-            tvTimeSat83.setVisibility(View.VISIBLE);
-            tvTimeSat85.setVisibility(View.VISIBLE);
-            tvTimeSat87.setVisibility(View.VISIBLE);
-            tvSat8.setVisibility(View.VISIBLE);
-            tvSatSub88.setVisibility(View.VISIBLE);
-        }
+                if (Sat4Sub.length()>11)
+                {
+                    tvSatSub44.setPadding(0,0,0,8);
+                }
+
+                if (Sat5Sub.length()>11)
+                {
+                    tvSatSub55.setPadding(0,0,0,8);
+                }
+
+                if (Sat6Sub.length()>11)
+                {
+                    tvSatSub66.setPadding(0,0,0,8);
+                }
+
+                if (Sat7Sub.length()>11)
+                {
+                    tvSatSub77.setPadding(0,0,0,8);
+                }
+
+                if (Sat8Sub.length()>11)
+                {
+                    tvSatSub88.setPadding(0,0,0,8);
+                }
+
+                LinearLayout ll_row1 = v.findViewById(R.id.teacherSat1_row1);
+                LinearLayout ll_row2 = v.findViewById(R.id.teacherSat2_row2);
+                LinearLayout ll_row3 = v.findViewById(R.id.teacherSat3_row3);
+                LinearLayout ll_row4 = v.findViewById(R.id.teacherSat4_row4);
+                LinearLayout ll_row5 = v.findViewById(R.id.teacherSat5_row5);
+                LinearLayout ll_row6 = v.findViewById(R.id.teacherSat6_row6);
+                LinearLayout ll_row7 = v.findViewById(R.id.teacherSat7_row7);
+                LinearLayout ll_row8 = v.findViewById(R.id.teacherSat8_row8);
+
+                //1 СТРОКА
+                if (Sat1Sub.equals("null"))
+                {
+                    ll_row1.setVisibility(View.GONE);
+                }
+                else
+                {
+                    ll_row1.setVisibility(View.VISIBLE);
+                }
+
+                //2 строка
+                if (Sat2Sub.equals("null"))
+                {
+                    ll_row2.setVisibility(View.GONE);
+                }
+                else
+                {
+                    ll_row2.setVisibility(View.VISIBLE);
+                }
+
+                //3 строка
+                if (Sat3Sub.equals("null"))
+                {
+                    ll_row3.setVisibility(View.GONE);
+                }
+                else
+                {
+                    ll_row3.setVisibility(View.VISIBLE);
+                }
+
+                //4 строка
+                if (Sat4Sub.equals("null"))
+                {
+                    ll_row4.setVisibility(View.GONE);
+                }
+                else
+                {
+                    ll_row4.setVisibility(View.VISIBLE);
+                }
+
+                //5 строка
+                if (Sat5Sub.equals("null"))
+                {
+                    ll_row5.setVisibility(View.GONE);
+                }
+                else
+                {
+                    ll_row5.setVisibility(View.VISIBLE);
+                }
+
+                //6 строка
+                if (Sat6Sub.equals("null"))
+                {
+                    ll_row6.setVisibility(View.GONE);
+                }
+                else
+                {
+                    ll_row6.setVisibility(View.VISIBLE);
+                }
+
+                //7 строка
+                if (Sat7Sub.equals("null"))
+                {
+                    ll_row7.setVisibility(View.GONE);
+                }
+                else
+                {
+                    ll_row7.setVisibility(View.VISIBLE);
+                }
+
+                //8 строка
+                if (Sat8Sub.equals("null"))
+                {
+                    ll_row8.setVisibility(View.GONE);
+                }
+                else
+                {
+                    ll_row8.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         return v;
     }

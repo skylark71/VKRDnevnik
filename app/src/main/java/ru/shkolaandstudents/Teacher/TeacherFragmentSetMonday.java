@@ -57,7 +57,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Value");
-        ref_save = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        ref_save = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
 
         final TextView tvSetM1Sub = v.findViewById(R.id.tvSetM1Sub);
         final TextView tvSetM2Sub = v.findViewById(R.id.tvSetM2Sub);
@@ -81,8 +81,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
         delSetM1Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("M1Sub").removeValue();
-                ref_save.child("Schedule").child("M1Class").removeValue();
+                ref_save.child("M1Sub").removeValue();
+                ref_save.child("M1Class").removeValue();
                 tvSetM1Sub.setText(R.string.SetSub1);
                 tvSetM1Class.setText(R.string.SetClass1);
             }
@@ -92,8 +92,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
         delSetM2Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("M2Sub").removeValue();
-                ref_save.child("Schedule").child("M2Class").removeValue();
+                ref_save.child("M2Sub").removeValue();
+                ref_save.child("M2Class").removeValue();
                 tvSetM2Sub.setText(R.string.SetSub2);
                 tvSetM2Class.setText(R.string.SetClass2);
             }
@@ -103,8 +103,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
         delSetM3Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("M3Sub").removeValue();
-                ref_save.child("Schedule").child("M3Class").removeValue();
+                ref_save.child("M3Sub").removeValue();
+                ref_save.child("M3Class").removeValue();
                 tvSetM3Sub.setText(R.string.SetSub3);
                 tvSetM3Class.setText(R.string.SetClass3);
             }
@@ -114,8 +114,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
         delSetM4Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("M4Sub").removeValue();
-                ref_save.child("Schedule").child("M4Class").removeValue();
+                ref_save.child("M4Sub").removeValue();
+                ref_save.child("M4Class").removeValue();
                 tvSetM4Sub.setText(R.string.SetSub4);
                 tvSetM4Class.setText(R.string.SetClass4);
             }
@@ -125,8 +125,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
         delSetM5Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("M5Sub").removeValue();
-                ref_save.child("Schedule").child("M5Class").removeValue();
+                ref_save.child("M5Sub").removeValue();
+                ref_save.child("M5Class").removeValue();
                 tvSetM5Sub.setText(R.string.SetSub5);
                 tvSetM5Class.setText(R.string.SetClass5);
             }
@@ -136,8 +136,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
         delSetM6Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("M6Sub").removeValue();
-                ref_save.child("Schedule").child("M6Class").removeValue();
+                ref_save.child("M6Sub").removeValue();
+                ref_save.child("M6Class").removeValue();
                 tvSetM6Sub.setText(R.string.SetSub6);
                 tvSetM6Class.setText(R.string.SetClass6);
             }
@@ -147,8 +147,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
         delSetM7Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("M7Sub").removeValue();
-                ref_save.child("Schedule").child("M7Class").removeValue();
+                ref_save.child("M7Sub").removeValue();
+                ref_save.child("M7Class").removeValue();
                 tvSetM7Sub.setText(R.string.SetSub7);
                 tvSetM7Class.setText(R.string.SetClass7);
             }
@@ -158,8 +158,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
         delSetM8Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ref_save.child("Schedule").child("M8Sub").removeValue();
-                ref_save.child("Schedule").child("M8Class").removeValue();
+                ref_save.child("M8Sub").removeValue();
+                ref_save.child("M8Class").removeValue();
                 tvSetM8Sub.setText(R.string.SetSub8);
                 tvSetM8Class.setText(R.string.SetClass8);
             }
@@ -168,25 +168,25 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
         ref_save.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String M1Sub = String.valueOf(snapshot.child("Schedule").child("M1Sub").getValue());
-                String M2Sub = String.valueOf(snapshot.child("Schedule").child("M2Sub").getValue());
-                String M3Sub = String.valueOf(snapshot.child("Schedule").child("M3Sub").getValue());
-                String M4Sub = String.valueOf(snapshot.child("Schedule").child("M4Sub").getValue());
-                String M5Sub = String.valueOf(snapshot.child("Schedule").child("M5Sub").getValue());
-                String M6Sub = String.valueOf(snapshot.child("Schedule").child("M6Sub").getValue());
-                String M7Sub = String.valueOf(snapshot.child("Schedule").child("M7Sub").getValue());
-                String M8Sub = String.valueOf(snapshot.child("Schedule").child("M8Sub").getValue());
+                String M1Sub = String.valueOf(snapshot.child("M1Sub").getValue());
+                String M2Sub = String.valueOf(snapshot.child("M2Sub").getValue());
+                String M3Sub = String.valueOf(snapshot.child("M3Sub").getValue());
+                String M4Sub = String.valueOf(snapshot.child("M4Sub").getValue());
+                String M5Sub = String.valueOf(snapshot.child("M5Sub").getValue());
+                String M6Sub = String.valueOf(snapshot.child("M6Sub").getValue());
+                String M7Sub = String.valueOf(snapshot.child("M7Sub").getValue());
+                String M8Sub = String.valueOf(snapshot.child("M8Sub").getValue());
 
-                String M1Class = String.valueOf(snapshot.child("Schedule").child("M1Class").getValue());
-                String M2Class = String.valueOf(snapshot.child("Schedule").child("M2Class").getValue());
-                String M3Class = String.valueOf(snapshot.child("Schedule").child("M3Class").getValue());
-                String M4Class = String.valueOf(snapshot.child("Schedule").child("M4Class").getValue());
-                String M5Class = String.valueOf(snapshot.child("Schedule").child("M5Class").getValue());
-                String M6Class = String.valueOf(snapshot.child("Schedule").child("M6Class").getValue());
-                String M7Class = String.valueOf(snapshot.child("Schedule").child("M7Class").getValue());
-                String M8Class = String.valueOf(snapshot.child("Schedule").child("M8Class").getValue());
+                String M1Class = String.valueOf(snapshot.child("M1Class").getValue());
+                String M2Class = String.valueOf(snapshot.child("M2Class").getValue());
+                String M3Class = String.valueOf(snapshot.child("M3Class").getValue());
+                String M4Class = String.valueOf(snapshot.child("M4Class").getValue());
+                String M5Class = String.valueOf(snapshot.child("M5Class").getValue());
+                String M6Class = String.valueOf(snapshot.child("M6Class").getValue());
+                String M7Class = String.valueOf(snapshot.child("M7Class").getValue());
+                String M8Class = String.valueOf(snapshot.child("M8Class").getValue());
 
-                if(snapshot.child("M1Sub").exists())
+                if(!snapshot.child("M1Sub").exists())
                 {
                     tvSetM1Sub.setText(R.string.SetSub1);
                 }
@@ -195,7 +195,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM1Sub.setText(M1Sub);
                 }
 
-                if(snapshot.child("M2Sub").exists())
+                if(!snapshot.child("M2Sub").exists())
                 {
                     tvSetM2Sub.setText(R.string.SetSub2);
                 }
@@ -204,7 +204,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM2Sub.setText(M2Sub);
                 }
 
-                if(snapshot.child("M3Sub").exists())
+                if(!snapshot.child("M3Sub").exists())
                 {
                     tvSetM3Sub.setText(R.string.SetSub3);
                 }
@@ -213,7 +213,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM3Sub.setText(M3Sub);
                 }
 
-                if(snapshot.child("M4Sub").exists())
+                if(!snapshot.child("M4Sub").exists())
                 {
                     tvSetM4Sub.setText(R.string.SetSub4);
                 }
@@ -222,7 +222,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM4Sub.setText(M4Sub);
                 }
 
-                if(snapshot.child("M5Sub").exists())
+                if(!snapshot.child("M5Sub").exists())
                 {
                     tvSetM5Sub.setText(R.string.SetSub5);
                 }
@@ -231,7 +231,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM5Sub.setText(M5Sub);
                 }
 
-                if(snapshot.child("M6Sub").exists())
+                if(!snapshot.child("M6Sub").exists())
                 {
                     tvSetM6Sub.setText(R.string.SetSub6);
                 }
@@ -240,7 +240,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM6Sub.setText(M6Sub);
                 }
 
-                if(snapshot.child("M7Sub").exists())
+                if(!snapshot.child("M7Sub").exists())
                 {
                     tvSetM7Sub.setText(R.string.SetSub7);
                 }
@@ -249,7 +249,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM7Sub.setText(M7Sub);
                 }
 
-                if(snapshot.child("M8Sub").exists())
+                if(!snapshot.child("M8Sub").exists())
                 {
                     tvSetM8Sub.setText(R.string.SetSub8);
                 }
@@ -258,7 +258,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM8Sub.setText(M8Sub);
                 }
 
-                if(snapshot.child("M1Class").exists())
+                if(!snapshot.child("M1Class").exists())
                 {
                     tvSetM1Class.setText(R.string.SetClass1);
                 }
@@ -267,7 +267,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM1Class.setText(M1Class);
                 }
 
-                if(snapshot.child("M2Class").exists())
+                if(!snapshot.child("M2Class").exists())
                 {
                     tvSetM2Class.setText(R.string.SetClass2);
                 }
@@ -276,7 +276,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM2Class.setText(M2Class);
                 }
 
-                if(snapshot.child("M3Class").exists())
+                if(!snapshot.child("M3Class").exists())
                 {
                     tvSetM3Class.setText(R.string.SetClass3);
                 }
@@ -285,7 +285,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM3Class.setText(M3Class);
                 }
 
-                if(snapshot.child("M4Class").exists())
+                if(!snapshot.child("M4Class").exists())
                 {
                     tvSetM4Class.setText(R.string.SetClass4);
                 }
@@ -294,7 +294,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM4Class.setText(M4Class);
                 }
 
-                if(snapshot.child("M5Class").exists())
+                if(!snapshot.child("M5Class").exists())
                 {
                     tvSetM5Class.setText(R.string.SetClass5);
                 }
@@ -303,7 +303,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM5Class.setText(M5Class);
                 }
 
-                if(snapshot.child("M6Class").exists())
+                if(!snapshot.child("M6Class").exists())
                 {
                     tvSetM6Class.setText(R.string.SetClass6);
                 }
@@ -312,7 +312,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM6Class.setText(M6Class);
                 }
 
-                if(snapshot.child("M7Class").exists())
+                if(!snapshot.child("M7Class").exists())
                 {
                     tvSetM7Class.setText(R.string.SetClass7);
                 }
@@ -321,7 +321,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                     tvSetM7Class.setText(M7Class);
                 }
 
-                if(snapshot.child("M8Class").exists())
+                if(!snapshot.child("M8Class").exists())
                 {
                     tvSetM8Class.setText(R.string.SetClass8);
                 }
@@ -387,7 +387,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM1Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M1Sub").setValue(str);
+                                ref_save.child("M1Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -414,7 +414,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM2Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M2Sub").setValue(str);
+                                ref_save.child("M2Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -441,7 +441,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM3Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M3Sub").setValue(str);
+                                ref_save.child("M3Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -468,7 +468,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM4Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M4Sub").setValue(str);
+                                ref_save.child("M4Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -495,7 +495,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM5Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M5Sub").setValue(str);
+                                ref_save.child("M5Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -522,7 +522,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM6Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M6Sub").setValue(str);
+                                ref_save.child("M6Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -549,7 +549,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM7Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M7Sub").setValue(str);
+                                ref_save.child("M7Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -576,7 +576,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM8Sub.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M8Sub").setValue(str);
+                                ref_save.child("M8Sub").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -609,7 +609,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM1Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M1Class").setValue(str);
+                                ref_save.child("M1Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -636,7 +636,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM2Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M2Class").setValue(str);
+                                ref_save.child("M2Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -663,7 +663,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM3Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M3Class").setValue(str);
+                                ref_save.child("M3Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -690,7 +690,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM4Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M4Class").setValue(str);
+                                ref_save.child("M4Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -717,7 +717,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM5Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M5Class").setValue(str);
+                                ref_save.child("M5Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -744,7 +744,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM6Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M6Class").setValue(str);
+                                ref_save.child("M6Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -771,7 +771,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM7Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M7Class").setValue(str);
+                                ref_save.child("M7Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
@@ -798,7 +798,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                                 Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                                 tvSetM8Class.setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Schedule").child("M8Class").setValue(str);
+                                ref_save.child("M8Class").setValue(str);
                                 dialogInterface.dismiss();
                             }
                         });
