@@ -2,7 +2,7 @@ package ru.shkolaandstudents.LoginAndRegist;
 
 public class User {
 
-    public String fullName, age, email;
+    public String LastName, FirstName, Otchest, email, str_class;
 
     public boolean teacher;
 
@@ -12,12 +12,14 @@ public class User {
 
     }
 
-    public User(String fullName, String age, String email, boolean teacher)
+    public User(String LastName, String FirstName, String Otchest, String email, boolean teacher, String str_class)
     {
-        this.fullName = fullName;
-        this.age = age;
+        this.LastName = LastName;
+        this.FirstName = FirstName;
+        this.Otchest = Otchest;
         this.email = email;
         this.teacher = teacher;
+        this.str_class = str_class;
     }
 
     public boolean isTeacher() {

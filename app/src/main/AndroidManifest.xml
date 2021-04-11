@@ -20,9 +20,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LoginAndRegist.SignUpActivity"/>
-        <activity android:name=".LoginAndRegist.SignInActivity"/>
-        <activity android:name=".LoginAndRegist.DashboardActivity"/>
+        <activity android:name=".Teacher.TeacherActivitySignUpClass"></activity>
+        <activity android:name=".Teacher.TeacherActivitySignUpSchool" />
+        <activity android:name=".LoginAndRegist.SignUpActivity" />
+        <activity android:name=".LoginAndRegist.SignInActivity" />
         <activity android:name=".RecyclerViewTeacher.TeacherActivityClassList" />
         <activity android:name=".RecyclerViewTeacher.TeacherActivitySetClassList" />
         <activity android:name=".RecyclerViewTeacher.TeacherSetClassList" />
@@ -30,7 +31,6 @@
         <activity android:name=".RecyclerViewTeacher.TeacherActivityJournal" />
         <activity android:name=".RecyclerViewTeacher.TeacherActivityCreateClassAndSubList" />
         <activity android:name=".Teacher.TeacherMainActivity" />
-        <activity android:name=".Test.TestActivity" />
         <activity
             android:name=".Notifications.ActivityNotification"
             android:parentActivityName=".MainActivity"

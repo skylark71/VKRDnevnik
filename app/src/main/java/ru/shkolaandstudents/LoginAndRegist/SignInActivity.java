@@ -89,6 +89,13 @@ public class SignInActivity extends AppCompatActivity {
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                boolean isNewUser = task.getResult().getAdditionalUserInfo().isNewUser();
+                if (isNewUser) {
+                    Toast.makeText(SignInActivity.this,"Is New User!",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SignInActivity.this,"Is Old User!",Toast.LENGTH_SHORT).show();
+                }
+
                 if(task.isSuccessful())
                 {
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -108,7 +115,7 @@ public class SignInActivity extends AppCompatActivity {
                                 intent = new Intent(SignInActivity.this, MainActivity.class);
                             }
                             startActivity(intent);
-                            Toast.makeText(SignInActivity.this,"Login Successfully",Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(SignInActivity.this,"Login Successfully",Toast.LENGTH_SHORT).show();
 
 
                             finish();
@@ -129,6 +136,8 @@ public class SignInActivity extends AppCompatActivity {
                 progressDialog.dismiss();
             }
         });
+
+
     }
 
     private Boolean isValidEmail(CharSequence target)

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E88E5"
+    tools:context=".Teacher.TeacherActivitySignUpClass">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Создание класса"
+            android:textColor="#ffffff"
+            android:textSize="40dp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/etNameSchool"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@drawable/rectangular_field"
+                android:hint="Введите название школы"
+                android:paddingVertical="15dp"
+                android:paddingLeft="60dp"
+                android:textColor="#000000" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <EditText
+                android:id="@+id/etCitySchool"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:background="@drawable/rectangular_field"
+                android:hint="Введите населенный пункт"
+                android:paddingVertical="15dp"
+                android:paddingLeft="60dp"
+                android:textColor="#000000" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnSetSchool"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_round"
+            android:text="Сохранить"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+</ScrollView>

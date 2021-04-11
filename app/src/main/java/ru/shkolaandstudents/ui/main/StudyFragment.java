@@ -13,13 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 
-import ru.shkolaandstudents.LoginAndRegist.DashboardActivity;
-import ru.shkolaandstudents.MainActivity;
 import ru.shkolaandstudents.R;
 import ru.shkolaandstudents.Teacher.TeacherMainActivity;
 
