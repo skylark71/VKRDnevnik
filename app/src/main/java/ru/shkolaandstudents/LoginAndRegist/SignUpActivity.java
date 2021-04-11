@@ -320,7 +320,7 @@ public class SignUpActivity extends AppCompatActivity {
         password2 = passwordEt2.getText().toString();
         str_class1 = etCreateClass.getText().toString();
         str_class2 = tvViewClass1.getText().toString();
-        String School = tvviewschool1.getText().toString();
+        final String School = tvviewschool1.getText().toString();
         if(str_class1.equals(""))
         {
             str_class = str_class2;
@@ -330,30 +330,59 @@ public class SignUpActivity extends AppCompatActivity {
             str_class = str_class1;
         }
 
-        if (TextUtils.isEmpty(email)) {
-            emailEt.setError("Введите почту");
-            return;
-        } else if (TextUtils.isEmpty(password1)) {
-            passwordEt1.setError("Введите пароль");
-            return;
-        } else if (TextUtils.isEmpty(password2)) {
-            passwordEt2.setError("Подтвердите пароль");
-            return;
-        } else if (!password1.equals(password2)) {
-            passwordEt2.setError("Пароли не совпадают");
-            return;
-        } else if (password1.length() < 4) {
-            passwordEt1.setError("Пароль больше 4 символов");
-            return;
-        } else if (!isValidEmail(email)) {
-            emailEt.setError("Некорректная почта");
-            return;
-        } else if (School.equals("неизвестно") || School.equals("сюда") ) {
-            emailEt.setError("Укажите школу");
-            return;
-        } else if (str_class.equals("сюда")) {
-            emailEt.setError("Укажите класс в школе");
-            return;
+
+        if(teacher)
+        {
+            if (TextUtils.isEmpty(email)) {
+                emailEt.setError("Введите почту");
+                return;
+            } else if (TextUtils.isEmpty(password1)) {
+                passwordEt1.setError("Введите пароль");
+                return;
+            } else if (TextUtils.isEmpty(password2)) {
+                passwordEt2.setError("Подтвердите пароль");
+                return;
+            } else if (!password1.equals(password2)) {
+                passwordEt2.setError("Пароли не совпадают");
+                return;
+            } else if (password1.length() < 4) {
+                passwordEt1.setError("Пароль больше 4 символов");
+                return;
+            } else if (!isValidEmail(email)) {
+                emailEt.setError("Некорректная почта");
+                return;
+            } else if (School.equals("неизвестно") || School.equals("сюда")) {
+                emailEt.setError("Укажите школу");
+                return;
+            }
+        }
+        else {
+
+            if (TextUtils.isEmpty(email)) {
+                emailEt.setError("Введите почту");
+                return;
+            } else if (TextUtils.isEmpty(password1)) {
+                passwordEt1.setError("Введите пароль");
+                return;
+            } else if (TextUtils.isEmpty(password2)) {
+                passwordEt2.setError("Подтвердите пароль");
+                return;
+            } else if (!password1.equals(password2)) {
+                passwordEt2.setError("Пароли не совпадают");
+                return;
+            } else if (password1.length() < 4) {
+                passwordEt1.setError("Пароль больше 4 символов");
+                return;
+            } else if (!isValidEmail(email)) {
+                emailEt.setError("Некорректная почта");
+                return;
+            } else if (School.equals("неизвестно") || School.equals("сюда")) {
+                emailEt.setError("Укажите школу");
+                return;
+            } else if (str_class.equals("сюда")) {
+                emailEt.setError("Укажите класс в школе");
+                return;
+            }
         }
 
         progressDialog.setMessage("Please wait...");
@@ -365,41 +394,64 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            User user = new User(lastname,firstname,otchest,email, teacher, str_class);
+                            if(teacher)
+                            {
+                                str_class = School;
+                                User user = new User(lastname, firstname, otchest, email, teacher, str_class);
 
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .child("Account")
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                        if (str_class1.equals("")) {
-                                            str_class = str_class2;
+                                FirebaseDatabase.getInstance().getReference("Users")
+                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                        .child("Account")
+                                        .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(SignUpActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+                                            startActivity(intent);
+                                            finish();
                                         } else {
-                                            str_class = str_class1;
+                                            Toast.makeText(SignUpActivity.this, "Sign up fail!", Toast.LENGTH_SHORT).show();
                                         }
-                                        String School = tvviewschool1.getText().toString();
-                                        ref = FirebaseDatabase.getInstance().getReference(School).child(str_class);
-                                        String key = ref.push().getKey();
-                                        assert key != null;
-                                        ref.child(key).child("LastName").setValue(lastname);
-                                        ref.child(key).child("FirstName").setValue(firstname);
-                                        ref.child(key).child("Otchestvo").setValue(otchest);
-                                        ref.child(key).child("Uid").setValue(uid);
-                                        Toast.makeText(SignUpActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        Toast.makeText(SignUpActivity.this, "Sign up fail!", Toast.LENGTH_SHORT).show();
                                     }
-                                }
-                            });
+                                });
+                            }
+                            else {
+                                User user = new User(lastname, firstname, otchest, email, teacher, str_class);
+
+                                FirebaseDatabase.getInstance().getReference("Users")
+                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                        .child("Account")
+                                        .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                            if (str_class1.equals("")) {
+                                                str_class = str_class2;
+                                            } else {
+                                                str_class = str_class1;
+                                            }
+                                            String School = tvviewschool1.getText().toString();
+                                            ref = FirebaseDatabase.getInstance().getReference(School).child(str_class);
+                                            String key = ref.push().getKey();
+                                            assert key != null;
+                                            ref.child(key).child("LastName").setValue(lastname);
+                                            ref.child(key).child("FirstName").setValue(firstname);
+                                            ref.child(key).child("Otchestvo").setValue(otchest);
+                                            ref.child(key).child("Uid").setValue(uid);
+                                            Toast.makeText(SignUpActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            Toast.makeText(SignUpActivity.this, "Sign up fail!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                            }
                         } else {
                             Toast.makeText(SignUpActivity.this, "Sign up fail!", Toast.LENGTH_SHORT).show();
-
                         }
                         progressDialog.dismiss();
                     }
