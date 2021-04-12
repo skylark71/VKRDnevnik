@@ -140,14 +140,18 @@ public class SignUpActivity extends AppCompatActivity {
                 }
 
                 final String[] strSchool = new String[j];
+                final String[] strSchoolandCity = new String[j];
                 strSchool[0] = "Выберите школу";
+                strSchoolandCity[0] = "Выберите школу";
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     String str_school = ds.child("NameSchool").getValue(String.class);
+                    String str_cityschool = ds.child("CitySchool").getValue(String.class);
+                    strSchoolandCity[i + 1] = str_school + " " + str_cityschool;
                     strSchool[i + 1] = str_school;
                     i++;
                 }
 
-                final ArrayAdapter arrayAdapterSchool = new ArrayAdapter(SignUpActivity.this, android.R.layout.simple_spinner_item, strSchool);
+                final ArrayAdapter arrayAdapterSchool = new ArrayAdapter(SignUpActivity.this, android.R.layout.simple_spinner_item, strSchoolandCity);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this, R.style.AlertDialogTheme);
                 View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub, null);
@@ -160,8 +164,10 @@ public class SignUpActivity extends AppCompatActivity {
                 builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        int index = spinner.getSelectedItemPosition();
+                        //Toast.makeText(SignUpActivity.this, String.valueOf(index), Toast.LENGTH_SHORT).show();
                         Toast.makeText(SignUpActivity.this, spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                        String str = spinner.getSelectedItem().toString();
+                        String str = strSchool[index];
                         if (str.equals("Выберите школу")) {
                             str = "неизвестно";
                         }
@@ -199,8 +205,10 @@ public class SignUpActivity extends AppCompatActivity {
                         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                int index = spinner.getSelectedItemPosition();
+                                //Toast.makeText(SignUpActivity.this, String.valueOf(index), Toast.LENGTH_SHORT).show();
                                 Toast.makeText(SignUpActivity.this, spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                                String str = spinner.getSelectedItem().toString();
+                                String str = strSchool[index];
                                 if (str.equals("Выберите школу")) {
                                     str = "неизвестно";
                                 }
