@@ -37,7 +37,7 @@ public class TeacherFragmentJournalList extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private SubjectAdapter.RecyclerViewClickListener listener;
     DatabaseReference ref;
-
+    String school;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,6 +76,20 @@ public class TeacherFragmentJournalList extends Fragment {
 
             }
         });
+
+        DatabaseReference reff1 = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Account");
+
+        reff1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                school = String.valueOf(snapshot.child("str_class").getValue());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         mRecyclerView.setAdapter(mAdapter);
 
         mAdapter.setOnItemClickListener(new SubjectAdapter.OnItemClickListener() {
@@ -84,6 +98,7 @@ public class TeacherFragmentJournalList extends Fragment {
                 Intent intent = new Intent(getActivity(), TeacherActivityJournal.class);
                 intent.putExtra("Subject", mExampleList.get(position).getLine2());
                 intent.putExtra("Class", mExampleList.get(position).getLine1());
+                intent.putExtra("School", school);
                 startActivity(intent);
             }
 

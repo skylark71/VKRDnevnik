@@ -1,16 +1,20 @@
 package ru.shkolaandstudents.RecyclerViewTeacher;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,7 +32,9 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import ru.shkolaandstudents.LoginAndRegist.SignUpActivity;
 import ru.shkolaandstudents.R;
+import ru.shkolaandstudents.Teacher.TeacherActivitySignUpSchool;
 
 public class TeacherActivityCreateClassAndSubList extends AppCompatActivity {
 
@@ -37,14 +43,28 @@ public class TeacherActivityCreateClassAndSubList extends AppCompatActivity {
     private ExampleAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ExampleAdapter.RecyclerViewClickListener listener;
-
+    String school;
     DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.teacher_activity_create_class_and_sub_list);
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        setContentView(R.layout.teacher_activity_create_class_and_sub_list);
+        DatabaseReference reff1 = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Account");
+
+        reff1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                school = String.valueOf(snapshot.child("str_class").getValue());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         //loadData();
         buildRecyclerView();
         setInsertButton();
@@ -141,17 +161,60 @@ public class TeacherActivityCreateClassAndSubList extends AppCompatActivity {
         buttonInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText line1 = findViewById(R.id.edittext_line_1);
-                EditText line2 = findViewById(R.id.edittext_line_2);
+                final EditText line1 = findViewById(R.id.edittext_line_1);
+                final EditText line2 = findViewById(R.id.edittext_line_2);
                 /***/
                 String sub = line1.getText().toString();
-                String clas = line2.getText().toString();
+                final String clas = line2.getText().toString();
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference ref = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                final DatabaseReference ref = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                 String key = ref.push().getKey();
                 ref.child("Value").child(key).child("Sub").setValue(sub);
                 ref.child("Value").child(key).child("Class").setValue(clas);
                 /***/
+
+                //final String strArray [];
+                /*final DatabaseReference reff = database.getReference(school);
+                reff.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        int i = 0;
+                        int j = 0;
+
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            String str_class = ds.getKey();
+                            i++;
+                        }
+
+                        String strArray [] = new String[i];
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            String str_class = ds.getKey();
+                            strArray[j] = str_class;
+                            j++;
+                        }
+
+                        for(int k=0; k<i; k++)
+                        {
+                            if(clas.equals(strArray[k]))
+                            {
+
+                            }
+                            else
+                            {
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                DatabaseReference reff213 = database.getReference(school);
+                                reff213.child(clas).
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });*/
+
                 insertItem(line1.getText().toString(), line2.getText().toString());
                 saveData();
             }
