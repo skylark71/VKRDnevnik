@@ -326,17 +326,21 @@ public class SignUpActivity extends AppCompatActivity {
         firstname = etFirstName.getText().toString();
         otchest = etOtchest.getText().toString();
         password2 = passwordEt2.getText().toString();
-        str_class1 = etCreateClass.getText().toString();
+        String str_class11 = "Класс ";
+        str_class1 =  str_class11 + etCreateClass.getText().toString();
+        final String result = str_class1.replaceAll("^\"+|\"+$", "");
         str_class2 = tvViewClass1.getText().toString();
         final String School = tvviewschool1.getText().toString();
-        if(str_class1.equals(""))
+
+        if(result.equals("Класс "))
         {
             str_class = str_class2;
         }
         else
         {
-            str_class = str_class1;
+            str_class = result;
         }
+
 
 
         if(teacher)
@@ -435,10 +439,17 @@ public class SignUpActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
                                             uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                                            if (str_class1.equals("")) {
+                                            String str_class11 = "Класс ";
+                                            str_class1 =  str_class11 + etCreateClass.getText().toString();
+                                            final String result = str_class1.replaceAll("^\"+|\"+$", "");
+                                            str_class2 = tvViewClass1.getText().toString();
+                                            if(result.equals("Класс "))
+                                            {
                                                 str_class = str_class2;
-                                            } else {
-                                                str_class = str_class1;
+                                            }
+                                            else
+                                            {
+                                                str_class = result;
                                             }
                                             String School = tvviewschool1.getText().toString();
                                             ref = FirebaseDatabase.getInstance().getReference(School).child(str_class);
