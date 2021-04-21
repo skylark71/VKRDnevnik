@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E88E5"
+    tools:context=".LoginAndRegist.User_ui">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="30dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_ui_lastname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Фамилия"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/et_set_ui_lastname"
+                android:layout_width="195dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:background="@drawable/rectangular_field"
+                android:hint="Фамилия"
+                android:paddingVertical="15dp"
+                android:paddingStart="10dp"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_ui_firstname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Имя"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/et_set_ui_firstname"
+                android:layout_width="195dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:background="@drawable/rectangular_field"
+                android:hint="Имя"
+                android:paddingVertical="15dp"
+                android:paddingStart="10dp"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_ui_otch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Отчество"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/et_set_ui_otch"
+                android:layout_width="195dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:background="@drawable/rectangular_field"
+                android:hint="Отчество"
+                android:paddingVertical="15dp"
+                android:paddingStart="10dp"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_ui_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="email"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <EditText
+                android:id="@+id/et_set_ui_email"
+                android:layout_width="195dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:background="@drawable/rectangular_field"
+                android:hint="email"
+                android:paddingVertical="15dp"
+                android:paddingStart="10dp"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_ui_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Класс"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tv_set_class"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="value"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_ui_save"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_round"
+            android:text="Сохранить"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="25dp" />
+
+
+    </LinearLayout>
+
+</ScrollView>

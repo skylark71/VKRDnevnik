@@ -20,14 +20,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Teacher.TeacherActivitySignUpClass"></activity>
+        <activity android:name=".LoginAndRegist.User_ui"></activity>
+        <activity android:name=".Teacher.TeacherActivitySignUpClass" />
         <activity android:name=".Teacher.TeacherActivitySignUpSchool" />
         <activity android:name=".LoginAndRegist.SignUpActivity" />
         <activity android:name=".LoginAndRegist.SignInActivity" />
         <activity android:name=".RecyclerViewTeacher.TeacherActivityClassList" />
         <activity android:name=".RecyclerViewTeacher.TeacherActivitySetClassList" />
         <activity android:name=".RecyclerViewTeacher.TeacherSetClassList" />
-        <activity android:name=".RecyclerViewTeacher.TeacherCreateClassList" />
+        <activity android:name=".RecyclerViewTeacher.TeacherCreateStudies" />
         <activity android:name=".RecyclerViewTeacher.TeacherActivityJournal" />
         <activity android:name=".RecyclerViewTeacher.TeacherActivityCreateClassAndSubList" />
         <activity android:name=".Teacher.TeacherMainActivity" />

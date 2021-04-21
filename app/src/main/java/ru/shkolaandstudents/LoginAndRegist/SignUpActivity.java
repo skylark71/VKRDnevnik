@@ -121,10 +121,10 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this, R.style.AlertDialogTheme);
+        /*AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this, R.style.AlertDialogTheme);
         View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub, null);
         builder.setTitle("Выберите 1 предмет");
-        builder.setView(view);
+        builder.setView(view);*/
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         ref = database.getReference("Schools");
@@ -391,7 +391,7 @@ public class SignUpActivity extends AppCompatActivity {
             } else if (School.equals("неизвестно") || School.equals("сюда")) {
                 emailEt.setError("Укажите школу");
                 return;
-            } else if (str_class.equals("сюда")) {
+            } else if (str_class.equals("сюда") || str_class.equals("неизвестно")) {
                 emailEt.setError("Укажите класс в школе");
                 return;
             }
