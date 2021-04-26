@@ -409,7 +409,7 @@ public class SignUpActivity extends AppCompatActivity {
                             if(teacher)
                             {
                                 str_class = School;
-                                User user = new User(lastname, firstname, otchest, email, teacher, str_class);
+                                User user = new User(lastname, firstname, otchest, email, teacher, str_class, School);
 
                                 FirebaseDatabase.getInstance().getReference("Users")
                                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -429,7 +429,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 });
                             }
                             else {
-                                User user = new User(lastname, firstname, otchest, email, teacher, str_class);
+                                User user = new User(lastname, firstname, otchest, email, teacher, str_class, School);
 
                                 FirebaseDatabase.getInstance().getReference("Users")
                                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())

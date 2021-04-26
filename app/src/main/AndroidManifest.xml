@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LoginAndRegist.User_ui"></activity>
+        <activity android:name=".LoginAndRegist.User_ui"/>
+        <activity android:name=".LoginAndRegist.User_nh_ui"/>
         <activity android:name=".Teacher.TeacherActivitySignUpClass" />
         <activity android:name=".Teacher.TeacherActivitySignUpSchool" />
         <activity android:name=".LoginAndRegist.SignUpActivity" />

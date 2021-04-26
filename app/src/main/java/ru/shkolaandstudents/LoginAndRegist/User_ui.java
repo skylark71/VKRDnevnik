@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class User_ui extends AppCompatActivity {
     String school ;
     String uid;
     TextView tv_set_class;
+    LinearLayout ll_ui_teacher;
     boolean flag = false;
 
 
@@ -56,7 +58,7 @@ public class User_ui extends AppCompatActivity {
         et_set_ui_otch = findViewById(R.id.et_set_ui_otch);
         et_set_ui_email = findViewById(R.id.et_set_ui_email);
         tv_set_class = findViewById(R.id.tv_set_class);
-
+        ll_ui_teacher = findViewById(R.id.ll_ui_teacher);
         btn_ui_save = findViewById(R.id.btn_ui_save);
 
         Bundle arguments = getIntent().getExtras();
@@ -73,6 +75,12 @@ public class User_ui extends AppCompatActivity {
                 otchest = String.valueOf(snapshot.child("Otchest").getValue());
                 email = String.valueOf(snapshot.child("email").getValue());
                 str_class_old = String.valueOf(snapshot.child("str_class").getValue());
+                /*Boolean flag1 = (Boolean) snapshot.child("teacher").getValue();
+
+                if(flag1)
+                {
+                    ll_ui_teacher.setVisibility(View.GONE);
+                }*/
 
                 et_set_ui_lastname.setText(lastname);
                 et_set_ui_firstname.setText(firstname);

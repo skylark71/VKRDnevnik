@@ -1,5 +1,6 @@
 package ru.shkolaandstudents;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,7 +38,14 @@ import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.android.play.core.tasks.OnCompleteListener;
 import com.google.android.play.core.tasks.OnSuccessListener;
 import com.google.android.play.core.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import ru.shkolaandstudents.LoginAndRegist.User_nh_ui;
 import ru.shkolaandstudents.ui.main.AboutFragment;
 import ru.shkolaandstudents.ui.main.HomeFragment;
 import ru.shkolaandstudents.ui.main.SettingsFragment;
@@ -123,6 +131,10 @@ public class MainActivity extends AppCompatActivity {
      * В процессе его работы настраиваем интерфейс (Navigation Drawer, ActionBar), устанавливаем цветовую схему приложения
      * и запускаем HomeFragment.
      */
+    String lastname;
+    String firstname;
+    String school;
+    Boolean teacher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,6 +147,34 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, ActivitySchoolManMenu.class));
         }
         getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).commit();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reff1 = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Account");
+
+        reff1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                school = String.valueOf(snapshot.child("school").getValue());
+                firstname = String.valueOf(snapshot.child("FirstName").getValue());
+                lastname = String.valueOf(snapshot.child("LastName").getValue());
+                teacher = (Boolean) snapshot.child("teacher").getValue();
+                SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("school", school);
+                editor.apply();
+
+                View headView = nvDrawer.getHeaderView(0);
+                TextView tv_nh_lastname = headView.findViewById(R.id.tv_nh_lastname);
+                TextView tv_nh_firstname = headView.findViewById(R.id.tv_nh_firstname);
+                tv_nh_lastname.setText(lastname);
+                tv_nh_firstname.setText(firstname);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(" ");
@@ -150,6 +190,18 @@ public class MainActivity extends AppCompatActivity {
 
         mDrawer.addDrawerListener(drawerToggle);
         nvDrawer.setItemIconTintList(null);
+
+        View headView = nvDrawer.getHeaderView(0);
+        ImageView imageView = headView.findViewById(R.id.imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), User_nh_ui.class);
+                intent.putExtra("school", school);
+                intent.putExtra("teacher", teacher);
+                startActivity(intent);
+            }
+        });
 
         setupDrawerContent(nvDrawer);
 

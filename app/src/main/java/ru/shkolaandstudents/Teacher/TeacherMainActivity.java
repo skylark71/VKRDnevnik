@@ -44,9 +44,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import ru.shkolaandstudents.AddPersonFragment;
 import ru.shkolaandstudents.LoginAndRegist.User;
+import ru.shkolaandstudents.LoginAndRegist.User_nh_ui;
+import ru.shkolaandstudents.LoginAndRegist.User_ui;
 import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
 import ru.shkolaandstudents.RecyclerViewTeacher.TeacherActivityCreateClassAndSubList;
+import ru.shkolaandstudents.RecyclerViewTeacher.TeacherCreateStudies;
 import ru.shkolaandstudents.RecyclerViewTeacher.TeacherFragmentJournalList;
 import ru.shkolaandstudents.Utilities;
 import ru.shkolaandstudents.ui.main.HomeFragment;
@@ -117,6 +120,10 @@ public class TeacherMainActivity extends AppCompatActivity {
      * В процессе его работы настраиваем интерфейс (Navigation Drawer, ActionBar), устанавливаем цветовую схему приложения
      * и запускаем HomeFragment.
      */
+    String lastname;
+    String firstname;
+    String school;
+    Boolean teacher;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,11 +135,20 @@ public class TeacherMainActivity extends AppCompatActivity {
         reff1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String school = String.valueOf(snapshot.child("str_class").getValue());
+                school = String.valueOf(snapshot.child("str_class").getValue());
+                firstname = String.valueOf(snapshot.child("FirstName").getValue());
+                lastname = String.valueOf(snapshot.child("LastName").getValue());
+                teacher = (Boolean) snapshot.child("teacher").getValue();
                 SharedPreferences sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("school", school);
                 editor.apply();
+
+                View headView = teacher_nvDrawer.getHeaderView(0);
+                TextView tv_nh_lastname = headView.findViewById(R.id.tv_nh_lastname);
+                TextView tv_nh_firstname = headView.findViewById(R.id.tv_nh_firstname);
+                tv_nh_lastname.setText(lastname);
+                tv_nh_firstname.setText(firstname);
             }
 
             @Override
@@ -155,6 +171,18 @@ public class TeacherMainActivity extends AppCompatActivity {
 
         teacher_mDrawer.addDrawerListener(teacher_drawerToggle);
         teacher_nvDrawer.setItemIconTintList(null);
+
+        View headView = teacher_nvDrawer.getHeaderView(0);
+        ImageView imageView = headView.findViewById(R.id.imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), User_nh_ui.class);
+                intent.putExtra("school", school);
+                intent.putExtra("teacher", teacher);
+                startActivity(intent);
+            }
+        });
 
         setupDrawerContent(teacher_nvDrawer);
 

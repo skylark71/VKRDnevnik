@@ -161,7 +161,7 @@ public class TeacherCreateStudies extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            User user = new User(lastname, firstname, otchest, email, teacher, str_class);
+                            User user = new User(lastname, firstname, otchest, email, teacher, str_class, School);
 
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
