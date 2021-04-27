@@ -292,29 +292,32 @@ public class User_nh_ui extends AppCompatActivity {
                     ref.child(key).child("Otchestvo").setValue(otchest);
                     ref.child(key).child("Uid").setValue(uid);
 
-                    String cals_old = str_class_old;
+                    final String[] keyy = new String[1];
+
+                    final String cals_old = str_class_old;
 
                     DatabaseReference reff = FirebaseDatabase.getInstance().getReference(school).child(cals_old);
                     reff.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            //if(cnt==0) {
-                                for (DataSnapshot ds : snapshot.getChildren()) {
-                                    String uid_locale = String.valueOf(ds.child("Uid").getValue());
-                                    if (uid_locale.equals(uid) && cnt == 0) {
-                                        //keys[0] = String.valueOf(ds.getRef());
-                                        ds.getRef().removeValue();
-                                        cnt++;
-                                    }
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                String uid_locale = String.valueOf(ds.child("Uid").getValue());
+                                if (uid_locale.equals(uid) && cnt == 0) {
+                                    keyy[0] = ds.getKey();
+                                    cnt++;
                                 }
-                            //}
+                            }
+                            cnt = 0;
 
+                            DatabaseReference reff1 = FirebaseDatabase.getInstance().getReference(school).child(cals_old).child(keyy[0]);
+                            reff1.removeValue();
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                         }
                     });
+
 
                     Toast.makeText(getApplicationContext(), "Данные сохранены", Toast.LENGTH_SHORT).show();
                 }
