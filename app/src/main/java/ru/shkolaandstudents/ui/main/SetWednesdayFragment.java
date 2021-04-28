@@ -143,14 +143,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                etW1.setText("");
-                etW2.setText("");
-                etW3.setText("");
-                etW4.setText("");
-                etW5.setText("");
-                etW6.setText("");
-                etW7.setText("");
-                etW8.setText("");
+
             }
         });
 
