@@ -37,8 +37,6 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
 
     Button btnThurs,btnHelp;
     TextView etW1,etW2,etW3,etW4,etW5,etW6,etW7,etW8;
-    SharedPreferences SP;
-    SharedPreferences.Editor SPEditor;
     TextView title;
     DatabaseReference reff;
 
@@ -57,8 +55,6 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
         etW6 = v.findViewById(R.id.etW6);
         etW7 = v.findViewById(R.id.etW7);
         etW8 = v.findViewById(R.id.etW8);
-        SP = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        SPEditor = SP.edit();
         title = v.findViewById(R.id.tvWRasp);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();

@@ -1,5 +1,7 @@
 package ru.shkolaandstudents.ui.main;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -11,9 +13,13 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
@@ -30,9 +36,7 @@ import ru.shkolaandstudents.R;
 public class SetSaturdayFragment extends Fragment implements OnBackPressedListener {
 
     Button btnSM,btnHelp;
-    EditText etSat1,etSat2,etSat3,etSat4,etSat5,etSat6,etSat7,etSat8;
-    SharedPreferences SP;
-    SharedPreferences.Editor SPEditor;
+    TextView etSat1,etSat2,etSat3,etSat4,etSat5,etSat6,etSat7,etSat8;
     TextView title;
     DatabaseReference reff;
 
@@ -55,7 +59,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
         title.setText(getResources().getString(R.string.change_rasp_s));
         
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -74,7 +78,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
                 }
                 else
                 {
-                    etSat1.setText("");
+                    etSat1.setText(R.string.SetSub1);
                 }
 
                 if (snapshot.child("SubSat2").exists()) {
@@ -82,7 +86,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
                 }
                 else
                 {
-                    etSat2.setText("");
+                    etSat2.setText(R.string.SetSub2);
                 }
 
                 if (snapshot.child("SubSat3").exists()) {
@@ -90,7 +94,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
                 }
                 else
                 {
-                    etSat3.setText("");
+                    etSat3.setText(R.string.SetSub3);
                 }
 
                 if (snapshot.child("SubSat4").exists()) {
@@ -98,7 +102,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
                 }
                 else
                 {
-                    etSat4.setText("");
+                    etSat4.setText(R.string.SetSub4);
                 }
 
                 if (snapshot.child("SubSat5").exists()) {
@@ -106,7 +110,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
                 }
                 else
                 {
-                    etSat5.setText("");
+                    etSat5.setText(R.string.SetSub5);
                 }
 
                 if (snapshot.child("SubSat6").exists()) {
@@ -114,7 +118,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
                 }
                 else
                 {
-                    etSat6.setText("");
+                    etSat6.setText(R.string.SetSub6);
                 }
 
                 if (snapshot.child("SubSat7").exists()) {
@@ -122,7 +126,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
                 }
                 else
                 {
-                    etSat7.setText("");
+                    etSat7.setText(R.string.SetSub7);
                 }
 
                 if (snapshot.child("SubSat8").exists()) {
@@ -130,20 +134,318 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
                 }
                 else
                 {
-                    etSat8.setText("");
+                    etSat8.setText(R.string.SetSub8);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                etSat1.setText("");
-                etSat2.setText("");
-                etSat3.setText("");
-                etSat4.setText("");
-                etSat5.setText("");
-                etSat6.setText("");
-                etSat7.setText("");
-                etSat8.setText("");
+                
+            }
+        });
+        
+        etSat1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 1 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etSat1.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etSat2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 2 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etSat2.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etSat3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 3 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etSat3.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etSat4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 4 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etSat4.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etSat5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 5 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etSat5.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etSat6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 6 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etSat6.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etSat7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 7 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etSat7.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+
+        etSat8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 8 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etSat8.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        ImageView delSat1Sub = v.findViewById(R.id.delSat1Sub);
+        delSat1Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubSat1").removeValue();
+                etSat1.setText(R.string.SetSub1);
+            }
+        });
+
+        ImageView delSat2Sub = v.findViewById(R.id.delSat2Sub);
+        delSat2Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubSat2").removeValue();
+                etSat2.setText(R.string.SetSub2);
+            }
+        });
+
+        ImageView delSat3Sub = v.findViewById(R.id.delSat3Sub);
+        delSat3Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubSat3").removeValue();
+                etSat3.setText(R.string.SetSub3);
+            }
+        });
+
+        ImageView delSat4Sub = v.findViewById(R.id.delSat4Sub);
+        delSat4Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubSat4").removeValue();
+                etSat4.setText(R.string.SetSub4);
+            }
+        });
+
+        ImageView delSat5Sub = v.findViewById(R.id.delSat5Sub);
+        delSat5Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubSat5").removeValue();
+                etSat5.setText(R.string.SetSub5);
+            }
+        });
+
+        ImageView delSat6Sub = v.findViewById(R.id.delSat6Sub);
+        delSat6Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubSat6").removeValue();
+                etSat6.setText(R.string.SetSub6);
+            }
+        });
+
+        ImageView delSat7Sub = v.findViewById(R.id.delSat7Sub);
+        delSat7Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubSat7").removeValue();
+                etSat7.setText(R.string.SetSub7);
+            }
+        });
+
+        ImageView delSat8Sub = v.findViewById(R.id.delSat8Sub);
+        delSat8Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubSat8").removeValue();
+                etSat8.setText(R.string.SetSub8);
             }
         });
         
@@ -187,37 +489,6 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
             }
         });
 
-        SP = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        SPEditor = SP.edit();
-
-        String sSat1 = SP.getString("Sat1", "");
-        etSat1.setText(sSat1);
-        String sSat2 = SP.getString("Sat2", "");
-        etSat2.setText(sSat2);
-        String sSat3 = SP.getString("Sat3", "");
-        etSat3.setText(sSat3);
-        String sSat4 = SP.getString("Sat4", "");
-        etSat4.setText(sSat4);
-        String sSat5 = SP.getString("Sat5", "");
-        etSat5.setText(sSat5);
-        String sSat6 = SP.getString("Sat6", "");
-        etSat6.setText(sSat6);
-        String sSat7 = SP.getString("Sat7", "");
-        etSat7.setText(sSat7);
-        String sSat8 = SP.getString("Sat8", "");
-        etSat8.setText(sSat8);
-
-        etSat1.setText(sSat1);
-        etSat2.setText(sSat2);
-        etSat3.setText(sSat3);
-        etSat4.setText(sSat4);
-        etSat5.setText(sSat5);
-        etSat6.setText(sSat6);
-        etSat7.setText(sSat7);
-        etSat8.setText(sSat8);
-
-
-
         btnSM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -231,87 +502,70 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
                 String Sat7 = etSat7.getText().toString();
                 String Sat8 = etSat8.getText().toString();
 
-                reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                if(Sat1.length()!=0) {
-                    reff.child("SubSat1").setValue(Sat1);
-                }
-                else
-                {
+                reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
+                if(Sat1.equals("Выберите предмет") || Sat1.equals("1. Выберите предмет")) {
                     reff.child("SubSat1").removeValue();
                 }
-
-                if(Sat2.length()!=0) {
-                    reff.child("SubSat2").setValue(Sat2);
-                }
                 else
                 {
+                    reff.child("SubSat1").setValue(Sat1);
+                }
+
+                if(Sat2.equals("Выберите предмет") || Sat2.equals("2. Выберите предмет")) {
                     reff.child("SubSat2").removeValue();
                 }
-
-                if(Sat3.length()!=0) {
-                    reff.child("SubSat3").setValue(Sat3);
-                }
                 else
                 {
+                    reff.child("SubSat2").setValue(Sat2);
+                }
+
+                if(Sat3.equals("Выберите предмет") || Sat3.equals("3. Выберите предмет")) {
                     reff.child("SubSat3").removeValue();
                 }
-
-                if(Sat4.length()!=0) {
-                    reff.child("SubSat4").setValue(Sat4);
-                }
                 else
                 {
+                    reff.child("SubSat3").setValue(Sat3);
+                }
+
+                if(Sat4.equals("Выберите предмет") || Sat4.equals("4. Выберите предмет")) {
                     reff.child("SubSat4").removeValue();
                 }
-
-                if(Sat5.length()!=0) {
-                    reff.child("SubSat5").setValue(Sat5);
-                }
                 else
                 {
+                    reff.child("SubSat4").setValue(Sat4);
+                }
+
+                if(Sat5.equals("Выберите предмет") || Sat5.equals("5. Выберите предмет")) {
                     reff.child("SubSat5").removeValue();
                 }
-
-                if(Sat6.length()!=0) {
-                    reff.child("SubSat6").setValue(Sat6);
-                }
                 else
                 {
+                    reff.child("SubSat5").setValue(Sat5);
+                }
+
+                if(Sat6.equals("Выберите предмет") || Sat6.equals("6. Выберите предмет")) {
                     reff.child("SubSat6").removeValue();
                 }
-
-                if(Sat7.length()!=0) {
-                    reff.child("SubSat7").setValue(Sat7);
-                }
                 else
                 {
+                    reff.child("SubSat6").setValue(Sat6);
+                }
+
+                if(Sat7.equals("Выберите предмет") || Sat7.equals("7. Выберите предмет")) {
                     reff.child("SubSat7").removeValue();
                 }
+                else
+                {
+                    reff.child("SubSat7").setValue(Sat7);
+                }
 
-                if(Sat8.length()!=0) {
-                    reff.child("SubSat8").setValue(Sat8);
+                if(Sat8.equals("Выберите предмет") || Sat8.equals("8. Выберите предмет")) {
+                    reff.child("SubSat8").removeValue();
                 }
                 else
                 {
-                    reff.child("SubSat8").removeValue();
+                    reff.child("SubSat8").setValue(Sat8);
                 }
-
-                /*SPEditor.putString("Sat1",Sat1);
-                SPEditor.apply();
-                SPEditor.putString("Sat2",Sat2);
-                SPEditor.commit();
-                SPEditor.putString("Sat3",Sat3);
-                SPEditor.commit();
-                SPEditor.putString("Sat4",Sat4);
-                SPEditor.commit();
-                SPEditor.putString("Sat5",Sat5);
-                SPEditor.commit();
-                SPEditor.putString("Sat6",Sat6);
-                SPEditor.commit();
-                SPEditor.putString("Sat7",Sat7);
-                SPEditor.commit();
-                SPEditor.putString("Sat8",Sat8);
-                SPEditor.commit();*/
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.container, new SettingsStudyMenuFragment());

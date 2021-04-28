@@ -26,101 +26,221 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/etSat1"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:ems="10"
-                android:hint="@string/input_1"
-                android:inputType="textPersonName|textCapWords"
-                android:maxLength="20" />
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/etSat2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:ems="10"
-                android:hint="@string/input_2"
-                android:inputType="textPersonName|textCapWords"
-                android:maxLength="20" />
+                <TextView
+                    android:id="@+id/etSat1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/SetSub1"
+                    android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/etSat3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:ems="10"
-                android:hint="@string/input_3"
-                android:inputType="textPersonName|textCapWords"
-                android:maxLength="20" />
+                <ImageView
+                    android:id="@+id/delSat1Sub"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_delete" />
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/etSat4"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:ems="10"
-                android:hint="@string/input_4"
-                android:inputType="textPersonName|textCapWords"
-                android:maxLength="20" />
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/etSat5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:ems="10"
-                android:hint="@string/input_5"
-                android:inputType="textPersonName|textCapWords"
-                android:maxLength="20" />
+                <TextView
+                    android:id="@+id/etSat2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/SetSub2"
+                    android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/etSat6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:ems="10"
-                android:hint="@string/input_6"
-                android:inputType="textPersonName|textCapWords"
-                android:maxLength="20" />
+                <ImageView
+                    android:id="@+id/delSat2Sub"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_delete" />
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/etSat7"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:ems="10"
-                android:hint="@string/input_7"
-                android:inputType="textPersonName|textCapWords"
-                android:maxLength="20" />
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/etSat8"
+                <TextView
+                    android:id="@+id/etSat3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/SetSub3"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/delSat3Sub"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_delete" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:ems="10"
-                android:hint="@string/input_8"
-                android:inputType="textPersonName|textCapWords"
-                android:maxLength="20" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/etSat4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/SetSub4"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/delSat4Sub"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_delete" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/etSat5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/SetSub5"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/delSat5Sub"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_delete" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/etSat6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/SetSub6"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/delSat6Sub"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_delete" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/etSat7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/SetSub7"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/delSat7Sub"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_delete" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/etSat8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/SetSub8"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/delSat8Sub"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/ic_delete" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

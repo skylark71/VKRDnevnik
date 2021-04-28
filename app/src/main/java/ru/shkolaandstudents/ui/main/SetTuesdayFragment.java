@@ -37,8 +37,6 @@ public class SetTuesdayFragment extends Fragment implements OnBackPressedListene
 
     Button btnWend,btnHelp;
     TextView etT1,etT2,etT3,etT4,etT5,etT6,etT7,etT8;
-    SharedPreferences SP;
-    SharedPreferences.Editor SPEditor;
     TextView title;
     DatabaseReference reff;
 
@@ -59,8 +57,6 @@ public class SetTuesdayFragment extends Fragment implements OnBackPressedListene
         etT8 = v.findViewById(R.id.etT8);
         title = v.findViewById(R.id.tvTRasp);
         title.setText(getResources().getString(R.string.change_rasp_t));
-        SP = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        SPEditor = SP.edit();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
