@@ -381,7 +381,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
         delSat1Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubSat1").removeValue();
+                //reff.child("SubSat1").removeValue();
                 etSat1.setText(R.string.SetSub1);
             }
         });
@@ -390,7 +390,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
         delSat2Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubSat2").removeValue();
+                //reff.child("SubSat2").removeValue();
                 etSat2.setText(R.string.SetSub2);
             }
         });
@@ -399,7 +399,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
         delSat3Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubSat3").removeValue();
+                //reff.child("SubSat3").removeValue();
                 etSat3.setText(R.string.SetSub3);
             }
         });
@@ -408,7 +408,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
         delSat4Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubSat4").removeValue();
+                //reff.child("SubSat4").removeValue();
                 etSat4.setText(R.string.SetSub4);
             }
         });
@@ -417,7 +417,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
         delSat5Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubSat5").removeValue();
+                //reff.child("SubSat5").removeValue();
                 etSat5.setText(R.string.SetSub5);
             }
         });
@@ -426,7 +426,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
         delSat6Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubSat6").removeValue();
+                //reff.child("SubSat6").removeValue();
                 etSat6.setText(R.string.SetSub6);
             }
         });
@@ -435,7 +435,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
         delSat7Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubSat7").removeValue();
+                //reff.child("SubSat7").removeValue();
                 etSat7.setText(R.string.SetSub7);
             }
         });
@@ -444,7 +444,7 @@ public class SetSaturdayFragment extends Fragment implements OnBackPressedListen
         delSat8Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubSat8").removeValue();
+                //reff.child("SubSat8").removeValue();
                 etSat8.setText(R.string.SetSub8);
             }
         });

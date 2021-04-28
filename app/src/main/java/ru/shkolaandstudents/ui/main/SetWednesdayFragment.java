@@ -396,7 +396,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
         delW1Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubW1").removeValue();
+                //reff.child("SubW1").removeValue();
                 etW1.setText(R.string.SetSub1);
             }
         });
@@ -405,7 +405,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
         delW2Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubW2").removeValue();
+                //reff.child("SubW2").removeValue();
                 etW2.setText(R.string.SetSub2);
             }
         });
@@ -414,7 +414,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
         delW3Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubW3").removeValue();
+                //reff.child("SubW3").removeValue();
                 etW3.setText(R.string.SetSub3);
             }
         });
@@ -423,7 +423,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
         delW4Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubW4").removeValue();
+                //reff.child("SubW4").removeValue();
                 etW4.setText(R.string.SetSub4);
             }
         });
@@ -432,7 +432,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
         delW5Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubW5").removeValue();
+                //reff.child("SubW5").removeValue();
                 etW5.setText(R.string.SetSub5);
             }
         });
@@ -441,7 +441,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
         delW6Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubW6").removeValue();
+                //reff.child("SubW6").removeValue();
                 etW6.setText(R.string.SetSub6);
             }
         });
@@ -450,7 +450,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
         delW7Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubW7").removeValue();
+                //reff.child("SubW7").removeValue();
                 etW7.setText(R.string.SetSub7);
             }
         });
@@ -459,7 +459,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
         delW8Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubW8").removeValue();
+                //reff.child("SubW8").removeValue();
                 etW8.setText(R.string.SetSub8);
             }
         });

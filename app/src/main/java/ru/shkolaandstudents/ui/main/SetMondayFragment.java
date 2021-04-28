@@ -206,8 +206,6 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                         etM1.setText(spinner.getSelectedItem().toString());
-                        /*String str = spinner.getSelectedItem().toString();
-                        ref_save.child("M7Sub").setValue(str);*/
                         dialogInterface.dismiss();
                     }
                 });
@@ -237,8 +235,6 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                         etM2.setText(spinner.getSelectedItem().toString());
-                        /*String str = spinner.getSelectedItem().toString();
-                        ref_save.child("M7Sub").setValue(str);*/
                         dialogInterface.dismiss();
                     }
                 });
@@ -268,8 +264,6 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                         etM3.setText(spinner.getSelectedItem().toString());
-                        /*String str = spinner.getSelectedItem().toString();
-                        ref_save.child("M7Sub").setValue(str);*/
                         dialogInterface.dismiss();
                     }
                 });
@@ -299,8 +293,6 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                         etM4.setText(spinner.getSelectedItem().toString());
-                        /*String str = spinner.getSelectedItem().toString();
-                        ref_save.child("M7Sub").setValue(str);*/
                         dialogInterface.dismiss();
                     }
                 });
@@ -330,8 +322,6 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                         etM5.setText(spinner.getSelectedItem().toString());
-                        /*String str = spinner.getSelectedItem().toString();
-                        ref_save.child("M7Sub").setValue(str);*/
                         dialogInterface.dismiss();
                     }
                 });
@@ -361,8 +351,6 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                         etM6.setText(spinner.getSelectedItem().toString());
-                        /*String str = spinner.getSelectedItem().toString();
-                        ref_save.child("M7Sub").setValue(str);*/
                         dialogInterface.dismiss();
                     }
                 });
@@ -392,8 +380,6 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                         etM7.setText(spinner.getSelectedItem().toString());
-                        /*String str = spinner.getSelectedItem().toString();
-                        ref_save.child("M7Sub").setValue(str);*/
                         dialogInterface.dismiss();
                     }
                 });
@@ -424,8 +410,6 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                         etM8.setText(spinner.getSelectedItem().toString());
-                        /*String str = spinner.getSelectedItem().toString();
-                        ref_save.child("M7Sub").setValue(str);*/
                         dialogInterface.dismiss();
                     }
                 });
@@ -439,7 +423,7 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
         delM1Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubM1").removeValue();
+                //reff.child("SubM1").removeValue();
                 etM1.setText(R.string.SetSub1);
             }
         });
@@ -448,7 +432,7 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
         delM2Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubM2").removeValue();
+                //reff.child("SubM2").removeValue();
                 etM2.setText(R.string.SetSub2);
             }
         });
@@ -457,7 +441,7 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
         delM3Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubM3").removeValue();
+                //reff.child("SubM3").removeValue();
                 etM3.setText(R.string.SetSub3);
             }
         });
@@ -466,7 +450,7 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
         delM4Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubM4").removeValue();
+                //reff.child("SubM4").removeValue();
                 etM4.setText(R.string.SetSub4);
             }
         });
@@ -475,7 +459,7 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
         delM5Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubM5").removeValue();
+                //reff.child("SubM5").removeValue();
                 etM5.setText(R.string.SetSub5);
             }
         });
@@ -484,7 +468,7 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
         delM6Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubM6").removeValue();
+                //reff.child("SubM6").removeValue();
                 etM6.setText(R.string.SetSub6);
             }
         });
@@ -493,7 +477,7 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
         delM7Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubM7").removeValue();
+                //reff.child("SubM7").removeValue();
                 etM7.setText(R.string.SetSub7);
             }
         });
@@ -502,7 +486,7 @@ public class SetMondayFragment extends Fragment implements OnBackPressedListener
         delM8Sub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reff.child("SubM8").removeValue();
+                //reff.child("SubM8").removeValue();
                 etM8.setText(R.string.SetSub8);
             }
         });
