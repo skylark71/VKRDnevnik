@@ -1,5 +1,7 @@
 package ru.shkolaandstudents.ui.main;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -11,9 +13,13 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
@@ -30,7 +36,7 @@ import ru.shkolaandstudents.R;
 public class SetWednesdayFragment extends Fragment implements OnBackPressedListener {
 
     Button btnThurs,btnHelp;
-    EditText etW1,etW2,etW3,etW4,etW5,etW6,etW7,etW8;
+    TextView etW1,etW2,etW3,etW4,etW5,etW6,etW7,etW8;
     SharedPreferences SP;
     SharedPreferences.Editor SPEditor;
     TextView title;
@@ -56,7 +62,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
         title = v.findViewById(R.id.tvWRasp);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -75,7 +81,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
                 }
                 else
                 {
-                    etW1.setText("");
+                    etW1.setText(R.string.SetSub1);
                 }
 
                 if (snapshot.child("SubW2").exists()) {
@@ -83,7 +89,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
                 }
                 else
                 {
-                    etW2.setText("");
+                    etW2.setText(R.string.SetSub2);
                 }
 
                 if (snapshot.child("SubW3").exists()) {
@@ -91,7 +97,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
                 }
                 else
                 {
-                    etW3.setText("");
+                    etW3.setText(R.string.SetSub3);
                 }
 
                 if (snapshot.child("SubW4").exists()) {
@@ -99,7 +105,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
                 }
                 else
                 {
-                    etW4.setText("");
+                    etW4.setText(R.string.SetSub4);
                 }
 
                 if (snapshot.child("SubW5").exists()) {
@@ -107,7 +113,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
                 }
                 else
                 {
-                    etW5.setText("");
+                    etW5.setText(R.string.SetSub5);
                 }
 
                 if (snapshot.child("SubW6").exists()) {
@@ -115,7 +121,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
                 }
                 else
                 {
-                    etW6.setText("");
+                    etW6.setText(R.string.SetSub6);
                 }
 
                 if (snapshot.child("SubW7").exists()) {
@@ -123,7 +129,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
                 }
                 else
                 {
-                    etW7.setText("");
+                    etW7.setText(R.string.SetSub7);
                 }
 
                 if (snapshot.child("SubW8").exists()) {
@@ -131,7 +137,7 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
                 }
                 else
                 {
-                    etW8.setText("");
+                    etW8.setText(R.string.SetSub8);
                 }
             }
 
@@ -148,33 +154,326 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
             }
         });
 
-        /*String sW1 = SP.getString("W1", "");
-        etW1.setText(sW1);
-        String sW2 = SP.getString("W2", "");
-        etW2.setText(sW2);
-        String sW3 = SP.getString("W3", "");
-        etW3.setText(sW3);
-        String sW4 = SP.getString("W4", "");
-        etW4.setText(sW4);
-        String sW5 = SP.getString("W5", "");
-        etW5.setText(sW5);
-        String sW6 = SP.getString("W6", "");
-        etW6.setText(sW6);
-        String sW7 = SP.getString("W7", "");
-        etW7.setText(sW7);
-        String sW8 = SP.getString("W8", "");
-        etW8.setText(sW8);
+        etW1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 1 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etW1.setText(spinner.getSelectedItem().toString());
+                        /*String str = spinner.getSelectedItem().toString();
+                        ref_save.child("W7Sub").setValue(str);*/
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etW2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 2 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etW2.setText(spinner.getSelectedItem().toString());
+                        /*String str = spinner.getSelectedItem().toString();
+                        ref_save.child("W7Sub").setValue(str);*/
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etW3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 3 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etW3.setText(spinner.getSelectedItem().toString());
+                        /*String str = spinner.getSelectedItem().toString();
+                        ref_save.child("W7Sub").setValue(str);*/
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etW4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 4 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etW4.setText(spinner.getSelectedItem().toString());
+                        /*String str = spinner.getSelectedItem().toString();
+                        ref_save.child("W7Sub").setValue(str);*/
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etW5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 5 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etW5.setText(spinner.getSelectedItem().toString());
+                        /*String str = spinner.getSelectedItem().toString();
+                        ref_save.child("W7Sub").setValue(str);*/
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etW6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 6 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etW6.setText(spinner.getSelectedItem().toString());
+                        /*String str = spinner.getSelectedItem().toString();
+                        ref_save.child("W7Sub").setValue(str);*/
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etW7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 7 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etW7.setText(spinner.getSelectedItem().toString());
+                        /*String str = spinner.getSelectedItem().toString();
+                        ref_save.child("W7Sub").setValue(str);*/
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
 
 
-        etW1.setText(sW1);
-        etW2.setText(sW2);
-        etW3.setText(sW3);
-        etW4.setText(sW4);
-        etW5.setText(sW5);
-        etW6.setText(sW6);
-        etW7.setText(sW7);
-        etW8.setText(sW8);*/
+        etW8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 8 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etW8.setText(spinner.getSelectedItem().toString());
+                        /*String str = spinner.getSelectedItem().toString();
+                        ref_save.child("W7Sub").setValue(str);*/
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        ImageView delW1Sub = v.findViewById(R.id.delW1Sub);
+        delW1Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubW1").removeValue();
+                etW1.setText(R.string.SetSub1);
+            }
+        });
+
+        ImageView delW2Sub = v.findViewById(R.id.delW2Sub);
+        delW2Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubW2").removeValue();
+                etW2.setText(R.string.SetSub2);
+            }
+        });
+
+        ImageView delW3Sub = v.findViewById(R.id.delW3Sub);
+        delW3Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubW3").removeValue();
+                etW3.setText(R.string.SetSub3);
+            }
+        });
+
+        ImageView delW4Sub = v.findViewById(R.id.delW4Sub);
+        delW4Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubW4").removeValue();
+                etW4.setText(R.string.SetSub4);
+            }
+        });
+
+        ImageView delW5Sub = v.findViewById(R.id.delW5Sub);
+        delW5Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubW5").removeValue();
+                etW5.setText(R.string.SetSub5);
+            }
+        });
+
+        ImageView delW6Sub = v.findViewById(R.id.delW6Sub);
+        delW6Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubW6").removeValue();
+                etW6.setText(R.string.SetSub6);
+            }
+        });
+
+        ImageView delW7Sub = v.findViewById(R.id.delW7Sub);
+        delW7Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubW7").removeValue();
+                etW7.setText(R.string.SetSub7);
+            }
+        });
+
+        ImageView delW8Sub = v.findViewById(R.id.delW8Sub);
+        delW8Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubW8").removeValue();
+                etW8.setText(R.string.SetSub8);
+            }
+        });
 
         btnHelp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,87 +528,70 @@ public class SetWednesdayFragment extends Fragment implements OnBackPressedListe
                 String W7 = etW7.getText().toString();
                 String W8 = etW8.getText().toString();
 
-                reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                if(W1.length()!=0) {
-                    reff.child("SubW1").setValue(W1);
-                }
-                else
-                {
+                reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
+                if(W1.equals("Выберите предмет") || W1.equals("1. Выберите предмет")) {
                     reff.child("SubW1").removeValue();
                 }
-
-                if(W2.length()!=0) {
-                    reff.child("SubW2").setValue(W2);
-                }
                 else
                 {
+                    reff.child("SubW1").setValue(W1);
+                }
+
+                if(W2.equals("Выберите предмет") || W2.equals("2. Выберите предмет")) {
                     reff.child("SubW2").removeValue();
                 }
-
-                if(W3.length()!=0) {
-                    reff.child("SubW3").setValue(W3);
-                }
                 else
                 {
+                    reff.child("SubW2").setValue(W2);
+                }
+
+                if(W3.equals("Выберите предмет") || W3.equals("3. Выберите предмет")) {
                     reff.child("SubW3").removeValue();
                 }
-
-                if(W4.length()!=0) {
-                    reff.child("SubW4").setValue(W4);
-                }
                 else
                 {
+                    reff.child("SubW3").setValue(W3);
+                }
+
+                if(W4.equals("Выберите предмет") || W4.equals("4. Выберите предмет")) {
                     reff.child("SubW4").removeValue();
                 }
-
-                if(W5.length()!=0) {
-                    reff.child("SubW5").setValue(W5);
-                }
                 else
                 {
+                    reff.child("SubW4").setValue(W4);
+                }
+
+                if(W5.equals("Выберите предмет") || W5.equals("5. Выберите предмет")) {
                     reff.child("SubW5").removeValue();
                 }
-
-                if(W6.length()!=0) {
-                    reff.child("SubW6").setValue(W6);
-                }
                 else
                 {
+                    reff.child("SubW5").setValue(W5);
+                }
+
+                if(W6.equals("Выберите предмет") || W6.equals("6. Выберите предмет")) {
                     reff.child("SubW6").removeValue();
                 }
-
-                if(W7.length()!=0) {
-                    reff.child("SubW7").setValue(W7);
-                }
                 else
                 {
+                    reff.child("SubW6").setValue(W6);
+                }
+
+                if(W7.equals("Выберите предмет") || W7.equals("7. Выберите предмет")) {
                     reff.child("SubW7").removeValue();
                 }
+                else
+                {
+                    reff.child("SubW7").setValue(W7);
+                }
 
-                if(W8.length()!=0) {
-                    reff.child("SubW8").setValue(W8);
+                if(W8.equals("Выберите предмет") || W8.equals("8. Выберите предмет")) {
+                    reff.child("SubW8").removeValue();
                 }
                 else
                 {
-                    reff.child("SubW8").removeValue();
+                    reff.child("SubW8").setValue(W8);
                 }
-
-                /*SPEditor.putString("W1",W1);
-                SPEditor.apply();
-                SPEditor.putString("W2",W2);
-                SPEditor.commit();
-                SPEditor.putString("W3",W3);
-                SPEditor.commit();
-                SPEditor.putString("W4",W4);
-                SPEditor.commit();
-                SPEditor.putString("W5",W5);
-                SPEditor.commit();
-                SPEditor.putString("W6",W6);
-                SPEditor.commit();
-                SPEditor.putString("W7",W7);
-                SPEditor.commit();
-                SPEditor.putString("W8",W8);
-                SPEditor.commit();*/
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.container, new SettingsStudyMenuFragment());
