@@ -1,5 +1,7 @@
 package ru.shkolaandstudents.ui.main;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -7,13 +9,15 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
@@ -30,9 +34,7 @@ import ru.shkolaandstudents.R;
 public class SetFridayFragment extends Fragment implements OnBackPressedListener {
 
     Button btnSat,btnHelp;
-    EditText etFr1,etFr2,etFr3,etFr4,etFr5,etFr6,etFr7,etFr8;
-    SharedPreferences SP;
-    SharedPreferences.Editor SPEditor;
+    TextView etFr1,etFr2,etFr3,etFr4,etFr5,etFr6,etFr7,etFr8;
     TextView title;
     DatabaseReference reff;
 
@@ -55,7 +57,7 @@ public class SetFridayFragment extends Fragment implements OnBackPressedListener
         title.setText(getResources().getString(R.string.change_rasp_f));
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -74,7 +76,7 @@ public class SetFridayFragment extends Fragment implements OnBackPressedListener
                 }
                 else
                 {
-                    etFr1.setText("");
+                    etFr1.setText(R.string.SetSub1);
                 }
 
                 if (snapshot.child("SubFr2").exists()) {
@@ -82,7 +84,7 @@ public class SetFridayFragment extends Fragment implements OnBackPressedListener
                 }
                 else
                 {
-                    etFr2.setText("");
+                    etFr2.setText(R.string.SetSub2);
                 }
 
                 if (snapshot.child("SubFr3").exists()) {
@@ -90,7 +92,7 @@ public class SetFridayFragment extends Fragment implements OnBackPressedListener
                 }
                 else
                 {
-                    etFr3.setText("");
+                    etFr3.setText(R.string.SetSub3);
                 }
 
                 if (snapshot.child("SubFr4").exists()) {
@@ -98,7 +100,7 @@ public class SetFridayFragment extends Fragment implements OnBackPressedListener
                 }
                 else
                 {
-                    etFr4.setText("");
+                    etFr4.setText(R.string.SetSub4);
                 }
 
                 if (snapshot.child("SubFr5").exists()) {
@@ -106,7 +108,7 @@ public class SetFridayFragment extends Fragment implements OnBackPressedListener
                 }
                 else
                 {
-                    etFr5.setText("");
+                    etFr5.setText(R.string.SetSub5);
                 }
 
                 if (snapshot.child("SubFr6").exists()) {
@@ -114,7 +116,7 @@ public class SetFridayFragment extends Fragment implements OnBackPressedListener
                 }
                 else
                 {
-                    etFr6.setText("");
+                    etFr6.setText(R.string.SetSub6);
                 }
 
                 if (snapshot.child("SubFr7").exists()) {
@@ -122,7 +124,7 @@ public class SetFridayFragment extends Fragment implements OnBackPressedListener
                 }
                 else
                 {
-                    etFr7.setText("");
+                    etFr7.setText(R.string.SetSub7);
                 }
 
                 if (snapshot.child("SubFr8").exists()) {
@@ -130,20 +132,13 @@ public class SetFridayFragment extends Fragment implements OnBackPressedListener
                 }
                 else
                 {
-                    etFr8.setText("");
+                    etFr8.setText(R.string.SetSub8);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                etFr1.setText("");
-                etFr2.setText("");
-                etFr3.setText("");
-                etFr4.setText("");
-                etFr5.setText("");
-                etFr6.setText("");
-                etFr7.setText("");
-                etFr8.setText("");
+
             }
         });
 
@@ -187,34 +182,310 @@ public class SetFridayFragment extends Fragment implements OnBackPressedListener
             }
         });
 
-        SP = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        SPEditor = SP.edit();
+        etFr1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
 
-        String sFr1 = SP.getString("Fr1", "");
-        etFr1.setText(sFr1);
-        String sFr2 = SP.getString("Fr2", "");
-        etFr2.setText(sFr2);
-        String sFr3 = SP.getString("Fr3", "");
-        etFr3.setText(sFr3);
-        String sFr4 = SP.getString("Fr4", "");
-        etFr4.setText(sFr4);
-        String sFr5 = SP.getString("Fr5", "");
-        etFr5.setText(sFr5);
-        String sFr6 = SP.getString("Fr6", "");
-        etFr6.setText(sFr6);
-        String sFr7 = SP.getString("Fr7", "");
-        etFr7.setText(sFr7);
-        String sFr8 = SP.getString("Fr8", "");
-        etFr8.setText(sFr8);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 1 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
 
-        etFr1.setText(sFr1);
-        etFr2.setText(sFr2);
-        etFr3.setText(sFr3);
-        etFr4.setText(sFr4);
-        etFr5.setText(sFr5);
-        etFr6.setText(sFr6);
-        etFr7.setText(sFr7);
-        etFr8.setText(sFr8);
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etFr1.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etFr2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 2 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etFr2.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etFr3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 3 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etFr3.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etFr4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 4 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etFr4.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etFr5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 5 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etFr5.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etFr6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 6 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etFr6.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        etFr7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 7 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etFr7.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+
+        etFr8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                builder.setTitle("Выберите 8 предмет");
+                builder.setView(view);
+                final Spinner spinner = view.findViewById(R.id.spinner1);
+
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity()
+                        ,android.R.layout.simple_spinner_item
+                        ,getResources().getStringArray(R.array.School_subject));
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                spinner.setAdapter(arrayAdapter);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        etFr8.setText(spinner.getSelectedItem().toString());
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
+        ImageView delFr1Sub = v.findViewById(R.id.delFr1Sub);
+        delFr1Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubFr1").removeValue();
+                etFr1.setText(R.string.SetSub1);
+            }
+        });
+
+        ImageView delFr2Sub = v.findViewById(R.id.delFr2Sub);
+        delFr2Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubFr2").removeValue();
+                etFr2.setText(R.string.SetSub2);
+            }
+        });
+
+        ImageView delFr3Sub = v.findViewById(R.id.delFr3Sub);
+        delFr3Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubFr3").removeValue();
+                etFr3.setText(R.string.SetSub3);
+            }
+        });
+
+        ImageView delFr4Sub = v.findViewById(R.id.delFr4Sub);
+        delFr4Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubFr4").removeValue();
+                etFr4.setText(R.string.SetSub4);
+            }
+        });
+
+        ImageView delFr5Sub = v.findViewById(R.id.delFr5Sub);
+        delFr5Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubFr5").removeValue();
+                etFr5.setText(R.string.SetSub5);
+            }
+        });
+
+        ImageView delFr6Sub = v.findViewById(R.id.delFr6Sub);
+        delFr6Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubFr6").removeValue();
+                etFr6.setText(R.string.SetSub6);
+            }
+        });
+
+        ImageView delFr7Sub = v.findViewById(R.id.delFr7Sub);
+        delFr7Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubFr7").removeValue();
+                etFr7.setText(R.string.SetSub7);
+            }
+        });
+
+        ImageView delFr8Sub = v.findViewById(R.id.delFr8Sub);
+        delFr8Sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reff.child("SubFr8").removeValue();
+                etFr8.setText(R.string.SetSub8);
+            }
+        });
 
         btnSat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,87 +500,70 @@ public class SetFridayFragment extends Fragment implements OnBackPressedListener
                 String Fr7 = etFr7.getText().toString();
                 String Fr8 = etFr8.getText().toString();
 
-                reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                if(Fr1.length()!=0) {
-                    reff.child("SubFr1").setValue(Fr1);
-                }
-                else
-                {
+                reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
+                if(Fr1.equals("Выберите предмет") || Fr1.equals("1. Выберите предмет")) {
                     reff.child("SubFr1").removeValue();
                 }
-
-                if(Fr2.length()!=0) {
-                    reff.child("SubFr2").setValue(Fr2);
-                }
                 else
                 {
+                    reff.child("SubFr1").setValue(Fr1);
+                }
+
+                if(Fr2.equals("Выберите предмет") || Fr2.equals("2. Выберите предмет")) {
                     reff.child("SubFr2").removeValue();
                 }
-
-                if(Fr3.length()!=0) {
-                    reff.child("SubFr3").setValue(Fr3);
-                }
                 else
                 {
+                    reff.child("SubFr2").setValue(Fr2);
+                }
+
+                if(Fr3.equals("Выберите предмет") || Fr3.equals("3. Выберите предмет")) {
                     reff.child("SubFr3").removeValue();
                 }
-
-                if(Fr4.length()!=0) {
-                    reff.child("SubFr4").setValue(Fr4);
-                }
                 else
                 {
+                    reff.child("SubFr3").setValue(Fr3);
+                }
+
+                if(Fr4.equals("Выберите предмет") || Fr4.equals("4. Выберите предмет")) {
                     reff.child("SubFr4").removeValue();
                 }
-
-                if(Fr5.length()!=0) {
-                    reff.child("SubFr5").setValue(Fr5);
-                }
                 else
                 {
+                    reff.child("SubFr4").setValue(Fr4);
+                }
+
+                if(Fr5.equals("Выберите предмет") || Fr5.equals("5. Выберите предмет")) {
                     reff.child("SubFr5").removeValue();
                 }
-
-                if(Fr6.length()!=0) {
-                    reff.child("SubFr6").setValue(Fr6);
-                }
                 else
                 {
+                    reff.child("SubFr5").setValue(Fr5);
+                }
+
+                if(Fr6.equals("Выберите предмет") || Fr6.equals("6. Выберите предмет")) {
                     reff.child("SubFr6").removeValue();
                 }
-
-                if(Fr7.length()!=0) {
-                    reff.child("SubFr7").setValue(Fr7);
-                }
                 else
                 {
+                    reff.child("SubFr6").setValue(Fr6);
+                }
+
+                if(Fr7.equals("Выберите предмет") || Fr7.equals("7. Выберите предмет")) {
                     reff.child("SubFr7").removeValue();
                 }
+                else
+                {
+                    reff.child("SubFr7").setValue(Fr7);
+                }
 
-                if(Fr8.length()!=0) {
-                    reff.child("SubFr8").setValue(Fr8);
+                if(Fr8.equals("Выберите предмет") || Fr8.equals("8. Выберите предмет")) {
+                    reff.child("SubFr8").removeValue();
                 }
                 else
                 {
-                    reff.child("SubFr8").removeValue();
+                    reff.child("SubFr8").setValue(Fr8);
                 }
-
-                /*SPEditor.putString("Fr1",Fr1);
-                SPEditor.commit();
-                SPEditor.putString("Fr2",Fr2);
-                SPEditor.commit();
-                SPEditor.putString("Fr3",Fr3);
-                SPEditor.commit();
-                SPEditor.putString("Fr4",Fr4);
-                SPEditor.commit();
-                SPEditor.putString("Fr5",Fr5);
-                SPEditor.commit();
-                SPEditor.putString("Fr6",Fr6);
-                SPEditor.commit();
-                SPEditor.putString("Fr7",Fr7);
-                SPEditor.commit();
-                SPEditor.putString("Fr8",Fr8);
-                SPEditor.commit();*/
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.container, new SettingsStudyMenuFragment());
