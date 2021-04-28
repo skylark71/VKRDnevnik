@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.type.DateTime;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
@@ -40,6 +47,9 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
     String M1,M2,M3,M4,M5,M6,M7,M8;
     SharedPreferences.Editor SPEditor;
     DatabaseReference reff;
+
+    int i = 0;
+    int cnt = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -187,8 +197,7 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
         etM7DZ = v.findViewById(R.id.etM7DZ);
         etM8DZ = v.findViewById(R.id.etM8DZ);
 
-        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
+        final String[] arr_sub1 = new String[8];
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         reff.addValueEventListener(new ValueEventListener() {
@@ -204,10 +213,113 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
                 M7 = String.valueOf(snapshot.child("SubM7").getValue());
                 M8 = String.valueOf(snapshot.child("SubM8").getValue());
 
+                final String[] arr_sub = new String[8];
+                final String[] arr_set = new String[8];
+                arr_sub[0] = M1;
+                arr_sub[1] = M2;
+                arr_sub[2] = M3;
+                arr_sub[3] = M4;
+                arr_sub[4] = M5;
+                arr_sub[5] = M6;
+                arr_sub[6] = M7;
+                arr_sub[7] = M8;
+                final TextView[] arr = new TextView[8];
+
+                /*if(cnt ==0 ) {*/
+                /**
+                 * СОЗДАНИЕ МАССИВОВ VALUE
+                 * */
+                DatabaseReference reff1 = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Оценки");
+                reff1.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        for (DataSnapshot ds : snapshot.getChildren()) {
+                            final String str_sub = ds.getKey();
+                            for (int j = 0; j < 8; j++) {
+                                if (str_sub.equals(arr_sub[j])) {
+                                    final String view_ocenka = "tvOcenkaM" + (i + 1);
+                                    arr_set[i] = view_ocenka;
+                                    arr_sub1[i] = str_sub;
+                                    i++;
+                                }
+                            }
+
+                        }
+
+
+                        /**
+                         * ПОПЫТКА VALUE SET НА ТЕКСТЫ
+                         * */
+                        for (int ii = 0; ii < i; ii++) {
+                            DatabaseReference reff2 = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Оценки").child(arr_sub1[ii]);
+                            /**
+                             * ПОПРОБУЙ ARRAY РЕФЕРНСОВ
+                             */
+                            final int count = ii;
+                            reff2.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    for (DataSnapshot ds : snapshot.getChildren()) {
+                                        Calendar now = Calendar.getInstance();
+                                        //String monday = now.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
+                                        int weekday1 = now.get(Calendar.DAY_OF_WEEK);
+                                        int days1 = ((Calendar.SATURDAY - weekday1 + 2) % 7)-7;
+                                        now.add(Calendar.DAY_OF_YEAR, days1);
+                                        Date date1 = now.getTime();
+                                        String dayStr = new SimpleDateFormat("EEE").format(date1);
+
+                                        int Mn = 2;
+                                        Calendar now1 = Calendar.getInstance();
+                                        int weekday = now1.get(Calendar.DAY_OF_WEEK);
+                                        int days = ((Calendar.SATURDAY - weekday + Mn) % 7)-7;
+                                        now1.add(Calendar.DAY_OF_YEAR, days);
+                                        Date date = now1.getTime();
+                                        String dateStr = new SimpleDateFormat("dd/MM/yyyy").format(date);
+
+
+                                        String str_date = String.valueOf(ds.child("Дата").getValue());
+                                        if(str_date.equals(dateStr))
+                                        {
+                                            System.out.println("Test");
+                                        }
+                                        String str_day = String.valueOf(ds.child("День").getValue());
+                                        if(dayStr.equals(str_day)) {
+                                            String str_ocenka = String.valueOf(ds.child("Оценка").getValue());
+                                            int resIDdate = getResources().getIdentifier(arr_set[count], "id", getActivity().getPackageName());
+                                            arr[count] = ((TextView) v.findViewById(resIDdate));
+                                            arr[count].setText(str_ocenka);
+                                        }
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+                /*} else if (cnt == 1) {
+                    for (final int ii = 0; ii < i; i++) {
+
+                        cnt=0;
+                    }
+                }*/
+
+
+
                 if (snapshot.child("SubM1").exists()) {
                     tvM11.setText(M1);
-                }
-                else
+                } else
                 {
                     tvM11.setText("");
                 }
@@ -490,14 +602,14 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
                 }
                 else
                 {
-                    tvM1.setVisibility(View.VISIBLE);
+                    /*tvM1.setVisibility(View.VISIBLE);
                     tvM11.setVisibility(View.VISIBLE);
                     etM1DZ.setVisibility(View.VISIBLE);
                     tvTimeM1.setVisibility(View.VISIBLE);
                     tvTimeM2.setVisibility(View.VISIBLE);
                     tvTimeM3.setVisibility(View.VISIBLE);
                     tvTimeM4.setVisibility(View.VISIBLE);
-                    tvOcenkaM1.setVisibility(View.VISIBLE);
+                    tvOcenkaM1.setVisibility(View.VISIBLE);*/
                 }
 
                 //2 строка
@@ -517,14 +629,14 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
                 }
                 else
                 {
-                    tvM2.setVisibility(View.VISIBLE);
+                    /*tvM2.setVisibility(View.VISIBLE);
                     tvM22.setVisibility(View.VISIBLE);
                     etM2DZ.setVisibility(View.VISIBLE);
                     tvTimeM5.setVisibility(View.VISIBLE);
                     tvTimeM6.setVisibility(View.VISIBLE);
                     tvTimeM7.setVisibility(View.VISIBLE);
                     tvTimeM8.setVisibility(View.VISIBLE);
-                    tvOcenkaM2.setVisibility(View.VISIBLE);
+                    tvOcenkaM2.setVisibility(View.VISIBLE);*/
                 }
 
                 //3 строка
@@ -711,167 +823,9 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
         {
             etM1DZ.setWidth(120);
         }
-        
-
-        /*if(Mcb2.isChecked())
-        {
-            SP = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            SPEditor = SP.edit();
-            SPEditor.putInt("MCheck1",1);
-            SPEditor.apply();
-        }
-        else
-        {
-            SP = PreferenceManager.getDefaultSharedPreferences(getActivity());
-            SPEditor = SP.edit();
-            SPEditor.putInt("MCheck1",0);
-            SPEditor.commit();
-        }*/
-
-        /*etM1DZ.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Mcb1.setChecked(false);
-                SPEditor.putInt("MCheck1",1);
-                SPEditor.commit();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-
-
-
-        });
-
-        etM2DZ.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Mcb2.setChecked(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-
-        });
-
-        etM3DZ.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Mcb3.setChecked(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        etM4DZ.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Mcb4.setChecked(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        etM5DZ.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Mcb5.setChecked(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        etM6DZ.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Mcb6.setChecked(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        etM7DZ.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Mcb7.setChecked(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        etM8DZ.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Mcb8.setChecked(false);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });*/
-
 
         loadText();
+
 
         return v;
     }
