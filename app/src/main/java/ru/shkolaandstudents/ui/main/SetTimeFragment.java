@@ -154,7 +154,7 @@ public class SetTimeFragment extends Fragment implements OnBackPressedListener {
         SPEditor = SP.edit();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -507,7 +507,7 @@ public class SetTimeFragment extends Fragment implements OnBackPressedListener {
                 String T83 = etTime83.getText().toString();
                 String T84 = etTime84.getText().toString();
 
-                reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");;
                 if(T11.length()!=0) {
                     reff.child("T11").setValue(T11);
                 }
@@ -763,70 +763,7 @@ public class SetTimeFragment extends Fragment implements OnBackPressedListener {
                 {
                     reff.child("T84").removeValue();
                 }
-                /*SPEditor.putString("T11", T11);
-                SPEditor.apply();
-                SPEditor.putString("T12", T12);
-                SPEditor.apply();
-                SPEditor.putString("T13", T13);
-                SPEditor.apply();
-                SPEditor.putString("T14", T14);
-                SPEditor.apply();
-                SPEditor.putString("T21", T21);
-                SPEditor.apply();
-                SPEditor.putString("T22", T22);
-                SPEditor.apply();
-                SPEditor.putString("T23", T23);
-                SPEditor.apply();
-                SPEditor.putString("T24", T24);
-                SPEditor.apply();
-                SPEditor.putString("T31", T31);
-                SPEditor.apply();
-                SPEditor.putString("T32", T32);
-                SPEditor.apply();
-                SPEditor.putString("T33", T33);
-                SPEditor.apply();
-                SPEditor.putString("T34", T34);
-                SPEditor.apply();
-                SPEditor.putString("T41", T41);
-                SPEditor.apply();
-                SPEditor.putString("T42", T42);
-                SPEditor.apply();
-                SPEditor.putString("T43", T43);
-                SPEditor.apply();
-                SPEditor.putString("T44", T44);
-                SPEditor.apply();
-                SPEditor.putString("T51", T51);
-                SPEditor.apply();
-                SPEditor.putString("T52", T52);
-                SPEditor.apply();
-                SPEditor.putString("T53", T53);
-                SPEditor.apply();
-                SPEditor.putString("T54", T54);
-                SPEditor.apply();
-                SPEditor.putString("T61", T61);
-                SPEditor.apply();
-                SPEditor.putString("T62", T62);
-                SPEditor.apply();
-                SPEditor.putString("T63", T63);
-                SPEditor.apply();
-                SPEditor.putString("T64", T64);
-                SPEditor.apply();
-                SPEditor.putString("T71", T71);
-                SPEditor.apply();
-                SPEditor.putString("T72", T72);
-                SPEditor.apply();
-                SPEditor.putString("T73", T73);
-                SPEditor.apply();
-                SPEditor.putString("T74", T74);
-                SPEditor.apply();
-                SPEditor.putString("T81", T81);
-                SPEditor.apply();
-                SPEditor.putString("T82", T82);
-                SPEditor.apply();
-                SPEditor.putString("T83", T83);
-                SPEditor.apply();
-                SPEditor.putString("T84", T84);
-                SPEditor.apply();*/
+
 
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.container, new SettingsStudyMenuFragment());

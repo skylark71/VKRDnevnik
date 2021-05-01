@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.getkeepsafe.taptargetview.TapTarget;
@@ -41,15 +42,12 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
     TextView tvM11,tvM22,tvM33,tvM44,tvM55,tvM66,tvM77,tvM88,tvM1,tvM2,tvM3,tvM4,tvM5,tvM6,tvM7,tvM8,tvTimeM1,tvTimeM2,tvTimeM3,tvTimeM4,tvTimeM5,tvTimeM6,tvTimeM7,tvTimeM8,tvTimeM9,tvTimeM10,tvTimeM111,tvTimeM12,tvTimeM13,tvTimeM14,tvTimeM15,tvTimeM16,tvTimeM17,tvTimeM18,tvTimeM19,tvTimeM20,tvTimeM21,tvTimeM222,tvTimeM23,tvTimeM24,tvTimeM25,tvTimeM26,tvTimeM27,tvTimeM28,tvTimeM29,tvTimeM30,tvTimeM31,tvTimeM32;
     EditText etM1DZ,etM2DZ,etM3DZ,etM4DZ,etM5DZ,etM6DZ,etM7DZ,etM8DZ;
     TextView tvTimeM11,tvTimeM22,tvTimeM33,tvTimeM51,tvTimeM61,tvTimeM71,tvTimeM91,tvTimeM101,tvTimeM112,tvTimeM131,tvTimeM141,tvTimeM151,tvTimeM171,tvTimeM181,tvTimeM191,tvTimeM211,tvTimeM221,tvTimeM231,tvTimeM251,tvTimeM261,tvTimeM271,tvTimeM291,tvTimeM301,tvTimeM311;
-    //CheckBox Mcb1,Mcb2,Mcb3,Mcb4,Mcb5,Mcb6,Mcb7,Mcb8;
     TextView tvOcenkaM1, tvOcenkaM2, tvOcenkaM3, tvOcenkaM4, tvOcenkaM5, tvOcenkaM6, tvOcenkaM7, tvOcenkaM8;
     Button btnHelp;
     String M1,M2,M3,M4,M5,M6,M7,M8;
-    SharedPreferences.Editor SPEditor;
     DatabaseReference reff;
 
     int i = 0;
-    int cnt = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -148,9 +146,9 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
         tvOcenkaM7 = v.findViewById(R.id.tvOcenkaM7);
         tvOcenkaM8 = v.findViewById(R.id.tvOcenkaM8);
 
-        tvOcenkaM3.setText("3");
+        /*tvOcenkaM3.setText("3");
         tvOcenkaM4.setText("4");
-        tvOcenkaM5.setText("5");
+        tvOcenkaM5.setText("5");*/
 
 
         tvM11 = v.findViewById(R.id.tvM11); etM2DZ = v.findViewById(R.id.etM2DZ);
@@ -199,7 +197,7 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
 
         final String[] arr_sub1 = new String[8];
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");;
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -225,7 +223,6 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
                 arr_sub[7] = M8;
                 final TextView[] arr = new TextView[8];
 
-                /*if(cnt ==0 ) {*/
                 /**
                  * СОЗДАНИЕ МАССИВОВ VALUE
                  * */
@@ -277,7 +274,6 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
                                         Date date = now1.getTime();
                                         String dateStr = new SimpleDateFormat("dd/MM/yyyy").format(date);
 
-
                                         String str_date = String.valueOf(ds.child("Дата").getValue());
                                         if(str_date.equals(dateStr))
                                         {
@@ -307,14 +303,6 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
 
                     }
                 });
-
-                /*} else if (cnt == 1) {
-                    for (final int ii = 0; ii < i; i++) {
-
-                        cnt=0;
-                    }
-                }*/
-
 
 
                 if (snapshot.child("SubM1").exists()) {
@@ -419,87 +407,6 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
                 String sT82 = String.valueOf(snapshot.child("T82").getValue());
                 String sT83 = String.valueOf(snapshot.child("T83").getValue());
                 String sT84 = String.valueOf(snapshot.child("T84").getValue());
-                
-                
-                if (sT11.equals("null")) {
-                    tvTimeM11.setVisibility(View.GONE);
-                    tvTimeM22.setVisibility(View.GONE);
-                    tvTimeM33.setVisibility(View.GONE);
-                } else {
-                    tvTimeM11.setVisibility(View.VISIBLE);
-                    tvTimeM22.setVisibility(View.VISIBLE);
-                    tvTimeM33.setVisibility(View.VISIBLE);
-                }
-
-                if (sT21.equals("null")) {
-                    tvTimeM51.setVisibility(View.GONE);
-                    tvTimeM61.setVisibility(View.GONE);
-                    tvTimeM71.setVisibility(View.GONE);
-                } else {
-                    tvTimeM51.setVisibility(View.VISIBLE);
-                    tvTimeM61.setVisibility(View.VISIBLE);
-                    tvTimeM71.setVisibility(View.VISIBLE);
-                }
-
-                if (sT31.equals("null")) {
-                    tvTimeM91.setVisibility(View.GONE);
-                    tvTimeM101.setVisibility(View.GONE);
-                    tvTimeM112.setVisibility(View.GONE);
-                } else {
-                    tvTimeM91.setVisibility(View.VISIBLE);
-                    tvTimeM101.setVisibility(View.VISIBLE);
-                    tvTimeM112.setVisibility(View.VISIBLE);
-                }
-
-                if (sT41.equals("null")) {
-                    tvTimeM131.setVisibility(View.GONE);
-                    tvTimeM141.setVisibility(View.GONE);
-                    tvTimeM151.setVisibility(View.GONE);
-                } else {
-                    tvTimeM131.setVisibility(View.VISIBLE);
-                    tvTimeM141.setVisibility(View.VISIBLE);
-                    tvTimeM151.setVisibility(View.VISIBLE);
-                }
-
-                if (sT51.equals("null")) {
-                    tvTimeM171.setVisibility(View.GONE);
-                    tvTimeM181.setVisibility(View.GONE);
-                    tvTimeM191.setVisibility(View.GONE);
-                } else {
-                    tvTimeM171.setVisibility(View.VISIBLE);
-                    tvTimeM181.setVisibility(View.VISIBLE);
-                    tvTimeM191.setVisibility(View.VISIBLE);
-                }
-
-                if (sT61.equals("null")) {
-                    tvTimeM211.setVisibility(View.GONE);
-                    tvTimeM231.setVisibility(View.GONE);
-                    tvTimeM221.setVisibility(View.GONE);
-                } else {
-                    tvTimeM211.setVisibility(View.VISIBLE);
-                    tvTimeM231.setVisibility(View.VISIBLE);
-                    tvTimeM221.setVisibility(View.VISIBLE);
-                }
-
-                if (sT71.equals("null")) {
-                    tvTimeM251.setVisibility(View.GONE);
-                    tvTimeM261.setVisibility(View.GONE);
-                    tvTimeM271.setVisibility(View.GONE);
-                } else {
-                    tvTimeM251.setVisibility(View.VISIBLE);
-                    tvTimeM261.setVisibility(View.VISIBLE);
-                    tvTimeM271.setVisibility(View.VISIBLE);
-                }
-
-                if (sT81.equals("null")) {
-                    tvTimeM291.setVisibility(View.GONE);
-                    tvTimeM301.setVisibility(View.GONE);
-                    tvTimeM311.setVisibility(View.GONE);
-                } else {
-                    tvTimeM291.setVisibility(View.VISIBLE);
-                    tvTimeM301.setVisibility(View.VISIBLE);
-                    tvTimeM311.setVisibility(View.VISIBLE);
-                }
 
                 //////////////////
                 tvTimeM1.setText(sT11);
@@ -544,6 +451,143 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
                 ///////////////////////
 
 
+                if(sT11.equals("null"))
+                {
+                    tvTimeM11.setVisibility(View.GONE);
+                    tvTimeM22.setVisibility(View.GONE);
+                    tvTimeM33.setVisibility(View.GONE);
+                    tvTimeM1.setVisibility(View.GONE);
+                    tvTimeM2.setVisibility(View.GONE);
+                    tvTimeM3.setVisibility(View.GONE);
+                    tvTimeM4.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeM11.setVisibility(View.VISIBLE);
+                    tvTimeM22.setVisibility(View.VISIBLE);
+                    tvTimeM33.setVisibility(View.VISIBLE);
+                }
+
+                if(sT21.equals("null"))
+                {
+                    tvTimeM51.setVisibility(View.GONE);
+                    tvTimeM61.setVisibility(View.GONE);
+                    tvTimeM71.setVisibility(View.GONE);
+                    tvTimeM5.setVisibility(View.GONE);
+                    tvTimeM6.setVisibility(View.GONE);
+                    tvTimeM7.setVisibility(View.GONE);
+                    tvTimeM8.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeM51.setVisibility(View.VISIBLE);
+                    tvTimeM61.setVisibility(View.VISIBLE);
+                    tvTimeM71.setVisibility(View.VISIBLE);
+                }
+
+                if(sT31.equals("null"))
+                {
+                    tvTimeM91.setVisibility(View.GONE);
+                    tvTimeM101.setVisibility(View.GONE);
+                    tvTimeM112.setVisibility(View.GONE);
+                    tvTimeM9.setVisibility(View.GONE);
+                    tvTimeM10.setVisibility(View.GONE);
+                    tvTimeM111.setVisibility(View.GONE);
+                    tvTimeM12.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeM91.setVisibility(View.VISIBLE);
+                    tvTimeM101.setVisibility(View.VISIBLE);
+                    tvTimeM112.setVisibility(View.VISIBLE);
+                }
+
+                if(sT41.equals("null"))
+                {
+                    tvTimeM131.setVisibility(View.GONE);
+                    tvTimeM141.setVisibility(View.GONE);
+                    tvTimeM151.setVisibility(View.GONE);
+                    tvTimeM13.setVisibility(View.GONE);
+                    tvTimeM14.setVisibility(View.GONE);
+                    tvTimeM15.setVisibility(View.GONE);
+                    tvTimeM16.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeM131.setVisibility(View.VISIBLE);
+                    tvTimeM141.setVisibility(View.VISIBLE);
+                    tvTimeM151.setVisibility(View.VISIBLE);
+                }
+
+                if(sT51.equals("null"))
+                {
+                    tvTimeM171.setVisibility(View.GONE);
+                    tvTimeM181.setVisibility(View.GONE);
+                    tvTimeM191.setVisibility(View.GONE);
+                    tvTimeM17.setVisibility(View.GONE);
+                    tvTimeM18.setVisibility(View.GONE);
+                    tvTimeM19.setVisibility(View.GONE);
+                    tvTimeM20.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeM171.setVisibility(View.VISIBLE);
+                    tvTimeM181.setVisibility(View.VISIBLE);
+                    tvTimeM191.setVisibility(View.VISIBLE);
+                }
+
+                if(sT61.equals("null"))
+                {
+                    tvTimeM211.setVisibility(View.GONE);
+                    tvTimeM231.setVisibility(View.GONE);
+                    tvTimeM221.setVisibility(View.GONE);
+                    tvTimeM21.setVisibility(View.GONE);
+                    tvTimeM222.setVisibility(View.GONE);
+                    tvTimeM23.setVisibility(View.GONE);
+                    tvTimeM24.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeM211.setVisibility(View.VISIBLE);
+                    tvTimeM231.setVisibility(View.VISIBLE);
+                    tvTimeM221.setVisibility(View.VISIBLE);
+                }
+
+                if(sT71.equals("null"))
+                {
+                    tvTimeM251.setVisibility(View.GONE);
+                    tvTimeM261.setVisibility(View.GONE);
+                    tvTimeM271.setVisibility(View.GONE);
+                    tvTimeM25.setVisibility(View.GONE);
+                    tvTimeM26.setVisibility(View.GONE);
+                    tvTimeM27.setVisibility(View.GONE);
+                    tvTimeM28.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeM251.setVisibility(View.VISIBLE);
+                    tvTimeM261.setVisibility(View.VISIBLE);
+                    tvTimeM271.setVisibility(View.VISIBLE);
+                }
+
+                if(sT81.equals("null"))
+                {
+                    tvTimeM291.setVisibility(View.GONE);
+                    tvTimeM301.setVisibility(View.GONE);
+                    tvTimeM311.setVisibility(View.GONE);
+                    tvTimeM29.setVisibility(View.GONE);
+                    tvTimeM30.setVisibility(View.GONE);
+                    tvTimeM31.setVisibility(View.GONE);
+                    tvTimeM32.setVisibility(View.GONE);
+                }
+                else
+                {
+                    tvTimeM291.setVisibility(View.VISIBLE);
+                    tvTimeM301.setVisibility(View.VISIBLE);
+                    tvTimeM311.setVisibility(View.VISIBLE);
+                }
+
+
                 if (!M1.equals("null") && M1.length()>7)
                 {
                     tvM11.setPadding(0,0,0,8);
@@ -584,233 +628,97 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
                     tvM88.setPadding(0,0,0,8);
                 }
 
+                LinearLayout ll_row1 = v.findViewById(R.id.studentM_row1);
+                LinearLayout ll_row2 = v.findViewById(R.id.studentM_row2);
+                LinearLayout ll_row3 = v.findViewById(R.id.studentM_row3);
+                LinearLayout ll_row4 = v.findViewById(R.id.studentM_row4);
+                LinearLayout ll_row5 = v.findViewById(R.id.studentM_row5);
+                LinearLayout ll_row6 = v.findViewById(R.id.studentM_row6);
+                LinearLayout ll_row7 = v.findViewById(R.id.studentM_row7);
+                LinearLayout ll_row8 = v.findViewById(R.id.studentM_row8);
 
                 //1 СТРОКА
                 if (M1.equals("null"))
                 {
-                    tvM1.setVisibility(View.GONE);
-                    tvM11.setVisibility(View.GONE);
-                    etM1DZ.setVisibility(View.GONE);
-                    tvTimeM1.setVisibility(View.GONE);
-                    tvTimeM2.setVisibility(View.GONE);
-                    tvTimeM3.setVisibility(View.GONE);
-                    tvTimeM4.setVisibility(View.GONE);
-                    tvOcenkaM1.setVisibility(View.GONE);
-                    tvTimeM11.setVisibility(View.GONE);
-                    tvTimeM22.setVisibility(View.GONE);
-                    tvTimeM33.setVisibility(View.GONE);
+                    ll_row1.setVisibility(View.GONE);
                 }
                 else
                 {
-                    /*tvM1.setVisibility(View.VISIBLE);
-                    tvM11.setVisibility(View.VISIBLE);
-                    etM1DZ.setVisibility(View.VISIBLE);
-                    tvTimeM1.setVisibility(View.VISIBLE);
-                    tvTimeM2.setVisibility(View.VISIBLE);
-                    tvTimeM3.setVisibility(View.VISIBLE);
-                    tvTimeM4.setVisibility(View.VISIBLE);
-                    tvOcenkaM1.setVisibility(View.VISIBLE);*/
+                    ll_row1.setVisibility(View.VISIBLE);
                 }
 
                 //2 строка
                 if (M2.equals("null"))
                 {
-                    tvM2.setVisibility(View.GONE);
-                    tvM22.setVisibility(View.GONE);
-                    etM2DZ.setVisibility(View.GONE);
-                    tvTimeM5.setVisibility(View.GONE);
-                    tvTimeM6.setVisibility(View.GONE);
-                    tvTimeM7.setVisibility(View.GONE);
-                    tvTimeM8.setVisibility(View.GONE);
-                    tvOcenkaM2.setVisibility(View.GONE);
-                    tvTimeM51.setVisibility(View.GONE);
-                    tvTimeM61.setVisibility(View.GONE);
-                    tvTimeM71.setVisibility(View.GONE);
+                    ll_row2.setVisibility(View.GONE);
                 }
                 else
                 {
-                    /*tvM2.setVisibility(View.VISIBLE);
-                    tvM22.setVisibility(View.VISIBLE);
-                    etM2DZ.setVisibility(View.VISIBLE);
-                    tvTimeM5.setVisibility(View.VISIBLE);
-                    tvTimeM6.setVisibility(View.VISIBLE);
-                    tvTimeM7.setVisibility(View.VISIBLE);
-                    tvTimeM8.setVisibility(View.VISIBLE);
-                    tvOcenkaM2.setVisibility(View.VISIBLE);*/
+                    ll_row2.setVisibility(View.VISIBLE);
                 }
 
                 //3 строка
                 if (M3.equals("null"))
                 {
-                    tvM3.setVisibility(View.GONE);
-                    tvM33.setVisibility(View.GONE);
-                    etM3DZ.setVisibility(View.GONE);
-                    tvTimeM9.setVisibility(View.GONE);
-                    tvTimeM10.setVisibility(View.GONE);
-                    tvTimeM111.setVisibility(View.GONE);
-                    tvTimeM12.setVisibility(View.GONE);
-                    tvOcenkaM3.setVisibility(View.GONE);
-                    tvTimeM91.setVisibility(View.GONE);
-                    tvTimeM101.setVisibility(View.GONE);
-                    tvTimeM112.setVisibility(View.GONE);
+                    ll_row3.setVisibility(View.GONE);
                 }
                 else
                 {
-                    tvM3.setVisibility(View.VISIBLE);
-                    tvM33.setVisibility(View.VISIBLE);
-                    etM3DZ.setVisibility(View.VISIBLE);
-                    tvTimeM9.setVisibility(View.VISIBLE);
-                    tvTimeM10.setVisibility(View.VISIBLE);
-                    tvTimeM111.setVisibility(View.VISIBLE);
-                    tvTimeM12.setVisibility(View.VISIBLE);
-                    tvOcenkaM3.setVisibility(View.VISIBLE);
+                    ll_row3.setVisibility(View.VISIBLE);
                 }
 
                 //4 строка
                 if (M4.equals("null"))
                 {
-                    tvM4.setVisibility(View.GONE);
-                    tvM44.setVisibility(View.GONE);
-                    etM4DZ.setVisibility(View.GONE);
-                    tvTimeM13.setVisibility(View.GONE);
-                    tvTimeM14.setVisibility(View.GONE);
-                    tvTimeM15.setVisibility(View.GONE);
-                    tvTimeM16.setVisibility(View.GONE);
-                    tvOcenkaM4.setVisibility(View.GONE);
-                    tvTimeM131.setVisibility(View.GONE);
-                    tvTimeM141.setVisibility(View.GONE);
-                    tvTimeM151.setVisibility(View.GONE);
+                    ll_row4.setVisibility(View.GONE);
                 }
                 else
                 {
-                    tvM4.setVisibility(View.VISIBLE);
-                    tvM44.setVisibility(View.VISIBLE);
-                    etM4DZ.setVisibility(View.VISIBLE);
-                    tvTimeM13.setVisibility(View.VISIBLE);
-                    tvTimeM14.setVisibility(View.VISIBLE);
-                    tvTimeM15.setVisibility(View.VISIBLE);
-                    tvTimeM16.setVisibility(View.VISIBLE);
-                    tvOcenkaM4.setVisibility(View.VISIBLE);
+                    ll_row4.setVisibility(View.VISIBLE);
                 }
 
                 //5 строка
                 if (M5.equals("null"))
                 {
-                    tvM5.setVisibility(View.GONE);
-                    tvM55.setVisibility(View.GONE);
-                    etM5DZ.setVisibility(View.GONE);
-                    tvTimeM17.setVisibility(View.GONE);
-                    tvTimeM18.setVisibility(View.GONE);
-                    tvTimeM19.setVisibility(View.GONE);
-                    tvTimeM20.setVisibility(View.GONE);
-                    tvOcenkaM5.setVisibility(View.GONE);
-                    tvTimeM171.setVisibility(View.GONE);
-                    tvTimeM181.setVisibility(View.GONE);
-                    tvTimeM191.setVisibility(View.GONE);
+                    ll_row5.setVisibility(View.GONE);
                 }
                 else
                 {
-                    tvM5.setVisibility(View.VISIBLE);
-                    tvM55.setVisibility(View.VISIBLE);
-                    etM5DZ.setVisibility(View.VISIBLE);
-                    tvTimeM17.setVisibility(View.VISIBLE);
-                    tvTimeM18.setVisibility(View.VISIBLE);
-                    tvTimeM19.setVisibility(View.VISIBLE);
-                    tvTimeM20.setVisibility(View.VISIBLE);
-                    tvOcenkaM5.setVisibility(View.VISIBLE);
+                    ll_row5.setVisibility(View.VISIBLE);
                 }
 
                 //6 строка
                 if (M6.equals("null"))
                 {
-                    tvM6.setVisibility(View.GONE);
-                    tvM66.setVisibility(View.GONE);
-                    etM6DZ.setVisibility(View.GONE);
-                    tvTimeM21.setVisibility(View.GONE);
-                    tvTimeM222.setVisibility(View.GONE);
-                    tvTimeM23.setVisibility(View.GONE);
-                    tvTimeM24.setVisibility(View.GONE);
-                    tvOcenkaM6.setVisibility(View.GONE);
-                    tvTimeM211.setVisibility(View.GONE);
-                    tvTimeM231.setVisibility(View.GONE);
-                    tvTimeM221.setVisibility(View.GONE);
+                    ll_row6.setVisibility(View.GONE);
                 }
                 else
                 {
-                    tvM6.setVisibility(View.VISIBLE);
-                    tvM66.setVisibility(View.VISIBLE);
-                    etM6DZ.setVisibility(View.VISIBLE);
-                    tvTimeM21.setVisibility(View.VISIBLE);
-                    tvTimeM222.setVisibility(View.VISIBLE);
-                    tvTimeM23.setVisibility(View.VISIBLE);
-                    tvTimeM24.setVisibility(View.VISIBLE);
-                    tvOcenkaM6.setVisibility(View.VISIBLE);
+                    ll_row6.setVisibility(View.VISIBLE);
                 }
 
                 //7 строка
                 if (M7.equals("null"))
                 {
-                    tvM7.setVisibility(View.GONE);
-                    tvM77.setVisibility(View.GONE);
-                    etM7DZ.setVisibility(View.GONE);
-                    tvTimeM25.setVisibility(View.GONE);
-                    tvTimeM26.setVisibility(View.GONE);
-                    tvTimeM27.setVisibility(View.GONE);
-                    tvTimeM28.setVisibility(View.GONE);
-                    tvOcenkaM7.setVisibility(View.GONE);
-                    tvTimeM251.setVisibility(View.GONE);
-                    tvTimeM261.setVisibility(View.GONE);
-                    tvTimeM271.setVisibility(View.GONE);
+                    ll_row7.setVisibility(View.GONE);
                 }
                 else
                 {
-                    tvM7.setVisibility(View.VISIBLE);
-                    tvM77.setVisibility(View.VISIBLE);
-                    etM7DZ.setVisibility(View.VISIBLE);
-                    tvTimeM25.setVisibility(View.VISIBLE);
-                    tvTimeM26.setVisibility(View.VISIBLE);
-                    tvTimeM27.setVisibility(View.VISIBLE);
-                    tvTimeM28.setVisibility(View.VISIBLE);
-                    tvOcenkaM7.setVisibility(View.VISIBLE);
+                    ll_row7.setVisibility(View.VISIBLE);
                 }
 
                 //8 строка
                 if (M8.equals("null"))
                 {
-                    tvM8.setVisibility(View.GONE);
-                    tvM88.setVisibility(View.GONE);
-                    etM8DZ.setVisibility(View.GONE);
-                    tvTimeM29.setVisibility(View.GONE);
-                    tvTimeM30.setVisibility(View.GONE);
-                    tvTimeM31.setVisibility(View.GONE);
-                    tvTimeM32.setVisibility(View.GONE);
-                    tvOcenkaM8.setVisibility(View.GONE);
-                    tvTimeM291.setVisibility(View.GONE);
-                    tvTimeM301.setVisibility(View.GONE);
-                    tvTimeM311.setVisibility(View.GONE);
+                    ll_row8.setVisibility(View.GONE);
                 }
                 else
                 {
-                    tvM8.setVisibility(View.VISIBLE);
-                    tvM88.setVisibility(View.VISIBLE);
-                    etM8DZ.setVisibility(View.VISIBLE);
-                    tvTimeM29.setVisibility(View.VISIBLE);
-                    tvTimeM30.setVisibility(View.VISIBLE);
-                    tvTimeM31.setVisibility(View.VISIBLE);
-                    tvTimeM32.setVisibility(View.VISIBLE);
-                    tvOcenkaM8.setVisibility(View.VISIBLE);
+                    ll_row8.setVisibility(View.VISIBLE);
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                tvM1.setText("");
-                tvM2.setText("");
-                tvM3.setText("");
-                tvM4.setText("");
-                tvM5.setText("");
-                tvM6.setText("");
-                tvM7.setText("");
-                tvM8.setText("");
             }
         });
 
@@ -997,144 +905,16 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
         });
     }
 
-
-
-    /*private void Ms1(final boolean isChecked)
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("Mcb1", isChecked);
-        editor.apply();
-    }
-
-    private boolean Ml1()
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean("Mcb1", false);
-    }
-
-    private void Ms2(final boolean isChecked)
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("Mcb2", isChecked);
-        editor.apply();
-    }
-
-    private boolean Ml2()
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean("Mcb2", false);
-    }
-
-    private void Ms3(final boolean isChecked)
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("Mcb3", isChecked);
-        editor.apply();
-    }
-
-    private boolean Ml3()
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean("Mcb3", false);
-    }
-
-    private void Ms4(final boolean isChecked)
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("Mcb4", isChecked);
-        editor.apply();
-    }
-
-    private boolean Ml4()
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean("Mcb4", false);
-    }
-
-    private void Ms5(final boolean isChecked)
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("Mcb5", isChecked);
-        editor.apply();
-    }
-
-    private boolean Ml5()
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean("Mcb5", false);
-    }
-
-    private void Ms6(final boolean isChecked)
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("Mcb6", isChecked);
-        editor.apply();
-    }
-
-    private boolean Ml6()
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean("Mcb6", false);
-    }
-
-    private void Ms7(final boolean isChecked)
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("Mcb7", isChecked);
-        editor.apply();
-    }
-
-    private boolean Ml7()
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean("Mcb7", false);
-    }
-
-    private void Ms8(final boolean isChecked)
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("Mcb8", isChecked);
-        editor.apply();
-    }
-
-    private boolean Ml8()
-    {
-        SharedPreferences sharedPreferences = this.getActivity().getPreferences(Context.MODE_PRIVATE);
-        return sharedPreferences.getBoolean("Mcb8", false);
-    }*/
-
     @Override
     public void onPause() {
         super.onPause();
-        /*Ms1(Mcb1.isChecked());
-        Ms2(Mcb2.isChecked());
-        Ms3(Mcb3.isChecked());
-        Ms4(Mcb4.isChecked());
-        Ms5(Mcb5.isChecked());
-        Ms6(Mcb6.isChecked());
-        Ms7(Mcb7.isChecked());
-        Ms8(Mcb8.isChecked());*/
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        /*Mcb1.setChecked(Ml1());
-        Mcb2.setChecked(Ml2());
-        Mcb3.setChecked(Ml3());
-        Mcb4.setChecked(Ml4());
-        Mcb5.setChecked(Ml5());
-        Mcb6.setChecked(Ml6());
-        Mcb7.setChecked(Ml7());
-        Mcb8.setChecked(Ml8());*/
+
     }
 
     @Override

@@ -37,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:id="@+id/studentM_row1"
             android:orientation="horizontal">
 
             <TextView
@@ -153,6 +154,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:id="@+id/studentM_row2"
             android:orientation="horizontal">
 
             <TextView
@@ -269,6 +271,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:id="@+id/studentM_row3"
             android:orientation="horizontal">
 
             <TextView
@@ -385,6 +388,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:id="@+id/studentM_row4"
             android:orientation="horizontal">
 
             <TextView
@@ -501,6 +505,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:id="@+id/studentM_row5"
             android:orientation="horizontal">
 
             <TextView
@@ -617,6 +622,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:id="@+id/studentM_row6"
             android:orientation="horizontal">
 
             <TextView
@@ -733,6 +739,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:id="@+id/studentM_row7"
             android:orientation="horizontal">
 
             <TextView
@@ -849,6 +856,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:id="@+id/studentM_row8"
             android:orientation="horizontal">
 
             <TextView
