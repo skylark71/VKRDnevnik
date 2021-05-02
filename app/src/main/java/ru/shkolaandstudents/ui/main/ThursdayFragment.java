@@ -38,11 +38,11 @@ import ru.shkolaandstudents.R;
 
 public class ThursdayFragment extends Fragment implements OnBackPressedListener {
 
-    TextView tvTh1,tvTh2,tvTh3,tvTh4,tvTh5,tvTh6,tvTh7,tvTh8,tvTimeTh11,tvTimeTh12,tvTimeTh13,tvTimeTh14,tvTimeTh15,tvTimeTh16,tvTimeTh17,tvTimeTh21,tvTimeTh22,tvTimeTh23,tvTimeTh24,tvTimeTh25,tvTimeTh26,tvTimeTh27,tvTimeTh31,tvTimeTh32,tvTimeTh33,tvTimeTh34,tvTimeTh35,tvTimeTh36,tvTimeTh37,tvTimeTh41,tvTimeTh42,tvTimeTh43,tvTimeTh44,tvTimeTh45,tvTimeTh46,tvTimeTh47,tvTimeTh51,tvTimeTh52,tvTimeTh53,tvTimeTh54,tvTimeTh55,tvTimeTh56,tvTimeTh57,tvTimeTh61,tvTimeTh62,tvTimeTh63,tvTimeTh64,tvTimeTh65,tvTimeTh66,tvTimeTh67,tvTimeTh71,tvTimeTh72,tvTimeTh73,tvTimeTh74,tvTimeTh75,tvTimeTh76,tvTimeTh77,tvTimeTh81,tvTimeTh82,tvTimeTh83,tvTimeTh84,tvTimeTh85,tvTimeTh86,tvTimeTh87,tvTh11,tvTh22,tvTh33,tvTh44,tvTh55,tvTh66,tvTh77,tvTh88;
-    EditText etTh1DZ,etTh2DZ,etTh3DZ,etTh4DZ,etTh5DZ,etTh6DZ,etTh7DZ,etTh8DZ;
+    TextView tvTh1, tvTh2, tvTh3, tvTh4, tvTh5, tvTh6, tvTh7, tvTh8, tvTimeTh11, tvTimeTh12, tvTimeTh13, tvTimeTh14, tvTimeTh15, tvTimeTh16, tvTimeTh17, tvTimeTh21, tvTimeTh22, tvTimeTh23, tvTimeTh24, tvTimeTh25, tvTimeTh26, tvTimeTh27, tvTimeTh31, tvTimeTh32, tvTimeTh33, tvTimeTh34, tvTimeTh35, tvTimeTh36, tvTimeTh37, tvTimeTh41, tvTimeTh42, tvTimeTh43, tvTimeTh44, tvTimeTh45, tvTimeTh46, tvTimeTh47, tvTimeTh51, tvTimeTh52, tvTimeTh53, tvTimeTh54, tvTimeTh55, tvTimeTh56, tvTimeTh57, tvTimeTh61, tvTimeTh62, tvTimeTh63, tvTimeTh64, tvTimeTh65, tvTimeTh66, tvTimeTh67, tvTimeTh71, tvTimeTh72, tvTimeTh73, tvTimeTh74, tvTimeTh75, tvTimeTh76, tvTimeTh77, tvTimeTh81, tvTimeTh82, tvTimeTh83, tvTimeTh84, tvTimeTh85, tvTimeTh86, tvTimeTh87, tvTh11, tvTh22, tvTh33, tvTh44, tvTh55, tvTh66, tvTh77, tvTh88;
+    EditText etTh1DZ, etTh2DZ, etTh3DZ, etTh4DZ, etTh5DZ, etTh6DZ, etTh7DZ, etTh8DZ;
     Button btnHelp;
     TextView tvOcenkaTh1, tvOcenkaTh2, tvOcenkaTh3, tvOcenkaTh4, tvOcenkaTh5, tvOcenkaTh6, tvOcenkaTh7, tvOcenkaTh8;
-    String Th1,Th2,Th3,Th4,Th5,Th6,Th7,Th8;
+    String Th1, Th2, Th3, Th4, Th5, Th6, Th7, Th8;
     DatabaseReference reff;
 
     @Override
@@ -261,7 +261,7 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                             final String str_sub = ds.getKey();
                             for (int j = 0; j < 8; j++) {
                                 if (str_sub.equals(arr_sub[j])) {
-                                    final String view_ocenka = "tvOcenkaM" + (i + 1);
+                                    final String view_ocenka = "tvOcenkaTh" + (i + 1);
                                     arr_set[i] = view_ocenka;
                                     arr_sub1[i] = str_sub;
                                     i++;
@@ -288,7 +288,7 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                                         Calendar now = Calendar.getInstance();
                                         //String monday = now.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
                                         int weekday1 = now.get(Calendar.DAY_OF_WEEK);
-                                        int days1 = ((Calendar.SATURDAY - weekday1 + 2) % 7)-7;
+                                        int days1 = ((Calendar.SATURDAY - weekday1 + 2) % 7) - 7;
                                         now.add(Calendar.DAY_OF_YEAR, days1);
                                         Date date1 = now.getTime();
                                         String dayStr = new SimpleDateFormat("EEE").format(date1);
@@ -296,18 +296,17 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                                         int Mn = 2;
                                         Calendar now1 = Calendar.getInstance();
                                         int weekday = now1.get(Calendar.DAY_OF_WEEK);
-                                        int days = ((Calendar.SATURDAY - weekday + Mn) % 7)-7;
+                                        int days = ((Calendar.SATURDAY - weekday + Mn) % 7) - 7;
                                         now1.add(Calendar.DAY_OF_YEAR, days);
                                         Date date = now1.getTime();
                                         String dateStr = new SimpleDateFormat("dd/MM/yyyy").format(date);
 
                                         String str_date = String.valueOf(ds.child("Дата").getValue());
-                                        if(str_date.equals(dateStr))
-                                        {
+                                        if (str_date.equals(dateStr)) {
                                             System.out.println("Test");
                                         }
                                         String str_day = String.valueOf(ds.child("День").getValue());
-                                        if(dayStr.equals(str_day)) {
+                                        if (dayStr.equals(str_day)) {
                                             String str_ocenka = String.valueOf(ds.child("Оценка").getValue());
                                             int resIDdate = getResources().getIdentifier(arr_set[count], "id", getActivity().getPackageName());
                                             arr[count] = ((TextView) v.findViewById(resIDdate));
@@ -336,65 +335,49 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                  */
                 if (snapshot.child("SubTh1").exists()) {
                     tvTh11.setText(Th1);
-                }
-                else
-                {
+                } else {
                     tvTh11.setText("");
                 }
 
                 if (snapshot.child("SubTh2").exists()) {
                     tvTh22.setText(Th2);
-                }
-                else
-                {
+                } else {
                     tvTh22.setText("");
                 }
 
                 if (snapshot.child("SubTh3").exists()) {
                     tvTh33.setText(Th3);
-                }
-                else
-                {
+                } else {
                     tvTh33.setText("");
                 }
 
                 if (snapshot.child("SubTh4").exists()) {
                     tvTh44.setText(Th4);
-                }
-                else
-                {
+                } else {
                     tvTh44.setText("");
                 }
 
                 if (snapshot.child("SubTh5").exists()) {
                     tvTh55.setText(Th5);
-                }
-                else
-                {
+                } else {
                     tvTh55.setText("");
                 }
 
                 if (snapshot.child("SubTh6").exists()) {
                     tvTh66.setText(Th6);
-                }
-                else
-                {
+                } else {
                     tvTh66.setText("");
                 }
 
                 if (snapshot.child("SubTh7").exists()) {
                     tvTh77.setText(Th7);
-                }
-                else
-                {
+                } else {
                     tvTh77.setText("");
                 }
 
                 if (snapshot.child("SubTh8").exists()) {
                     tvTh88.setText(Th8);
-                }
-                else
-                {
+                } else {
                     tvTh88.setText("");
                 }
 
@@ -488,8 +471,7 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                 /**
                  * Check value time for ui
                  */
-                if(sTh11.equals("null"))
-                {
+                if (sTh11.equals("null")) {
                     tvTimeTh11.setVisibility(View.GONE);
                     tvTimeTh12.setVisibility(View.GONE);
                     tvTimeTh13.setVisibility(View.GONE);
@@ -497,16 +479,13 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                     tvTimeTh15.setVisibility(View.GONE);
                     tvTimeTh16.setVisibility(View.GONE);
                     tvTimeTh17.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeTh12.setVisibility(View.VISIBLE);
                     tvTimeTh14.setVisibility(View.VISIBLE);
                     tvTimeTh16.setVisibility(View.VISIBLE);
                 }
 
-                if(sTh21.equals("null"))
-                {
+                if (sTh21.equals("null")) {
                     tvTimeTh21.setVisibility(View.GONE);
                     tvTimeTh22.setVisibility(View.GONE);
                     tvTimeTh23.setVisibility(View.GONE);
@@ -514,16 +493,13 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                     tvTimeTh25.setVisibility(View.GONE);
                     tvTimeTh26.setVisibility(View.GONE);
                     tvTimeTh27.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeTh22.setVisibility(View.VISIBLE);
                     tvTimeTh24.setVisibility(View.VISIBLE);
                     tvTimeTh26.setVisibility(View.VISIBLE);
                 }
 
-                if(sTh31.equals("null"))
-                {
+                if (sTh31.equals("null")) {
                     tvTimeTh31.setVisibility(View.GONE);
                     tvTimeTh32.setVisibility(View.GONE);
                     tvTimeTh33.setVisibility(View.GONE);
@@ -531,16 +507,13 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                     tvTimeTh35.setVisibility(View.GONE);
                     tvTimeTh36.setVisibility(View.GONE);
                     tvTimeTh37.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeTh32.setVisibility(View.VISIBLE);
                     tvTimeTh34.setVisibility(View.VISIBLE);
                     tvTimeTh36.setVisibility(View.VISIBLE);
                 }
 
-                if(sTh41.equals("null"))
-                {
+                if (sTh41.equals("null")) {
                     tvTimeTh41.setVisibility(View.GONE);
                     tvTimeTh42.setVisibility(View.GONE);
                     tvTimeTh43.setVisibility(View.GONE);
@@ -548,16 +521,13 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                     tvTimeTh45.setVisibility(View.GONE);
                     tvTimeTh46.setVisibility(View.GONE);
                     tvTimeTh47.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeTh42.setVisibility(View.VISIBLE);
                     tvTimeTh44.setVisibility(View.VISIBLE);
                     tvTimeTh46.setVisibility(View.VISIBLE);
                 }
 
-                if(sTh51.equals("null"))
-                {
+                if (sTh51.equals("null")) {
                     tvTimeTh51.setVisibility(View.GONE);
                     tvTimeTh52.setVisibility(View.GONE);
                     tvTimeTh53.setVisibility(View.GONE);
@@ -565,16 +535,13 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                     tvTimeTh55.setVisibility(View.GONE);
                     tvTimeTh56.setVisibility(View.GONE);
                     tvTimeTh57.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeTh52.setVisibility(View.VISIBLE);
                     tvTimeTh54.setVisibility(View.VISIBLE);
                     tvTimeTh56.setVisibility(View.VISIBLE);
                 }
 
-                if(sTh61.equals("null"))
-                {
+                if (sTh61.equals("null")) {
                     tvTimeTh61.setVisibility(View.GONE);
                     tvTimeTh62.setVisibility(View.GONE);
                     tvTimeTh63.setVisibility(View.GONE);
@@ -582,16 +549,13 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                     tvTimeTh65.setVisibility(View.GONE);
                     tvTimeTh66.setVisibility(View.GONE);
                     tvTimeTh67.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeTh62.setVisibility(View.VISIBLE);
                     tvTimeTh64.setVisibility(View.VISIBLE);
                     tvTimeTh66.setVisibility(View.VISIBLE);
                 }
 
-                if(sTh71.equals("null"))
-                {
+                if (sTh71.equals("null")) {
                     tvTimeTh71.setVisibility(View.GONE);
                     tvTimeTh72.setVisibility(View.GONE);
                     tvTimeTh73.setVisibility(View.GONE);
@@ -599,16 +563,13 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                     tvTimeTh75.setVisibility(View.GONE);
                     tvTimeTh76.setVisibility(View.GONE);
                     tvTimeTh77.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeTh72.setVisibility(View.VISIBLE);
                     tvTimeTh74.setVisibility(View.VISIBLE);
                     tvTimeTh76.setVisibility(View.VISIBLE);
                 }
 
-                if(sTh81.equals("null"))
-                {
+                if (sTh81.equals("null")) {
                     tvTimeTh81.setVisibility(View.GONE);
                     tvTimeTh82.setVisibility(View.GONE);
                     tvTimeTh83.setVisibility(View.GONE);
@@ -616,43 +577,41 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                     tvTimeTh85.setVisibility(View.GONE);
                     tvTimeTh86.setVisibility(View.GONE);
                     tvTimeTh87.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeTh82.setVisibility(View.VISIBLE);
                     tvTimeTh84.setVisibility(View.VISIBLE);
                     tvTimeTh86.setVisibility(View.VISIBLE);
                 }
 
-                if (!Th1.equals("null") && Th1.length()>7) {
+                if (!Th1.equals("null") && Th1.length() > 7) {
                     tvTh11.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Th2.equals("null") && Th2.length()>7) {
+                if (!Th2.equals("null") && Th2.length() > 7) {
                     tvTh22.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Th3.equals("null") && Th3.length()>7) {
+                if (!Th3.equals("null") && Th3.length() > 7) {
                     tvTh33.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Th4.equals("null") && Th4.length()>7) {
+                if (!Th4.equals("null") && Th4.length() > 7) {
                     tvTh44.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Th5.equals("null") && Th5.length()>7) {
+                if (!Th5.equals("null") && Th5.length() > 7) {
                     tvTh55.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Th6.equals("null") && Th6.length()>7) {
+                if (!Th6.equals("null") && Th6.length() > 7) {
                     tvTh66.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Th7.equals("null") && Th7.length()>7) {
+                if (!Th7.equals("null") && Th7.length() > 7) {
                     tvTh77.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Th8.equals("null") && Th8.length()>7) {
+                if (!Th8.equals("null") && Th8.length() > 7) {
                     tvTh88.setPadding(0, 0, 0, 8);
                 }
 
@@ -669,86 +628,63 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                 LinearLayout ll_row8 = v.findViewById(R.id.studentTh_row8);
 
                 //1 СТРОКА
-                if (Th1.equals("null"))
-                {
+                if (Th1.equals("null")) {
                     ll_row1.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row1.setVisibility(View.VISIBLE);
                 }
 
                 //2 строка
-                if (Th2.equals("null"))
-                {
+                if (Th2.equals("null")) {
                     ll_row2.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row2.setVisibility(View.VISIBLE);
                 }
 
                 //3 строка
-                if (Th3.equals("null"))
-                {
+                if (Th3.equals("null")) {
                     ll_row3.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row3.setVisibility(View.VISIBLE);
                 }
 
                 //4 строка
-                if (Th4.equals("null"))
-                {
+                if (Th4.equals("null")) {
                     ll_row4.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row4.setVisibility(View.VISIBLE);
                 }
 
                 //5 строка
-                if (Th5.equals("null"))
-                {
+                if (Th5.equals("null")) {
                     ll_row5.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row5.setVisibility(View.VISIBLE);
                 }
 
                 //6 строка
-                if (Th6.equals("null"))
-                {
+                if (Th6.equals("null")) {
                     ll_row6.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row6.setVisibility(View.VISIBLE);
                 }
 
                 //7 строка
-                if (Th7.equals("null"))
-                {
+                if (Th7.equals("null")) {
                     ll_row7.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row7.setVisibility(View.VISIBLE);
                 }
 
                 //8 строка
-                if (Th8.equals("null"))
-                {
+                if (Th8.equals("null")) {
                     ll_row8.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row8.setVisibility(View.VISIBLE);
                 }
 
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -770,67 +706,51 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
         String sTh8Dz = etTh8DZ.getText().toString();
 
         reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        if(sTh1Dz.length()!=0) {
+        if (sTh1Dz.length() != 0) {
             reff.child("Th1Dz").setValue(sTh1Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Th1Dz").removeValue();
         }
 
-        if(sTh2Dz.length()!=0) {
+        if (sTh2Dz.length() != 0) {
             reff.child("Th2Dz").setValue(sTh2Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Th2Dz").removeValue();
         }
 
-        if(sTh3Dz.length()!=0) {
+        if (sTh3Dz.length() != 0) {
             reff.child("Th3Dz").setValue(sTh3Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Th3Dz").removeValue();
         }
 
-        if(sTh4Dz.length()!=0) {
+        if (sTh4Dz.length() != 0) {
             reff.child("Th4Dz").setValue(sTh4Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Th4Dz").removeValue();
         }
 
-        if(sTh5Dz.length()!=0) {
+        if (sTh5Dz.length() != 0) {
             reff.child("Th5Dz").setValue(sTh5Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Th5Dz").removeValue();
         }
 
-        if(sTh6Dz.length()!=0) {
+        if (sTh6Dz.length() != 0) {
             reff.child("Th6Dz").setValue(sTh6Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Th6Dz").removeValue();
         }
 
-        if(sTh7Dz.length()!=0) {
+        if (sTh7Dz.length() != 0) {
             reff.child("Th7Dz").setValue(sTh7Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Th7Dz").removeValue();
         }
 
-        if(sTh8Dz.length()!=0) {
+        if (sTh8Dz.length() != 0) {
             reff.child("Th8Dz").setValue(sTh8Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Th8Dz").removeValue();
         }
     }
@@ -854,65 +774,49 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
 
                 if (snapshot.child("Th1Dz").exists()) {
                     etTh1DZ.setText(sTh1DZ);
-                }
-                else
-                {
+                } else {
                     etTh1DZ.setText("");
                 }
 
                 if (snapshot.child("Th2Dz").exists()) {
                     etTh2DZ.setText(sTh2DZ);
-                }
-                else
-                {
+                } else {
                     etTh2DZ.setText("");
                 }
 
                 if (snapshot.child("Th3Dz").exists()) {
                     etTh3DZ.setText(sTh3DZ);
-                }
-                else
-                {
+                } else {
                     etTh3DZ.setText("");
                 }
 
                 if (snapshot.child("Th4Dz").exists()) {
                     etTh4DZ.setText(sTh4DZ);
-                }
-                else
-                {
+                } else {
                     etTh4DZ.setText("");
                 }
 
                 if (snapshot.child("Th5Dz").exists()) {
                     etTh5DZ.setText(sTh5DZ);
-                }
-                else
-                {
+                } else {
                     etTh5DZ.setText("");
                 }
 
                 if (snapshot.child("Th6Dz").exists()) {
                     etTh6DZ.setText(sTh6DZ);
-                }
-                else
-                {
+                } else {
                     etTh6DZ.setText("");
                 }
 
                 if (snapshot.child("Th7Dz").exists()) {
                     etTh7DZ.setText(sTh7DZ);
-                }
-                else
-                {
+                } else {
                     etTh7DZ.setText("");
                 }
 
                 if (snapshot.child("Th8Dz").exists()) {
                     etTh8DZ.setText(sTh8DZ);
-                }
-                else
-                {
+                } else {
                     etTh8DZ.setText("");
                 }
             }
