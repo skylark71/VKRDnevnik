@@ -38,11 +38,11 @@ import ru.shkolaandstudents.R;
 
 public class WendFragment extends Fragment implements OnBackPressedListener {
 
-    TextView tvW1,tvW2,tvW3,tvW4,tvW5,tvW6,tvW7,tvW8,tvTimeW11,tvTimeW12,tvTimeW13,tvTimeW14,tvTimeW15,tvTimeW16,tvTimeW17,tvTimeW21,tvTimeW22,tvTimeW23,tvTimeW24,tvTimeW25,tvTimeW26,tvTimeW27,tvTimeW31,tvTimeW32,tvTimeW33,tvTimeW34,tvTimeW35,tvTimeW36,tvTimeW37,tvTimeW41,tvTimeW42,tvTimeW43,tvTimeW44,tvTimeW45,tvTimeW46,tvTimeW47,tvTimeW51,tvTimeW52,tvTimeW53,tvTimeW54,tvTimeW55,tvTimeW56,tvTimeW57,tvTimeW61,tvTimeW62,tvTimeW63,tvTimeW64,tvTimeW65,tvTimeW66,tvTimeW67,tvTimeW71,tvTimeW72,tvTimeW73,tvTimeW74,tvTimeW75,tvTimeW76,tvTimeW77,tvTimeW81,tvTimeW82,tvTimeW83,tvTimeW84,tvTimeW85,tvTimeW86,tvTimeW87,tvW11,tvW22,tvW33,tvW44,tvW55,tvW66,tvW77,tvW88;
-    EditText etW1DZ,etW2DZ,etW3DZ,etW4DZ,etW5DZ,etW6DZ,etW7DZ,etW8DZ;
+    TextView tvW1, tvW2, tvW3, tvW4, tvW5, tvW6, tvW7, tvW8, tvTimeW11, tvTimeW12, tvTimeW13, tvTimeW14, tvTimeW15, tvTimeW16, tvTimeW17, tvTimeW21, tvTimeW22, tvTimeW23, tvTimeW24, tvTimeW25, tvTimeW26, tvTimeW27, tvTimeW31, tvTimeW32, tvTimeW33, tvTimeW34, tvTimeW35, tvTimeW36, tvTimeW37, tvTimeW41, tvTimeW42, tvTimeW43, tvTimeW44, tvTimeW45, tvTimeW46, tvTimeW47, tvTimeW51, tvTimeW52, tvTimeW53, tvTimeW54, tvTimeW55, tvTimeW56, tvTimeW57, tvTimeW61, tvTimeW62, tvTimeW63, tvTimeW64, tvTimeW65, tvTimeW66, tvTimeW67, tvTimeW71, tvTimeW72, tvTimeW73, tvTimeW74, tvTimeW75, tvTimeW76, tvTimeW77, tvTimeW81, tvTimeW82, tvTimeW83, tvTimeW84, tvTimeW85, tvTimeW86, tvTimeW87, tvW11, tvW22, tvW33, tvW44, tvW55, tvW66, tvW77, tvW88;
+    EditText etW1DZ, etW2DZ, etW3DZ, etW4DZ, etW5DZ, etW6DZ, etW7DZ, etW8DZ;
     Button btnHelp;
     TextView tvOcenkaW1, tvOcenkaW2, tvOcenkaW3, tvOcenkaW4, tvOcenkaW5, tvOcenkaW6, tvOcenkaW7, tvOcenkaW8;
-    String W1,W2,W3,W4,W5,W6,W7,W8;
+    String W1, W2, W3, W4, W5, W6, W7, W8;
     DatabaseReference reff;
 
     @Override
@@ -260,25 +260,20 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                             final String str_sub = ds.getKey();
                             for (int j = 0; j < 8; j++) {
                                 if (str_sub.equals(arr_sub[j])) {
-                                    final String view_ocenka = "tvOcenkaM" + (i + 1);
+                                    final String view_ocenka = "tvOcenkaW" + (i + 1);
                                     arr_set[i] = view_ocenka;
                                     arr_sub1[i] = str_sub;
                                     i++;
                                     break;
                                 }
                             }
-
                         }
-
 
                         /**
                          * ПОПЫТКА VALUE SET НА ТЕКСТЫ
                          * */
                         for (int ii = 0; ii < i; ii++) {
                             DatabaseReference reff2 = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Оценки").child(arr_sub1[ii]);
-                            /**
-                             * ПОПРОБУЙ ARRAY РЕФЕРНСОВ
-                             */
                             final int count = ii;
                             reff2.addValueEventListener(new ValueEventListener() {
                                 @Override
@@ -287,7 +282,7 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                                         Calendar now = Calendar.getInstance();
                                         //String monday = now.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
                                         int weekday1 = now.get(Calendar.DAY_OF_WEEK);
-                                        int days1 = ((Calendar.SATURDAY - weekday1 + 2) % 7)-7;
+                                        int days1 = ((Calendar.SATURDAY - weekday1 + 2) % 7) - 7;
                                         now.add(Calendar.DAY_OF_YEAR, days1);
                                         Date date1 = now.getTime();
                                         String dayStr = new SimpleDateFormat("EEE").format(date1);
@@ -295,24 +290,22 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                                         int Mn = 2;
                                         Calendar now1 = Calendar.getInstance();
                                         int weekday = now1.get(Calendar.DAY_OF_WEEK);
-                                        int days = ((Calendar.SATURDAY - weekday + Mn) % 7)-7;
+                                        int days = ((Calendar.SATURDAY - weekday + Mn) % 7) - 7;
                                         now1.add(Calendar.DAY_OF_YEAR, days);
                                         Date date = now1.getTime();
                                         String dateStr = new SimpleDateFormat("dd/MM/yyyy").format(date);
 
                                         String str_date = String.valueOf(ds.child("Дата").getValue());
-                                        if(str_date.equals(dateStr))
-                                        {
+                                        if (str_date.equals(dateStr)) {
                                             System.out.println("Test");
                                         }
                                         String str_day = String.valueOf(ds.child("День").getValue());
-                                        if(dayStr.equals(str_day)) {
+                                        if (dayStr.equals(str_day)) {
                                             String str_ocenka = String.valueOf(ds.child("Оценка").getValue());
                                             int resIDdate = getResources().getIdentifier(arr_set[count], "id", getActivity().getPackageName());
                                             arr[count] = ((TextView) v.findViewById(resIDdate));
                                             arr[count].setText(str_ocenka);
                                         }
-
                                     }
                                 }
 
@@ -335,65 +328,49 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                  */
                 if (snapshot.child("SubW1").exists()) {
                     tvW11.setText(W1);
-                }
-                else
-                {
+                } else {
                     tvW11.setText("");
                 }
 
                 if (snapshot.child("SubW2").exists()) {
                     tvW22.setText(W2);
-                }
-                else
-                {
+                } else {
                     tvW22.setText("");
                 }
 
                 if (snapshot.child("SubW3").exists()) {
                     tvW33.setText(W3);
-                }
-                else
-                {
+                } else {
                     tvW33.setText("");
                 }
 
                 if (snapshot.child("SubW4").exists()) {
                     tvW44.setText(W4);
-                }
-                else
-                {
+                } else {
                     tvW44.setText("");
                 }
 
                 if (snapshot.child("SubW5").exists()) {
                     tvW55.setText(W5);
-                }
-                else
-                {
+                } else {
                     tvW55.setText("");
                 }
 
                 if (snapshot.child("SubW6").exists()) {
                     tvW66.setText(W6);
-                }
-                else
-                {
+                } else {
                     tvW66.setText("");
                 }
 
                 if (snapshot.child("SubW7").exists()) {
                     tvW77.setText(W7);
-                }
-                else
-                {
+                } else {
                     tvW77.setText("");
                 }
 
                 if (snapshot.child("SubW8").exists()) {
                     tvW88.setText(W8);
-                }
-                else
-                {
+                } else {
                     tvW88.setText("");
                 }
 
@@ -487,8 +464,7 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                 /**
                  * Check value time for ui
                  */
-                if(sW11.equals("null"))
-                {
+                if (sW11.equals("null")) {
                     tvTimeW11.setVisibility(View.GONE);
                     tvTimeW12.setVisibility(View.GONE);
                     tvTimeW13.setVisibility(View.GONE);
@@ -496,16 +472,13 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                     tvTimeW15.setVisibility(View.GONE);
                     tvTimeW16.setVisibility(View.GONE);
                     tvTimeW17.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeW12.setVisibility(View.VISIBLE);
                     tvTimeW14.setVisibility(View.VISIBLE);
                     tvTimeW16.setVisibility(View.VISIBLE);
                 }
 
-                if(sW21.equals("null"))
-                {
+                if (sW21.equals("null")) {
                     tvTimeW21.setVisibility(View.GONE);
                     tvTimeW22.setVisibility(View.GONE);
                     tvTimeW23.setVisibility(View.GONE);
@@ -513,16 +486,13 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                     tvTimeW25.setVisibility(View.GONE);
                     tvTimeW26.setVisibility(View.GONE);
                     tvTimeW27.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeW22.setVisibility(View.VISIBLE);
                     tvTimeW24.setVisibility(View.VISIBLE);
                     tvTimeW26.setVisibility(View.VISIBLE);
                 }
 
-                if(sW31.equals("null"))
-                {
+                if (sW31.equals("null")) {
                     tvTimeW31.setVisibility(View.GONE);
                     tvTimeW32.setVisibility(View.GONE);
                     tvTimeW33.setVisibility(View.GONE);
@@ -530,16 +500,13 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                     tvTimeW35.setVisibility(View.GONE);
                     tvTimeW36.setVisibility(View.GONE);
                     tvTimeW37.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeW32.setVisibility(View.VISIBLE);
                     tvTimeW34.setVisibility(View.VISIBLE);
                     tvTimeW36.setVisibility(View.VISIBLE);
                 }
 
-                if(sW41.equals("null"))
-                {
+                if (sW41.equals("null")) {
                     tvTimeW41.setVisibility(View.GONE);
                     tvTimeW42.setVisibility(View.GONE);
                     tvTimeW43.setVisibility(View.GONE);
@@ -547,16 +514,13 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                     tvTimeW45.setVisibility(View.GONE);
                     tvTimeW46.setVisibility(View.GONE);
                     tvTimeW47.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeW42.setVisibility(View.VISIBLE);
                     tvTimeW44.setVisibility(View.VISIBLE);
                     tvTimeW46.setVisibility(View.VISIBLE);
                 }
 
-                if(sW51.equals("null"))
-                {
+                if (sW51.equals("null")) {
                     tvTimeW51.setVisibility(View.GONE);
                     tvTimeW52.setVisibility(View.GONE);
                     tvTimeW53.setVisibility(View.GONE);
@@ -564,16 +528,13 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                     tvTimeW55.setVisibility(View.GONE);
                     tvTimeW56.setVisibility(View.GONE);
                     tvTimeW57.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeW52.setVisibility(View.VISIBLE);
                     tvTimeW54.setVisibility(View.VISIBLE);
                     tvTimeW56.setVisibility(View.VISIBLE);
                 }
 
-                if(sW61.equals("null"))
-                {
+                if (sW61.equals("null")) {
                     tvTimeW61.setVisibility(View.GONE);
                     tvTimeW62.setVisibility(View.GONE);
                     tvTimeW63.setVisibility(View.GONE);
@@ -581,16 +542,13 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                     tvTimeW65.setVisibility(View.GONE);
                     tvTimeW66.setVisibility(View.GONE);
                     tvTimeW67.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeW62.setVisibility(View.VISIBLE);
                     tvTimeW64.setVisibility(View.VISIBLE);
                     tvTimeW66.setVisibility(View.VISIBLE);
                 }
 
-                if(sW71.equals("null"))
-                {
+                if (sW71.equals("null")) {
                     tvTimeW71.setVisibility(View.GONE);
                     tvTimeW72.setVisibility(View.GONE);
                     tvTimeW73.setVisibility(View.GONE);
@@ -598,16 +556,13 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                     tvTimeW75.setVisibility(View.GONE);
                     tvTimeW76.setVisibility(View.GONE);
                     tvTimeW77.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeW72.setVisibility(View.VISIBLE);
                     tvTimeW74.setVisibility(View.VISIBLE);
                     tvTimeW76.setVisibility(View.VISIBLE);
                 }
 
-                if(sW81.equals("null"))
-                {
+                if (sW81.equals("null")) {
                     tvTimeW81.setVisibility(View.GONE);
                     tvTimeW82.setVisibility(View.GONE);
                     tvTimeW83.setVisibility(View.GONE);
@@ -615,44 +570,44 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                     tvTimeW85.setVisibility(View.GONE);
                     tvTimeW86.setVisibility(View.GONE);
                     tvTimeW87.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeW82.setVisibility(View.VISIBLE);
                     tvTimeW84.setVisibility(View.VISIBLE);
                     tvTimeW86.setVisibility(View.VISIBLE);
                 }
 
-
-                if (!W1.equals("null") && W1.length()>7) {
+                /**
+                 * Отступ снизу для видимости TextView
+                 * */
+                if (!W1.equals("null") && W1.length() > 7) {
                     tvW11.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W2.equals("null") && W2.length()>7) {
+                if (!W2.equals("null") && W2.length() > 7) {
                     tvW22.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W3.equals("null") && W3.length()>7) {
+                if (!W3.equals("null") && W3.length() > 7) {
                     tvW33.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W4.equals("null") && W4.length()>7) {
+                if (!W4.equals("null") && W4.length() > 7) {
                     tvW44.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W5.equals("null") && W5.length()>7) {
+                if (!W5.equals("null") && W5.length() > 7) {
                     tvW55.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W6.equals("null") && W6.length()>7) {
+                if (!W6.equals("null") && W6.length() > 7) {
                     tvW66.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W7.equals("null") && W7.length()>7) {
+                if (!W7.equals("null") && W7.length() > 7) {
                     tvW77.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W8.equals("null") && W8.length()>7) {
+                if (!W8.equals("null") && W8.length() > 7) {
                     tvW88.setPadding(0, 0, 0, 8);
                 }
 
@@ -669,86 +624,63 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                 LinearLayout ll_row8 = v.findViewById(R.id.studentW_row8);
 
                 //1 СТРОКА
-                if (W1.equals("null"))
-                {
+                if (W1.equals("null")) {
                     ll_row1.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row1.setVisibility(View.VISIBLE);
                 }
 
                 //2 строка
-                if (W2.equals("null"))
-                {
+                if (W2.equals("null")) {
                     ll_row2.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row2.setVisibility(View.VISIBLE);
                 }
 
                 //3 строка
-                if (W3.equals("null"))
-                {
+                if (W3.equals("null")) {
                     ll_row3.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row3.setVisibility(View.VISIBLE);
                 }
 
                 //4 строка
-                if (W4.equals("null"))
-                {
+                if (W4.equals("null")) {
                     ll_row4.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row4.setVisibility(View.VISIBLE);
                 }
 
                 //5 строка
-                if (W5.equals("null"))
-                {
+                if (W5.equals("null")) {
                     ll_row5.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row5.setVisibility(View.VISIBLE);
                 }
 
                 //6 строка
-                if (W6.equals("null"))
-                {
+                if (W6.equals("null")) {
                     ll_row6.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row6.setVisibility(View.VISIBLE);
                 }
 
                 //7 строка
-                if (W7.equals("null"))
-                {
+                if (W7.equals("null")) {
                     ll_row7.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row7.setVisibility(View.VISIBLE);
                 }
 
                 //8 строка
-                if (W8.equals("null"))
-                {
+                if (W8.equals("null")) {
                     ll_row8.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row8.setVisibility(View.VISIBLE);
                 }
 
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -770,67 +702,51 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
         String sW8Dz = etW8DZ.getText().toString();
 
         reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        if(sW1Dz.length()!=0) {
+        if (sW1Dz.length() != 0) {
             reff.child("W1Dz").setValue(sW1Dz);
-        }
-        else
-        {
+        } else {
             reff.child("W1Dz").removeValue();
         }
 
-        if(sW2Dz.length()!=0) {
+        if (sW2Dz.length() != 0) {
             reff.child("W2Dz").setValue(sW2Dz);
-        }
-        else
-        {
+        } else {
             reff.child("W2Dz").removeValue();
         }
 
-        if(sW3Dz.length()!=0) {
+        if (sW3Dz.length() != 0) {
             reff.child("W3Dz").setValue(sW3Dz);
-        }
-        else
-        {
+        } else {
             reff.child("W3Dz").removeValue();
         }
 
-        if(sW4Dz.length()!=0) {
+        if (sW4Dz.length() != 0) {
             reff.child("W4Dz").setValue(sW4Dz);
-        }
-        else
-        {
+        } else {
             reff.child("W4Dz").removeValue();
         }
 
-        if(sW5Dz.length()!=0) {
+        if (sW5Dz.length() != 0) {
             reff.child("W5Dz").setValue(sW5Dz);
-        }
-        else
-        {
+        } else {
             reff.child("W5Dz").removeValue();
         }
 
-        if(sW6Dz.length()!=0) {
+        if (sW6Dz.length() != 0) {
             reff.child("W6Dz").setValue(sW6Dz);
-        }
-        else
-        {
+        } else {
             reff.child("W6Dz").removeValue();
         }
 
-        if(sW7Dz.length()!=0) {
+        if (sW7Dz.length() != 0) {
             reff.child("W7Dz").setValue(sW7Dz);
-        }
-        else
-        {
+        } else {
             reff.child("W7Dz").removeValue();
         }
 
-        if(sW8Dz.length()!=0) {
+        if (sW8Dz.length() != 0) {
             reff.child("W8Dz").setValue(sW8Dz);
-        }
-        else
-        {
+        } else {
             reff.child("W8Dz").removeValue();
         }
     }
@@ -853,65 +769,49 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
 
                 if (snapshot.child("W1Dz").exists()) {
                     etW1DZ.setText(sW1DZ);
-                }
-                else
-                {
+                } else {
                     etW1DZ.setText("");
                 }
 
                 if (snapshot.child("W2Dz").exists()) {
                     etW2DZ.setText(sW2DZ);
-                }
-                else
-                {
+                } else {
                     etW2DZ.setText("");
                 }
 
                 if (snapshot.child("W3Dz").exists()) {
                     etW3DZ.setText(sW3DZ);
-                }
-                else
-                {
+                } else {
                     etW3DZ.setText("");
                 }
 
                 if (snapshot.child("W4Dz").exists()) {
                     etW4DZ.setText(sW4DZ);
-                }
-                else
-                {
+                } else {
                     etW4DZ.setText("");
                 }
 
                 if (snapshot.child("W5Dz").exists()) {
                     etW5DZ.setText(sW5DZ);
-                }
-                else
-                {
+                } else {
                     etW5DZ.setText("");
                 }
 
                 if (snapshot.child("W6Dz").exists()) {
                     etW6DZ.setText(sW6DZ);
-                }
-                else
-                {
+                } else {
                     etW6DZ.setText("");
                 }
 
                 if (snapshot.child("W7Dz").exists()) {
                     etW7DZ.setText(sW7DZ);
-                }
-                else
-                {
+                } else {
                     etW7DZ.setText("");
                 }
 
                 if (snapshot.child("W8Dz").exists()) {
                     etW8DZ.setText(sW8DZ);
-                }
-                else
-                {
+                } else {
                     etW8DZ.setText("");
                 }
             }
