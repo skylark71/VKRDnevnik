@@ -1,21 +1,15 @@
 package ru.shkolaandstudents.ui.main;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.preference.PreferenceManager;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -127,7 +121,6 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                         }).start();
             }
         });
-
 
         tvOcenkaFr1 = v.findViewById(R.id.tvOcenkaFr1);
         tvOcenkaFr2 = v.findViewById(R.id.tvOcenkaFr2);
@@ -269,9 +262,7 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                                     break;
                                 }
                             }
-
                         }
-
 
                         /**
                          * ПОПЫТКА VALUE SET НА ТЕКСТЫ
@@ -284,7 +275,6 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     for (DataSnapshot ds : snapshot.getChildren()) {
                                         Calendar now = Calendar.getInstance();
-                                        //String monday = now.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
                                         int weekday1 = now.get(Calendar.DAY_OF_WEEK);
                                         int days1 = ((Calendar.SATURDAY - weekday1 + 2) % 7) - 7;
                                         now.add(Calendar.DAY_OF_YEAR, days1);
