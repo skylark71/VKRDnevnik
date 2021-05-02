@@ -274,7 +274,6 @@ public class TuesdayFragment extends Fragment implements OnBackPressedListener {
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     for (DataSnapshot ds : snapshot.getChildren()) {
                                         Calendar now = Calendar.getInstance();
-                                        //String monday = now.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
                                         int weekday1 = now.get(Calendar.DAY_OF_WEEK);
                                         int days1 = ((Calendar.SATURDAY - weekday1 + 2) % 7) - 7;
                                         now.add(Calendar.DAY_OF_YEAR, days1);
