@@ -38,11 +38,11 @@ import ru.shkolaandstudents.R;
 
 public class FridayFragment extends Fragment implements OnBackPressedListener {
 
-    TextView tvFr1,tvFr2,tvFr3,tvFr4,tvFr5,tvFr6,tvFr7,tvFr8,tvTimeFr11,tvTimeFr12,tvTimeFr13,tvTimeFr14,tvTimeFr15,tvTimeFr16,tvTimeFr17,tvTimeFr21,tvTimeFr22,tvTimeFr23,tvTimeFr24,tvTimeFr25,tvTimeFr26,tvTimeFr27,tvTimeFr31,tvTimeFr32,tvTimeFr33,tvTimeFr34,tvTimeFr35,tvTimeFr36,tvTimeFr37,tvTimeFr41,tvTimeFr42,tvTimeFr43,tvTimeFr44,tvTimeFr45,tvTimeFr46,tvTimeFr47,tvTimeFr51,tvTimeFr52,tvTimeFr53,tvTimeFr54,tvTimeFr55,tvTimeFr56,tvTimeFr57,tvTimeFr61,tvTimeFr62,tvTimeFr63,tvTimeFr64,tvTimeFr65,tvTimeFr66,tvTimeFr67,tvTimeFr71,tvTimeFr72,tvTimeFr73,tvTimeFr74,tvTimeFr75,tvTimeFr76,tvTimeFr77,tvTimeFr81,tvTimeFr82,tvTimeFr83,tvTimeFr84,tvTimeFr85,tvTimeFr86,tvTimeFr87,tvFr11,tvFr22,tvFr33,tvFr44,tvFr55,tvFr66,tvFr77,tvFr88;
-    EditText etFr1DZ,etFr2DZ,etFr3DZ,etFr4DZ,etFr5DZ,etFr6DZ,etFr7DZ,etFr8DZ;
+    TextView tvFr1, tvFr2, tvFr3, tvFr4, tvFr5, tvFr6, tvFr7, tvFr8, tvTimeFr11, tvTimeFr12, tvTimeFr13, tvTimeFr14, tvTimeFr15, tvTimeFr16, tvTimeFr17, tvTimeFr21, tvTimeFr22, tvTimeFr23, tvTimeFr24, tvTimeFr25, tvTimeFr26, tvTimeFr27, tvTimeFr31, tvTimeFr32, tvTimeFr33, tvTimeFr34, tvTimeFr35, tvTimeFr36, tvTimeFr37, tvTimeFr41, tvTimeFr42, tvTimeFr43, tvTimeFr44, tvTimeFr45, tvTimeFr46, tvTimeFr47, tvTimeFr51, tvTimeFr52, tvTimeFr53, tvTimeFr54, tvTimeFr55, tvTimeFr56, tvTimeFr57, tvTimeFr61, tvTimeFr62, tvTimeFr63, tvTimeFr64, tvTimeFr65, tvTimeFr66, tvTimeFr67, tvTimeFr71, tvTimeFr72, tvTimeFr73, tvTimeFr74, tvTimeFr75, tvTimeFr76, tvTimeFr77, tvTimeFr81, tvTimeFr82, tvTimeFr83, tvTimeFr84, tvTimeFr85, tvTimeFr86, tvTimeFr87, tvFr11, tvFr22, tvFr33, tvFr44, tvFr55, tvFr66, tvFr77, tvFr88;
+    EditText etFr1DZ, etFr2DZ, etFr3DZ, etFr4DZ, etFr5DZ, etFr6DZ, etFr7DZ, etFr8DZ;
     Button btnHelp;
     TextView tvOcenkaFr1, tvOcenkaFr2, tvOcenkaFr3, tvOcenkaFr4, tvOcenkaFr5, tvOcenkaFr6, tvOcenkaFr7, tvOcenkaFr8;
-    String Fr1,Fr2,Fr3,Fr4,Fr5,Fr6,Fr7,Fr8;
+    String Fr1, Fr2, Fr3, Fr4, Fr5, Fr6, Fr7, Fr8;
     DatabaseReference reff;
 
     @Override
@@ -286,7 +286,7 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                                         Calendar now = Calendar.getInstance();
                                         //String monday = now.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.getDefault());
                                         int weekday1 = now.get(Calendar.DAY_OF_WEEK);
-                                        int days1 = ((Calendar.SATURDAY - weekday1 + 2) % 7)-7;
+                                        int days1 = ((Calendar.SATURDAY - weekday1 + 2) % 7) - 7;
                                         now.add(Calendar.DAY_OF_YEAR, days1);
                                         Date date1 = now.getTime();
                                         String dayStr = new SimpleDateFormat("EEE").format(date1);
@@ -294,18 +294,17 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                                         int Mn = 2;
                                         Calendar now1 = Calendar.getInstance();
                                         int weekday = now1.get(Calendar.DAY_OF_WEEK);
-                                        int days = ((Calendar.SATURDAY - weekday + Mn) % 7)-7;
+                                        int days = ((Calendar.SATURDAY - weekday + Mn) % 7) - 7;
                                         now1.add(Calendar.DAY_OF_YEAR, days);
                                         Date date = now1.getTime();
                                         String dateStr = new SimpleDateFormat("dd/MM/yyyy").format(date);
 
                                         String str_date = String.valueOf(ds.child("Дата").getValue());
-                                        if(str_date.equals(dateStr))
-                                        {
+                                        if (str_date.equals(dateStr)) {
                                             System.out.println("Test");
                                         }
                                         String str_day = String.valueOf(ds.child("День").getValue());
-                                        if(dayStr.equals(str_day)) {
+                                        if (dayStr.equals(str_day)) {
                                             String str_ocenka = String.valueOf(ds.child("Оценка").getValue());
                                             int resIDdate = getResources().getIdentifier(arr_set[count], "id", getActivity().getPackageName());
                                             arr[count] = ((TextView) v.findViewById(resIDdate));
@@ -334,65 +333,49 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                  */
                 if (snapshot.child("SubFr1").exists()) {
                     tvFr11.setText(Fr1);
-                }
-                else
-                {
+                } else {
                     tvFr11.setText("");
                 }
 
                 if (snapshot.child("SubFr2").exists()) {
                     tvFr22.setText(Fr2);
-                }
-                else
-                {
+                } else {
                     tvFr22.setText("");
                 }
 
                 if (snapshot.child("SubFr3").exists()) {
                     tvFr33.setText(Fr3);
-                }
-                else
-                {
+                } else {
                     tvFr33.setText("");
                 }
 
                 if (snapshot.child("SubFr4").exists()) {
                     tvFr44.setText(Fr4);
-                }
-                else
-                {
+                } else {
                     tvFr44.setText("");
                 }
 
                 if (snapshot.child("SubFr5").exists()) {
                     tvFr55.setText(Fr5);
-                }
-                else
-                {
+                } else {
                     tvFr55.setText("");
                 }
 
                 if (snapshot.child("SubFr6").exists()) {
                     tvFr66.setText(Fr6);
-                }
-                else
-                {
+                } else {
                     tvFr66.setText("");
                 }
 
                 if (snapshot.child("SubFr7").exists()) {
                     tvFr77.setText(Fr7);
-                }
-                else
-                {
+                } else {
                     tvFr77.setText("");
                 }
 
                 if (snapshot.child("SubFr8").exists()) {
                     tvFr88.setText(Fr8);
-                }
-                else
-                {
+                } else {
                     tvFr88.setText("");
                 }
 
@@ -486,8 +469,7 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                 /**
                  * Check value time for ui
                  */
-                if(sFr11.equals("null"))
-                {
+                if (sFr11.equals("null")) {
                     tvTimeFr11.setVisibility(View.GONE);
                     tvTimeFr12.setVisibility(View.GONE);
                     tvTimeFr13.setVisibility(View.GONE);
@@ -495,16 +477,13 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                     tvTimeFr15.setVisibility(View.GONE);
                     tvTimeFr16.setVisibility(View.GONE);
                     tvTimeFr17.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeFr12.setVisibility(View.VISIBLE);
                     tvTimeFr14.setVisibility(View.VISIBLE);
                     tvTimeFr16.setVisibility(View.VISIBLE);
                 }
 
-                if(sFr21.equals("null"))
-                {
+                if (sFr21.equals("null")) {
                     tvTimeFr21.setVisibility(View.GONE);
                     tvTimeFr22.setVisibility(View.GONE);
                     tvTimeFr23.setVisibility(View.GONE);
@@ -512,16 +491,13 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                     tvTimeFr25.setVisibility(View.GONE);
                     tvTimeFr26.setVisibility(View.GONE);
                     tvTimeFr27.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeFr22.setVisibility(View.VISIBLE);
                     tvTimeFr24.setVisibility(View.VISIBLE);
                     tvTimeFr26.setVisibility(View.VISIBLE);
                 }
 
-                if(sFr31.equals("null"))
-                {
+                if (sFr31.equals("null")) {
                     tvTimeFr31.setVisibility(View.GONE);
                     tvTimeFr32.setVisibility(View.GONE);
                     tvTimeFr33.setVisibility(View.GONE);
@@ -529,16 +505,13 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                     tvTimeFr35.setVisibility(View.GONE);
                     tvTimeFr36.setVisibility(View.GONE);
                     tvTimeFr37.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeFr32.setVisibility(View.VISIBLE);
                     tvTimeFr34.setVisibility(View.VISIBLE);
                     tvTimeFr36.setVisibility(View.VISIBLE);
                 }
 
-                if(sFr41.equals("null"))
-                {
+                if (sFr41.equals("null")) {
                     tvTimeFr41.setVisibility(View.GONE);
                     tvTimeFr42.setVisibility(View.GONE);
                     tvTimeFr43.setVisibility(View.GONE);
@@ -546,16 +519,13 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                     tvTimeFr45.setVisibility(View.GONE);
                     tvTimeFr46.setVisibility(View.GONE);
                     tvTimeFr47.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeFr42.setVisibility(View.VISIBLE);
                     tvTimeFr44.setVisibility(View.VISIBLE);
                     tvTimeFr46.setVisibility(View.VISIBLE);
                 }
 
-                if(sFr51.equals("null"))
-                {
+                if (sFr51.equals("null")) {
                     tvTimeFr51.setVisibility(View.GONE);
                     tvTimeFr52.setVisibility(View.GONE);
                     tvTimeFr53.setVisibility(View.GONE);
@@ -563,16 +533,13 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                     tvTimeFr55.setVisibility(View.GONE);
                     tvTimeFr56.setVisibility(View.GONE);
                     tvTimeFr57.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeFr52.setVisibility(View.VISIBLE);
                     tvTimeFr54.setVisibility(View.VISIBLE);
                     tvTimeFr56.setVisibility(View.VISIBLE);
                 }
 
-                if(sFr61.equals("null"))
-                {
+                if (sFr61.equals("null")) {
                     tvTimeFr61.setVisibility(View.GONE);
                     tvTimeFr62.setVisibility(View.GONE);
                     tvTimeFr63.setVisibility(View.GONE);
@@ -580,16 +547,13 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                     tvTimeFr65.setVisibility(View.GONE);
                     tvTimeFr66.setVisibility(View.GONE);
                     tvTimeFr67.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeFr62.setVisibility(View.VISIBLE);
                     tvTimeFr64.setVisibility(View.VISIBLE);
                     tvTimeFr66.setVisibility(View.VISIBLE);
                 }
 
-                if(sFr71.equals("null"))
-                {
+                if (sFr71.equals("null")) {
                     tvTimeFr71.setVisibility(View.GONE);
                     tvTimeFr72.setVisibility(View.GONE);
                     tvTimeFr73.setVisibility(View.GONE);
@@ -597,16 +561,13 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                     tvTimeFr75.setVisibility(View.GONE);
                     tvTimeFr76.setVisibility(View.GONE);
                     tvTimeFr77.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeFr72.setVisibility(View.VISIBLE);
                     tvTimeFr74.setVisibility(View.VISIBLE);
                     tvTimeFr76.setVisibility(View.VISIBLE);
                 }
 
-                if(sFr81.equals("null"))
-                {
+                if (sFr81.equals("null")) {
                     tvTimeFr81.setVisibility(View.GONE);
                     tvTimeFr82.setVisibility(View.GONE);
                     tvTimeFr83.setVisibility(View.GONE);
@@ -614,43 +575,41 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                     tvTimeFr85.setVisibility(View.GONE);
                     tvTimeFr86.setVisibility(View.GONE);
                     tvTimeFr87.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     tvTimeFr82.setVisibility(View.VISIBLE);
                     tvTimeFr84.setVisibility(View.VISIBLE);
                     tvTimeFr86.setVisibility(View.VISIBLE);
                 }
 
-                if (!Fr1.equals("null") && Fr1.length()>7) {
+                if (!Fr1.equals("null") && Fr1.length() > 7) {
                     tvFr11.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr2.equals("null") && Fr2.length()>7) {
+                if (!Fr2.equals("null") && Fr2.length() > 7) {
                     tvFr22.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr3.equals("null") && Fr3.length()>7) {
+                if (!Fr3.equals("null") && Fr3.length() > 7) {
                     tvFr33.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr4.equals("null") && Fr4.length()>7) {
+                if (!Fr4.equals("null") && Fr4.length() > 7) {
                     tvFr44.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr5.equals("null") && Fr5.length()>7) {
+                if (!Fr5.equals("null") && Fr5.length() > 7) {
                     tvFr55.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr6.equals("null") && Fr6.length()>7) {
+                if (!Fr6.equals("null") && Fr6.length() > 7) {
                     tvFr66.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr7.equals("null") && Fr7.length()>7) {
+                if (!Fr7.equals("null") && Fr7.length() > 7) {
                     tvFr77.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr8.equals("null") && Fr8.length()>7) {
+                if (!Fr8.equals("null") && Fr8.length() > 7) {
                     tvFr88.setPadding(0, 0, 0, 8);
                 }
 
@@ -666,86 +625,63 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                 LinearLayout ll_row7 = v.findViewById(R.id.studentFr_row7);
                 LinearLayout ll_row8 = v.findViewById(R.id.studentFr_row8);
 
-                if (Fr1.equals("null"))
-                {
+                if (Fr1.equals("null")) {
                     ll_row1.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row1.setVisibility(View.VISIBLE);
                 }
 
                 //2 строка
-                if (Fr2.equals("null"))
-                {
+                if (Fr2.equals("null")) {
                     ll_row2.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row2.setVisibility(View.VISIBLE);
                 }
 
                 //3 строка
-                if (Fr3.equals("null"))
-                {
+                if (Fr3.equals("null")) {
                     ll_row3.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row3.setVisibility(View.VISIBLE);
                 }
 
                 //4 строка
-                if (Fr4.equals("null"))
-                {
+                if (Fr4.equals("null")) {
                     ll_row4.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row4.setVisibility(View.VISIBLE);
                 }
 
                 //5 строка
-                if (Fr5.equals("null"))
-                {
+                if (Fr5.equals("null")) {
                     ll_row5.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row5.setVisibility(View.VISIBLE);
                 }
 
                 //6 строка
-                if (Fr6.equals("null"))
-                {
+                if (Fr6.equals("null")) {
                     ll_row6.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row6.setVisibility(View.VISIBLE);
                 }
 
                 //7 строка
-                if (Fr7.equals("null"))
-                {
+                if (Fr7.equals("null")) {
                     ll_row7.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row7.setVisibility(View.VISIBLE);
                 }
 
                 //8 строка
-                if (Fr8.equals("null"))
-                {
+                if (Fr8.equals("null")) {
                     ll_row8.setVisibility(View.GONE);
-                }
-                else
-                {
+                } else {
                     ll_row8.setVisibility(View.VISIBLE);
                 }
 
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -767,67 +703,51 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
         String sFr8Dz = etFr8DZ.getText().toString();
 
         reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        if(sFr1Dz.length()!=0) {
+        if (sFr1Dz.length() != 0) {
             reff.child("Fr1Dz").setValue(sFr1Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Fr1Dz").removeValue();
         }
 
-        if(sFr2Dz.length()!=0) {
+        if (sFr2Dz.length() != 0) {
             reff.child("Fr2Dz").setValue(sFr2Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Fr2Dz").removeValue();
         }
 
-        if(sFr3Dz.length()!=0) {
+        if (sFr3Dz.length() != 0) {
             reff.child("Fr3Dz").setValue(sFr3Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Fr3Dz").removeValue();
         }
 
-        if(sFr4Dz.length()!=0) {
+        if (sFr4Dz.length() != 0) {
             reff.child("Fr4Dz").setValue(sFr4Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Fr4Dz").removeValue();
         }
 
-        if(sFr5Dz.length()!=0) {
+        if (sFr5Dz.length() != 0) {
             reff.child("Fr5Dz").setValue(sFr5Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Fr5Dz").removeValue();
         }
 
-        if(sFr6Dz.length()!=0) {
+        if (sFr6Dz.length() != 0) {
             reff.child("Fr6Dz").setValue(sFr6Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Fr6Dz").removeValue();
         }
 
-        if(sFr7Dz.length()!=0) {
+        if (sFr7Dz.length() != 0) {
             reff.child("Fr7Dz").setValue(sFr7Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Fr7Dz").removeValue();
         }
 
-        if(sFr8Dz.length()!=0) {
+        if (sFr8Dz.length() != 0) {
             reff.child("Fr8Dz").setValue(sFr8Dz);
-        }
-        else
-        {
+        } else {
             reff.child("Fr8Dz").removeValue();
         }
     }
@@ -851,65 +771,49 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
 
                 if (snapshot.child("Fr1Dz").exists()) {
                     etFr1DZ.setText(sFr1DZ);
-                }
-                else
-                {
+                } else {
                     etFr1DZ.setText("");
                 }
 
                 if (snapshot.child("Fr2Dz").exists()) {
                     etFr2DZ.setText(sFr2DZ);
-                }
-                else
-                {
+                } else {
                     etFr2DZ.setText("");
                 }
 
                 if (snapshot.child("Fr3Dz").exists()) {
                     etFr3DZ.setText(sFr3DZ);
-                }
-                else
-                {
+                } else {
                     etFr3DZ.setText("");
                 }
 
                 if (snapshot.child("Fr4Dz").exists()) {
                     etFr4DZ.setText(sFr4DZ);
-                }
-                else
-                {
+                } else {
                     etFr4DZ.setText("");
                 }
 
                 if (snapshot.child("Fr5Dz").exists()) {
                     etFr5DZ.setText(sFr5DZ);
-                }
-                else
-                {
+                } else {
                     etFr5DZ.setText("");
                 }
 
                 if (snapshot.child("Fr6Dz").exists()) {
                     etFr6DZ.setText(sFr6DZ);
-                }
-                else
-                {
+                } else {
                     etFr6DZ.setText("");
                 }
 
                 if (snapshot.child("Fr7Dz").exists()) {
                     etFr7DZ.setText(sFr7DZ);
-                }
-                else
-                {
+                } else {
                     etFr7DZ.setText("");
                 }
 
                 if (snapshot.child("Fr8Dz").exists()) {
                     etFr8DZ.setText(sFr8DZ);
-                }
-                else
-                {
+                } else {
                     etFr8DZ.setText("");
                 }
             }
