@@ -277,9 +277,6 @@ public class ThursdayFragment extends Fragment implements OnBackPressedListener 
                          * */
                         for (int ii = 0; ii < i; ii++) {
                             DatabaseReference reff2 = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Оценки").child(arr_sub1[ii]);
-                            /**
-                             * ПОПРОБУЙ ARRAY РЕФЕРНСОВ
-                             */
                             final int count = ii;
                             reff2.addValueEventListener(new ValueEventListener() {
                                 @Override

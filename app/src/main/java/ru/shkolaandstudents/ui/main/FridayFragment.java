@@ -262,7 +262,7 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                             final String str_sub = ds.getKey();
                             for (int j = 0; j < 8; j++) {
                                 if (str_sub.equals(arr_sub[j])) {
-                                    final String view_ocenka = "tvOcenkaM" + (i + 1);
+                                    final String view_ocenka = "tvOcenkaFr" + (i + 1);
                                     arr_set[i] = view_ocenka;
                                     arr_sub1[i] = str_sub;
                                     i++;
@@ -278,9 +278,6 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                          * */
                         for (int ii = 0; ii < i; ii++) {
                             DatabaseReference reff2 = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Оценки").child(arr_sub1[ii]);
-                            /**
-                             * ПОПРОБУЙ ARRAY РЕФЕРНСОВ
-                             */
                             final int count = ii;
                             reff2.addValueEventListener(new ValueEventListener() {
                                 @Override
