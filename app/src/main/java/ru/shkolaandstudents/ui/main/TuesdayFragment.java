@@ -730,14 +730,6 @@ public class TuesdayFragment extends Fragment implements OnBackPressedListener {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                tvT19.setText("");
-                tvT22.setText("");
-                tvT33.setText("");
-                tvT44.setText("");
-                tvT55.setText("");
-                tvT66.setText("");
-                tvT77.setText("");
-                tvT88.setText("");
             }
         });
 

@@ -47,7 +47,7 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
     String M1,M2,M3,M4,M5,M6,M7,M8;
     DatabaseReference reff;
 
-    int i = 0;
+    //
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -226,11 +226,12 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
                 /**
                  * СОЗДАНИЕ МАССИВОВ VALUE
                  * */
+
                 DatabaseReference reff1 = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Оценки");
                 reff1.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                        int i = 0;
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             final String str_sub = ds.getKey();
                             for (int j = 0; j < 8; j++) {
@@ -239,6 +240,7 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
                                     arr_set[i] = view_ocenka;
                                     arr_sub1[i] = str_sub;
                                     i++;
+                                    break;
                                 }
                             }
 
