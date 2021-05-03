@@ -37,24 +37,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-<!--            <EditText-->
-<!--                android:id="@+id/editText1"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="45dp" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/editText2"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="45dp"-->
-<!--                android:gravity="center"-->
-<!--                android:hint="Enter Answer #1" />-->
-
-<!--            <EditText-->
-<!--                android:id="@+id/editText4"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="45dp"-->
-<!--                android:gravity="center"-->
-<!--                android:hint="Enter Answer #3" />-->
         </LinearLayout>
 
         <LinearLayout

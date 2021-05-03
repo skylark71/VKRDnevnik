@@ -237,7 +237,6 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
         final String[] arr_sub1 = new String[8];
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
-        ;
         reff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
