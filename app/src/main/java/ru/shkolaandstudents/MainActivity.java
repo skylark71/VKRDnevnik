@@ -45,6 +45,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import ru.shkolaandstudents.LoginAndRegist.SignInActivity;
 import ru.shkolaandstudents.LoginAndRegist.User_nh_ui;
 import ru.shkolaandstudents.ui.main.AboutFragment;
 import ru.shkolaandstudents.ui.main.HomeFragment;
@@ -353,10 +354,11 @@ public class MainActivity extends AppCompatActivity {
                     view.findViewById(R.id.buttonNo).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent i = new Intent(Intent.ACTION_MAIN);
-                            i.addCategory(Intent.CATEGORY_HOME);
-                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(i);
+                            FirebaseAuth.getInstance().signOut();
+                            //Intent i = new Intent(Intent.ACTION_MAIN);
+                            startActivity(new Intent(MainActivity.this, SignInActivity.class));
+                            finish();
+
                         }
                     });
 

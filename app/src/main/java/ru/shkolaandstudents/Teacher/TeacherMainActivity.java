@@ -43,9 +43,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import ru.shkolaandstudents.AddPersonFragment;
+import ru.shkolaandstudents.LoginAndRegist.SignInActivity;
 import ru.shkolaandstudents.LoginAndRegist.User;
 import ru.shkolaandstudents.LoginAndRegist.User_nh_ui;
 import ru.shkolaandstudents.LoginAndRegist.User_ui;
+import ru.shkolaandstudents.MainActivity;
 import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
 import ru.shkolaandstudents.RecyclerViewTeacher.TeacherActivityCreateClassAndSubList;
@@ -379,10 +381,9 @@ public class TeacherMainActivity extends AppCompatActivity {
                     view.findViewById(R.id.buttonNo).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent i = new Intent(Intent.ACTION_MAIN);
-                            i.addCategory(Intent.CATEGORY_HOME);
-                            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(i);
+                            FirebaseAuth.getInstance().signOut();
+                            startActivity(new Intent(TeacherMainActivity.this, SignInActivity.class));
+                            finish();
                         }
                     });
 
