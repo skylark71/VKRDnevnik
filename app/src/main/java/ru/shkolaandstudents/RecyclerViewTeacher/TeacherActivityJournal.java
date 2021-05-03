@@ -196,11 +196,27 @@ public class TeacherActivityJournal extends AppCompatActivity {
 
         final DatabaseReference ref_save = database.getReference("Users");
 
+        String current_month = new SimpleDateFormat("MM", Locale.getDefault()).format(new Date());
+        int value =Integer.parseInt(current_month);
+        int counter =0;
+        if((value == 1) || (value == 3) || (value == 5) || (value == 7) || (value == 8) || (value == 10) || (value == 12))
+        {
+            counter = 31;
+        }
+        else if((value == 4) || (value == 6) || (value == 9) || (value == 11))
+        {
+            counter = 30;
+        }
+        else if((value == 29))
+        {
+            counter = 29;
+        }
+
         final TextView[][] tv_value = new TextView[32][32];
         for (int i=0; i<30; i++)
         {
             final int ii = i;
-            for(int j=0; j<31; j++)
+            for(int j=0; j<counter; j++)
             {
                 String view_date = "date"+(i+1)+"00"+ (j + 1);
                 int resIDdate = getResources().getIdentifier(view_date, "id", getPackageName());
