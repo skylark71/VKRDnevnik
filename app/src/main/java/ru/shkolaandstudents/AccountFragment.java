@@ -1,3 +1,4 @@
+/*
 package ru.shkolaandstudents;
 
 import android.os.Bundle;
@@ -48,4 +49,4 @@ public class AccountFragment extends Fragment {
 
         return v;
     }
-}
+}*/

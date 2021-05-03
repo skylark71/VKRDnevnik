@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         Menu drawerMenu = nvDrawer.getMenu();
         drawerMenu.findItem(R.id.study_menu).setChecked(true);
 
-        drawerMenu.findItem(R.id.teacher_class).setVisible(false);
+        //drawerMenu.findItem(R.id.teacher_class).setVisible(false);
         drawerMenu.findItem(R.id.teacher_journal).setVisible(false);
 
         if (utils.getTheme(getApplicationContext()) == THEME_LIGHT) {
@@ -412,14 +412,14 @@ public class MainActivity extends AppCompatActivity {
                 });
                 break;
 
-            case R.id.add_person:
+            /*case R.id.add_person:
                 moveAction = 1;
                 fragmentClass = AddPersonFragment.class;
                 break;
             case R.id.open_person:
                 moveAction = 1;
                 fragmentClass = AccountFragment.class;
-                break;
+                break;*/
             default:
                 moveAction = 0;
                 fragmentClass = HomeFragment.class;

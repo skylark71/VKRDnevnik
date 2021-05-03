@@ -42,16 +42,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import ru.shkolaandstudents.AddPersonFragment;
+
 import ru.shkolaandstudents.LoginAndRegist.SignInActivity;
-import ru.shkolaandstudents.LoginAndRegist.User;
 import ru.shkolaandstudents.LoginAndRegist.User_nh_ui;
-import ru.shkolaandstudents.LoginAndRegist.User_ui;
-import ru.shkolaandstudents.MainActivity;
 import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
 import ru.shkolaandstudents.RecyclerViewTeacher.TeacherActivityCreateClassAndSubList;
-import ru.shkolaandstudents.RecyclerViewTeacher.TeacherCreateStudies;
 import ru.shkolaandstudents.RecyclerViewTeacher.TeacherFragmentJournalList;
 import ru.shkolaandstudents.Utilities;
 import ru.shkolaandstudents.ui.main.HomeFragment;
@@ -96,10 +92,10 @@ public class TeacherMainActivity extends AppCompatActivity {
         Menu drawerMenu = teacher_nvDrawer.getMenu();
         drawerMenu.findItem(R.id.study_menu).setChecked(true);
 
-        drawerMenu.findItem(R.id.teacher_class).setVisible(true);
-        drawerMenu.findItem(R.id.teacher_journal).setVisible(true);
+        /*drawerMenu.findItem(R.id.teacher_class).setVisible(true);
         drawerMenu.findItem(R.id.teacher_class).setTitle("Создать");
-        drawerMenu.findItem(R.id.teacher_class).setTitle("Тест");
+        drawerMenu.findItem(R.id.teacher_class).setTitle("Тест");*/
+        drawerMenu.findItem(R.id.teacher_journal).setVisible(true);
 
         if (utils.getTheme(getApplicationContext()) == THEME_LIGHT) {
             setTheme(R.style.AppTheme_Light);
@@ -339,14 +335,14 @@ public class TeacherMainActivity extends AppCompatActivity {
                 /**fragmentClass = TeacherFragmentRasp.class;**/
                 fragmentClass = TeacherFragmentRasp.class;
                 break;
-            case R.id.teacher_class:
+            /*case R.id.teacher_class:
                 moveAction = 1;
-                /**fragmentClass = TeacherFragmentSetTuesday.class;**/
-                /*moveAction = 1;
-                fragmentClass = TeacherFragmentSetMonday.class;*/
+                *//**fragmentClass = TeacherFragmentSetTuesday.class;**//*
+                *//*moveAction = 1;
+                fragmentClass = TeacherFragmentSetMonday.class;*//*
                 Intent intent = new Intent(this, TeacherActivityCreateClassAndSubList.class);
                 startActivity(intent);
-                break;
+                break;*/
             case R.id.teacher_journal:
                 moveAction = 1;
                 fragmentClass = TeacherFragmentJournalList.class;
@@ -437,10 +433,10 @@ public class TeacherMainActivity extends AppCompatActivity {
                 });
                 break;
 
-            case R.id.add_person:
+            /*case R.id.add_person:
                 moveAction = 1;
                 fragmentClass = AddPersonFragment.class;
-                break;
+                break;*/
             default:
                 moveAction = 0;
                 fragmentClass = HomeFragment.class;

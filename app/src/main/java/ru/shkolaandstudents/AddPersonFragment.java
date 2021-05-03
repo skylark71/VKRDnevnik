@@ -1,3 +1,4 @@
+/*
 package ru.shkolaandstudents;
 
 import android.os.Bundle;
@@ -59,4 +60,4 @@ public class AddPersonFragment extends Fragment {
 
         return v;
     }
-}
+}*/
