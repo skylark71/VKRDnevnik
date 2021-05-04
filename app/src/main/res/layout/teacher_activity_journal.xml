@@ -20,6 +20,12 @@
         android:layout_marginTop="3dp"
         android:text="" />
 
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner_month"
+        android:layout_height="wrap_content"
+        android:layout_width="180dp"
+        />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -49,14 +55,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:background="@drawable/back"
+
                 android:text="" />
 
             <TextView
                 android:id="@+id/school_man2"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
 
@@ -64,7 +70,7 @@
                 android:id="@+id/school_man3"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
 
@@ -72,7 +78,7 @@
                 android:id="@+id/school_man4"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
 
@@ -80,7 +86,7 @@
                 android:id="@+id/school_man5"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
 
@@ -88,35 +94,35 @@
                 android:id="@+id/school_man6"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
                 android:id="@+id/school_man7"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
                 android:id="@+id/school_man8"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
                 android:id="@+id/school_man9"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
                 android:id="@+id/school_man10"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
@@ -124,14 +130,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:background="@drawable/back"
+
                 android:text="" />
 
             <TextView
                 android:id="@+id/school_man12"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
 
@@ -139,7 +145,7 @@
                 android:id="@+id/school_man13"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
 
@@ -147,7 +153,7 @@
                 android:id="@+id/school_man14"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
 
@@ -155,7 +161,7 @@
                 android:id="@+id/school_man15"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
 
@@ -163,35 +169,35 @@
                 android:id="@+id/school_man16"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
                 android:id="@+id/school_man17"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
                 android:id="@+id/school_man18"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
                 android:id="@+id/school_man19"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
                 android:id="@+id/school_man20"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
@@ -199,14 +205,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
-                android:background="@drawable/back"
+
                 android:text="" />
 
             <TextView
                 android:id="@+id/school_man22"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
 
@@ -214,7 +220,7 @@
                 android:id="@+id/school_man23"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
 
@@ -222,7 +228,7 @@
                 android:id="@+id/school_man24"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
 
@@ -230,7 +236,7 @@
                 android:id="@+id/school_man25"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
 
@@ -238,35 +244,35 @@
                 android:id="@+id/school_man26"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
                 android:id="@+id/school_man27"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
                 android:id="@+id/school_man28"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
                 android:id="@+id/school_man29"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
             <TextView
                 android:id="@+id/school_man30"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:background="@drawable/back"
+
                 android:gravity="center"
                 android:text="" />
         </LinearLayout>
