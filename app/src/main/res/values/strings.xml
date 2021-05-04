@@ -209,6 +209,36 @@
         <item>Информатика</item>
         <item>История</item>
         <item>Физика</item>
+        <item>Чистописание</item>
+        <item>Чтение</item>
+        <item>Труд</item>
+        <item>Природоведение</item>
+        <item>Изобразительное искусство</item>
+        <item>Физкультура</item>
+        <item>Родной язык</item>
+        <item>Основы религиозных культур и светской этики</item>
+        <item>Иностранный язык</item>
+        <item>Граждановедение</item>
+        <item>Краеведение</item>
+        <item>Литература</item>
+        <item>Основы безопасности жизнедеятельности</item>
+        <item>Технология</item>
+        <item>География</item>
+        <item>Биология</item>
+        <item>Обществознание</item>
+        <item>Черчение</item>
+        <item>Алгебра</item>
+        <item>Геометрия</item>
+        <item>Химия</item>
+        <item>Естествознание</item>
+        <item>Основы экономики</item>
+        <item>Правоведение</item>
+        <item>Философия</item>
+        <item>Экология</item>
+        <item>Астрономия</item>
+        <item>Начальная военная подготовка</item>
+        <item>Мировая художественная культура</item>
+        <item>Риторика</item>
     </string-array>
     <string-array name="month_of_year">
         <item>Выберите месяц</item>
