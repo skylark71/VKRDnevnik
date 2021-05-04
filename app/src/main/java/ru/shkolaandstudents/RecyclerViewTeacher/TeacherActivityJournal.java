@@ -25,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -239,8 +241,42 @@ public class TeacherActivityJournal extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int l) {
                                 Toast.makeText(TeacherActivityJournal.this, spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                                String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
-                                String currentDayOfWeek = new SimpleDateFormat("EEE", Locale.getDefault()).format(new Date());
+                                String currentDate;
+                                String currentDayOfWeek = null;
+                                if((jj+1)<10)
+                                {
+                                    String day = "0"+(jj+1);
+                                    currentDate = new SimpleDateFormat("/MM/yyyy", Locale.getDefault()).format(new Date());
+                                    currentDate = day + currentDate;
+
+                                    SimpleDateFormat format1=new SimpleDateFormat("dd/MM/yyyy");
+                                    Date dt1= null;
+                                    try {
+                                        dt1 = format1.parse(currentDate);
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
+                                    DateFormat format2=new SimpleDateFormat("EEE");
+                                    currentDayOfWeek =format2.format(dt1);
+                                }
+                                else
+                                {
+                                    currentDate = new SimpleDateFormat("/MM/yyyy", Locale.getDefault()).format(new Date());
+                                    currentDate = (jj+1) + currentDate;
+
+                                    SimpleDateFormat format1=new SimpleDateFormat("dd/MM/yyyy");
+                                    Date dt1= null;
+                                    try {
+                                        dt1 = format1.parse(currentDate);
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
+                                    DateFormat format2=new SimpleDateFormat("EEE");
+                                    currentDayOfWeek =format2.format(dt1);
+
+                                }
+                                //String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
+                                //String currentDayOfWeek = new SimpleDateFormat("EEE", Locale.getDefault()).format(new Date());
                                 tv_value[ii][jj].setText(spinner.getSelectedItem().toString());
                                 String str = spinner.getSelectedItem().toString();
                                 ref = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(class_name + sub_name);
@@ -260,42 +296,6 @@ public class TeacherActivityJournal extends AppCompatActivity {
 
             }
         }
-        /*for (int i = 0; i < 31; i++) {
-            final int j = i;
-            String view_date = "date100" + (i + 1);
-            int resIDdate = getResources().getIdentifier(view_date, "id", getPackageName());
-
-            ar_date[i] = ((TextView) findViewById(resIDdate));
-            //ar_date[i].setText("  "+i+" ");
-
-            ar_date[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View vw) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(TeacherActivityJournal.this,R.style.AlertDialogTheme);
-                    View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
-                    builder.setTitle("Тест");
-                    builder.setView(view);
-                    final Spinner spinner = view.findViewById(R.id.spinner1);
-
-                    arrayAdapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                    spinner.setAdapter(arrayAdapter);
-                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int l) {
-                            Toast.makeText(TeacherActivityJournal.this, spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                            ar_date[j].setText(spinner.getSelectedItem().toString());
-                            String str = spinner.getSelectedItem().toString();
-                            ref = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(class_name + sub_name);
-                            ref.child("0"+j).setValue(str);
-                            dialogInterface.dismiss();
-                        }
-                    });
-                    builder.setView(view);
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }
-            });
-        }*/
 
     }
 }
