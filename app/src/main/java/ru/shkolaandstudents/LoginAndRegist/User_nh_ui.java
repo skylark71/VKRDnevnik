@@ -351,6 +351,9 @@ public class User_nh_ui extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String lastname = et_set_ui_lastname.getText().toString();
+                lastname = lastname.trim();
+                lastname = lastname+" ";
+
                 String firstname = et_set_ui_firstname.getText().toString();
                 String otchest = et_set_ui_otch.getText().toString();
                 String email = et_set_ui_email.getText().toString();

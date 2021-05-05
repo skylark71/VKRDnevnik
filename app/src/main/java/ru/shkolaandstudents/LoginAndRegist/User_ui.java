@@ -36,12 +36,12 @@ public class User_ui extends AppCompatActivity {
     DatabaseReference ref;
     EditText et_set_ui_lastname, et_set_ui_firstname, et_set_ui_otch, et_set_ui_email;
     Button btn_ui_save;
-    String lastname ;
-    String firstname ;
-    String otchest ;
-    String email ;
-    String str_class_old, str_class_new ;
-    String school ;
+    String lastname;
+    String firstname;
+    String otchest;
+    String email;
+    String str_class_old, str_class_new;
+    String school;
     String uid;
     TextView tv_set_class;
     LinearLayout ll_ui_teacher;
@@ -165,6 +165,9 @@ public class User_ui extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String lastname = et_set_ui_lastname.getText().toString();
+                lastname = lastname.trim();
+                lastname = lastname+" ";
+
                 String firstname = et_set_ui_firstname.getText().toString();
                 String otchest = et_set_ui_otch.getText().toString();
                 String email = et_set_ui_email.getText().toString();
