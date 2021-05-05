@@ -1,3 +1,4 @@
+/*
 package ru.shkolaandstudents.RecyclerViewTeacher;
 
 import android.content.SharedPreferences;
@@ -101,4 +102,4 @@ public class TeacherFragmentClassCreate extends Fragment {
         mExampleList.add(new ExampleItem(line1, line2));
 
     }
-}
+}*/
