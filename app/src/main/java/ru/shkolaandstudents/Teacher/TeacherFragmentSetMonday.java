@@ -39,7 +39,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
 
     Utilities utils = new Utilities(getActivity());
 
-    Button btnTuesday,btnHelp;
+    Button btnTuesday, btnHelp;
     DatabaseReference ref;
     DatabaseReference ref_save;
 
@@ -52,8 +52,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
         btnHelp = v.findViewById(R.id.btnMHelp);
 
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Settings", MODE_PRIVATE);
-        String text = sharedPreferences.getString("school", "");
-        String school = text;
+        String school = sharedPreferences.getString("school", "");
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
@@ -185,147 +184,99 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                 String M7Class = String.valueOf(snapshot.child("M7Class").getValue());
                 String M8Class = String.valueOf(snapshot.child("M8Class").getValue());
 
-                if(!snapshot.child("M1Sub").exists())
-                {
+                if (!snapshot.child("M1Sub").exists()) {
                     tvSetM1Sub.setText(R.string.SetSub1);
-                }
-                else
-                {
+                } else {
                     tvSetM1Sub.setText(M1Sub);
                 }
 
-                if(!snapshot.child("M2Sub").exists())
-                {
+                if (!snapshot.child("M2Sub").exists()) {
                     tvSetM2Sub.setText(R.string.SetSub2);
-                }
-                else
-                {
+                } else {
                     tvSetM2Sub.setText(M2Sub);
                 }
 
-                if(!snapshot.child("M3Sub").exists())
-                {
+                if (!snapshot.child("M3Sub").exists()) {
                     tvSetM3Sub.setText(R.string.SetSub3);
-                }
-                else
-                {
+                } else {
                     tvSetM3Sub.setText(M3Sub);
                 }
 
-                if(!snapshot.child("M4Sub").exists())
-                {
+                if (!snapshot.child("M4Sub").exists()) {
                     tvSetM4Sub.setText(R.string.SetSub4);
-                }
-                else
-                {
+                } else {
                     tvSetM4Sub.setText(M4Sub);
                 }
 
-                if(!snapshot.child("M5Sub").exists())
-                {
+                if (!snapshot.child("M5Sub").exists()) {
                     tvSetM5Sub.setText(R.string.SetSub5);
-                }
-                else
-                {
+                } else {
                     tvSetM5Sub.setText(M5Sub);
                 }
 
-                if(!snapshot.child("M6Sub").exists())
-                {
+                if (!snapshot.child("M6Sub").exists()) {
                     tvSetM6Sub.setText(R.string.SetSub6);
-                }
-                else
-                {
+                } else {
                     tvSetM6Sub.setText(M6Sub);
                 }
 
-                if(!snapshot.child("M7Sub").exists())
-                {
+                if (!snapshot.child("M7Sub").exists()) {
                     tvSetM7Sub.setText(R.string.SetSub7);
-                }
-                else
-                {
+                } else {
                     tvSetM7Sub.setText(M7Sub);
                 }
 
-                if(!snapshot.child("M8Sub").exists())
-                {
+                if (!snapshot.child("M8Sub").exists()) {
                     tvSetM8Sub.setText(R.string.SetSub8);
-                }
-                else
-                {
+                } else {
                     tvSetM8Sub.setText(M8Sub);
                 }
 
-                if(!snapshot.child("M1Class").exists())
-                {
+                if (!snapshot.child("M1Class").exists()) {
                     tvSetM1Class.setText(R.string.SetClass1);
-                }
-                else
-                {
+                } else {
                     tvSetM1Class.setText(M1Class);
                 }
 
-                if(!snapshot.child("M2Class").exists())
-                {
+                if (!snapshot.child("M2Class").exists()) {
                     tvSetM2Class.setText(R.string.SetClass2);
-                }
-                else
-                {
+                } else {
                     tvSetM2Class.setText(M2Class);
                 }
 
-                if(!snapshot.child("M3Class").exists())
-                {
+                if (!snapshot.child("M3Class").exists()) {
                     tvSetM3Class.setText(R.string.SetClass3);
-                }
-                else
-                {
+                } else {
                     tvSetM3Class.setText(M3Class);
                 }
 
-                if(!snapshot.child("M4Class").exists())
-                {
+                if (!snapshot.child("M4Class").exists()) {
                     tvSetM4Class.setText(R.string.SetClass4);
-                }
-                else
-                {
+                } else {
                     tvSetM4Class.setText(M4Class);
                 }
 
-                if(!snapshot.child("M5Class").exists())
-                {
+                if (!snapshot.child("M5Class").exists()) {
                     tvSetM5Class.setText(R.string.SetClass5);
-                }
-                else
-                {
+                } else {
                     tvSetM5Class.setText(M5Class);
                 }
 
-                if(!snapshot.child("M6Class").exists())
-                {
+                if (!snapshot.child("M6Class").exists()) {
                     tvSetM6Class.setText(R.string.SetClass6);
-                }
-                else
-                {
+                } else {
                     tvSetM6Class.setText(M6Class);
                 }
 
-                if(!snapshot.child("M7Class").exists())
-                {
+                if (!snapshot.child("M7Class").exists()) {
                     tvSetM7Class.setText(R.string.SetClass7);
-                }
-                else
-                {
+                } else {
                     tvSetM7Class.setText(M7Class);
                 }
 
-                if(!snapshot.child("M8Class").exists())
-                {
+                if (!snapshot.child("M8Class").exists()) {
                     tvSetM8Class.setText(R.string.SetClass8);
-                }
-                else
-                {
+                } else {
                     tvSetM8Class.setText(M8Class);
                 }
             }
@@ -341,22 +292,22 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
         ref1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int j=1;
-                int i=0;
-                for (DataSnapshot ds : snapshot.getChildren()){
+                int j = 1;
+                int i = 0;
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     String name_school = ds.getKey();
                     j++;
                 }
 
                 final String[] strClass = new String[j];
-                strClass[0]= "Класс";
-                for (DataSnapshot ds1 : snapshot.getChildren()){
+                strClass[0] = "Класс";
+                for (DataSnapshot ds1 : snapshot.getChildren()) {
                     String name_school = ds1.getKey();
-                    strClass[i+1] = name_school;
+                    strClass[i + 1] = name_school;
                     i++;
                 }
 
-                final ArrayAdapter arrayAdapterClass = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,strClass);
+                final ArrayAdapter arrayAdapterClass = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, strClass);
 
                 {
                     /**
@@ -590,10 +541,10 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int ii=0;
-                int jj=0;
+                int ii = 0;
+                int jj = 0;
 
-                for (DataSnapshot ds : snapshot.getChildren()){
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     String str_sub = ds.child("Sub").getValue(String.class);
                     jj++;
                 }
@@ -601,7 +552,7 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                 String[] strSub = new String[jj];
                 //strSub[0]= "Предмет";
 
-                for (DataSnapshot ds : snapshot.getChildren()){
+                for (DataSnapshot ds : snapshot.getChildren()) {
                     String str_sub = ds.child("Sub").getValue(String.class);
                     //strSub[i+1] = str_sub;
                     strSub[ii] = str_sub;
@@ -609,13 +560,10 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                 }
 
                 int n = strSub.length;
-                for ( int i = 0, m = 0; i != n; i++, n = m )
-                {
-                    for ( int j = m = i + 1; j != n; j++ )
-                    {
-                        if (!strSub[j].equals(strSub[i]))
-                        {
-                            if ( m != j ) strSub[m] = strSub[j];
+                for (int i = 0, m = 0; i != n; i++, n = m) {
+                    for (int j = m = i + 1; j != n; j++) {
+                        if (!strSub[j].equals(strSub[i])) {
+                            if (m != j) strSub[m] = strSub[j];
                             m++;
                         }
                     }
@@ -623,15 +571,14 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
 
                 Arrays.sort(strSub);
 
-                if ( n != strSub.length )
-                {
+                if (n != strSub.length) {
                     String[] b = new String[n];
-                    for ( int i = 0; i < n; i++ ) b[i] = strSub[i];
+                    for (int i = 0; i < n; i++) b[i] = strSub[i];
 
                     strSub = b;
                 }
 
-                final ArrayAdapter arrayAdapterSub = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,strSub);
+                final ArrayAdapter arrayAdapterSub = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, strSub);
 
                 /**
                  * Инициализация предметов
@@ -639,8 +586,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                 tvSetM1Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub, null);
                         builder.setTitle("Выберите 1 предмет");
                         builder.setView(view);
                         final Spinner spinner = view.findViewById(R.id.spinner1);
@@ -666,8 +613,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                 tvSetM2Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub, null);
                         builder.setTitle("Выберите 2 предмет");
                         builder.setView(view);
                         final Spinner spinner = view.findViewById(R.id.spinner1);
@@ -693,8 +640,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                 tvSetM3Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub, null);
                         builder.setTitle("Выберите 3 предмет");
                         builder.setView(view);
                         final Spinner spinner = view.findViewById(R.id.spinner1);
@@ -720,8 +667,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                 tvSetM4Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub, null);
                         builder.setTitle("Выберите 4 предмет");
                         builder.setView(view);
                         final Spinner spinner = view.findViewById(R.id.spinner1);
@@ -747,8 +694,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                 tvSetM5Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub, null);
                         builder.setTitle("Выберите 5 предмет");
                         builder.setView(view);
                         final Spinner spinner = view.findViewById(R.id.spinner1);
@@ -774,8 +721,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                 tvSetM6Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub, null);
                         builder.setTitle("Выберите 6 предмет");
                         builder.setView(view);
                         final Spinner spinner = view.findViewById(R.id.spinner1);
@@ -801,8 +748,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                 tvSetM7Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub, null);
                         builder.setTitle("Выберите 7 предмет");
                         builder.setView(view);
                         final Spinner spinner = view.findViewById(R.id.spinner1);
@@ -828,8 +775,8 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
                 tvSetM8Sub.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.AlertDialogTheme);
+                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub, null);
                         builder.setTitle("Выберите 8 предмет");
                         builder.setView(view);
                         final Spinner spinner = view.findViewById(R.id.spinner1);
@@ -861,11 +808,9 @@ public class TeacherFragmentSetMonday extends Fragment implements OnBackPressedL
         });
 
 
-        btnTuesday.setOnClickListener(new View.OnClickListener()
-        {
+        btnTuesday.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 utils.switchFragment(getActivity(), new TeacherFragmentSettingStudy());
             }
         });
