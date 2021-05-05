@@ -295,7 +295,7 @@ public class TeacherFragmentSetTuesday extends Fragment implements OnBackPressed
         ref1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int j = 1;
+                int j = 0;
                 int i = 0;
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     String name_school = ds.getKey();
@@ -303,10 +303,10 @@ public class TeacherFragmentSetTuesday extends Fragment implements OnBackPressed
                 }
 
                 final String[] strClass = new String[j];
-                strClass[0] = "Класс";
+                //strClass[0] = "Класс";
                 for (DataSnapshot ds1 : snapshot.getChildren()) {
                     String name_school = ds1.getKey();
-                    strClass[i + 1] = name_school;
+                    strClass[i] = name_school;
                     i++;
                 }
 
