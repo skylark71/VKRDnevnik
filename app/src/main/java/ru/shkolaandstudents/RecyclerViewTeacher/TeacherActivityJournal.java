@@ -210,8 +210,8 @@ public class TeacherActivityJournal extends AppCompatActivity {
                             }
 
                             for (DataSnapshot ds1 : snapshot.getChildren()){
-                                String name = ds1.getKey(); //1 0
-                                String delims = "[ ]+";     //1,0
+                                String name = ds1.getKey();           //1 0
+                                String delims = "[ ]+";               //1,0
                                 String[] tokens = name.split(delims); //[0,1]
                                 for (int i = 0; i < tokens.length; i++) {
                                     int row = Integer.parseInt(tokens[0]);
@@ -404,7 +404,15 @@ public class TeacherActivityJournal extends AppCompatActivity {
         String str_month = month.format(date);
         final TextView[]  ar_date = new TextView[31];
 
-        int value =Integer.parseInt(current_m);
+        final int value =Integer.parseInt(current_m);
+
+        spinner.post(new Runnable() {
+            @Override
+            public void run() {
+                spinner.setSelection(value);
+            }
+        });
+
         int counter =0;
         if((value == 1) || (value == 3) || (value == 5) || (value == 7) || (value == 8) || (value == 10) || (value == 12))
         {
@@ -435,7 +443,7 @@ public class TeacherActivityJournal extends AppCompatActivity {
         //final String current_month = new SimpleDateFormat("MM", Locale.getDefault()).format(new Date());
 
         final TextView[][] tv_value = new TextView[32][32];
-        for (int i=0; i<count_students; i++)
+        for (int i=0; i<30; i++)
         {
             final int ii = i;
             for(int j=0; j<counter; j++)
