@@ -276,9 +276,9 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
                             final String str_sub = ds.getKey();
                             for (int j = 0; j < 8; j++) {
                                 if (str_sub.equals(arr_sub[j])) {
-                                    final String view_ocenka = "tvOcenkaM" + (i + 1);
-                                    arr_set[i] = view_ocenka;
-                                    arr_sub1[i] = str_sub;
+                                    final String view_ocenka = "tvOcenkaM" + (j + 1);
+                                    arr_set[j] = view_ocenka;
+                                    arr_sub1[j] = str_sub;
                                     i++;
                                     break;
                                 }

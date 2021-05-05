@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
@@ -255,9 +256,9 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                             final String str_sub = ds.getKey();
                             for (int j = 0; j < 8; j++) {
                                 if (str_sub.equals(arr_sub[j])) {
-                                    final String view_ocenka = "tvOcenkaFr" + (i + 1);
-                                    arr_set[i] = view_ocenka;
-                                    arr_sub1[i] = str_sub;
+                                    final String view_ocenka = "tvOcenkaFr" + (j + 1);
+                                    arr_set[j] = view_ocenka;
+                                    arr_sub1[j] = str_sub;
                                     i++;
                                     break;
                                 }
@@ -274,33 +275,51 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     for (DataSnapshot ds : snapshot.getChildren()) {
+
+                                        int Day = 6;
                                         Calendar now = Calendar.getInstance();
-                                        int weekday1 = now.get(Calendar.DAY_OF_WEEK);
-                                        int days1 = ((Calendar.SATURDAY - weekday1 + 2) % 7) - 7;
-                                        now.add(Calendar.DAY_OF_YEAR, days1);
-                                        Date date1 = now.getTime();
-                                        String dayStr = new SimpleDateFormat("EEE").format(date1);
+                                        int weekday = now.get(Calendar.DAY_OF_WEEK);
+                                        int days = (Calendar.SATURDAY - weekday + Day) % 7;
+                                        now.add(Calendar.DAY_OF_YEAR, days);
+                                        Date date = now.getTime();
+                                        String data = new SimpleDateFormat("dd/MM/yyyy").format(date);
+                                        String day_of_week = new SimpleDateFormat("EEE").format(date);
 
-                                        int Mn = 2;
-                                        Calendar now1 = Calendar.getInstance();
-                                        int weekday = now1.get(Calendar.DAY_OF_WEEK);
-                                        int days = ((Calendar.SATURDAY - weekday + Mn) % 7) - 7;
-                                        now1.add(Calendar.DAY_OF_YEAR, days);
-                                        Date date = now1.getTime();
-                                        String dateStr = new SimpleDateFormat("dd/MM/yyyy").format(date);
+                                        String currentDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
-                                        String str_date = String.valueOf(ds.child("Дата").getValue());
-                                        if (str_date.equals(dateStr)) {
-                                            System.out.println("Test");
+                                        if(data.equals(currentDate))
+                                        {
+                                            String data_bd = String.valueOf(ds.child("Дата").getValue());
+                                            String day_of_week_bd = String.valueOf(ds.child("День").getValue());
+
+                                            if (day_of_week_bd.equals(day_of_week) && (data.equals(data_bd))) {
+                                                String str_ocenka = String.valueOf(ds.child("Оценка").getValue());
+                                                int resIDdate = getResources().getIdentifier(arr_set[count], "id", getActivity().getPackageName());
+                                                arr[count] = ((TextView) v.findViewById(resIDdate));
+                                                arr[count].setText(str_ocenka);
+                                            }
                                         }
-                                        String str_day = String.valueOf(ds.child("День").getValue());
-                                        if (dayStr.equals(str_day)) {
-                                            String str_ocenka = String.valueOf(ds.child("Оценка").getValue());
-                                            int resIDdate = getResources().getIdentifier(arr_set[count], "id", getActivity().getPackageName());
-                                            arr[count] = ((TextView) v.findViewById(resIDdate));
-                                            arr[count].setText(str_ocenka);
-                                        }
+                                        else
+                                        {
+                                            int Day1 = 6;
+                                            Calendar now1 = Calendar.getInstance();
+                                            int weekday1 = now1.get(Calendar.DAY_OF_WEEK);
+                                            int days1 = ((Calendar.SATURDAY - weekday1 + Day1) % 7) - 7;
+                                            now1.add(Calendar.DAY_OF_YEAR, days1);
+                                            Date date1 = now1.getTime();
+                                            String data1 = new SimpleDateFormat("dd/MM/yyyy").format(date1);
+                                            String day_of_week1 = new SimpleDateFormat("EEE").format(date1);
 
+                                            String data_bd1 = String.valueOf(ds.child("Дата").getValue());
+                                            String day_of_week_bd1 = String.valueOf(ds.child("День").getValue());
+
+                                            if (day_of_week_bd1.equals(day_of_week1) && (data1.equals(data_bd1))) {
+                                                String str_ocenka = String.valueOf(ds.child("Оценка").getValue());
+                                                int resIDdate = getResources().getIdentifier(arr_set[count], "id", getActivity().getPackageName());
+                                                arr[count] = ((TextView) v.findViewById(resIDdate));
+                                                arr[count].setText(str_ocenka);
+                                            }
+                                        }
                                     }
                                 }
 
