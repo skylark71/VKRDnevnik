@@ -30,6 +30,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
@@ -54,9 +55,10 @@ public class TeacherFragmentSetSat extends Fragment implements OnBackPressedList
         btnHelp = v.findViewById(R.id.btnSatHelp);
         btnSM = v.findViewById(R.id.btnSatAccess);
 
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Settings", MODE_PRIVATE);
+        String school = sharedPreferences.getString("school", "");
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Value");
-        ref_save = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
 
         final TextView tvSetSat1Sub = v.findViewById(R.id.tvSetSat1Sub);
         final TextView tvSetSat2Sub = v.findViewById(R.id.tvSetSat2Sub);
@@ -164,6 +166,7 @@ public class TeacherFragmentSetSat extends Fragment implements OnBackPressedList
             }
         });
 
+        ref_save = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
         ref_save.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -336,35 +339,297 @@ public class TeacherFragmentSetSat extends Fragment implements OnBackPressedList
             }
         });
 
-
-        ref.addValueEventListener(new ValueEventListener() {
+        DatabaseReference reff1 = database.getReference(school);
+        reff1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int i=0;
-                int j=1;
-
-                for (DataSnapshot ds : snapshot.getChildren()){
-                    String str_sub = ds.child("Sub").getValue(String.class);
+                int j = 0;
+                int i = 0;
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String name_school = ds.getKey();
                     j++;
                 }
 
-                final String[] strSub = new String[j];
                 final String[] strClass = new String[j];
-
-
-                strSub[0]= "Предмет";
-                strClass[0]= "Класс";
-                for (DataSnapshot ds : snapshot.getChildren()){
-                    String str_sub = ds.child("Sub").getValue(String.class);
-                    strSub[i+1] = str_sub;
-
-                    String str_class = ds.child("Class").getValue(String.class);
-                    strClass[i+1] = str_class;
+                //strClass[0] = "Класс";
+                for (DataSnapshot ds1 : snapshot.getChildren()) {
+                    String name_school = ds1.getKey();
+                    strClass[i] = name_school;
                     i++;
                 }
 
-                final ArrayAdapter arrayAdapterSub = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,strSub);
-                final ArrayAdapter arrayAdapterClass = new ArrayAdapter(getActivity(),android.R.layout.simple_spinner_item,strClass);
+                final ArrayAdapter arrayAdapterClass = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, strClass);
+
+                {
+                    /**
+                     * Инициализация классов
+                     * */
+                    tvSetSat1Class.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View vw) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                            View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                            builder.setTitle("Выберите 1 класс");
+                            builder.setView(view);
+                            final Spinner spinner = view.findViewById(R.id.spinner);
+
+                            arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                            spinner.setAdapter(arrayAdapterClass);
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                    tvSetSat1Class.setText(spinner.getSelectedItem().toString());
+                                    String str = spinner.getSelectedItem().toString();
+                                    ref_save.child("Sat1Class").setValue(str);
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            builder.setView(view);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                    });
+
+                    tvSetSat2Class.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View vw) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                            View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                            builder.setTitle("Выберите 2 класс");
+                            builder.setView(view);
+                            final Spinner spinner = view.findViewById(R.id.spinner);
+
+                            arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                            spinner.setAdapter(arrayAdapterClass);
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                    tvSetSat2Class.setText(spinner.getSelectedItem().toString());
+                                    String str = spinner.getSelectedItem().toString();
+                                    ref_save.child("Sat2Class").setValue(str);
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            builder.setView(view);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                    });
+
+                    tvSetSat3Class.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View vw) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                            View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                            builder.setTitle("Выберите 3 класс");
+                            builder.setView(view);
+                            final Spinner spinner = view.findViewById(R.id.spinner);
+
+                            arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                            spinner.setAdapter(arrayAdapterClass);
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                    tvSetSat3Class.setText(spinner.getSelectedItem().toString());
+                                    String str = spinner.getSelectedItem().toString();
+                                    ref_save.child("Sat3Class").setValue(str);
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            builder.setView(view);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                    });
+
+                    tvSetSat4Class.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View vw) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                            View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                            builder.setTitle("Выберите 4 класс");
+                            builder.setView(view);
+                            final Spinner spinner = view.findViewById(R.id.spinner);
+
+                            arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                            spinner.setAdapter(arrayAdapterClass);
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                    tvSetSat4Class.setText(spinner.getSelectedItem().toString());
+                                    String str = spinner.getSelectedItem().toString();
+                                    ref_save.child("Sat4Class").setValue(str);
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            builder.setView(view);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                    });
+
+                    tvSetSat5Class.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View vw) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                            View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                            builder.setTitle("Выберите 5 класс");
+                            builder.setView(view);
+                            final Spinner spinner = view.findViewById(R.id.spinner);
+
+                            arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                            spinner.setAdapter(arrayAdapterClass);
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                    tvSetSat5Class.setText(spinner.getSelectedItem().toString());
+                                    String str = spinner.getSelectedItem().toString();
+                                    ref_save.child("Sat5Class").setValue(str);
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            builder.setView(view);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                    });
+
+                    tvSetSat6Class.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View vw) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                            View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                            builder.setTitle("Выберите 6 класс");
+                            builder.setView(view);
+                            final Spinner spinner = view.findViewById(R.id.spinner);
+
+                            arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                            spinner.setAdapter(arrayAdapterClass);
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                    tvSetSat6Class.setText(spinner.getSelectedItem().toString());
+                                    String str = spinner.getSelectedItem().toString();
+                                    ref_save.child("Sat6Class").setValue(str);
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            builder.setView(view);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                    });
+
+                    tvSetSat7Class.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View vw) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                            View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                            builder.setTitle("Выберите 7 класс");
+                            builder.setView(view);
+                            final Spinner spinner = view.findViewById(R.id.spinner);
+
+                            arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                            spinner.setAdapter(arrayAdapterClass);
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                    tvSetSat7Class.setText(spinner.getSelectedItem().toString());
+                                    String str = spinner.getSelectedItem().toString();
+                                    ref_save.child("Sat7Class").setValue(str);
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            builder.setView(view);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                    });
+
+                    tvSetSat8Class.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View vw) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
+                            View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
+                            builder.setTitle("Выберите 8 класс");
+                            builder.setView(view);
+                            final Spinner spinner = view.findViewById(R.id.spinner);
+
+                            arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+                            spinner.setAdapter(arrayAdapterClass);
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                                    tvSetSat8Class.setText(spinner.getSelectedItem().toString());
+                                    String str = spinner.getSelectedItem().toString();
+                                    ref_save.child("Sat8Class").setValue(str);
+                                    dialogInterface.dismiss();
+                                }
+                            });
+                            builder.setView(view);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        ref = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Value");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int ii = 0;
+                int jj = 0;
+
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String str_sub = ds.child("Sub").getValue(String.class);
+                    jj++;
+                }
+
+                String[] strSub = new String[jj];
+                //strSub[0]= "Предмет";
+
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    String str_sub = ds.child("Sub").getValue(String.class);
+                    //strSub[i+1] = str_sub;
+                    strSub[ii] = str_sub;
+                    ii++;
+                }
+
+                int n = strSub.length;
+                for (int i = 0, m = 0; i != n; i++, n = m) {
+                    for (int j = m = i + 1; j != n; j++) {
+                        if (!strSub[j].equals(strSub[i])) {
+                            if (m != j) strSub[m] = strSub[j];
+                            m++;
+                        }
+                    }
+                }
+
+                Arrays.sort(strSub);
+
+                if (n != strSub.length) {
+                    String[] b = new String[n];
+                    for (int i = 0; i < n; i++) b[i] = strSub[i];
+
+                    strSub = b;
+                }
+
+                final ArrayAdapter arrayAdapterSub = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_item, strSub);
 
                 /**
                  * Инициализация предметов
@@ -584,228 +849,6 @@ public class TeacherFragmentSetSat extends Fragment implements OnBackPressedList
                         dialog.show();
                     }
                 });
-
-
-                /**
-                 * Инициализация классов
-                 * */
-                tvSetSat1Class.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                        builder.setTitle("Выберите 1 класс");
-                        builder.setView(view);
-                        final Spinner spinner = view.findViewById(R.id.spinner);
-
-                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                        spinner.setAdapter(arrayAdapterClass);
-                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                                tvSetSat1Class.setText(spinner.getSelectedItem().toString());
-                                String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Sat1Class").setValue(str);
-                                dialogInterface.dismiss();
-                            }
-                        });
-                        builder.setView(view);
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                    }
-                });
-
-                tvSetSat2Class.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                        builder.setTitle("Выберите 2 класс");
-                        builder.setView(view);
-                        final Spinner spinner = view.findViewById(R.id.spinner);
-
-                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                        spinner.setAdapter(arrayAdapterClass);
-                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                                tvSetSat2Class.setText(spinner.getSelectedItem().toString());
-                                String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Sat2Class").setValue(str);
-                                dialogInterface.dismiss();
-                            }
-                        });
-                        builder.setView(view);
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                    }
-                });
-
-                tvSetSat3Class.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                        builder.setTitle("Выберите 3 класс");
-                        builder.setView(view);
-                        final Spinner spinner = view.findViewById(R.id.spinner);
-
-                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                        spinner.setAdapter(arrayAdapterClass);
-                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                                tvSetSat3Class.setText(spinner.getSelectedItem().toString());
-                                String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Sat3Class").setValue(str);
-                                dialogInterface.dismiss();
-                            }
-                        });
-                        builder.setView(view);
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                    }
-                });
-
-                tvSetSat4Class.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                        builder.setTitle("Выберите 4 класс");
-                        builder.setView(view);
-                        final Spinner spinner = view.findViewById(R.id.spinner);
-
-                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                        spinner.setAdapter(arrayAdapterClass);
-                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                                tvSetSat4Class.setText(spinner.getSelectedItem().toString());
-                                String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Sat4Class").setValue(str);
-                                dialogInterface.dismiss();
-                            }
-                        });
-                        builder.setView(view);
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                    }
-                });
-
-                tvSetSat5Class.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                        builder.setTitle("Выберите 5 класс");
-                        builder.setView(view);
-                        final Spinner spinner = view.findViewById(R.id.spinner);
-
-                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                        spinner.setAdapter(arrayAdapterClass);
-                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                                tvSetSat5Class.setText(spinner.getSelectedItem().toString());
-                                String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Sat5Class").setValue(str);
-                                dialogInterface.dismiss();
-                            }
-                        });
-                        builder.setView(view);
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                    }
-                });
-
-                tvSetSat6Class.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                        builder.setTitle("Выберите 6 класс");
-                        builder.setView(view);
-                        final Spinner spinner = view.findViewById(R.id.spinner);
-
-                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                        spinner.setAdapter(arrayAdapterClass);
-                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                                tvSetSat6Class.setText(spinner.getSelectedItem().toString());
-                                String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Sat6Class").setValue(str);
-                                dialogInterface.dismiss();
-                            }
-                        });
-                        builder.setView(view);
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                    }
-                });
-
-                tvSetSat7Class.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                        builder.setTitle("Выберите 7 класс");
-                        builder.setView(view);
-                        final Spinner spinner = view.findViewById(R.id.spinner);
-
-                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                        spinner.setAdapter(arrayAdapterClass);
-                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                                tvSetSat7Class.setText(spinner.getSelectedItem().toString());
-                                String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Sat7Class").setValue(str);
-                                dialogInterface.dismiss();
-                            }
-                        });
-                        builder.setView(view);
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                    }
-                });
-
-                tvSetSat8Class.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View vw) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialogTheme);
-                        View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_class,null);
-                        builder.setTitle("Выберите 8 класс");
-                        builder.setView(view);
-                        final Spinner spinner = view.findViewById(R.id.spinner);
-
-                        arrayAdapterClass.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
-                        spinner.setAdapter(arrayAdapterClass);
-                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(getActivity(), spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
-                                tvSetSat8Class.setText(spinner.getSelectedItem().toString());
-                                String str = spinner.getSelectedItem().toString();
-                                ref_save.child("Sat8Class").setValue(str);
-                                dialogInterface.dismiss();
-                            }
-                        });
-                        builder.setView(view);
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                    }
-                });
-
-
             }
 
             @Override

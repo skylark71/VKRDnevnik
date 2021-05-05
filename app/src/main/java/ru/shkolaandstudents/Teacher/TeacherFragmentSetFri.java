@@ -166,6 +166,7 @@ public class TeacherFragmentSetFri extends Fragment implements OnBackPressedList
             }
         });
 
+        ref_save = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
         ref_save.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
