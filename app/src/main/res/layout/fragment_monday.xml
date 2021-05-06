@@ -113,7 +113,7 @@
 
             <TextView
                 android:id="@+id/tvM11"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
@@ -230,7 +230,7 @@
 
             <TextView
                 android:id="@+id/tvM22"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
@@ -347,7 +347,7 @@
 
             <TextView
                 android:id="@+id/tvM33"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
@@ -464,7 +464,7 @@
 
             <TextView
                 android:id="@+id/tvM44"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
@@ -581,7 +581,7 @@
 
             <TextView
                 android:id="@+id/tvM55"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
@@ -698,7 +698,7 @@
 
             <TextView
                 android:id="@+id/tvM66"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
@@ -815,7 +815,7 @@
 
             <TextView
                 android:id="@+id/tvM77"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
@@ -932,7 +932,7 @@
 
             <TextView
                 android:id="@+id/tvM88"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"

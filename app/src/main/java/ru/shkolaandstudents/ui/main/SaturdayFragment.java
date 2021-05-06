@@ -258,8 +258,8 @@ public class SaturdayFragment extends Fragment implements OnBackPressedListener 
                             for (int j = 0; j < 8; j++) {
                                 if (str_sub.equals(arr_sub[j])) {
                                     final String view_ocenka = "tvOcenkaSat" + (j + 1);
-                                    arr_set[j] = view_ocenka;
-                                    arr_sub1[j] = str_sub;
+                                    arr_set[i] = view_ocenka;
+                                    arr_sub1[i] = str_sub;
                                     i++;
                                     break;
                                 }
@@ -592,35 +592,35 @@ public class SaturdayFragment extends Fragment implements OnBackPressedListener 
                     tvTimeSat86.setVisibility(View.VISIBLE);
                 }
 
-                if (!Sat1.equals("null") && Sat1.length() > 7) {
+                if (!Sat1.equals("null") && Sat1.length() > 11) {
                     tvSat11.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Sat2.equals("null") && Sat2.length() > 7) {
+                if (!Sat2.equals("null") && Sat2.length() > 11) {
                     tvSat22.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Sat3.equals("null") && Sat3.length() > 7) {
+                if (!Sat3.equals("null") && Sat3.length() > 11) {
                     tvSat33.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Sat4.equals("null") && Sat4.length() > 7) {
+                if (!Sat4.equals("null") && Sat4.length() > 11) {
                     tvSat44.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Sat5.equals("null") && Sat5.length() > 7) {
+                if (!Sat5.equals("null") && Sat5.length() > 11) {
                     tvSat55.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Sat6.equals("null") && Sat6.length() > 7) {
+                if (!Sat6.equals("null") && Sat6.length() > 11) {
                     tvSat66.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Sat7.equals("null") && Sat7.length() > 7) {
+                if (!Sat7.equals("null") && Sat7.length() > 11) {
                     tvSat77.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Sat8.equals("null") && Sat8.length() > 7) {
+                if (!Sat8.equals("null") && Sat8.length() > 11) {
                     tvSat88.setPadding(0, 0, 0, 8);
                 }
 

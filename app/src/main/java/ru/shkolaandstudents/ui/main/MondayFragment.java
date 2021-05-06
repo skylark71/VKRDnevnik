@@ -234,7 +234,7 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
         etM7DZ = v.findViewById(R.id.etM7DZ);
         etM8DZ = v.findViewById(R.id.etM8DZ);
 
-        final String[] arr_sub1 = new String[8];
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
         reff.addValueEventListener(new ValueEventListener() {
@@ -271,14 +271,15 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
                 reff1.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        final String[] arr_sub1 = new String[8];
                         int i = 0;
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             final String str_sub = ds.getKey();
                             for (int j = 0; j < 8; j++) {
                                 if (str_sub.equals(arr_sub[j])) {
                                     final String view_ocenka = "tvOcenkaM" + (j + 1);
-                                    arr_set[j] = view_ocenka;
-                                    arr_sub1[j] = str_sub;
+                                    arr_set[i] = view_ocenka;
+                                    arr_sub1[i] = str_sub;
                                     i++;
                                     break;
                                 }
@@ -615,37 +616,133 @@ public class MondayFragment extends Fragment implements OnBackPressedListener {
                 /**
                  * Отступ снизу для видимости TextView
                  * */
-                if (!M1.equals("null") && M1.length() > 7) {
+                if (!M1.equals("null") && M1.length() > 11) {
                     tvM11.setPadding(0, 0, 0, 8);
                 }
+                /*else if(!M1.equals("null") && M1.length() > 22)
+                {
+                    tvM11.setPadding(0, 0, 0, 16);
+                }
+                else if(!M1.equals("null") && M1.length() > 33)
+                {
+                    tvM11.setPadding(0, 0, 0, 24);
+                }
+                else if(!M1.equals("null") && M1.length() > 44)
+                {
+                    tvM11.setPadding(0, 0, 0, 32);
+                }*/
 
-                if (!M2.equals("null") && M2.length() > 7) {
+                if (!M2.equals("null") && M2.length() > 11) {
                     tvM22.setPadding(0, 0, 0, 8);
                 }
+                /*else if(!M2.equals("null") && M2.length() > 22)
+                {
+                    tvM22.setPadding(0, 0, 0, 16);
+                }
+                else if(!M2.equals("null") && M2.length() > 33)
+                {
+                    tvM22.setPadding(0, 0, 0, 24);
+                }
+                else if(!M2.equals("null") && M2.length() > 44)
+                {
+                    tvM22.setPadding(0, 0, 0, 32);
+                }*/
 
-                if (!M3.equals("null") && M3.length() > 7) {
+                if (!M3.equals("null") && M3.length() > 11) {
                     tvM33.setPadding(0, 0, 0, 8);
                 }
+                /*else if(!M3.equals("null") && M3.length() > 22)
+                {
+                    tvM33.setPadding(0, 0, 0, 16);
+                }
+                else if(!M3.equals("null") && M3.length() > 33)
+                {
+                    tvM33.setPadding(0, 0, 0, 24);
+                }
+                else if(!M3.equals("null") && M3.length() > 44)
+                {
+                    tvM33.setPadding(0, 0, 0, 32);
+                }*/
 
-                if (!M4.equals("null") && M4.length() > 7) {
+                if (!M4.equals("null") && M4.length() > 11) {
                     tvM44.setPadding(0, 0, 0, 8);
                 }
+                /*else if(!M4.equals("null") && M4.length() > 22)
+                {
+                    tvM44.setPadding(0, 0, 0, 16);
+                }
+                else if(!M4.equals("null") && M4.length() > 33)
+                {
+                    tvM44.setPadding(0, 0, 0, 24);
+                }
+                else if(!M4.equals("null") && M4.length() > 44)
+                {
+                    tvM44.setPadding(0, 0, 0, 32);
+                }*/
 
-                if (!M5.equals("null") && M5.length() > 7) {
+                if (!M5.equals("null") && M5.length() > 11) {
                     tvM55.setPadding(0, 0, 0, 8);
                 }
+                /*else if(!M5.equals("null") && M5.length() > 22)
+                {
+                    tvM55.setPadding(0, 0, 0, 16);
+                }
+                else if(!M5.equals("null") && M5.length() > 33)
+                {
+                    tvM55.setPadding(0, 0, 0, 24);
+                }
+                else if(!M5.equals("null") && M5.length() > 44)
+                {
+                    tvM55.setPadding(0, 0, 0, 32);
+                }*/
 
-                if (!M6.equals("null") && M6.length() > 7) {
+                if (!M6.equals("null") && M6.length() > 11) {
                     tvM66.setPadding(0, 0, 0, 8);
                 }
+                /*else if(!M6.equals("null") && M6.length() > 22)
+                {
+                    tvM66.setPadding(0, 0, 0, 16);
+                }
+                else if(!M6.equals("null") && M6.length() > 33)
+                {
+                    tvM66.setPadding(0, 0, 0, 24);
+                }
+                else if(!M6.equals("null") && M6.length() > 44)
+                {
+                    tvM66.setPadding(0, 0, 0, 32);
+                }*/
 
-                if (!M7.equals("null") && M7.length() > 7) {
+                if (!M7.equals("null") && M7.length() > 11) {
                     tvM77.setPadding(0, 0, 0, 8);
                 }
+                /*else if(!M7.equals("null") && M7.length() > 22)
+                {
+                    tvM77.setPadding(0, 0, 0, 16);
+                }
+                else if(!M7.equals("null") && M7.length() > 33)
+                {
+                    tvM77.setPadding(0, 0, 0, 24);
+                }
+                else if(!M7.equals("null") && M7.length() > 44)
+                {
+                    tvM77.setPadding(0, 0, 0, 32);
+                }*/
 
-                if (!M8.equals("null") && M8.length() > 7) {
+                if (!M8.equals("null") && M8.length() > 11) {
                     tvM88.setPadding(0, 0, 0, 8);
                 }
+                /*else if(!M8.equals("null") && M8.length() > 22)
+                {
+                    tvM88.setPadding(0, 0, 0, 16);
+                }
+                else if(!M8.equals("null") && M8.length() > 33)
+                {
+                    tvM88.setPadding(0, 0, 0, 24);
+                }
+                else if(!M8.equals("null") && M8.length() > 44)
+                {
+                    tvM88.setPadding(0, 0, 0, 32);
+                }*/
 
                 /**
                  * Check value subject from ui

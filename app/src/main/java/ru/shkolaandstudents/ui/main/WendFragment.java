@@ -262,8 +262,8 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                             for (int j = 0; j < 8; j++) {
                                 if (str_sub.equals(arr_sub[j])) {
                                     final String view_ocenka = "tvOcenkaW" + (j + 1);
-                                    arr_set[j] = view_ocenka;
-                                    arr_sub1[j] = str_sub;
+                                    arr_set[i] = view_ocenka;
+                                    arr_sub1[i] = str_sub;
                                     i++;
                                     break;
                                 }
@@ -598,35 +598,35 @@ public class WendFragment extends Fragment implements OnBackPressedListener {
                 /**
                  * Отступ снизу для видимости TextView
                  * */
-                if (!W1.equals("null") && W1.length() > 7) {
+                if (!W1.equals("null") && W1.length() > 11) {
                     tvW11.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W2.equals("null") && W2.length() > 7) {
+                if (!W2.equals("null") && W2.length() > 11) {
                     tvW22.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W3.equals("null") && W3.length() > 7) {
+                if (!W3.equals("null") && W3.length() > 11) {
                     tvW33.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W4.equals("null") && W4.length() > 7) {
+                if (!W4.equals("null") && W4.length() > 11) {
                     tvW44.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W5.equals("null") && W5.length() > 7) {
+                if (!W5.equals("null") && W5.length() > 11) {
                     tvW55.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W6.equals("null") && W6.length() > 7) {
+                if (!W6.equals("null") && W6.length() > 11) {
                     tvW66.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W7.equals("null") && W7.length() > 7) {
+                if (!W7.equals("null") && W7.length() > 11) {
                     tvW77.setPadding(0, 0, 0, 8);
                 }
 
-                if (!W8.equals("null") && W8.length() > 7) {
+                if (!W8.equals("null") && W8.length() > 11) {
                     tvW88.setPadding(0, 0, 0, 8);
                 }
 

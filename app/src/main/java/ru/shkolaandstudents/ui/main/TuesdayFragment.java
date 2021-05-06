@@ -256,8 +256,8 @@ public class TuesdayFragment extends Fragment implements OnBackPressedListener {
                             for (int j = 0; j < 8; j++) {
                                 if (str_sub.equals(arr_sub[j])) {
                                     final String view_ocenka = "tvOcenkaT" + (j + 1);
-                                    arr_set[j] = view_ocenka;
-                                    arr_sub1[j] = str_sub;
+                                    arr_set[i] = view_ocenka;
+                                    arr_sub1[i] = str_sub;
                                     i++;
                                     break;
                                 }
@@ -593,35 +593,35 @@ public class TuesdayFragment extends Fragment implements OnBackPressedListener {
                 /**
                  * Отступ снизу для видимости TextView
                  * */
-                if (!T1.equals("null") && T1.length() > 7) {
+                if (!T1.equals("null") && T1.length() > 11) {
                     tvT19.setPadding(0, 0, 0, 8);
                 }
 
-                if (!T2.equals("null") && T2.length() > 7) {
+                if (!T2.equals("null") && T2.length() > 11) {
                     tvT22.setPadding(0, 0, 0, 8);
                 }
 
-                if (!T3.equals("null") && T3.length() > 7) {
+                if (!T3.equals("null") && T3.length() > 11) {
                     tvT33.setPadding(0, 0, 0, 8);
                 }
 
-                if (!T4.equals("null") && T4.length() > 7) {
+                if (!T4.equals("null") && T4.length() > 11) {
                     tvT44.setPadding(0, 0, 0, 8);
                 }
 
-                if (!T5.equals("null") && T5.length() > 7) {
+                if (!T5.equals("null") && T5.length() > 11) {
                     tvT55.setPadding(0, 0, 0, 8);
                 }
 
-                if (!T6.equals("null") && T6.length() > 7) {
+                if (!T6.equals("null") && T6.length() > 11) {
                     tvT66.setPadding(0, 0, 0, 8);
                 }
 
-                if (!T7.equals("null") && T7.length() > 7) {
+                if (!T7.equals("null") && T7.length() > 11) {
                     tvT77.setPadding(0, 0, 0, 8);
                 }
 
-                if (!T8.equals("null") && T8.length() > 7) {
+                if (!T8.equals("null") && T8.length() > 11) {
                     tvT88.setPadding(0, 0, 0, 8);
                 }
 

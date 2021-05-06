@@ -257,8 +257,8 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                             for (int j = 0; j < 8; j++) {
                                 if (str_sub.equals(arr_sub[j])) {
                                     final String view_ocenka = "tvOcenkaFr" + (j + 1);
-                                    arr_set[j] = view_ocenka;
-                                    arr_sub1[j] = str_sub;
+                                    arr_set[i] = view_ocenka;
+                                    arr_sub1[i] = str_sub;
                                     i++;
                                     break;
                                 }
@@ -590,35 +590,35 @@ public class FridayFragment extends Fragment implements OnBackPressedListener {
                     tvTimeFr86.setVisibility(View.VISIBLE);
                 }
 
-                if (!Fr1.equals("null") && Fr1.length() > 7) {
+                if (!Fr1.equals("null") && Fr1.length() > 11) {
                     tvFr11.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr2.equals("null") && Fr2.length() > 7) {
+                if (!Fr2.equals("null") && Fr2.length() > 11) {
                     tvFr22.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr3.equals("null") && Fr3.length() > 7) {
+                if (!Fr3.equals("null") && Fr3.length() > 11) {
                     tvFr33.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr4.equals("null") && Fr4.length() > 7) {
+                if (!Fr4.equals("null") && Fr4.length() > 11) {
                     tvFr44.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr5.equals("null") && Fr5.length() > 7) {
+                if (!Fr5.equals("null") && Fr5.length() > 11) {
                     tvFr55.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr6.equals("null") && Fr6.length() > 7) {
+                if (!Fr6.equals("null") && Fr6.length() > 11) {
                     tvFr66.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr7.equals("null") && Fr7.length() > 7) {
+                if (!Fr7.equals("null") && Fr7.length() > 11) {
                     tvFr77.setPadding(0, 0, 0, 8);
                 }
 
-                if (!Fr8.equals("null") && Fr8.length() > 7) {
+                if (!Fr8.equals("null") && Fr8.length() > 11) {
                     tvFr88.setPadding(0, 0, 0, 8);
                 }
 
