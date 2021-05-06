@@ -317,7 +317,7 @@ public class TeacherActivityJournal extends AppCompatActivity {
                                 public void onClick(View vw) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(TeacherActivityJournal.this,R.style.AlertDialogTheme);
                                     View view = getLayoutInflater().inflate(R.layout.teacher_dialog_choose_sub,null);
-                                    builder.setTitle("Оценка для " + ar_school_man[ii].getText() + " за " + (jj+1) + "/" + current_m);
+                                    builder.setTitle("Оценка для " + ar_school_man[ii].getText() + "\n" + "за " + (jj+1) + "/" + current_m);
                                     builder.setView(view);
                                     final Spinner spinner = view.findViewById(R.id.spinner1);
 
