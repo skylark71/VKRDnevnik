@@ -110,7 +110,11 @@ public class TeacherCreateStudies extends AppCompatActivity {
 
         email = emailEt.getText().toString();
         password1 = passwordEt1.getText().toString();
+
         lastname = etLastName.getText().toString();
+        lastname = lastname.trim();
+        lastname = lastname+" ";
+
         firstname = etFirstName.getText().toString();
         otchest = etOtchest.getText().toString();
         password2 = passwordEt2.getText().toString();
