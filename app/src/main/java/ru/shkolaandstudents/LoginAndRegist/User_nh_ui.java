@@ -27,16 +27,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import ru.shkolaandstudents.R;
-import ru.shkolaandstudents.RecyclerViewTeacher.TeacherSetClassList;
 
 public class User_nh_ui extends AppCompatActivity {
 
@@ -55,7 +50,6 @@ public class User_nh_ui extends AppCompatActivity {
     boolean flag = false;
     Boolean teacher;
     int cnt = 0;
-    String[] arr_Sub;
     List<TextView> all_tv = new ArrayList<TextView>();
 
     int counter = 0;
