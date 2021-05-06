@@ -43,22 +43,22 @@ public class User_nh_ui extends AppCompatActivity {
     DatabaseReference ref;
     EditText et_set_ui_lastname, et_set_ui_firstname, et_set_ui_otch, et_set_ui_email;
     Button btn_ui_save;
-    String lastname ;
-    String firstname ;
-    String otchest ;
-    String email ;
-    String str_class_old, str_class_new ;
-    String school ;
+    String lastname;
+    String firstname;
+    String otchest;
+    String email;
+    String str_class_old, str_class_new;
+    String school;
     String uid;
     TextView tv_set_class, tv_ui_class;
     LinearLayout ll_ui_teacher;
     boolean flag = false;
-    Boolean teacher ;
-    int cnt =0;
+    Boolean teacher;
+    int cnt = 0;
     String[] arr_Sub;
     List<TextView> all_tv = new ArrayList<TextView>();
 
-    int counter=0;
+    int counter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,12 +90,9 @@ public class User_nh_ui extends AppCompatActivity {
                 str_class_old = String.valueOf(snapshot.child("str_class").getValue());
                 teacher = (Boolean) snapshot.child("teacher").getValue();
 
-                if(teacher)
-                {
+                if (teacher) {
                     tv_ui_class.setText("Школа");
-                }
-                else
-                {
+                } else {
                     tv_ui_class.setText("Класс");
                 }
 
@@ -112,11 +109,109 @@ public class User_nh_ui extends AppCompatActivity {
             }
         });
 
+        if (!teacher) {
+            DatabaseReference reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Оценки");
+            reff.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    int i = 0;
+                    int k = 0;
+                    TextView tv;
+                    all_tv.clear();
+                    LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayoutRating);
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+                        String line1 = ds.getKey();
+                        //arr_Sub[i] = line1;
+                        i++;
+                    }
+
+                    String[] strings1 = new String[i];
+                    //ll.removeAllViews();
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+                        tv = new TextView(User_nh_ui.this);
+                        all_tv.add(tv);
+                        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        tv.setLayoutParams(p);
+                        tv.setId(k);
+                        tv.setTextColor(Color.WHITE);
+                        tv.setTextSize(18);
+                        tv.setPadding(0, 12, 0, 0);
+                        ll.addView(tv);
+                        String line1 = ds.getKey();
+                        strings1[k] = line1;
+                        tv.setText(strings1[k]);
+                        k++;
+                    }
+
+                    for (int ii = 0; ii < i; ii++) {
+                        DatabaseReference reff2 = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Оценки").child(strings1[ii]);
+                        //final int count = ii;
+                        reff2.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                int i = 0;
+                                int k = 0;
+                                double average = 0;
+                                for (DataSnapshot ds : snapshot.getChildren()) {
+                                    String value = String.valueOf(ds.child("Оценка").getValue());
+                                    if (!value.equals("Н")) {
+                                        i++;
+                                    }
+                                }
+
+                                int[] arr_val = new int[i];
+                                for (DataSnapshot ds : snapshot.getChildren()) {
+                                    String value = String.valueOf(ds.child("Оценка").getValue());
+                                    if (!value.equals("Н")) {
+                                        int val = Integer.parseInt(value);
+                                        arr_val[k] = val;
+                                        k++;
+                                    }
+                                }
+
+                                for (int ii = 0; ii < i; ii++) {
+                                    average = average + arr_val[ii];
+                                }
+                                average /= i;
+
+                                LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayoutMarks);
+                                TextView tv;
+                                tv = new TextView(User_nh_ui.this);
+                                all_tv.add(tv);
+                                LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                                tv.setLayoutParams(p);
+                                tv.setId(counter);
+                                tv.setTextColor(Color.WHITE);
+                                tv.setTextSize(20);
+                                tv.setPadding(0, 10, 0, 0);
+                                tv.setTypeface(tv.getTypeface(), Typeface.BOLD);
+                                ll.addView(tv);
+                                tv.setText(String.valueOf(average));
+                                counter++;
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+
 
         tv_set_class.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!teacher) {
+                if (!teacher) {
                     flag = true;
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     ref = database.getReference(school);
@@ -176,108 +271,6 @@ public class User_nh_ui extends AppCompatActivity {
                         }
                     });
 
-
-                    DatabaseReference reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Оценки");
-                    reff.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            int i = 0;
-                            int k=0;
-                            TextView tv;
-                            all_tv.clear();
-                            LinearLayout ll = (LinearLayout)findViewById(R.id.linearLayoutRating);
-                            for (DataSnapshot ds : snapshot.getChildren()){
-                                String line1 = ds.getKey();
-                                //arr_Sub[i] = line1;
-                                i++;
-                            }
-
-                            String[] strings1 = new String[i];
-                            //ll.removeAllViews();
-                            for (DataSnapshot ds : snapshot.getChildren()){
-                                tv = new TextView(User_nh_ui.this);
-                                all_tv.add(tv);
-                                LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                                tv.setLayoutParams(p);
-                                tv.setId(k);
-                                tv.setTextColor(Color.WHITE);
-                                tv.setTextSize(18);
-                                tv.setPadding(0,12,0,0);
-                                ll.addView(tv);
-                                String line1 = ds.getKey();
-                                strings1[k] = line1;
-                                tv.setText(strings1[k]);
-                                k++;
-                            }
-
-                            for (int ii = 0; ii < i; ii++) {
-                                DatabaseReference reff2 = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Оценки").child(strings1[ii]);
-                                //final int count = ii;
-                                reff2.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        int i=0;
-                                        int k=0;
-                                        double average = 0;
-                                        for (DataSnapshot ds : snapshot.getChildren()) {
-                                            String value = String.valueOf(ds.child("Оценка").getValue());
-                                            if(!value.equals("Н"))
-                                            {
-                                                i++;
-                                            }
-                                        }
-
-                                        int[] arr_val = new int[i];
-                                        for (DataSnapshot ds : snapshot.getChildren()) {
-                                            String value = String.valueOf(ds.child("Оценка").getValue());
-                                            if(!value.equals("Н"))
-                                            {
-                                                int val=Integer.parseInt(value);
-                                                arr_val[k] = val;
-                                                k++;
-                                            }
-                                        }
-
-                                        for(int ii=0; ii<i; ii++)
-                                        {
-                                            average = average + arr_val[ii];
-                                        }
-                                        average /=i;
-
-                                        //double[] arr_val1 = new double[i];
-                                        int j= 0;
-                                        LinearLayout ll = (LinearLayout)findViewById(R.id.linearLayoutMarks);
-                                        TextView tv;
-                                        tv = new TextView(User_nh_ui.this);
-                                        all_tv.add(tv);
-                                        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                                        tv.setLayoutParams(p);
-                                        tv.setId(counter);
-                                        tv.setTextColor(Color.WHITE);
-                                        tv.setTextSize(20);
-                                        tv.setPadding(0,10,0,0);
-                                        tv.setTypeface(tv.getTypeface(), Typeface.BOLD);
-                                        ll.addView(tv);
-                                        //arr_val1[j] = average;
-                                        tv.setText(String.valueOf(average));
-                                        counter++;
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-                            }
-
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
                 } else {
                     flag = true;
                     ref = database.getReference("Schools");
@@ -352,13 +345,13 @@ public class User_nh_ui extends AppCompatActivity {
             public void onClick(View view) {
                 String lastname = et_set_ui_lastname.getText().toString();
                 lastname = lastname.trim();
-                lastname = lastname+" ";
+                lastname = lastname + " ";
 
                 String firstname = et_set_ui_firstname.getText().toString();
                 String otchest = et_set_ui_otch.getText().toString();
                 String email = et_set_ui_email.getText().toString();
                 String str_class = tv_set_class.getText().toString();
-                if(!teacher) {
+                if (!teacher) {
 
                     if (!isValidEmail(email) || email.isEmpty()) {
                         et_set_ui_email.setError("Некорректная почта");
@@ -377,8 +370,7 @@ public class User_nh_ui extends AppCompatActivity {
                         et_set_ui_otch.setError("Укажите отчество");
                         return;
                     }
-                } else
-                {
+                } else {
                     if (!isValidEmail(email) || email.isEmpty()) {
                         et_set_ui_email.setError("Некорректная почта");
                         return;
@@ -405,7 +397,7 @@ public class User_nh_ui extends AppCompatActivity {
                 ref.child("email").setValue(email);
                 ref.child("str_class").setValue(str_class);
 
-                if(!teacher) {
+                if (!teacher) {
                     ref = FirebaseDatabase.getInstance().getReference(school).child(str_class);
                     String key = ref.push().getKey();
                     assert key != null;
@@ -445,8 +437,6 @@ public class User_nh_ui extends AppCompatActivity {
                 }
             }
         });
-
-
 
 
     }
