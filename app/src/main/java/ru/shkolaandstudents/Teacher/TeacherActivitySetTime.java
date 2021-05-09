@@ -39,7 +39,6 @@ public class TeacherActivitySetTime extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teacher_activity_set_time);
 
-
         etTime11 = findViewById(R.id.etTime11); etTime21 = findViewById(R.id.etTime21); etTime31 = findViewById(R.id.etTime31); etTime41 = findViewById(R.id.etTime41); etTime51 = findViewById(R.id.etTime51); etTime61 = findViewById(R.id.etTime61); etTime71 = findViewById(R.id.etTime71); etTime81 = findViewById(R.id.etTime81);
         etTime12 = findViewById(R.id.etTime12); etTime22 = findViewById(R.id.etTime22); etTime32 = findViewById(R.id.etTime32); etTime42 = findViewById(R.id.etTime42); etTime52 = findViewById(R.id.etTime52); etTime62 = findViewById(R.id.etTime62); etTime72 = findViewById(R.id.etTime72); etTime82 = findViewById(R.id.etTime82);
         etTime13 = findViewById(R.id.etTime13); etTime23 = findViewById(R.id.etTime23); etTime33 = findViewById(R.id.etTime33); etTime43 = findViewById(R.id.etTime43); etTime53 = findViewById(R.id.etTime53); etTime63 = findViewById(R.id.etTime63); etTime73 = findViewById(R.id.etTime73); etTime83 = findViewById(R.id.etTime83);

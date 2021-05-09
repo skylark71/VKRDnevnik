@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#00008B"
-    tools:context=".ui.main.SettingsStudyMenuFragment">
+    tools:context=".ui.Students.SettingsStudyMenuFragment">
 
     <TableLayout
         android:layout_width="match_parent"

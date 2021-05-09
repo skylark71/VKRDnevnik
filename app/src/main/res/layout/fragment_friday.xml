@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorFon"
     android:orientation="vertical"
-    tools:context=".ui.main.FridayFragment">
+    tools:context=".ui.Students.FragmentRaspFriday">
 
     <TableLayout
         android:layout_width="match_parent"

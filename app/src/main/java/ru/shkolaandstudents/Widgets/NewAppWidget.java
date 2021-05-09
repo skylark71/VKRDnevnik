@@ -11,12 +11,12 @@ import android.view.View;
 import android.widget.RemoteViews;
 
 import ru.shkolaandstudents.R;
-import ru.shkolaandstudents.ui.main.FridayFragment;
-import ru.shkolaandstudents.ui.main.MondayFragment;
-import ru.shkolaandstudents.ui.main.SaturdayFragment;
-import ru.shkolaandstudents.ui.main.ThursdayFragment;
-import ru.shkolaandstudents.ui.main.TuesdayFragment;
-import ru.shkolaandstudents.ui.main.WendFragment;
+import ru.shkolaandstudents.ui.Students.FragmentRaspFriday;
+import ru.shkolaandstudents.ui.Students.FragmentRaspMonday;
+import ru.shkolaandstudents.ui.Students.FragmentRaspSaturday;
+import ru.shkolaandstudents.ui.Students.FragmentRaspThursday;
+import ru.shkolaandstudents.ui.Students.FragmentRaspTuesday;
+import ru.shkolaandstudents.ui.Students.FragmentRaspWend;
 
 import java.util.Calendar;
 
@@ -163,7 +163,7 @@ public class NewAppWidget extends AppWidgetProvider {
             int day = calendar.get(Calendar.DAY_OF_WEEK);
             //String c_day = String.valueOf(day);
             if (day == 1) {
-                Intent configIntent = new Intent(context, MondayFragment.class);
+                Intent configIntent = new Intent(context, FragmentRaspMonday.class);
 
                 PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
 
@@ -290,7 +290,7 @@ public class NewAppWidget extends AppWidgetProvider {
             }
             //ПОНЕДЕЛЬНИК
             if (day == 2) {
-                Intent configIntent = new Intent(context, TuesdayFragment.class);
+                Intent configIntent = new Intent(context, FragmentRaspTuesday.class);
 
                 PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
 
@@ -417,7 +417,7 @@ public class NewAppWidget extends AppWidgetProvider {
             }
             //Вторник
             if (day == 3) {
-                Intent configIntent = new Intent(context, WendFragment.class);
+                Intent configIntent = new Intent(context, FragmentRaspWend.class);
 
                 PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
 
@@ -544,7 +544,7 @@ public class NewAppWidget extends AppWidgetProvider {
             }
             //Среда
             if(day == 4) {
-                Intent configIntent = new Intent(context, ThursdayFragment.class);
+                Intent configIntent = new Intent(context, FragmentRaspThursday.class);
 
                 PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
 
@@ -671,7 +671,7 @@ public class NewAppWidget extends AppWidgetProvider {
             }
             //Четверг
             if(day == 5) {
-                Intent configIntent = new Intent(context, FridayFragment.class);
+                Intent configIntent = new Intent(context, FragmentRaspFriday.class);
 
                 PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
 
@@ -797,7 +797,7 @@ public class NewAppWidget extends AppWidgetProvider {
             }
             //Пятница
             if(day == 6) {
-                Intent configIntent = new Intent(context, SaturdayFragment.class);
+                Intent configIntent = new Intent(context, FragmentRaspSaturday.class);
 
                 PendingIntent configPendingIntent = PendingIntent.getActivity(context, 0, configIntent, 0);
 

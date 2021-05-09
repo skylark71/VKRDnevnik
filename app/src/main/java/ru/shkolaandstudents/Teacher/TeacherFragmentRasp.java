@@ -1,6 +1,5 @@
 package ru.shkolaandstudents.Teacher;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -9,10 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
+
 import ru.shkolaandstudents.R;
 import ru.shkolaandstudents.Utilities;
-import ru.shkolaandstudents.ui.main.StudyFragment;
 
 public class TeacherFragmentRasp extends Fragment {
 

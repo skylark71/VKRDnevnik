@@ -14,12 +14,12 @@ import android.preference.PreferenceManager;
 
 import androidx.core.app.NotificationCompat;
 
-import ru.shkolaandstudents.ui.main.FridayFragment;
-import ru.shkolaandstudents.ui.main.MondayFragment;
-import ru.shkolaandstudents.ui.main.SaturdayFragment;
-import ru.shkolaandstudents.ui.main.ThursdayFragment;
-import ru.shkolaandstudents.ui.main.TuesdayFragment;
-import ru.shkolaandstudents.ui.main.WendFragment;
+import ru.shkolaandstudents.ui.Students.FragmentRaspFriday;
+import ru.shkolaandstudents.ui.Students.FragmentRaspMonday;
+import ru.shkolaandstudents.ui.Students.FragmentRaspSaturday;
+import ru.shkolaandstudents.ui.Students.FragmentRaspThursday;
+import ru.shkolaandstudents.ui.Students.FragmentRaspTuesday;
+import ru.shkolaandstudents.ui.Students.FragmentRaspWend;
 
 import java.util.Calendar;
 
@@ -159,7 +159,7 @@ public class NotificationHelper extends ContextWrapper {
         int day = calendar.get(Calendar.DAY_OF_WEEK);
         switch (day) {
             case Calendar.SUNDAY:
-                Intent IntentM = new Intent(this, MondayFragment.class);
+                Intent IntentM = new Intent(this, FragmentRaspMonday.class);
                 PendingIntent resultPendingIntentM = PendingIntent.getActivity(this, 0, IntentM,
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 if (M1Dz.length()==0)
@@ -223,7 +223,7 @@ public class NotificationHelper extends ContextWrapper {
                             .setOnlyAlertOnce(true);
                 }
             case Calendar.MONDAY:
-                Intent IntentT = new Intent(this, TuesdayFragment.class);
+                Intent IntentT = new Intent(this, FragmentRaspTuesday.class);
                 PendingIntent resultPendingIntentT = PendingIntent.getActivity(this, 0, IntentT,
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 if (T1Dz.length()==0)
@@ -289,7 +289,7 @@ public class NotificationHelper extends ContextWrapper {
                 }
 
             case Calendar.TUESDAY:
-                Intent IntentW = new Intent(this, WendFragment.class);
+                Intent IntentW = new Intent(this, FragmentRaspWend.class);
                 PendingIntent resultPendingIntentW = PendingIntent.getActivity(this, 0, IntentW,
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 if (W1Dz.length()==0)
@@ -354,7 +354,7 @@ public class NotificationHelper extends ContextWrapper {
                 }
 
             case Calendar.WEDNESDAY:
-                Intent IntentTh = new Intent(this, ThursdayFragment.class);
+                Intent IntentTh = new Intent(this, FragmentRaspThursday.class);
                 PendingIntent resultPendingIntentTh = PendingIntent.getActivity(this, 0, IntentTh,
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 if (Th1Dz.length()==0)
@@ -419,7 +419,7 @@ public class NotificationHelper extends ContextWrapper {
                 }
 
             case Calendar.THURSDAY:
-                Intent IntentF = new Intent(this, FridayFragment.class);
+                Intent IntentF = new Intent(this, FragmentRaspFriday.class);
                 PendingIntent resultPendingIntentF = PendingIntent.getActivity(this, 0, IntentF,
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 if (Fr1Dz.length()==0)
@@ -484,7 +484,7 @@ public class NotificationHelper extends ContextWrapper {
                 }
 
             case Calendar.FRIDAY:
-                Intent IntentS = new Intent(this, SaturdayFragment.class);
+                Intent IntentS = new Intent(this, FragmentRaspSaturday.class);
                 PendingIntent resultPendingIntentS = PendingIntent.getActivity(this, 0, IntentS,
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 if (Sat1Dz.length()==0)

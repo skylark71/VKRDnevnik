@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/test"
+    android:orientation="vertical"
+    android:background="@color/colorFon"
+    tools:context=".ui.Students.StudyFragment">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
+
+        <TextView
+            android:id="@+id/tvPaspisanie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:text="@string/raspisanie"
+            android:textAllCaps="true"
+            android:clickable="true"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btnMonday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="50dp"
+            android:background="@color/colorMonday"
+            android:text="@string/Monday"
+            android:textColor="@color/colorText"/>
+
+        <Button
+            android:id="@+id/btnTuesday"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTuesday"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorText"
+            android:text="@string/Tuesday" />
+
+        <Button
+            android:id="@+id/btnWendsday"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWend"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorText"
+            android:text="@string/Wend" />
+
+        <Button
+            android:id="@+id/btnThursday"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTh"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorText"
+            android:text="@string/Thr" />
+
+        <Button
+            android:id="@+id/btnFriday"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorFr"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorText"
+            android:text="@string/Fri" />
+
+        <Button
+            android:id="@+id/btnSat"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSat"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="50dp"
+            android:textColor="@color/colorText"
+            android:text="@string/Sat" />
+
+<!--        <Button-->
+<!--            android:id="@+id/btnTeacher"-->
+<!--            style="?android:attr/buttonBarButtonStyle"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/colorSet"-->
+<!--            android:layout_marginLeft="50dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:layout_marginRight="50dp"-->
+<!--            android:textColor="@color/colorText"-->
+<!--            android:text="Переход" />-->
+
+
+    </TableLayout>
+</ScrollView>

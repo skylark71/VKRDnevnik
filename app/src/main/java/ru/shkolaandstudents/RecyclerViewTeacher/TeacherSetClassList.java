@@ -36,7 +36,7 @@ public class TeacherSetClassList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher_set_class_list);
+        setContentView(R.layout.teacher_activity_set_class_list_sp);
 
         //EditText et;
 

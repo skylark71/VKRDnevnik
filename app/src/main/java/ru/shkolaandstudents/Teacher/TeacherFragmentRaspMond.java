@@ -1,14 +1,11 @@
 package ru.shkolaandstudents.Teacher;
 
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +23,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
-import ru.shkolaandstudents.ui.main.StudyFragment;
 
 public class TeacherFragmentRaspMond extends Fragment implements OnBackPressedListener {
 

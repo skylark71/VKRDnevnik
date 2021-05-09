@@ -4,24 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import ru.shkolaandstudents.Notifications.ActivityNotification;
 import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
 import ru.shkolaandstudents.Utilities;
-import ru.shkolaandstudents.ui.main.SetFridayFragment;
-import ru.shkolaandstudents.ui.main.SetMondayFragment;
-import ru.shkolaandstudents.ui.main.SetSaturdayFragment;
-import ru.shkolaandstudents.ui.main.SetThursdayFragment;
-import ru.shkolaandstudents.ui.main.SetTuesdayFragment;
-import ru.shkolaandstudents.ui.main.SetWednesdayFragment;
-import ru.shkolaandstudents.ui.main.SettingsFragment;
 
 public class TeacherFragmentSettingStudy extends Fragment implements OnBackPressedListener {
 

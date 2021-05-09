@@ -16,7 +16,7 @@ public class ActivitySchoolManMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_school_man_menu);
+        setContentView(R.layout.activity_school_start_app);
 
         prefs = getSharedPreferences("com.mycompany.myAppName", MODE_PRIVATE);
 
@@ -32,7 +32,7 @@ public class ActivitySchoolManMenu extends AppCompatActivity {
 
     public void openChoose1()
     {
-        Intent intent = new Intent(this, ActivitySetMonday.class);
+        Intent intent = new Intent(this, ActivityStartSetMonday.class);
         startActivity(intent);
     }
 }

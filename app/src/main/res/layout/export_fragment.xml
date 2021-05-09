@@ -4,7 +4,7 @@
     android:id="@+id/export_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.OCRFragment">
+    tools:context=".OCR.OCRFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

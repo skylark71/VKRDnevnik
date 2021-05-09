@@ -16,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,10 +46,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import ru.shkolaandstudents.LoginAndRegist.SignInActivity;
 import ru.shkolaandstudents.LoginAndRegist.User_nh_ui;
-import ru.shkolaandstudents.ui.main.AboutFragment;
-import ru.shkolaandstudents.ui.main.HomeFragment;
-import ru.shkolaandstudents.ui.main.SettingsFragment;
-import ru.shkolaandstudents.ui.main.StudyFragment;
+import ru.shkolaandstudents.ui.Students.AboutFragment;
+import ru.shkolaandstudents.OCR.HomeFragment;
+import ru.shkolaandstudents.ui.Students.SettingsFragment;
+import ru.shkolaandstudents.ui.Students.StudyFragment;
 
 /**
  * Главное активити приложения.

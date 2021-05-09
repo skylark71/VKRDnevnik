@@ -9,7 +9,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Environment;
 import android.os.Handler;
@@ -26,7 +25,6 @@ import ru.shkolaandstudents.R;
 import ru.shkolaandstudents.RecyclerViewTeacher.TeacherActivityCreateClassAndSubList;
 import ru.shkolaandstudents.RecyclerViewTeacher.TeacherActivitySetClassList;
 import ru.shkolaandstudents.Utilities;
-import ru.shkolaandstudents.ui.main.SetTimeFragment;
 
 import static android.content.Context.MODE_PRIVATE;
 

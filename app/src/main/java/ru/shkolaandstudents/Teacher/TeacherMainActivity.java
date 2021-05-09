@@ -47,10 +47,9 @@ import ru.shkolaandstudents.LoginAndRegist.SignInActivity;
 import ru.shkolaandstudents.LoginAndRegist.User_nh_ui;
 import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
-import ru.shkolaandstudents.RecyclerViewTeacher.TeacherActivityCreateClassAndSubList;
 import ru.shkolaandstudents.RecyclerViewTeacher.TeacherFragmentJournalList;
 import ru.shkolaandstudents.Utilities;
-import ru.shkolaandstudents.ui.main.HomeFragment;
+import ru.shkolaandstudents.OCR.HomeFragment;
 
 public class TeacherMainActivity extends AppCompatActivity {
 
