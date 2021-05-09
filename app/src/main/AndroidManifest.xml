@@ -45,6 +45,13 @@
         <activity android:name=".ActivitySetWenesday" />
         <activity android:name=".ActivitySetTuesday" />
         <activity android:name=".ActivitySetMonday" />
+        <activity android:name=".Teacher.TeacherActivitySetMon" />
+        <activity android:name=".Teacher.TeacherActivitySetTue" />
+        <activity android:name=".Teacher.TeacherActivitySetWedn" />
+        <activity android:name=".Teacher.TeacherActivitySetThur" />
+        <activity android:name=".Teacher.TeacherActivitySetFri" />
+        <activity android:name=".Teacher.TeacherActivitySetSat" />
+        <activity android:name=".Teacher.TeacherActivitySetTime" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

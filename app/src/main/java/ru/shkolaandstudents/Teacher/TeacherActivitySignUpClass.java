@@ -1,3 +1,4 @@
+/*
 package ru.shkolaandstudents.Teacher;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,4 +14,4 @@ public class TeacherActivitySignUpClass extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teacher_activity_sign_up_class);
     }
-}
+}*/

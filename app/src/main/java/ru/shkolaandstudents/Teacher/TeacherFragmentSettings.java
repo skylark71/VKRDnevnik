@@ -38,7 +38,7 @@ public class TeacherFragmentSettings extends Fragment {
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         final View v = inflater.inflate(R.layout.teacher_fragment_settings, container, false);
         Button clearCache = v.findViewById(R.id.clearCache_teacher);
 
@@ -84,10 +84,6 @@ public class TeacherFragmentSettings extends Fragment {
         btnSettingNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                transaction.replace(R.id.container, new SettingNotificationFragment());
-//                transaction.commit();
-
                 Intent intent = new Intent(getActivity(), ActivityNotification.class);
                 startActivity(intent);
             }
@@ -115,9 +111,8 @@ public class TeacherFragmentSettings extends Fragment {
         btnSetTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, new TeacherFragmentSetTime());
-                transaction.commit();
+                Intent intent = new Intent(getActivity(), TeacherActivitySetTime.class);
+                startActivity(intent);
             }
         });
 

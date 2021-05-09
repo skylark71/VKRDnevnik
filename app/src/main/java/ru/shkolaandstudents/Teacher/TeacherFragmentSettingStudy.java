@@ -1,5 +1,6 @@
 package ru.shkolaandstudents.Teacher;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import ru.shkolaandstudents.Notifications.ActivityNotification;
 import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
 import ru.shkolaandstudents.Utilities;
@@ -34,7 +36,9 @@ public class TeacherFragmentSettingStudy extends Fragment implements OnBackPress
         btnSetMonday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                utils.switchFragment(getActivity(), new TeacherFragmentSetMonday());
+                //utils.switchFragment(getActivity(), new TeacherFragmentSetMonday());
+                Intent intent = new Intent(getActivity(), TeacherActivitySetMon.class);
+                startActivity(intent);
             }
         });
 
@@ -42,7 +46,9 @@ public class TeacherFragmentSettingStudy extends Fragment implements OnBackPress
         btnSetTuesday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                utils.switchFragment(getActivity(), new TeacherFragmentSetTuesday());
+                //utils.switchFragment(getActivity(), new TeacherFragmentSetTuesday());
+                Intent intent = new Intent(getActivity(), TeacherActivitySetTue.class);
+                startActivity(intent);
             }
         });
 
@@ -50,7 +56,9 @@ public class TeacherFragmentSettingStudy extends Fragment implements OnBackPress
         btnSetWenesday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                utils.switchFragment(getActivity(), new TeacherFragmentSetWend());
+                //utils.switchFragment(getActivity(), new TeacherFragmentSetWend());
+                Intent intent = new Intent(getActivity(), TeacherActivitySetWedn.class);
+                startActivity(intent);
             }
         });
 
@@ -58,7 +66,9 @@ public class TeacherFragmentSettingStudy extends Fragment implements OnBackPress
         btnSetThursday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                utils.switchFragment(getActivity(), new TeacherFragmentSetThur());
+                //utils.switchFragment(getActivity(), new TeacherFragmentSetThur());
+                Intent intent = new Intent(getActivity(), TeacherActivitySetThur.class);
+                startActivity(intent);
             }
         });
 
@@ -66,7 +76,9 @@ public class TeacherFragmentSettingStudy extends Fragment implements OnBackPress
         btnSetFriday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                utils.switchFragment(getActivity(), new TeacherFragmentSetFri());
+                //utils.switchFragment(getActivity(), new TeacherFragmentSetFri());
+                Intent intent = new Intent(getActivity(), TeacherActivitySetFri.class);
+                startActivity(intent);
             }
         });
 
@@ -74,7 +86,9 @@ public class TeacherFragmentSettingStudy extends Fragment implements OnBackPress
         btnSetSaturday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                utils.switchFragment(getActivity(), new TeacherFragmentSetSat());
+                //utils.switchFragment(getActivity(), new TeacherFragmentSetSat());
+                Intent intent = new Intent(getActivity(), TeacherActivitySetSat.class);
+                startActivity(intent);
             }
         });
 
