@@ -40,7 +40,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv11"
@@ -60,7 +61,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv12"
@@ -79,7 +81,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv13"
@@ -100,7 +103,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
             </LinearLayout>
 
             <TextView
@@ -124,7 +128,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv21"
@@ -144,7 +149,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv22"
@@ -164,7 +170,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv23"
@@ -185,7 +192,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
             </LinearLayout>
 
             <TextView
@@ -209,7 +217,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv31"
@@ -229,7 +238,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv32"
@@ -249,7 +259,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv33"
@@ -270,7 +281,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
             </LinearLayout>
 
             <TextView
@@ -294,7 +306,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv41"
@@ -314,7 +327,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv42"
@@ -334,7 +348,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv43"
@@ -355,7 +370,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
             </LinearLayout>
 
             <TextView
@@ -379,7 +395,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv51"
@@ -399,7 +416,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv52"
@@ -419,7 +437,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv53"
@@ -440,7 +459,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
             </LinearLayout>
 
             <TextView
@@ -464,7 +484,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv61"
@@ -484,7 +505,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv62"
@@ -504,7 +526,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv63"
@@ -525,7 +548,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
             </LinearLayout>
 
             <TextView
@@ -549,7 +573,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv71"
@@ -569,7 +594,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv72"
@@ -589,7 +615,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv73"
@@ -610,7 +637,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
             </LinearLayout>
 
             <TextView
@@ -634,7 +662,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv81"
@@ -654,7 +683,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv82"
@@ -674,7 +704,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
 
                 <TextView
                     android:id="@+id/tv83"
@@ -695,7 +726,8 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="2" />
+                    android:maxLength="2"
+                    android:textCursorDrawable="@drawable/cursor_color" />
             </LinearLayout>
 
             <LinearLayout

@@ -22,7 +22,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="top|start"
-            app:srcCompat="@drawable/w_table_light" />
+            app:srcCompat="@drawable/user100" />
 
         <!--<TextView
             android:id="@+id/tv_nh_school"

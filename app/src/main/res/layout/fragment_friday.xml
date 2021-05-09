@@ -2,9 +2,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@color/colorFon"
+    android:orientation="vertical"
     tools:context=".ui.main.FridayFragment">
 
     <TableLayout
@@ -16,26 +16,26 @@
             android:id="@+id/tvRas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:textStyle="bold"
+            android:gravity="center_horizontal"
             android:text="@string/raspisanie"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvMond"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
             android:text="@string/Friady"
             android:textSize="18sp" />
 
         <LinearLayout
+            android:id="@+id/studentFr_row1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/studentFr_row1"
             android:orientation="horizontal">
 
             <TextView
@@ -43,71 +43,71 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="12sp"
-                android:text="1." />
+                android:text="1."
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:textSize="14sp"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:textSize="14sp"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:text="00"
                 android:textColor="@color/colorTime"
-                android:textSize="14sp"
-                android:text="00" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:text="-"
                 android:textColor="@color/colorTime"
-                android:textSize="14sp"
-                android:text="-" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:textSize="14sp"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:textSize="14sp"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:text="45"
                 android:textColor="@color/colorTime"
-                android:textSize="14sp"
-                android:text="45" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvFr11"
@@ -127,6 +127,7 @@
                 android:ems="10"
                 android:hint="@string/Enter_DZ"
                 android:inputType="textPersonName"
+                android:textCursorDrawable="@drawable/cursor_color"
                 android:textSize="16sp" />
 
             <!--<CheckBox
@@ -148,10 +149,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/studentFr_row2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/studentFr_row2"
             android:orientation="horizontal">
 
             <TextView
@@ -159,71 +160,71 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="12sp"
-                android:text="2." />
+                android:text="2."
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="00"
                 android:textColor="@color/colorTime"
-                android:text="00" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="-"
                 android:textColor="@color/colorTime"
-                android:text="-" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr26"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr27"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="45"
                 android:textColor="@color/colorTime"
-                android:text="45" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvFr22"
@@ -243,6 +244,7 @@
                 android:ems="10"
                 android:hint="@string/Enter_DZ"
                 android:inputType="textPersonName"
+                android:textCursorDrawable="@drawable/cursor_color"
                 android:textSize="16sp" />
 
             <!--<CheckBox
@@ -265,10 +267,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/studentFr_row3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/studentFr_row3"
             android:orientation="horizontal">
 
             <TextView
@@ -276,71 +278,71 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="12sp"
-                android:text="3." />
+                android:text="3."
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr31"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr33"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="00"
                 android:textColor="@color/colorTime"
-                android:text="00" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr34"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="-"
                 android:textColor="@color/colorTime"
-                android:text="-" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr35"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr36"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr37"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="45"
                 android:textColor="@color/colorTime"
-                android:text="45" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvFr33"
@@ -349,8 +351,8 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:textColor="@color/colorSet" />
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/etFr3DZ"
@@ -360,6 +362,7 @@
                 android:ems="10"
                 android:hint="@string/Enter_DZ"
                 android:inputType="textPersonName"
+                android:textCursorDrawable="@drawable/cursor_color"
                 android:textSize="16sp" />
 
             <!--<CheckBox
@@ -382,10 +385,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/studentFr_row4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/studentFr_row4"
             android:orientation="horizontal">
 
             <TextView
@@ -393,71 +396,71 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="12sp"
-                android:text="4." />
+                android:text="4."
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr41"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr42"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr43"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="00"
                 android:textColor="@color/colorTime"
-                android:text="00" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr44"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="-"
                 android:textColor="@color/colorTime"
-                android:text="-" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr45"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr46"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr47"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="45"
                 android:textColor="@color/colorTime"
-                android:text="45" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvFr44"
@@ -466,8 +469,8 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:textColor="@color/colorSet" />
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/etFr4DZ"
@@ -477,6 +480,7 @@
                 android:ems="10"
                 android:hint="@string/Enter_DZ"
                 android:inputType="textPersonName"
+                android:textCursorDrawable="@drawable/cursor_color"
                 android:textSize="16sp" />
 
             <!--<CheckBox
@@ -498,10 +502,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/studentFr_row5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/studentFr_row5"
             android:orientation="horizontal">
 
             <TextView
@@ -509,71 +513,71 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="12sp"
-                android:text="5." />
+                android:text="5."
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr51"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr52"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr53"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="00"
                 android:textColor="@color/colorTime"
-                android:text="00" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr54"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="-"
                 android:textColor="@color/colorTime"
-                android:text="-" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr55"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr56"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr57"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="45"
                 android:textColor="@color/colorTime"
-                android:text="45" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvFr55"
@@ -582,8 +586,8 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:textColor="@color/colorSet" />
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/etFr5DZ"
@@ -593,6 +597,7 @@
                 android:ems="10"
                 android:hint="@string/Enter_DZ"
                 android:inputType="textPersonName"
+                android:textCursorDrawable="@drawable/cursor_color"
                 android:textSize="16sp" />
 
             <!--<CheckBox
@@ -615,10 +620,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/studentFr_row6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/studentFr_row6"
             android:orientation="horizontal">
 
             <TextView
@@ -626,71 +631,71 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="12sp"
-                android:text="6." />
+                android:text="6."
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr61"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr62"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr63"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="00"
                 android:textColor="@color/colorTime"
-                android:text="00" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr64"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="-"
                 android:textColor="@color/colorTime"
-                android:text="-" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr65"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr66"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr67"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="45"
                 android:textColor="@color/colorTime"
-                android:text="45" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvFr66"
@@ -699,8 +704,8 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
-                android:textSize="18sp"
-                android:textColor="@color/colorSet" />
+                android:textColor="@color/colorSet"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/etFr6DZ"
@@ -710,6 +715,7 @@
                 android:ems="10"
                 android:hint="@string/Enter_DZ"
                 android:inputType="textPersonName"
+                android:textCursorDrawable="@drawable/cursor_color"
                 android:textSize="16sp" />
 
             <!--<CheckBox
@@ -732,10 +738,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/studentFr_row7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/studentFr_row7"
             android:orientation="horizontal">
 
             <TextView
@@ -743,71 +749,71 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="12sp"
-                android:text="7." />
+                android:text="7."
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr71"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr72"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr73"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="00"
                 android:textColor="@color/colorTime"
-                android:text="00" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr74"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="-"
                 android:textColor="@color/colorTime"
-                android:text="-" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr75"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr76"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr77"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:text="45"
                 android:textColor="@color/colorTime"
-                android:textSize="14sp"
-                android:text="45" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvFr77"
@@ -827,6 +833,7 @@
                 android:ems="10"
                 android:hint="@string/Enter_DZ"
                 android:inputType="textPersonName"
+                android:textCursorDrawable="@drawable/cursor_color"
                 android:textSize="16sp" />
 
             <!--<CheckBox
@@ -848,10 +855,10 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/studentFr_row8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/studentFr_row8"
             android:orientation="horizontal">
 
             <TextView
@@ -859,71 +866,71 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="12sp"
-                android:text="8." />
+                android:text="8."
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr81"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr82"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr83"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="00"
                 android:textColor="@color/colorTime"
-                android:text="00" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr84"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="-"
                 android:textColor="@color/colorTime"
-                android:text="-" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr85"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="10"
                 android:textColor="@color/colorTime"
-                android:text="10" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr86"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text=":"
                 android:textColor="@color/colorTime"
-                android:text=":" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvTimeFr87"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:textSize="14sp"
+                android:text="45"
                 android:textColor="@color/colorTime"
-                android:text="45" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvFr88"
@@ -943,6 +950,7 @@
                 android:ems="10"
                 android:hint="@string/Enter_DZ"
                 android:inputType="textPersonName"
+                android:textCursorDrawable="@drawable/cursor_color"
                 android:textSize="16sp" />
 
             <!--<CheckBox
@@ -962,13 +970,14 @@
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
         </LinearLayout>
+
         <Button
             android:id="@+id/btnFriHelp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="300dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/btn_help"
             android:text="@string/Help"

@@ -103,10 +103,10 @@ public class MainActivity extends AppCompatActivity {
 
             drawerMenu.findItem(R.id.study_menu).setIcon(R.drawable.w_table);
             drawerMenu.findItem(R.id.homepage).setIcon(R.drawable.ocr_homelogo);
-            drawerMenu.findItem(R.id.settingspage).setIcon(R.drawable.settingspage_icon_black);
-            drawerMenu.findItem(R.id.aboutpage).setIcon(R.drawable.aboutpage_icon_black);
-            drawerMenu.findItem(R.id.exitpage).setIcon(R.drawable.exitpage_icon_black);
-            drawerMenu.findItem(R.id.connectpage).setIcon(R.drawable.connectpage_icon_black);
+            drawerMenu.findItem(R.id.settingspage).setIcon(R.drawable.settings50);
+            drawerMenu.findItem(R.id.aboutpage).setIcon(R.drawable.about50);
+            drawerMenu.findItem(R.id.exitpage).setIcon(R.drawable.exit50);
+            drawerMenu.findItem(R.id.connectpage).setIcon(R.drawable.feedback50);
 
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
