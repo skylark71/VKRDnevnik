@@ -40,6 +40,8 @@ public class FragmentRaspThursday extends Fragment implements OnBackPressedListe
     String Th1, Th2, Th3, Th4, Th5, Th6, Th7, Th8;
     DatabaseReference reff;
 
+    String user;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -214,8 +216,8 @@ public class FragmentRaspThursday extends Fragment implements OnBackPressedListe
         etTh7DZ = v.findViewById(R.id.etTh7DZ);
         etTh8DZ = v.findViewById(R.id.etTh8DZ);
 
-        final String[] arr_sub1 = new String[8];
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
         reff.addValueEventListener(new ValueEventListener() {
             @Override
@@ -251,6 +253,7 @@ public class FragmentRaspThursday extends Fragment implements OnBackPressedListe
                 reff1.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        final String[] arr_sub1 = new String[8];
                         int i = 0;
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             final String str_sub = ds.getKey();
@@ -715,7 +718,7 @@ public class FragmentRaspThursday extends Fragment implements OnBackPressedListe
         String sTh7Dz = etTh7DZ.getText().toString();
         String sTh8Dz = etTh8DZ.getText().toString();
 
-        reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff = FirebaseDatabase.getInstance().getReference("Users").child(user).child("Schedule");
         if (sTh1Dz.length() != 0) {
             reff.child("Th1Dz").setValue(sTh1Dz);
         } else {
@@ -764,7 +767,6 @@ public class FragmentRaspThursday extends Fragment implements OnBackPressedListe
             reff.child("Th8Dz").removeValue();
         }
     }
-
 
     private void loadText() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -838,26 +840,15 @@ public class FragmentRaspThursday extends Fragment implements OnBackPressedListe
         });
     }
 
-
     @Override
-    public void onPause() {
-        super.onPause();
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         saveText();
     }
 
     @Override
     public void onBackPressed() {
+        saveText();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.container, new StudyFragment());
         transaction.commit();

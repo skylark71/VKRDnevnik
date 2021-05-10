@@ -40,6 +40,8 @@ public class FragmentRaspWend extends Fragment implements OnBackPressedListener 
     String W1, W2, W3, W4, W5, W6, W7, W8;
     DatabaseReference reff;
 
+    String user;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -213,8 +215,8 @@ public class FragmentRaspWend extends Fragment implements OnBackPressedListener 
         etW7DZ = v.findViewById(R.id.etW7DZ);
         etW8DZ = v.findViewById(R.id.etW8DZ);
 
-        final String[] arr_sub1 = new String[8];
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
         reff.addValueEventListener(new ValueEventListener() {
             @Override
@@ -250,6 +252,7 @@ public class FragmentRaspWend extends Fragment implements OnBackPressedListener 
                 reff1.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        final String[] arr_sub1 = new String[8];
                         int i = 0;
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             final String str_sub = ds.getKey();
@@ -714,7 +717,7 @@ public class FragmentRaspWend extends Fragment implements OnBackPressedListener 
         String sW7Dz = etW7DZ.getText().toString();
         String sW8Dz = etW8DZ.getText().toString();
 
-        reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff = FirebaseDatabase.getInstance().getReference("Users").child(user).child("Schedule");
         if (sW1Dz.length() != 0) {
             reff.child("W1Dz").setValue(sW1Dz);
         } else {
@@ -837,23 +840,14 @@ public class FragmentRaspWend extends Fragment implements OnBackPressedListener 
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         saveText();
     }
 
     @Override
     public void onBackPressed() {
+        saveText();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.container, new StudyFragment());
         transaction.commit();

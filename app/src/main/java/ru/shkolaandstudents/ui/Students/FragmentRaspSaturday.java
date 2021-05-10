@@ -41,6 +41,8 @@ public class FragmentRaspSaturday extends Fragment implements OnBackPressedListe
     String Sat1, Sat2, Sat3, Sat4, Sat5, Sat6, Sat7, Sat8;
     DatabaseReference reff;
 
+    String user;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -215,8 +217,8 @@ public class FragmentRaspSaturday extends Fragment implements OnBackPressedListe
         etSat7DZ = v.findViewById(R.id.etSat7DZ);
         etSat8DZ = v.findViewById(R.id.etSat8DZ);
 
-        final String[] arr_sub1 = new String[8];
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
         reff.addValueEventListener(new ValueEventListener() {
             @Override
@@ -252,6 +254,7 @@ public class FragmentRaspSaturday extends Fragment implements OnBackPressedListe
                 reff1.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        final String[] arr_sub1 = new String[8];
                         int i = 0;
                         for (DataSnapshot ds : snapshot.getChildren()) {
                             final String str_sub = ds.getKey();
@@ -715,7 +718,7 @@ public class FragmentRaspSaturday extends Fragment implements OnBackPressedListe
         String sSat7Dz = etSat7DZ.getText().toString();
         String sSat8Dz = etSat8DZ.getText().toString();
 
-        reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff = FirebaseDatabase.getInstance().getReference("Users").child(user).child("Schedule");
         if (sSat1Dz.length() != 0) {
             reff.child("Sat1Dz").setValue(sSat1Dz);
         } else {
@@ -838,25 +841,14 @@ public class FragmentRaspSaturday extends Fragment implements OnBackPressedListe
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         saveText();
     }
 
     @Override
     public void onBackPressed() {
+        saveText();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.container, new StudyFragment());
         transaction.commit();

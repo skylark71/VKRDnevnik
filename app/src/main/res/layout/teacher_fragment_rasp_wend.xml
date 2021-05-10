@@ -30,10 +30,10 @@
             android:textSize="18sp" />
 
         <LinearLayout
+            android:id="@+id/teacherW1_row1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/teacherW1_row1"
             android:orientation="horizontal">
 
             <TextView
@@ -114,6 +114,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
@@ -124,16 +125,17 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/teacherW2_row2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/teacherW2_row2"
             android:orientation="horizontal">
 
             <TextView
@@ -214,6 +216,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
@@ -224,16 +227,17 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/teacherW3_row3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/teacherW3_row3"
             android:orientation="horizontal">
 
             <TextView
@@ -314,6 +318,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
@@ -324,16 +329,17 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/teacherW4_row4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/teacherW4_row4"
             android:orientation="horizontal">
 
             <TextView
@@ -414,6 +420,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
@@ -424,16 +431,17 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/teacherW5_row5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/teacherW5_row5"
             android:orientation="horizontal">
 
             <TextView
@@ -514,6 +522,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
@@ -524,16 +533,17 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/teacherW6_row6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/teacherW6_row6"
             android:orientation="horizontal">
 
             <TextView
@@ -614,6 +624,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
@@ -624,16 +635,17 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/teacherW7_row7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/teacherW7_row7"
             android:orientation="horizontal">
 
             <TextView
@@ -714,6 +726,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
@@ -724,16 +737,17 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/teacherW8_row8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:id="@+id/teacherW8_row8"
             android:orientation="horizontal">
 
             <TextView
@@ -814,6 +828,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 
@@ -824,6 +839,7 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textColor="@color/colorSet"
                 android:textSize="18sp" />
 

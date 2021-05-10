@@ -43,6 +43,7 @@ public class FragmentRaspMonday extends Fragment implements OnBackPressedListene
     String M1, M2, M3, M4, M5, M6, M7, M8;
     DatabaseReference reff;
 
+    String user;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -232,6 +233,7 @@ public class FragmentRaspMonday extends Fragment implements OnBackPressedListene
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser().getUid();
         reff = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("Schedule");
         reff.addValueEventListener(new ValueEventListener() {
             @Override
@@ -823,7 +825,6 @@ public class FragmentRaspMonday extends Fragment implements OnBackPressedListene
 
         loadText();
 
-
         return v;
     }
 
@@ -838,7 +839,7 @@ public class FragmentRaspMonday extends Fragment implements OnBackPressedListene
         String sM7Dz = etM7DZ.getText().toString();
         String sM8Dz = etM8DZ.getText().toString();
 
-        reff = FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        reff = FirebaseDatabase.getInstance().getReference("Users").child(user).child("Schedule");
         if (sM1Dz.length() != 0) {
             reff.child("M1Dz").setValue(sM1Dz);
         } else {
@@ -962,26 +963,14 @@ public class FragmentRaspMonday extends Fragment implements OnBackPressedListene
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
         saveText();
-
     }
 
     @Override
     public void onBackPressed() {
+        saveText();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.container, new StudyFragment());
         transaction.commit();
