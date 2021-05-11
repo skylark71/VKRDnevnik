@@ -67,7 +67,7 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.settings_fragment, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
 
         ConstraintLayout home_layout = rootView.findViewById(R.id.settings_layout);
         Button clearCache = rootView.findViewById(R.id.clearCache);

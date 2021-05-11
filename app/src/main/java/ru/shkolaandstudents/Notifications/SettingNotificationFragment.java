@@ -44,7 +44,7 @@ public class SettingNotificationFragment extends Fragment implements TimePickerD
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.setting_notification_fragment, container, false);
+        final View v = inflater.inflate(R.layout.fragment_setting_notification, container, false);
 
         btnHelp = v.findViewById(R.id.btnNotifHelp);
         final SharedPreferences prefs = this.getActivity().getSharedPreferences("notifcheck", MODE_PRIVATE);

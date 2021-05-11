@@ -21,7 +21,7 @@ public class SettingsStudyMenuFragment extends Fragment implements OnBackPressed
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.settings_study_menu_fragment, container, false);
+        View v = inflater.inflate(R.layout.fragment_settings_study_menu, container, false);
 
         Button btnSetMonday = v.findViewById(R.id.btnSetMonday);
         btnSetMonday.setOnClickListener(new View.OnClickListener() {
