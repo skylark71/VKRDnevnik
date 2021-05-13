@@ -7,8 +7,12 @@ import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -366,6 +370,32 @@ public class Utilities {
         if (language.equals("eng")) {
             tessBaseApi.init(appPath.getAbsolutePath(), "eng");
         }
+        /*Bitmap btm = bitmap;
+        for (int x = 0; x < btm.getWidth(); x++) {
+            for (int y = 0; y < btm.getHeight(); y++) {
+                // get one pixel color
+                int pixel = btm.getPixel(x, y);
+
+                // retrieve color of RGB
+                int A = Color.alpha(pixel);
+                int R = Color.red(pixel);
+                int G = Color.green(pixel);
+                int B = Color.blue(pixel);
+
+                // convert into single value
+                B = (int) (0.299 * R + 0.587 * G + 0.114 * B);
+                G = B;
+                R = G;
+                btm.setPixel(x, y, Color.argb(A, R, G, B));
+                // convert to black and white + remove noise
+                //130 верхняя граница
+                //110 нижняя граница
+                if (R > 107 && G > 107 && B > 107)
+                    btm.setPixel(x, y, Color.WHITE);
+                else if (R < 107 && G < 107 && B < 107)
+                    btm.setPixel(x, y, Color.BLACK);
+            }
+        }*/
         tessBaseApi.setImage(bitmap);
         String extractedText = tessBaseApi.getUTF8Text();
         tessBaseApi.end();

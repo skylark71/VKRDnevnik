@@ -24,7 +24,9 @@ import androidx.fragment.app.Fragment;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
+import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
+import ru.shkolaandstudents.Teacher.TeacherFragmentSettings;
 import ru.shkolaandstudents.Utilities;
 
 import java.io.File;
@@ -36,7 +38,7 @@ import static android.app.Activity.RESULT_OK;
  * Фрагмент "Главная страница".
  * Предназначен для реализации возможностей импорта изображения, с которого будет осуществляться распознавание текста.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements OnBackPressedListener {
     private static final int REQUEST_TAKE_PHOTO = 1;
     private static final int RESULT_LOAD_IMG = 1;
 
@@ -255,5 +257,10 @@ public class HomeFragment extends Fragment {
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        utils.switchFragment(getActivity(), new ImageFragment());
     }
 }

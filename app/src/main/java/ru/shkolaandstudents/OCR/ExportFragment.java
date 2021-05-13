@@ -1,4 +1,4 @@
-package ru.shkolaandstudents.ui.Students;
+package ru.shkolaandstudents.OCR;
 
 import android.content.DialogInterface;
 import android.graphics.BitmapFactory;
@@ -22,7 +22,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
-import ru.shkolaandstudents.OCR.HomeFragment;
 import ru.shkolaandstudents.R;
 import ru.shkolaandstudents.Utilities;
 

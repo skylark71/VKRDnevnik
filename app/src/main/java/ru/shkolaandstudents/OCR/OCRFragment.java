@@ -18,15 +18,15 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import ru.shkolaandstudents.OnBackPressedListener;
 import ru.shkolaandstudents.R;
 import ru.shkolaandstudents.Utilities;
-import ru.shkolaandstudents.ui.Students.ExportFragment;
 
 /**
  * Фрагмент "Распознавание текста с изображения".
  * Предназначен для реализации технологии распознавания текста с фото.
  */
-public class OCRFragment extends Fragment {
+public class OCRFragment extends Fragment implements OnBackPressedListener {
 
     private final static int THEME_LIGHT = 1;
     private final static int THEME_DARK = 2;
@@ -130,6 +130,11 @@ public class OCRFragment extends Fragment {
         OCRProgress.execute();
 
         return rootView;
+    }
+
+    @Override
+    public void onBackPressed() {
+        utils.switchFragment(getActivity(), new HomeFragment());
     }
 
     /**

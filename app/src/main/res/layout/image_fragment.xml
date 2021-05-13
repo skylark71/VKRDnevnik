@@ -18,8 +18,8 @@
 
             <ImageView
                 android:id="@+id/photoView"
-                android:layout_width="365dp"
-                android:layout_height="550dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="20dp"
                 android:adjustViewBounds="true"
@@ -40,8 +40,8 @@
                     android:layout_marginStart="23dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.25"
-                    android:src="@drawable/prev"
-                    app:cb_color="#303f9f"
+                    android:src="@drawable/left100"
+                    app:cb_color="#ffffff"
                     app:cb_pressedRingWidth="8dip" />
 
                 <at.markushi.ui.CircleButton
@@ -51,20 +51,20 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.25"
-                    android:src="@drawable/crop"
-                    app:cb_color="#303f9f"
+                    android:src="@drawable/editimage64"
+                    app:cb_color="#ffffff"
                     app:cb_pressedRingWidth="8dip" />
 
-                <at.markushi.ui.CircleButton
+                <!--<at.markushi.ui.CircleButton
                     android:id="@+id/rotateButton"
                     android:layout_width="150dp"
                     android:layout_height="70dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.25"
-                    android:src="@drawable/rotate"
-                    app:cb_color="#303f9f"
-                    app:cb_pressedRingWidth="8dip" />
+                    android:src="@drawable/rotateclockwise80"
+                    app:cb_color="#ffffff"
+                    app:cb_pressedRingWidth="8dip" />-->
 
                 <at.markushi.ui.CircleButton
                     android:id="@+id/nextStepButton"
@@ -74,8 +74,8 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="23dp"
                     android:layout_weight="0.25"
-                    android:src="@drawable/next"
-                    app:cb_color="#303f9f"
+                    android:src="@drawable/rightarro100"
+                    app:cb_color="#ffffff"
                     app:cb_pressedRingWidth="8dip" />
             </LinearLayout>
 
