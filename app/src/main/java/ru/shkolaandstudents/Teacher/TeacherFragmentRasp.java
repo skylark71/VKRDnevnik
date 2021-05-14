@@ -2,12 +2,23 @@ package ru.shkolaandstudents.Teacher;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import ru.shkolaandstudents.R;
 import ru.shkolaandstudents.Utilities;
@@ -33,37 +44,43 @@ public class TeacherFragmentRasp extends Fragment {
         btnMonday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*DatabaseReference ref_save;
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                ref_save = database.getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                ref_save.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String M1Sub = String.valueOf(snapshot.child("Schedule").child("M1Sub").getValue());
+                        String M2Sub = String.valueOf(snapshot.child("Schedule").child("M2Sub").getValue());
+                        String M3Sub = String.valueOf(snapshot.child("Schedule").child("M3Sub").getValue());
+                        String M4Sub = String.valueOf(snapshot.child("Schedule").child("M4Sub").getValue());
+                        String M5Sub = String.valueOf(snapshot.child("Schedule").child("M5Sub").getValue());
+                        String M6Sub = String.valueOf(snapshot.child("Schedule").child("M6Sub").getValue());
+                        String M7Sub = String.valueOf(snapshot.child("Schedule").child("M7Sub").getValue());
+                        String M8Sub = String.valueOf(snapshot.child("Schedule").child("M8Sub").getValue());
 
-                /*String M1Sub = SP.getString("M1Sub", "");
-                String M2Sub = SP.getString("M2Sub", "");
-                String M3Sub = SP.getString("M3Sub", "");
-                String M4Sub = SP.getString("M4Sub", "");
-                String M5Sub = SP.getString("M5Sub", "");
-                String M6Sub = SP.getString("M6Sub", "");
-                String M7Sub = SP.getString("M7Sub", "");
-                String M8Sub = SP.getString("M8Sub", "");
+                        String M1Class = String.valueOf(snapshot.child("Schedule").child("M1Class").getValue());
+                        String M2Class = String.valueOf(snapshot.child("Schedule").child("M2Class").getValue());
+                        String M3Class = String.valueOf(snapshot.child("Schedule").child("M3Class").getValue());
+                        String M4Class = String.valueOf(snapshot.child("Schedule").child("M4Class").getValue());
+                        String M5Class = String.valueOf(snapshot.child("Schedule").child("M5Class").getValue());
+                        String M6Class = String.valueOf(snapshot.child("Schedule").child("M6Class").getValue());
+                        String M7Class = String.valueOf(snapshot.child("Schedule").child("M7Class").getValue());
+                        String M8Class = String.valueOf(snapshot.child("Schedule").child("M8Class").getValue());
 
-                String M1Class = SP.getString("M1Class", "");
-                String M2Class = SP.getString("M2Class", "");
-                String M3Class = SP.getString("M3Class", "");
-                String M4Class = SP.getString("M4Class", "");
-                String M5Class = SP.getString("M5Class", "");
-                String M6Class = SP.getString("M6Class", "");
-                String M7Class = SP.getString("M7Class", "");
-                String M8Class = SP.getString("M8Class", "");
+                        if (M1Sub.length() == 0 & M2Sub.length() == 0 & M3Sub.length() == 0 & M4Sub.length() == 0 & M5Sub.length() == 0 & M6Sub.length() == 0 & M7Sub.length() == 0 & M8Sub.length() == 0 & M1Class.length() == 0 & M2Class.length() == 0 & M3Class.length() == 0 & M4Class.length() == 0 & M5Class.length() == 0 & M6Class.length() == 0 & M7Class.length() == 0 & M8Class.length() == 0) {
+                            Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.Rasp1), Toast.LENGTH_SHORT);
+                            toast.show();
+                        } else {*/
+                            utils.switchFragment(getActivity(), new TeacherFragmentRaspMond());
+                        /*}
+                    }
 
-                if (M1Sub.length()==0 & M2Sub.length()==0 & M3Sub.length()==0 & M4Sub.length()==0 & M5Sub.length()==0 & M6Sub.length()==0 & M7Sub.length()==0 & M8Sub.length()==0 & M1Class.length()==0& M2Class.length()==0& M3Class.length()==0& M4Class.length()==0& M5Class.length()==0& M6Class.length()==0& M7Class.length()==0& M8Class.length()==0)
-                {
-                    Toast toast = Toast.makeText(getActivity(), getResources().getString(R.string.Rasp1), Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-                else
-                {*/
-                    utils.switchFragment(getActivity(), new TeacherFragmentRaspMond());
-                    /*FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.container, new TeacherFragmentRaspMond());
-                    transaction.commit();*/
-                //}
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });*/
 
             }
         });
