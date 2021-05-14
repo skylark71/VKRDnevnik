@@ -134,7 +134,7 @@ public class OCRFragment extends Fragment implements OnBackPressedListener {
 
     @Override
     public void onBackPressed() {
-        utils.switchFragment(getActivity(), new HomeFragment());
+
     }
 
     /**

@@ -215,40 +215,6 @@ public class TeacherMainActivity extends AppCompatActivity {
         else {
             drawer.openDrawer(GravityCompat.START);
         }*/
-        /*
-          if (doubleBackToExitPressed == 2) {
-            FragmentManager fm = getSupportFragmentManager();
-            OnBackPressedListener backPressedListener = null;
-            for (Fragment fragment: fm.getFragments()) {
-                if (fragment instanceof  OnBackPressedListener) {
-                    backPressedListener = (OnBackPressedListener) fragment;
-                    break;
-                }
-            }
-
-            if (backPressedListener != null) {
-                backPressedListener.onBackPressed();
-            } else {
-                super.onBackPressed();
-            }
-        }
-        else {
-            doubleBackToExitPressed++;
-            Toast.makeText(this, "Please press Back again to exit", Toast.LENGTH_SHORT).show();
-        }
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                doubleBackToExitPressed=1;
-                DrawerLayout drawer = findViewById(R.id.drawer_layout);
-                if (drawer.isDrawerOpen(GravityCompat.START))
-                    drawer.closeDrawer(GravityCompat.START);
-                else {
-                    drawer.openDrawer(GravityCompat.START);
-                }
-            }
-        }, 150);*/
 
         FragmentManager fm = getSupportFragmentManager();
         OnBackPressedListener backPressedListener = null;
