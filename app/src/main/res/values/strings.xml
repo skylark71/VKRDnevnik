@@ -101,7 +101,7 @@
     <string name="SetT8">8. Введите начало и конец восьмого урока</string>
     <string name="TimeSet">Изменить время уроков</string>
     <string name="ClassListSet">Изменить список учеников</string>
-    <string name="ClassListAndSubSet">Изменить список предметов у класса</string>
+    <string name="ClassListAndSubSet">Изменить журналы</string>
     <string name="input_1">1. Введите название 1 предмета</string>
     <string name="input_2">2. Введите название 2 предмета</string>
     <string name="input_3">3. Введите название 3 предмета</string>

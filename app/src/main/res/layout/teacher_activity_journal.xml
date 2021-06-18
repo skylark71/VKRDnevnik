@@ -48,7 +48,7 @@
                 android:layout_height="45dp"
                 android:gravity="center"
                 android:background="@drawable/back"
-                android:text="Чуваки" />
+                android:text="Уч-ик/День" />
 
             <TextView
                 android:id="@+id/school_man1"
